@@ -13,5 +13,10 @@ namespace CareYou.Views
         {
 
         }
+
+        protected void viewmore_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
