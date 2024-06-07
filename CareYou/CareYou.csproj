@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Style\contentstyle.css" />
+    <Content Include="Style\navbarstyle.css" />
     <Content Include="Views\DonatePage.aspx" />
+    <Content Include="Views\FundraisePage.aspx" />
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Web.config" />
@@ -88,6 +90,13 @@
     </Compile>
     <Compile Include="Views\DonatePage.aspx.designer.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FundraisePage.aspx.cs">
+      <DependentUpon>FundraisePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\FundraisePage.aspx.designer.cs">
+      <DependentUpon>FundraisePage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\LoginPage.aspx.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>

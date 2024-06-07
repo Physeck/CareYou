@@ -13,7 +13,6 @@
 
 /*Donate Page*/
 
-
 .donatepage {
     display: flex;
     height: 100%;
@@ -50,7 +49,6 @@
     align-items: center;
     justify-items: center;
     display: inline-flex;
-    flex-end;
 }
 
 #filter {
@@ -177,5 +175,62 @@
     margin: 10px 275px;
 }
 
+/*Fundraise Page*/
 
+.fundraisepage {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    background: linear-gradient(to bottom, #b3d9ff 50%, #ffffff 100%);
+}
+
+.createprogram {
+    margin-top: 80px;
+    background-color: #4caf50;
+    border-radius: 15px;
+    width: 700px;
+    height: 130px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    display: inline-flex;
+}
+
+#createT {
+    font-size: 25px;
+    color: white;
+    margin-left: 40px;
+    margin-right: 160px;
+    padding: 20px 10px;
+}
+
+#startfundraisingbtn {
+    color: white;
+    background: transparent;
+    border-radius: 45px;
+    border: 5px solid white;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 40px;
+}
+
+    #startfundraisingbtn:hover {
+        border: 5px solid white;
+        background-color: white;
+        color: #4caf50;
+    }
+
+.textTitle {
+    font-weight: bold;
+    text-align: start;
+    margin-top: 60px;
+    margin-left: 95px;
+    align-self: flex-start;
+    font-size: 30px;
+}
 
