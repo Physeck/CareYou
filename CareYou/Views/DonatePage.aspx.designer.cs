@@ -51,42 +51,6 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Image filter;
 
         /// <summary>
-        /// programI control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image programI;
-
-        /// <summary>
-        /// donateT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label donateT;
-
-        /// <summary>
-        /// donateD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label donateD;
-
-        /// <summary>
-        /// donateN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label donateN;
-
-        /// <summary>
         /// detailprogram control.
         /// </summary>
         /// <remarks>

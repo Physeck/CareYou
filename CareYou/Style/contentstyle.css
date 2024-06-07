@@ -32,7 +32,7 @@
     border: 1px solid #B1CCE2;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
     background: white;
-    width: 700px;
+    width: 980px;
     justify-content: space-between;
 }
 
@@ -64,20 +64,6 @@
     cursor: pointer;
 }
 
-.donateC {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px;
-}
-
-.donateprogramC {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
 .programI {
     width: 100%;
     display: block;
@@ -99,40 +85,37 @@
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     border-radius: 25px;
     overflow: hidden;
-    /* justify-content: space-between; */
     margin: 50px;
     width: 1000px;
 }
 
-#programI {
+
+.programI {
     width: 400px;
     height: auto;
     object-fit: cover;
 }
 
 .donatecontain1 {
-    padding: 15px;
-}
-
-.donatecontain2, .progressbar, #donateN, #detailprogram {
-    flex: 1;
-    padding: 10px;
-    align-items: baseline;
-}
-
-.donatecontain2 {
     display: flex;
     justify-content: space-between;
 }
 
-#donateT, #donateD, #donateN {
+.donatecontain1, .progressbar, .donateN, #detailprogram {
+    flex: 1;
+    padding: 10px 20px;
+    align-items: baseline;
+}
+
+.donateT, .donateD, .donateN {
     display: block;
 }
 
-#donateT {
+.donateT {
     font-size: 28px;
     width: 480px;
 }
+
 
 .progressbar {
     background-color: #e0e0e0;
@@ -149,7 +132,7 @@
         width: 50%;
     }
 
-#detailprogramP {
+.detailprogramP {
     text-align-last: end;
 }
 
@@ -227,10 +210,50 @@
 
 .textTitle {
     font-weight: bold;
-    text-align: start;
     margin-top: 60px;
-    margin-left: 95px;
-    align-self: flex-start;
+    margin-right: 780px;
     font-size: 30px;
+}
+
+.pendingprgram {
+    width: 100%;
+}
+
+.pendingC {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pendingprogramC {
+    display: flex;
+    align-items: center;
+    background-color: darkgrey;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 50px;
+    width: 1000px;
+}
+
+#pendingT, #pendingN, #pendingD {
+    color: white;
+}
+
+#pendingdetailprogram {
+    color: white;
+    border: 5px solid white;
+}
+
+#pendingdetailprogram:hover {
+    color: white;
+    background-color: grey;
+    border: 5px solid grey;
+}
+
+#pendingprogramT {
+    margin-left: 120px;
 }
 

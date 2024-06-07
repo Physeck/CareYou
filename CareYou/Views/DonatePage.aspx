@@ -22,17 +22,17 @@
 
             <div class="donateC">
                 <div class="donateprogramC">
-                    <asp:Image ID="programI" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQVua1higrnAKxEJ8ufI9iIJ8Y3_-DGUBEoA&s" runat="server" />
-                    <div class="donatecontain1">
-                        <div class="donatecontain2">
-                            <asp:Label ID="donateT" runat="server" Text="Help with 2$ meal for hungry Orphans in Switzerland"></asp:Label>
-                            <asp:Label ID="donateD" runat="server" Text="10 May 2024"></asp:Label>
+                    <asp:Image class="programI" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQVua1higrnAKxEJ8ufI9iIJ8Y3_-DGUBEoA&s" runat="server" />
+                    <div class="donatecontain2">
+                        <div class="donatecontain1">
+                            <asp:Label class="donateT" runat="server" Text="Help with 2$ meal for hungry Orphans in Switzerland"></asp:Label>
+                            <asp:Label class="donateD" runat="server" Text="10 May 2024"></asp:Label>
                         </div>
-                        <asp:Label ID="donateN" runat="server" Text="John Doe"></asp:Label>
+                        <asp:Label class="donateN" runat="server" Text="John Doe"></asp:Label>
                         <div class="progressbar">
                             <%-- blm --%>
                         </div>
-                        <div id="detailprogramP">
+                        <div class="detailprogramP">
                             <asp:Button class="detailprogrambtn" ID="detailprogram" runat="server" Text="Detail Program" />
                         </div>
                     </div>
