@@ -10,13 +10,15 @@ namespace CareYou.Controller
     {
         public static top10Data getTop3User(int rank)
         {
-            if(rank == 1)
+            if (rank == 1)
             {
                 return userHandler.getTop1Data("user");
-            }else if(rank == 2)
+            }
+            else if (rank == 2)
             {
                 return userHandler.getTop2Data("user");
-            }else if(rank == 3)
+            }
+            else if (rank == 3)
             {
                 return userHandler.getTop3Data("user");
             }
@@ -50,6 +52,17 @@ namespace CareYou.Controller
         public static List<top10Data> get4to10Organization()
         {
             return userHandler.getTop4to10("organization");
+        }
+
+        public static int getTotalDonationFromUserID(int userId)
+        {
+            return userHandler.getTotalDonationFromUser(userId);
+        }
+
+        public static int getUserRank(int id)
+        {
+            return userHandler.getUserRank(id);
+
         }
     }
 }
