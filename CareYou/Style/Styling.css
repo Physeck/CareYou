@@ -1,0 +1,222 @@
+﻿body {
+}
+
+/*Top Donation Page*/
+.tDContainer{
+    width: 80%;
+    margin-top: 56px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tDLbl{
+    font-size: 80px;
+    font-weight: bold;
+    margin-bottom: 100px;
+    
+}
+
+.tDFilterBtn{
+    margin: 20px auto 0 auto;
+    display: flex;
+}
+
+.tDIndividual{
+    margin-right: 4px;
+}
+
+.tDOrganization, .tDIndividual {
+    width: calc(50% - 2px);
+    border-bottom: 1px solid #012D19;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background-color: transparent;
+    color: #01A95D;
+    font-size: 40px;
+    font-weight: bold;
+    padding-bottom: 23px;
+    padding-top: 23px;
+}
+
+.tDOrganization:hover, .tDIndividual:hover{
+    border-bottom-width: 5px;
+    cursor: pointer;
+}
+
+.top3 {
+    margin-top: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top3{
+    width: 100%;
+    color: white;
+    font-weight: bold;
+}
+
+.allTop3 {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.top3Container {
+    background-color: #012D19;
+    border-radius: 20px;
+    /*padding: 50px 56px 50px 56px;*/
+    padding: 2% 4%;
+    margin-left: 1%;
+    margin-right: 1%;
+    text-decoration: none;
+    color: white;
+}
+
+.top3Container:hover{
+    background-color: #01A95D;
+}
+
+.top3Container:hover .donatedTD3{
+    color: #012D19;
+}
+
+.innerTD3{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    /*background-color: peachpuff;*/
+}
+
+.rankTD3 {
+    font-size: 52px;
+    font-weight: bold;
+    margin-bottom: 20%;
+}
+
+.fir {
+    color: #FEDC97;
+}
+
+.first {
+    color: #FEDC97;
+    font-size: 42px;
+}
+
+.sec {
+    color: #D2FFE0;
+    font-size: 42px;
+}
+
+.secnd {
+    color: #D2FFE0;
+    font-size: 32px;
+}
+
+.thi {
+    color: #CEF6FF;
+    font-size: 38px;
+}
+
+.third {
+    color: #CEF6FF;
+    font-size: 28px;
+}
+
+.ppTD3 {
+    width: 100%;
+    margin: 0 auto 50px auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nameTD3{
+    font-size: 38px;
+    margin-bottom: 10px;
+}
+
+.donatedTD3 {
+    color: #01A95D;
+    font-size: 32px;
+    margin-top: 10px;
+}
+
+.amountTD3{
+    font-size: 48px;
+    margin-top: 8px;
+}
+
+.top10 {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 75px;
+    border-radius: 80px 80px 0 0px;
+    box-shadow: 0 15px 40px;
+}
+
+.top4Above {
+    width: 100%;
+    /*background-color: rebeccapurple;*/
+    border-radius: 80px 80px 0 0px;
+    
+}
+
+.top4LB{
+    
+}
+
+.top4to10 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2%;
+    box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    /*width: 96%;*/
+}
+
+/*.top4to10:hover{
+    background-color:#C8C8C8;
+}*/
+
+.rankTD4 {
+    color: rgba(1,169,93,0.5);
+    font-size: 58px;
+    margin-right: 5%;
+    font-weight: bold;
+}
+
+.ppTD4 {
+    width: 10%;
+    margin-right: 3%;
+    border-color: #01A95D;
+    border-width: 1px;
+    border-spacing: 9px;
+}
+
+.nameTD4 {
+    width: 40%;
+    font-size: 40px;
+    font-weight: bold;
+    color: black;
+}
+
+.donateContainer{
+    text-align: right;
+    float: right;
+}
+
+.donateTD4Lbl {
+    color: #11698E;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.donateTD4 {
+    font-size: 52px;
+    color: #01A95D;
+}

@@ -1,0 +1,150 @@
+﻿
+.root
+{
+    position: relative;
+    bottom: 0px;
+    display: flex;
+    right: 0px;
+    left: 0px;
+    flex-direction: column;
+    background-color: rgb(246, 248, 250);
+    outline: 1px solid rgba(0, 0, 0, 0.498);
+    outline-offset: -0.5px;
+}
+
+.footer-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 62px 0px;
+    margin: 41px auto 29px;
+    width: 81.54%;
+}
+
+.footer-top {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px 10px;
+}
+
+.title1_box {
+    position: relative;
+    margin: 0px 0px 122px;
+    min-width: 0px;
+}
+
+.title1 {
+    font: 500 64px/1.23 "HelveticaCompressed", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+    letter-spacing: 12.8px;
+}
+
+.title1_span0 {
+    font: 500 1em/1.23 "Helvetica Compressed", Helvetica, Arial, serif;
+    color: rgb(1, 169, 93);
+}
+
+.title1_span1 {
+    font: 500 1em/1.23 "Helvetica Compressed", Helvetica, Arial, serif;
+}
+
+.flex_col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 52px;
+    width: 222px;
+    min-width: 0px;
+}
+
+.title2 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font: 700 35px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.title3 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 24px 25px 0px 0px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.title31 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 12px 0px 0px;
+    width: 106px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.flex_col1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 289.5px;
+    min-width: 0px;
+}
+
+.title21 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 192px;
+    font: 700 35px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.title32 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 24px 0px 0px;
+    width: 124px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.title33 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 12px 0px 0px 1.5px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.title34 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 12px 0px 0px;
+    width: 158px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.footer-bottom {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px 0px 1px;
+    width: 502px;
+    font: 100 33px/1.2 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+}
