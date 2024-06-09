@@ -46,5 +46,32 @@ namespace CareYou.Handler
 
             return programDetails;
         }
+
+        public static List<dynamic> getFiveFirstProjectProgramsForHome()
+        {
+            var programs = programRepo.getAllVerifiedProjectPrograms().Take(5).ToList();
+            List<dynamic> programDetails = new List<dynamic>();
+
+            foreach (var program in programs)
+            {
+                double Progress = (double)program.ProgramRaised / (double)program.ProgramTarget * 100;
+                if (Progress > 100) Progress = 100;
+                dynamic programDetail = new
+                {
+                    ProgramID = program.ProgramID,
+                    ProgramTitle = program.ProgramTitle,
+                    ProgramDesc = program.ProgramDesc,
+                    ProgramImage = program.ProgramImage,
+                    FundraiserName = program.FundraiserName,
+                    ProgramType = program.ProgramType,
+                    ProgramRaised = program.ProgramRaised,
+                    Progress = Progress
+                };
+
+                programDetails.Add(programDetail);
+            }
+
+            return programDetails;
+        }
     }
 }

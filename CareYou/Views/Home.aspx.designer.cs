@@ -15,12 +15,21 @@ namespace CareYou.Views
     {
 
         /// <summary>
-        /// ProgramRepeater control.
+        /// SocialProgramRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater ProgramRepeater;
+        protected global::System.Web.UI.WebControls.Repeater SocialProgramRepeater;
+
+        /// <summary>
+        /// ProjectProgramRepeater control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater ProjectProgramRepeater;
     }
 }

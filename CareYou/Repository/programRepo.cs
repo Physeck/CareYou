@@ -24,5 +24,10 @@ namespace CareYou.Repository
         {
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
         }
+
+        public static List<Program> getAllVerifiedProjectPrograms()
+        {
+            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
+        }
     }
 }

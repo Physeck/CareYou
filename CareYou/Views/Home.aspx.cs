@@ -14,10 +14,15 @@ namespace CareYou.Views
         {
             if (!IsPostBack)
             {
-                List<dynamic> programs = ProgramHandler.getFiveFirstSocialProgramsForHome();
+                List<dynamic> socialPrograms = ProgramHandler.getFiveFirstSocialProgramsForHome();
 
-                ProgramRepeater.DataSource = programs;
-                ProgramRepeater.DataBind();
+                SocialProgramRepeater.DataSource = socialPrograms;
+                SocialProgramRepeater.DataBind();
+
+                List<dynamic> projectPrograms = ProgramHandler.getFiveFirstProjectProgramsForHome();
+
+                SocialProgramRepeater.DataSource = projectPrograms;
+                SocialProgramRepeater.DataBind();
             }
         }
     }
