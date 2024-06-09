@@ -1,0 +1,434 @@
+﻿
+
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(246, 248, 250);
+}
+
+.top {
+    position: absolute;
+    top: 0px;
+    left: 2px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    background: var(--src) center center / 100% 100% no-repeat;
+}
+
+.title_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 214px 0px 219px 11.98%;
+    width: 1259px;
+}
+
+.title_flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.app-title_box {
+    position: relative;
+    margin: 0px 9px;
+}
+
+.app-title {
+    font: 500 64px/1.23 "HelveticaCompressed", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+    letter-spacing: 12.8px;
+}
+
+.app-title_span0 {
+    font: 500 1em/1.23 "Helvetica Compressed", Helvetica, Arial, serif;
+    color: rgb(1, 169, 93);
+}
+
+.app-title_span1 {
+    font: 500 1em/1.23 "Helvetica Compressed", Helvetica, Arial, serif;
+}
+
+.tagline_box {
+    position: relative;
+    margin: 27px 0px 0px 9px;
+}
+
+.tagline {
+    font: 700 96px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.tagline_span0 {
+    font: 700 1em/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+}
+
+.tagline_span1 {
+    font: 700 1em/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(255, 255, 255);
+}
+
+.fundraise-btn {
+    position: relative;
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    margin: 728px 0px 0px;
+    width: 400px;
+    height: 75px;
+    max-width: 100%;
+    font: 700 40px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 169, 93);
+    text-align: center;
+    border: none;
+    border-radius: 37.5px 37.5px 37.5px 37.5px;
+    padding: 17.5px 34px 17.5px 34px;
+    outline: 5px solid rgb(1, 169, 93);
+    transition-duration: 0.15s;
+    transition-property: background-color;
+}
+
+    .fundraise-btn:hover {
+        background-color: #01a95dff;
+        color: white;
+    }
+
+.bottom {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 1392px 0px 0px 2px;
+    background-color: rgb(246, 248, 250);
+    border-radius: 100px 100px 0px 0px;
+    box-shadow: 0px 15px 40px 0px rgba(0, 0, 0, 0.498);
+}
+
+.discover-flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 83px auto 231px;
+    width: 86.67%;
+    max-width: 1664px;
+}
+
+.discover-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin: 0px 0px 0px 7px;
+    width: 421px;
+    font: 700 100px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.programs-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 94px 0px;
+    margin: 157px 0px 0px;
+}
+
+.section-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 982px;
+    font: 700 65px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.program-flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 64px 0px;
+}
+
+.card-container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    gap: 64px;
+}
+
+.program-flexbox-top {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px 10px;
+}
+
+.program-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+    min-width: 0px;
+    height: 512px;
+    background: var(--src) top center no-repeat;
+    background-size: 120%; 
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px 0px rgba(0, 0, 0, 0.149);
+    transition-duration: 0.15s;
+    z-index: 1;
+
+}
+    .program-container:hover {
+        background-size: 110%;
+        transform: scale(1.05);
+        z-index: 10;
+        height: 854px;
+    }
+
+.program-container.wide{
+    width: 1088px;
+}
+
+
+
+.program-container-content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 0px 0px 20px 20px;
+    transition: height 0.15s;
+    height: 200px;
+}
+.program-container:hover .program-container-content {
+    height: 488px;
+}
+
+.program-container-content-flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto 36px;
+    width: 80.27%;
+    height: 100%;
+}
+
+.program-container-content-flexbox.wide{
+    margin: 21px auto 36px;
+    width: 78.13%;
+}
+
+.program-title {
+    position: relative;
+    font: 700 28px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+    max-height: 76px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.program-title.wide {
+    font: 700 30px/1 "Helvetica Neue", Helvetica, Arial, serif;
+}
+
+.fundraiser {
+    position: relative;
+    margin: 12px 0px 0px;
+    width: 100%;
+    font: 500 20px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.fundraiser.wide{
+    margin: 7px 0px 0px;
+    font: 500 22px/1 "Helvetica Neue", Helvetica, Arial, serif;
+}
+
+.raised {
+    position: relative;
+    margin: 9px 0px 0px;
+    width: 100%;
+    font: 700 25px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.raised.wide {
+    font: 700 27px/1 "Helvetica Neue", Helvetica, Arial, serif;
+}
+
+.progress-bar {
+    position: relative;
+    margin: 12px 0px 0px;
+    width: 97.32%;
+    height: 15px;
+    background-color: #E6F5EF;
+    border-radius: 100px;
+    overflow: hidden;
+}
+
+.progress-bar.wide{
+    width: 100%;
+}
+
+.progress-bar-inner {
+    height: 100%;
+    background-color: #01A95D;
+    text-align: center;
+    color: white;
+    border-radius: 100px;
+}
+
+.brief-description {
+    display: none;
+    position: relative;
+    margin: 12px 0px 0px;
+    font: 500 24px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+    white-space: normal;
+    overflow: hidden;
+}
+
+.program-container:hover .brief-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+}
+
+.program-card-container{
+    position: relative;
+    height: 512px;
+    width: 512px;
+}
+
+.program-card-container.wide{
+    height: 512px;
+    width: 1088px;
+}
+
+.program-flexbox-bottom {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px 10px;
+}
+
+.program-container-content-flexbox1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 15px auto 36px;
+    width: 78.13%;
+}
+
+.fundraiser1 {
+    position: relative;
+    margin: 12px 0px 0px;
+    font: 500 20px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.raised1 {
+    position: relative;
+    margin: 9px 0px 0px;
+    font: 700 25px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.progressbar1 {
+    position: relative;
+    margin: 12px 0px 0px;
+    width: 100%;
+}
+
+.program-container1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+    min-width: 0px;
+    background: fixed var(--src) 50% 50% / 120% no-repeat;
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px 0px rgba(0, 0, 0, 0.149);
+}
+
+.programs-container1 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 94px 0px;
+    margin: 70px 0px 0px;
+}
+
+.section-title1 {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 748px;
+    font: 700 65px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 45, 25);
+    text-align: center;
+}
+
+.program-container2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 512px;
+    min-width: 0px;
+    background: var(--src) center center / 120% no-repeat;
+    border-radius: 20px;
+    box-shadow: 0px 15px 40px 0px rgba(0, 0, 0, 0.149);
+}
+
+.program-container-content-flexbox2 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 15px auto 36px;
+    width: 78.13%;
+}
+
+.program-title1 {
+    position: relative;
+    width: 95.75%;
+    font: 700 28px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.viewmore-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 70px 0px 0px;
+    width: 230px;
+    max-width: 100%;
+    font: 700 40px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(1, 169, 93);
+    text-align: center;
+    border-radius: 26.5px 26.5px 26.5px 26.5px;
+    padding: 6.5px 8px 6.5px 8px;
+    outline: 5px solid rgb(1, 169, 93);
+    border-width: 0px;
+    transition-duration: 0.3s;
+    transition-property: background-color;
+}
+
+    .viewmore-btn:hover {
+        background-color: #01a95dff;
+        color: white;
+    }

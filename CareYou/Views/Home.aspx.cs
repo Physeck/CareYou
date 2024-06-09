@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareYou.Handler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,13 @@ namespace CareYou.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                List<dynamic> programs = ProgramHandler.getFiveFirstSocialProgramsForHome();
 
+                ProgramRepeater.DataSource = programs;
+                ProgramRepeater.DataBind();
+            }
         }
     }
 }

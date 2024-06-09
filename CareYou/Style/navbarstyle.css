@@ -84,9 +84,11 @@
     justify-content: center;
     align-items: center;
     min-width: 175px;
+    background-color: transparent;
     font: 700 33px/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 169, 93);
     text-align: center;
+    border: none;
     border-radius: 25px 25px 25px 25px;
     padding: 8.5px 32px 8.5px 32px;
     outline: 5px solid rgb(1, 169, 93);

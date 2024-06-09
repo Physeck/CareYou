@@ -20,7 +20,6 @@ namespace CareYou.Model
         public int Amount { get; set; }
         public int ProgramID { get; set; }
     
-        public virtual Program Program { get; set; }
         public virtual User User { get; set; }
     }
 }

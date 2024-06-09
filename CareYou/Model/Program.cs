@@ -14,28 +14,22 @@ namespace CareYou.Model
     
     public partial class Program
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Program()
-        {
-            this.Transactions = new HashSet<Transaction>();
-        }
-    
         public int ProgramID { get; set; }
         public int FundraiserID { get; set; }
         public string ProgramTitle { get; set; }
         public string ProgramDesc { get; set; }
         public string ProgramStatus { get; set; }
         public string ProgramTopic { get; set; }
-        public string ProgramName { get; set; }
+        public string FundraiserName { get; set; }
         public string ProgramType { get; set; }
         public string ProgramLoc { get; set; }
         public int ProgramTarget { get; set; }
+        public int ProgramRaised { get; set; }
         public string ProgramImage { get; set; }
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
+        public bool Verified { get; set; }
     
         public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

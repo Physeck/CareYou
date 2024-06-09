@@ -23,13 +23,15 @@
           <Property Name="ProgramDesc" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="ProgramStatus" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProgramTopic" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="ProgramName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="FundraiserName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProgramType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProgramLoc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProgramTarget" Type="int" Nullable="false" />
-          <Property Name="ProgramImage" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProgramRaised" Type="int" Nullable="false" />
+          <Property Name="ProgramImage" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
+          <Property Name="Verified" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -66,18 +68,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaction_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="ProgramID" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="ProgramID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Transaction_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
@@ -98,10 +88,6 @@
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="User" />
             <End Role="Program" EntitySet="Program" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
-            <End Role="Program" EntitySet="Program" />
-            <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
             <End Role="User" EntitySet="User" />
@@ -131,15 +117,16 @@
           <Property Name="ProgramDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramTopic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ProgramName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FundraiserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramLoc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramTarget" Type="Int32" Nullable="false" />
-          <Property Name="ProgramImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProgramRaised" Type="Int32" Nullable="false" />
+          <Property Name="ProgramImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Program_User" FromRole="Program" ToRole="User" />
-          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Program" FromRole="Program" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -150,7 +137,6 @@
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="ProgramID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Program" Relationship="Self.FK_Transaction_Program" FromRole="Transaction" ToRole="Program" />
           <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
@@ -180,18 +166,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaction_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
-          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="ProgramID" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="ProgramID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Transaction_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
@@ -212,10 +186,6 @@
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Program" EntitySet="Programs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
-            <End Role="Program" EntitySet="Programs" />
-            <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
             <End Role="User" EntitySet="Users" />
@@ -246,13 +216,15 @@
                 <ScalarProperty Name="ProgramDesc" ColumnName="ProgramDesc" />
                 <ScalarProperty Name="ProgramStatus" ColumnName="ProgramStatus" />
                 <ScalarProperty Name="ProgramTopic" ColumnName="ProgramTopic" />
-                <ScalarProperty Name="ProgramName" ColumnName="ProgramName" />
+                <ScalarProperty Name="FundraiserName" ColumnName="FundraiserName" />
                 <ScalarProperty Name="ProgramType" ColumnName="ProgramType" />
                 <ScalarProperty Name="ProgramLoc" ColumnName="ProgramLoc" />
                 <ScalarProperty Name="ProgramTarget" ColumnName="ProgramTarget" />
+                <ScalarProperty Name="ProgramRaised" ColumnName="ProgramRaised" />
                 <ScalarProperty Name="ProgramImage" ColumnName="ProgramImage" />
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Verified" ColumnName="Verified" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

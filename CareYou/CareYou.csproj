@@ -79,6 +79,7 @@
     <Content Include="App_Data\CareYouDB_log.ldf">
       <DependentUpon>CareYouDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\HomePage\home-background.png" />
     <Content Include="Assets\NavbarProfile.svg" />
     <Content Include="Assets\Profiles\IP1.png" />
     <Content Include="Assets\Profiles\IP2.png" />
@@ -96,6 +97,8 @@
     <Content Include="Assets\Profiles\OP6.png" />
     <Content Include="Assets\Profiles\OP7.png" />
     <Content Include="Assets\Profiles\profile3.png" />
+    <Content Include="Assets\Program\program1.png" />
+    <Content Include="Assets\Program\program2.png" />
     <Content Include="Model\CareYouModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CareYouModel.edmx</DependentUpon>
@@ -108,6 +111,7 @@
     </Content>
     <Content Include="Style\contentstyle.css" />
     <Content Include="Style\footerstyle.css" />
+    <Content Include="Style\homepagestyle.css" />
     <Content Include="Style\navbarstyle.css" />
     <Content Include="Style\Styling.css" />
     <Content Include="Views\DonatePage.aspx" />
@@ -239,9 +243,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Program\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
