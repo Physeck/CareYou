@@ -25,5 +25,15 @@ namespace CareYou.Views
                 SocialProgramRepeater.DataBind();
             }
         }
+
+        protected void ViewMoreBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void FundraiseBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

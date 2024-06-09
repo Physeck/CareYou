@@ -15,7 +15,7 @@
                             <br />
                             in Making Dreams a Reality</span></span>
                     </h1>
-                    <button class="fundraise-btn">Start Fundraising</button>
+                    <asp:Button CssClass="fundraise-btn" ID="FundraiseBtn" runat="server" Text="Start Fundraising" OnClick="FundraiseBtn_Click"/>
                 </div>
             </div>
         </div>
@@ -70,7 +70,7 @@
                         </asp:Repeater>
                     </div>
                 </div>
-                <button class="viewmore-btn">View More</button>
+                <asp:Button CssClass="viewmore-btn" ID="ViewMoreBtn" runat="server" Text="View More" OnClick="ViewMoreBtn_Click"/>
             </div>
         </div>
     </section>

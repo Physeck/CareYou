@@ -32,7 +32,7 @@ namespace CareYou.Views.Layouts
             {
                 TopDonationBtn.CssClass = "navbar_btn_selected";
             }
-            else if (currentPage.Equals("~/Views/Fundraise.aspx", StringComparison.OrdinalIgnoreCase))
+            else if (currentPage.Equals("~/Views/FundraisePage.aspx", StringComparison.OrdinalIgnoreCase))
             {
                 FundraiseBtn.CssClass = "navbar_btn_selected";
             }
@@ -87,7 +87,7 @@ namespace CareYou.Views.Layouts
 
         protected void FundraiseBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Fundraise.aspx");
+            Response.Redirect("~/Views/FundraisePage.aspx");
         }
 
         protected void SignInBtn_Click(object sender, EventArgs e)
