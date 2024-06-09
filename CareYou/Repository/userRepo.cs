@@ -54,5 +54,10 @@ namespace CareYou.Repository
         {
             return db.Users.Find(id);
         }
+
+        public static List<User> getOrderedUser()
+        {
+            return (from x in db.Users where x.Role.Equals("user") select x).OrderByDescending(x => x.Transactions.Sum(y => y.Amount)).ToList();
+        }
     }
 }

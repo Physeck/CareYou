@@ -25,7 +25,8 @@ namespace CareYou.Handler
                     top1.image = user.ProfilePicture;
                     return top1;
                 }
-            }else if (role.Equals("organization"))
+            }
+            else if (role.Equals("organization"))
             {
                 var org = userRepo.getTop1Organization();
                 if (org != null)
@@ -39,7 +40,7 @@ namespace CareYou.Handler
                     return top1;
                 }
             }
-            
+
             return null;
         }
 
@@ -142,7 +143,8 @@ namespace CareYou.Handler
 
                     return datas;
                 }
-            }else if (role.Equals("organization"))
+            }
+            else if (role.Equals("organization"))
             {
                 List<User> org = userRepo.get4to10Organization();
 
@@ -167,6 +169,25 @@ namespace CareYou.Handler
                 }
             }
             return null;
+        }
+
+        public static int getTotalDonationFromUser(int id)
+        {
+            User user = userRepo.GetUserById(id);
+
+            return transactionRepo.getUserAmount(user);
+        }
+
+        public static int getUserRank(int id)
+        {
+            List<User> users = userRepo.getOrderedUser();
+            User curr = users.Find(x => x.UserID == id);
+
+            int rank = users.IndexOf(curr) + 1;
+
+
+
+            return users.IndexOf(curr) + 1;
         }
 
         public static User GetUserById(int id)

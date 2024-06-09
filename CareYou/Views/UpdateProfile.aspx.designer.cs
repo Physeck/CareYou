@@ -11,151 +11,187 @@ namespace CareYou.Views
 {
 
 
-    public partial class TopDonation1
+    public partial class UpdateProfile
     {
 
         /// <summary>
-        /// tDLbl control.
+        /// showpp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label tDLbl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl showpp;
 
         /// <summary>
-        /// tDIndividual control.
+        /// UPBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button tDIndividual;
+        protected global::System.Web.UI.WebControls.Button UPBtn;
 
         /// <summary>
-        /// tDOrganization control.
+        /// updatePP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button tDOrganization;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl updatePP;
 
         /// <summary>
-        /// LinkButton2 control.
+        /// PPNameTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton2;
+        protected global::System.Web.UI.WebControls.TextBox PPNameTB;
 
         /// <summary>
-        /// Label3 control.
+        /// eNup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label eNup;
 
         /// <summary>
-        /// Label4 control.
+        /// PPEmailTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label4;
+        protected global::System.Web.UI.WebControls.TextBox PPEmailTB;
 
         /// <summary>
-        /// Label5 control.
+        /// eEup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label eEup;
 
         /// <summary>
-        /// LinkButton1 control.
+        /// UPPass control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl UPPass;
 
         /// <summary>
-        /// Label1 control.
+        /// PPPassTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox PPPassTB;
 
         /// <summary>
-        /// Label2 control.
+        /// ePup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label ePup;
 
         /// <summary>
-        /// donatedTD3 control.
+        /// PPCPassTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label donatedTD3;
+        protected global::System.Web.UI.WebControls.TextBox PPCPassTB;
 
         /// <summary>
-        /// top3LB control.
+        /// eCPup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton top3LB;
+        protected global::System.Web.UI.WebControls.Label eCPup;
 
         /// <summary>
-        /// Label6 control.
+        /// changePassU control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label6;
+        protected global::System.Web.UI.WebControls.LinkButton changePassU;
 
         /// <summary>
-        /// Label7 control.
+        /// cancelChangeUP control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label7;
+        protected global::System.Web.UI.WebControls.LinkButton cancelChangeUP;
 
         /// <summary>
-        /// Label8 control.
+        /// updtP2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label8;
+        protected global::System.Web.UI.WebControls.Button updtP2;
 
         /// <summary>
-        /// top4Above control.
+        /// regComlnk control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DataList top4Above;
+        protected global::System.Web.UI.WebControls.HyperLink regComlnk;
+
+        /// <summary>
+        /// tDLblUP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label tDLblUP;
+
+        /// <summary>
+        /// rLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label rLbl;
+
+        /// <summary>
+        /// jDLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label jDLbl;
+
+        /// <summary>
+        /// uPLogoutBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button uPLogoutBtn;
     }
 }
