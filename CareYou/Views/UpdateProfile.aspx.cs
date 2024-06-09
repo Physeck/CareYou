@@ -15,12 +15,26 @@ namespace CareYou.Views
         public User curr = null;
         public int totalDonate = 0;
         public int rank = 0;
+        public userBadgeData badgeOfUser = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             int id = 3; /*ganti jadi querystring*/
 
             curr = userRepo.GetUserById(id);
             totalDonate = userController.getTotalDonationFromUserID(id);
+
+            badgeOfUser = badgeController.getBadgeByUserID(id);
+            uPBadges.DataSource = badgeOfUser.badges;
+            uPBadges.DataBind();
+
+            if (badgeOfUser.totalBadge != 0)
+            {
+                noBadgeLbl.Visible = false;
+            }
+            else
+            {
+                noBadgeLbl.Visible = true;
+            }
 
             if (curr.Role.Equals("user"))
             {

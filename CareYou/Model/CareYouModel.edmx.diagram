@@ -5,12 +5,17 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6eae3d65edb04562878dea8a03bf08e1" Name="Diagram1">
-        <EntityTypeShape EntityType="CareYouDBModel.Donation" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareYouDBModel.Donation" Width="1.5" PointX="5.125" PointY="5.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.Program" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="CareYouDBModel.Transaction" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="CareYouDBModel.User" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareYouDBModel.Transaction" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareYouDBModel.User" Width="1.5" PointX="1" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="CareYouDBModel.FK_Program_User" ManuallyRouted="false" />
         <AssociationConnector Association="CareYouDBModel.FK_Transaction_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CareYouDBModel.Badge" Width="1.5" PointX="1" PointY="7.375" />
+        <EntityTypeShape EntityType="CareYouDBModel.UserBadge" Width="1.5" PointX="1" PointY="4.875" />
+        <AssociationConnector Association="CareYouDBModel.FK_UserBadge_Badge" />
+        <AssociationConnector Association="CareYouDBModel.FK_Donation_Transaction" />
+        <AssociationConnector Association="CareYouDBModel.FK_UserBadge_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

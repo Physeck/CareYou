@@ -126,9 +126,14 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\userController.cs" />
+    <Compile Include="Handler\badgeHandler.cs" />
     <Compile Include="Handler\ProgramHandler.cs" />
+    <Compile Include="Model\Badge.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\CareYouModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -156,6 +161,10 @@
     <Compile Include="Model\User.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\UserBadge.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\badgeRepository.cs" />
     <Compile Include="top10Data.cs" />
     <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,6 +179,7 @@
     <Compile Include="Repository\programRepo.cs" />
     <Compile Include="Repository\transactionRepo.cs" />
     <Compile Include="Repository\userRepo.cs" />
+    <Compile Include="userBadgeData.cs" />
     <Compile Include="Views\DonatePage.aspx.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

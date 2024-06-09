@@ -219,7 +219,13 @@
 }
 
 /*Update Profile*/
+
 .profileContainer {
+    margin-top: 193px;
+    margin-bottom: 85px;
+}
+
+.detailProfileContainer {
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -227,7 +233,8 @@
     border-radius: 80px;
     padding: 2% 3%;
     height: fit-content;
-    margin-top: 193px;
+    z-index: 1;
+    position: relative;
 }
 
 .uPLogo {
@@ -372,4 +379,71 @@
     font-weight: bold;
     color: black;
     margin-top: 10px;
+}
+
+.uPBadgeContainer {
+    width: 72%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding: calc(200px + 2%) 4% 4% 4%;
+    box-shadow: 0 15px 40px;
+    border-radius: 80px;
+    margin-top: -200px;
+    background-color: white;
+}
+
+.uPBadgeHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.uPBadgeLbl {
+    font-size: 70px;
+    float: right;
+    font-weight: bold;
+}
+
+.uPTotBadge {
+    align-items: center;
+    font-size: 44px;
+    color: #11698E;
+    width: fit-content;
+    display: flex;
+    font-weight: bold;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.uPtotLbl {
+    font-size: 26px;
+    font-weight: normal;
+}
+
+.uPBadges {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 30px;
+}
+
+.uPBadge {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    margin-left: 2%;
+    margin-top: 20px;
+}
+
+.noBadgeLbl {
+    color: #767676;
+    font-size: 70px;
+    font-weight: bold;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-top: 20px;
 }

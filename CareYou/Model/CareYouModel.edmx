@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="BadgeName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BadgeDescription" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BadgeImage" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Donation">
           <Key>
             <PropertyRef Name="TransactionID" />
@@ -56,6 +65,27 @@
           <Property Name="ProfilePicture" Type="varchar" MaxLength="50" />
           <Property Name="UserStatus" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <EntityType Name="UserBadge">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="BadgeID" Type="int" Nullable="false" />
+          <Property Name="DateReceived" Type="date" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Donation_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
@@ -80,11 +110,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="BadgeID" />
+            </Principal>
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBadge_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CareYouDBModelStoreContainer">
+          <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserBadge" EntityType="Self.UserBadge" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Donation_Transaction" Association="Self.FK_Donation_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="User" />
             <End Role="Program" EntitySet="Program" />
@@ -93,9 +153,16 @@
             <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserBadge_Badge" Association="Self.FK_UserBadge_Badge">
+            <End Role="Badge" EntitySet="Badge" />
+            <End Role="UserBadge" EntitySet="UserBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBadge_User" Association="Self.FK_UserBadge_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserBadge" EntitySet="UserBadge" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CareYouDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -106,6 +173,7 @@
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Transaction" Relationship="CareYouDBModel.FK_Donation_Transaction" FromRole="Donation" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -138,6 +206,7 @@
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="ProgramID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
+          <NavigationProperty Name="Donation" Relationship="CareYouDBModel.FK_Donation_Transaction" FromRole="Transaction" ToRole="Donation" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -153,6 +222,7 @@
           <Property Name="UserStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Programs" Relationship="Self.FK_Program_User" FromRole="User" ToRole="Program" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_User" FromRole="User" ToRole="Transaction" />
+          <NavigationProperty Name="UserBadges" Relationship="CareYouDBModel.FK_UserBadge_User" FromRole="User" ToRole="UserBadge" />
         </EntityType>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -191,7 +261,78 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
+          <EntitySet Name="Badges" EntityType="CareYouDBModel.Badge" />
+          <EntitySet Name="UserBadges" EntityType="CareYouDBModel.UserBadge" />
+          <AssociationSet Name="FK_UserBadge_Badge" Association="CareYouDBModel.FK_UserBadge_Badge">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="UserBadge" EntitySet="UserBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Transaction" Association="CareYouDBModel.FK_Donation_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBadge_User" Association="CareYouDBModel.FK_UserBadge_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserBadge" EntitySet="UserBadges" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BadgeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BadgeImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserBadges" Relationship="CareYouDBModel.FK_UserBadge_Badge" FromRole="Badge" ToRole="UserBadge" />
+        </EntityType>
+        <EntityType Name="UserBadge">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="DateReceived" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Badge" Relationship="CareYouDBModel.FK_UserBadge_Badge" FromRole="UserBadge" ToRole="Badge" />
+          <NavigationProperty Name="User" Relationship="CareYouDBModel.FK_UserBadge_User" FromRole="UserBadge" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserBadge_Badge">
+          <End Type="CareYouDBModel.Badge" Role="Badge" Multiplicity="1" />
+          <End Type="CareYouDBModel.UserBadge" Role="UserBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="BadgeID" />
+            </Principal>
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Transaction">
+          <End Type="CareYouDBModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="CareYouDBModel.Donation" Role="Donation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBadge_User">
+          <End Type="CareYouDBModel.User" Role="User" Multiplicity="1" />
+          <End Type="CareYouDBModel.UserBadge" Role="UserBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -250,6 +391,25 @@
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="ProfilePicture" ColumnName="ProfilePicture" />
                 <ScalarProperty Name="UserStatus" ColumnName="UserStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Badges">
+            <EntityTypeMapping TypeName="CareYouDBModel.Badge">
+              <MappingFragment StoreEntitySet="Badge">
+                <ScalarProperty Name="BadgeImage" ColumnName="BadgeImage" />
+                <ScalarProperty Name="BadgeDescription" ColumnName="BadgeDescription" />
+                <ScalarProperty Name="BadgeName" ColumnName="BadgeName" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserBadges">
+            <EntityTypeMapping TypeName="CareYouDBModel.UserBadge">
+              <MappingFragment StoreEntitySet="UserBadge">
+                <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
