@@ -57,7 +57,7 @@ namespace CareYou.Repository
 
         public static User GetUserByName(String name)
         {
-            return db.Users.Find(name);
+            return (from x in db.Users where x.UserName.Equals(name) select x).FirstOrDefault();
         }
 
         public static List<User> getOrderedUser()

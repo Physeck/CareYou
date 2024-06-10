@@ -217,6 +217,11 @@ namespace CareYou.Controller
 
         public static Response<User> updateProfile(User curr, String name, String email, String password, String cPassword)
         {
+            bool cekname = checkUPNameField(name).Success;
+            bool cekpass = checkUPPassField(password).Success;
+            bool cekEmail = checkUPEmailField(email).Success;
+            bool cekcpass = checkUPCPassField(cPassword, password).Success;
+
             if (checkUPNameField(name).Success && checkUPPassField(password).Success && checkUPEmailField(email).Success && checkUPCPassField(cPassword, password).Success)
             {
                 return userHandler.updateProfile(curr, name, email, password);

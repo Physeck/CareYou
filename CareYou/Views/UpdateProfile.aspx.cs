@@ -1,4 +1,5 @@
 ﻿using CareYou.Controller;
+using CareYou.DataClass;
 using CareYou.Model;
 using CareYou.Repository;
 using System;
@@ -74,6 +75,10 @@ namespace CareYou.Views
             changePassU.Visible = true;
             cancelChangeUP.Visible = false;
             UPPass.Visible = false;
+            ePup.Text = "";
+            eCPup.Text = "";
+            PPPassTB.Attributes.CssStyle.Remove("border");
+            PPCPassTB.Attributes.CssStyle.Remove("border");
         }
 
         protected void updtP2_Click(object sender, EventArgs e)
@@ -141,6 +146,37 @@ namespace CareYou.Views
                 }
             }
             
+            if(errormsg == "")
+            {
+                if (!UPPass.Visible)
+                {
+                    Response<User> resp = userController.updateProfile(curr, name, email, curr.UserPassword, curr.UserPassword);
+                    if (resp.Success)
+                    {
+                        showpp.Visible = true;
+                        updatePP.Visible = false;
+                    }
+                    else
+                    {
+                        errormsg = resp.Message;
+                        errorName(errormsg);
+                    }
+                }
+                else
+                {
+                    Response<User> resp = userController.updateProfile(curr, name, email, pass, cPass);
+                    if (resp.Success)
+                    {
+                        showpp.Visible = true;
+                        updatePP.Visible = false;
+                    }
+                    else
+                    {
+                        errormsg = resp.Message;
+                        errorName(errormsg);
+                    }
+                }
+            }
 
 
             //showpp.Visible = true;
