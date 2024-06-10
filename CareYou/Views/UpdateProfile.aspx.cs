@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CareYou.Views
 {
@@ -78,8 +79,104 @@ namespace CareYou.Views
         protected void updtP2_Click(object sender, EventArgs e)
         {
             //update the profile
-            showpp.Visible = true;
-            updatePP.Visible = false;
+
+            String name = PPNameTB.Text;
+            String email = PPEmailTB.Text;
+            String pass = PPPassTB.Text;
+            String cPass = PPCPassTB.Text;
+            String errormsg = "";
+
+            if (!userController.checkUPNameField(name).Success)
+            {
+                errormsg = userController.checkUPNameField(name).Message;
+                errorName(errormsg);
+            }
+            else
+            {
+                eNup.Text = "";
+                eNup.ForeColor = System.Drawing.Color.Black;
+                PPNameTB.BorderColor = System.Drawing.Color.Black;
+                PPNameTB.Attributes.CssStyle.Remove("border");
+            }
+
+            if (!userController.checkUPEmailField(email).Success)
+            {
+                errormsg = userController.checkUPEmailField(email).Message;
+                errorEmail(errormsg);
+            }
+            else
+            {
+                eEup.Text = "";
+                eEup.ForeColor = System.Drawing.Color.Black;
+                PPEmailTB.BorderColor = System.Drawing.Color.Black;
+                PPEmailTB.Attributes.CssStyle.Remove("border");
+            }
+
+            if (UPPass.Visible)
+            {
+                if (!userController.checkUPPassField(pass).Success)
+                {
+                    errormsg = userController.checkUPPassField(pass).Message;
+                    errorPass(errormsg);
+                }
+                else
+                {
+                    ePup.Text = "";
+                    ePup.ForeColor = System.Drawing.Color.Black;
+                    PPPassTB.BorderColor = System.Drawing.Color.Black;
+                    PPPassTB.Attributes.CssStyle.Remove("border");
+                }
+
+                if (!userController.checkUPCPassField(cPass, pass).Success)
+                {
+                    errormsg = userController.checkUPCPassField(cPass, pass).Message;
+                    errorCPass(errormsg);
+                }
+                else
+                {
+                    eCPup.Text = "";
+                    eCPup.ForeColor = System.Drawing.Color.Black;
+                    PPCPassTB.BorderColor = System.Drawing.Color.Black;
+                    PPCPassTB.Attributes.CssStyle.Remove("border");
+                }
+            }
+            
+
+
+            //showpp.Visible = true;
+            //updatePP.Visible = false;
+        }
+
+        protected void errorName(String errormsg)
+        {
+
+            eNup.Text = errormsg;
+            eNup.ForeColor = System.Drawing.Color.Red;
+            PPNameTB.Attributes.CssStyle.Add("border", "1px solid red");
+        }
+
+        protected void errorEmail(String errormsg)
+        {
+
+            eEup.Text = errormsg;
+            eEup.ForeColor = System.Drawing.Color.Red;
+            PPEmailTB.Attributes.CssStyle.Add("border", "1px solid red");
+        }
+
+        protected void errorPass(String errormsg)
+        {
+
+            ePup.Text = errormsg;
+            ePup.ForeColor = System.Drawing.Color.Red;
+            PPPassTB.Attributes.CssStyle.Add("border", "1px solid red");
+        }
+
+        protected void errorCPass(String errormsg)
+        {
+
+            eCPup.Text = errormsg;
+            eCPup.ForeColor = System.Drawing.Color.Red;
+            PPCPassTB.Attributes.CssStyle.Add("border", "1px solid red");
         }
     }
 }

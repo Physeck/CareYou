@@ -55,9 +55,22 @@ namespace CareYou.Repository
             return db.Users.Find(id);
         }
 
+        public static User GetUserByName(String name)
+        {
+            return db.Users.Find(name);
+        }
+
         public static List<User> getOrderedUser()
         {
             return (from x in db.Users where x.Role.Equals("user") select x).OrderByDescending(x => x.Transactions.Sum(y => y.Amount)).ToList();
+        }
+
+        public static void updateUserProfile(User curr, String name, String email, String password)
+        {
+            curr.UserName = name;
+            curr.UserEmail = email;
+            curr.UserPassword = password;
+            db.SaveChanges();
         }
     }
 }

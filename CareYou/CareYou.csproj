@@ -129,6 +129,7 @@
     <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\userController.cs" />
+    <Compile Include="Modules\Response.cs" />
     <Compile Include="Handler\badgeHandler.cs" />
     <Compile Include="Handler\ProgramHandler.cs" />
     <Compile Include="Model\Badge.cs">
