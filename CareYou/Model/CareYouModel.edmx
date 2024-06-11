@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Donation">
           <Key>
             <PropertyRef Name="TransactionID" />
@@ -24,6 +24,7 @@
           <Property Name="ProgramStatus" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProgramTopic" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FundraiserName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BeneficiaryName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProgramType" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProgramLoc" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="ProgramTarget" Type="int" Nullable="false" />
@@ -39,9 +40,10 @@
           </Key>
           <Property Name="TransactionID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="TransactionDate" Type="date" Nullable="false" />
+          <Property Name="TransactionDate" Type="datetime" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
           <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="TransactionType" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -56,6 +58,18 @@
           <Property Name="ProfilePicture" Type="varchar" MaxLength="50" />
           <Property Name="UserStatus" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Donation__Transa__3D2915A8">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
@@ -85,6 +99,10 @@
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Donation__Transa__3D2915A8" Association="Self.FK__Donation__Transa__3D2915A8">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="User" />
             <End Role="Program" EntitySet="Program" />
@@ -94,8 +112,7 @@
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CareYouDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -106,6 +123,7 @@
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Transaction" Relationship="Self.FK__Donation__Transa__3D2915A8" FromRole="Donation" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -118,6 +136,7 @@
           <Property Name="ProgramStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramTopic" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FundraiserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BeneficiaryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramLoc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProgramTarget" Type="Int32" Nullable="false" />
@@ -134,10 +153,12 @@
           </Key>
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
           <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Donation" Relationship="Self.FK__Donation__Transa__3D2915A8" FromRole="Transaction" ToRole="Donation" />
           <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
+          <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -154,6 +175,18 @@
           <NavigationProperty Name="Programs" Relationship="Self.FK_Program_User" FromRole="User" ToRole="Program" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_User" FromRole="User" ToRole="Transaction" />
         </EntityType>
+        <Association Name="FK__Donation__Transa__3D2915A8">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
@@ -183,6 +216,10 @@
           <EntitySet Name="Programs" EntityType="Self.Program" />
           <EntitySet Name="Transactions" EntityType="Self.Transaction" />
           <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Donation__Transa__3D2915A8" Association="Self.FK__Donation__Transa__3D2915A8">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="Users" />
             <End Role="Program" EntitySet="Programs" />
@@ -217,6 +254,7 @@
                 <ScalarProperty Name="ProgramStatus" ColumnName="ProgramStatus" />
                 <ScalarProperty Name="ProgramTopic" ColumnName="ProgramTopic" />
                 <ScalarProperty Name="FundraiserName" ColumnName="FundraiserName" />
+                <ScalarProperty Name="BeneficiaryName" ColumnName="BeneficiaryName" />
                 <ScalarProperty Name="ProgramType" ColumnName="ProgramType" />
                 <ScalarProperty Name="ProgramLoc" ColumnName="ProgramLoc" />
                 <ScalarProperty Name="ProgramTarget" ColumnName="ProgramTarget" />
@@ -231,6 +269,7 @@
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="CareYouDBModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />

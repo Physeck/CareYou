@@ -17,5 +17,7 @@ namespace CareYou.Model
         public int TransactionID { get; set; }
         public string Comment { get; set; }
         public string PaymentMethod { get; set; }
+    
+        public virtual Transaction Transaction { get; set; }
     }
 }

@@ -21,6 +21,7 @@ namespace CareYou.Model
         public string ProgramStatus { get; set; }
         public string ProgramTopic { get; set; }
         public string FundraiserName { get; set; }
+        public string BeneficiaryName { get; set; }
         public string ProgramType { get; set; }
         public string ProgramLoc { get; set; }
         public int ProgramTarget { get; set; }

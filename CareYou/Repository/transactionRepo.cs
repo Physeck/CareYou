@@ -24,5 +24,15 @@ namespace CareYou.Repository
         {
             return (from x in db.Transactions where x.UserID == userID select x).ToList();
         }
+
+        public static List<Transaction> getTransactionByProgramId(int programId)
+        {
+            return (from x in db.Transactions where x.ProgramID == programId orderby x.TransactionDate descending select x).ToList();
+        }
+
+        public static List<Transaction> getDonationsByProgramId(int programId)
+        {
+            return (from x in db.Transactions where x.ProgramID == programId && x.TransactionType.Equals("donation") orderby x.TransactionDate descending select x).ToList();
+        }
     }
 }

@@ -15,6 +15,11 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.User.UserID == userID select x).ToList();
         }
 
+        public static Program getProgramById(int programID)
+        {
+            return (from x in db.Programs where x.ProgramID == programID select x).FirstOrDefault();
+        }
+
         public static List<Program> getAllVerifiedPrograms()
         {
             return (from x in db.Programs where x.Verified == true select x).ToList();
@@ -29,5 +34,6 @@ namespace CareYou.Repository
         {
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
         }
+
     }
 }
