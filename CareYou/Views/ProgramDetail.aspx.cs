@@ -27,6 +27,14 @@ namespace CareYou.Views
                 
                 ViewState["CommentCount"] = 5;
                 BindComments(programId);
+                ProgramCreatedLbl.Text = ProgramHandler.getProgramCreatedDate(programId);
+                TotalRaisedLbl.Text = string.Format("Rp. {0:N0}", program.ProgramRaised);
+                GoalLbl.Text = "raised of " + string.Format("Rp. {0:N0}", program.ProgramTarget) + " goal";
+                DonationsCountLbl.Text = ProgramHandler.getDonationsCount(programId).ToString() + " donations";
+
+                progressBar.Style["width"] = ProgramHandler.getProgramProgress(programId) + "%";
+                TopDonationRepeater.DataSource = ProgramHandler.get3TopDonations(programId);
+                TopDonationRepeater.DataBind();
             }
         }
 
@@ -48,6 +56,14 @@ namespace CareYou.Views
             ShowMoreBtn.Visible = count < allComments.Count;
         }
 
-        
+        protected void ReportLB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void DonateBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -98,6 +98,7 @@
     <Content Include="Assets\Profiles\OP7.png" />
     <Content Include="Assets\Profiles\profile3.png" />
     <Content Include="Assets\Profiles\ProfileDefault.png" />
+    <Content Include="Assets\ProgramDetail\reportbtn.png" />
     <Content Include="Assets\ProgramDetail\verified.png" />
     <Content Include="Assets\Program\program1.png" />
     <Content Include="Assets\Program\program2.png" />

@@ -35,5 +35,10 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
         }
 
+        public static List<Donation> getTopDonationsByProgramId(int programID)
+        {
+            return (from x in db.Donations where x.Transaction.ProgramID == programID orderby x.Transaction.Amount descending select x).ToList();
+        }
+
     }
 }

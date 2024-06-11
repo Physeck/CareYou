@@ -25,6 +25,13 @@ namespace CareYou.Handler
             return programRepo.getProgramById(programID);
         }
 
+        public static Double getProgramProgress(int programID)
+        {
+            Program program = programRepo.getProgramById(programID);
+            double Progress = (double)program.ProgramRaised / (double)program.ProgramTarget * 100;
+            if (Progress > 100) Progress = 100;
+            return Progress;
+        }
         public static List<dynamic> getFiveFirstSocialProgramsForHome()
         {
             var programs = programRepo.getAllVerifiedSocialPrograms().Take(5).ToList();
@@ -32,8 +39,7 @@ namespace CareYou.Handler
 
             foreach (var program in programs)
             {
-                double Progress = (double)program.ProgramRaised / (double)program.ProgramTarget * 100;
-                if (Progress > 100) Progress = 100;
+                double Progress = getProgramProgress(program.ProgramID);
                 dynamic programDetail = new
                 {
                     ProgramID = program.ProgramID,
@@ -59,8 +65,7 @@ namespace CareYou.Handler
 
             foreach (var program in programs)
             {
-                double Progress = (double)program.ProgramRaised / (double)program.ProgramTarget * 100;
-                if (Progress > 100) Progress = 100;
+                double Progress = getProgramProgress(program.ProgramID);
                 dynamic programDetail = new
                 {
                     ProgramID = program.ProgramID,
@@ -96,6 +101,12 @@ namespace CareYou.Handler
             return $"{timeSpan.Days / 365} years ago";
         }
 
+        public static String getProgramCreatedDate(int programId)
+        {
+            Program program = programRepo.getProgramById(programId);
+            return "Created " + CalculateRelativeTime(program.StartDate);
+        }
+
         public static List<dynamic> getAllComments(int programId)
         {
             List<Transaction> transactions = transactionRepo.getDonationsByProgramId(programId);
@@ -123,6 +134,15 @@ namespace CareYou.Handler
                 
             }
             return comments;
+        }
+        public static int getDonationsCount(int programId)
+        {
+            return transactionRepo.getDonationsByProgramId(programId).Count;
+        }
+
+        public static List<Donation> get3TopDonations(int programId)
+        {
+            return programRepo.getTopDonationsByProgramId(programId).Take(3).ToList();
         }
     }
 }
