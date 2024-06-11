@@ -84,7 +84,7 @@
                 <asp:Button ID="DonateBtn" CssClass="donate-btn" runat="server" Text="Donate Now" OnClick="DonateBtn_Click"/>
                 <div class="top-donation-flexbox">
                     <div class="top-donation-title-container">
-                        <h2 class="top-donation-title">Top Donation</h2>
+                        <asp:Label ID="TopDonationLbl" runat="server" Text="Top Donation" CssClass="top-donation-title"></asp:Label>
                     </div>
                     <div class="top-donation-content-flexbox">
                         <asp:Repeater ID="TopDonationRepeater" runat="server">

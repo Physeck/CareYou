@@ -33,8 +33,17 @@ namespace CareYou.Views
                 DonationsCountLbl.Text = ProgramHandler.getDonationsCount(programId).ToString() + " donations";
 
                 progressBar.Style["width"] = ProgramHandler.getProgramProgress(programId) + "%";
-                TopDonationRepeater.DataSource = ProgramHandler.get3TopDonations(programId);
-                TopDonationRepeater.DataBind();
+                List<Donation> Top3Donations = ProgramHandler.get3TopDonations(programId);
+                if(Top3Donations.Count == 0)
+                {
+                    TopDonationRepeater.Visible = false;
+                    TopDonationLbl.Visible = false;
+                }
+                else
+                {
+                    TopDonationRepeater.DataSource = Top3Donations;
+                    TopDonationRepeater.DataBind();
+                }   
             }
         }
 
