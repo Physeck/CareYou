@@ -12,29 +12,19 @@ namespace CareYou.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Badge
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Badge()
         {
-            this.Programs = new HashSet<Program>();
-            this.Transactions = new HashSet<Transaction>();
             this.UserBadges = new HashSet<UserBadge>();
         }
     
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserEmail { get; set; }
-        public string UserPassword { get; set; }
-        public System.DateTime JoinDate { get; set; }
-        public string Role { get; set; }
-        public string ProfilePicture { get; set; }
-        public string UserStatus { get; set; }
+        public int BadgeID { get; set; }
+        public string BadgeName { get; set; }
+        public string BadgeDescription { get; set; }
+        public string BadgeImage { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Program> Programs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserBadge> UserBadges { get; set; }
     }

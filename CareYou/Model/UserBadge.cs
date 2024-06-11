@@ -12,17 +12,13 @@ namespace CareYou.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Transaction
+    public partial class UserBadge
     {
-        public int TransactionID { get; set; }
         public int UserID { get; set; }
-        public System.DateTime TransactionDate { get; set; }
-        public int Amount { get; set; }
-        public int ProgramID { get; set; }
-        public string TransactionType { get; set; }
+        public int BadgeID { get; set; }
+        public System.DateTime DateReceived { get; set; }
     
-        public virtual Donation Donation { get; set; }
+        public virtual Badge Badge { get; set; }
         public virtual User User { get; set; }
-        public virtual Donation Donation { get; set; }
     }
 }
