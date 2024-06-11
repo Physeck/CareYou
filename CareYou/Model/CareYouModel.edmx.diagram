@@ -12,6 +12,10 @@
         <AssociationConnector Association="CareYouDBModel.FK__Donation__Transa__3D2915A8" ManuallyRouted="false" />
         <AssociationConnector Association="CareYouDBModel.FK_Program_User" ManuallyRouted="false" />
         <AssociationConnector Association="CareYouDBModel.FK_Transaction_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CareYouDBModel.Badge" Width="1.5" PointX="3.75" PointY="10" />
+        <EntityTypeShape EntityType="CareYouDBModel.UserBadge" Width="1.5" PointX="6" PointY="3" />
+        <AssociationConnector Association="CareYouDBModel.FK_UserBadge_Badge" />
+        <AssociationConnector Association="CareYouDBModel.FK_UserBadge_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

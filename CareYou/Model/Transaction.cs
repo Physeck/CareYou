@@ -23,6 +23,5 @@ namespace CareYou.Model
     
         public virtual Donation Donation { get; set; }
         public virtual User User { get; set; }
-        public virtual Donation Donation { get; set; }
     }
 }
