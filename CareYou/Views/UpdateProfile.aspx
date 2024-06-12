@@ -7,7 +7,7 @@
     <div class="profileContainer">
         <div class="detailProfileContainer">
 
-            <img id="uPLogo" class="uPLogo" src="../Assets/Logo/orgverifyLogo.png" />
+            <img id="uPLogo" class="uPLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
 
             <div class="detailPP">
 

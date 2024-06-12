@@ -191,6 +191,14 @@ namespace CareYou.Handler
             return users.IndexOf(curr) + 1;
         }
 
+        public static int getOrganizationRank(int id)
+        {
+            List<User> orgs = userRepo.getOrderedOrganization();
+            User curr = orgs.Find(x => x.UserID == id);
+
+            return orgs.IndexOf(curr) + 1;
+        }
+
         public static User GetUserById(int id)
         {
             return userRepo.GetUserById(id);

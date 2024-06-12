@@ -67,6 +67,11 @@ namespace CareYou.Controller
             return userHandler.getUserRank(id);
         }
 
+        public static int getOrganizationRank(int id)
+        {
+            return userHandler.getOrganizationRank(id);
+        }
+
         public static Response<User> checkUPNameField(String name)
         {
             if (name == "")

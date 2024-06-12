@@ -18,7 +18,7 @@ namespace CareYou.Views
         public userBadgeData badgeOfUser = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = 3; /*ganti jadi querystring*/
+            int id = Convert.ToInt32(Request.QueryString["id"]); /*ganti jadi querystring*/
 
             curr = userRepo.GetUserById(id);
             totalDonate = userController.getTotalDonationFromUserID(id);
@@ -28,6 +28,38 @@ namespace CareYou.Views
             {
                 rank = userController.getUserRank(id);
             }
+
+            badgeOfUser = badgeController.getBadgeByUserID(id);
+            uPBadges.DataSource = badgeOfUser.badges;
+            uPBadges.DataBind();
+
+            if (badgeOfUser.totalBadge != 0)
+            {
+                noBadgeLbl.Visible = false;
+            }
+            else
+            {
+                noBadgeLbl.Visible = true;
+            }
+
+            if(curr.Programs.Count == 0)
+            {
+                pViewPrgrm.Visible = false;
+            }
+
+            if (curr.Role.Equals("user"))
+            {
+                rank = userController.getUserRank(id);
+                uPLogo.Visible = false;
+            }else if (curr.Role.Equals("organization"))
+            {
+                rank = userController.getOrganizationRank(id);
+            }
+        }
+
+        protected void pViewPrgrm_Click(object sender, EventArgs e)
+        {
+            //redirect ke program list user
         }
     }
 }

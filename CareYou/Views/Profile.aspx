@@ -6,7 +6,15 @@
     
     <div class="profilePage">
         <div class="detailProfile">
-            <img id="pPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="pPp" />
+            <div>
+                <img id="uPLogo" class="uPLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
+            </div>
+            
+            <div class="pP">
+                <img id="pPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="pPp" />
+            </div>
+            
+
             <div class="ProfileName">
                 <%= curr.UserName %>
             </div>
@@ -32,6 +40,32 @@
                         <%= curr.JoinDate.Year %>
                     </div>
                 </div>
+            </div>
+
+            <div class="vwP">
+                <asp:Button ID="pViewPrgrm" class="pViewPrgrm" runat="server" Text="View Program" OnClick="pViewPrgrm_Click" />
+            </div>
+            
+        </div>
+
+        <div class="pBadgeContainer">
+            <asp:Label ID="pBadgeLbl" class="pBadgeLbl" runat="server" Text="Badge"></asp:Label>
+
+            <div class="pBadge">
+                <div class="pTotBadge">
+                    <div class="uPtotLbl">
+                        Total:
+                    </div>
+                     <%= badgeOfUser.totalBadge %>
+                </div>
+
+                <asp:DataList ID="uPBadges" class="uPBadges" runat="server" RepeatColumns="4">
+                    <ItemTemplate>
+                        <img id="uPBadge" src="../Assets/Badges/<%# Eval("BadgeImage") %>"  class="uPBadge" />
+                    </ItemTemplate>
+                </asp:DataList>
+
+                <asp:Label ID="noBadgeLbl" class="noBadgeLbl" runat="server" Text="No Badge"></asp:Label>
             </div>
         </div>
     </div>
