@@ -141,7 +141,9 @@
   <ItemGroup>
     <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
+    <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\userController.cs" />
+    <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Model\Withdrawal.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>

@@ -11,17 +11,44 @@ namespace CareYou.Views
 {
 
 
-    public partial class History
+    public partial class History1
     {
 
         /// <summary>
-        /// form1 control.
+        /// HistoryTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Label HistoryTitle;
+
+        /// <summary>
+        /// Histdesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Histdesc;
+
+        /// <summary>
+        /// dateDDH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dateDDH;
+
+        /// <summary>
+        /// typeDDH control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList typeDDH;
 
         /// <summary>
         /// history2Above control.
