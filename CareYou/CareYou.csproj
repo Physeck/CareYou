@@ -131,6 +131,7 @@
     <Content Include="Views\insertUser.aspx" />
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\Payment.aspx" />
+    <Content Include="Views\Profile.aspx" />
     <Content Include="Views\ProgramDetail.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Views\TopDonation.aspx" />
@@ -241,6 +242,13 @@
     </Compile>
     <Compile Include="Views\Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ProgramDetail.aspx.cs">
       <DependentUpon>ProgramDetail.aspx</DependentUpon>

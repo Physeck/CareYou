@@ -447,3 +447,44 @@
     display: flex;
     margin-top: 20px;
 }
+
+/*Profile Page*/
+.profilePage {
+    margin-top: 193px;
+    margin-bottom: 85px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.detailProfile {
+    background-color: #E3F5F2;
+    border-radius: 80px;
+    box-shadow: 0 15px 40px;
+    width: 30%;
+    padding: 2% 2%;
+    text-align: center;
+}
+
+.pPp{
+    position: relative;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+}
+
+.ProfileName {
+    color: #012D19;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 40px;
+}
+
+.pdetailInfoContainer {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
