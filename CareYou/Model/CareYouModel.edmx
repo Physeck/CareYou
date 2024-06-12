@@ -76,6 +76,14 @@
           <Property Name="BadgeID" Type="int" Nullable="false" />
           <Property Name="DateReceived" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="Withdrawal">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="int" Nullable="false" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BankName" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Donation__Transa__3D2915A8">
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
           <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
@@ -136,6 +144,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Withdrawal_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+          <End Role="Withdrawal" Type="Self.Withdrawal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CareYouDBModelStoreContainer">
           <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
@@ -143,6 +163,7 @@
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserBadge" EntityType="Self.UserBadge" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Withdrawal" EntityType="Self.Withdrawal" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Donation__Transa__3D2915A8" Association="Self.FK__Donation__Transa__3D2915A8">
             <End Role="Transaction" EntitySet="Transaction" />
             <End Role="Donation" EntitySet="Donation" />
@@ -162,6 +183,10 @@
           <AssociationSet Name="FK_UserBadge_User" Association="Self.FK_UserBadge_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserBadge" EntitySet="UserBadge" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="Self.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Withdrawal" EntitySet="Withdrawal" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -211,6 +236,7 @@
           <NavigationProperty Name="Donation" Relationship="Self.FK__Donation__Transa__3D2915A8" FromRole="Transaction" ToRole="Donation" />
           <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
           <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Withdrawal" Relationship="CareYouDBModel.FK_Withdrawal_Transaction" FromRole="Transaction" ToRole="Withdrawal" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -291,6 +317,11 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserBadge" EntitySet="UserBadges" />
           </AssociationSet>
+          <EntitySet Name="Withdrawals" EntityType="CareYouDBModel.Withdrawal" />
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="CareYouDBModel.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Withdrawal" EntitySet="Withdrawals" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Badge">
           <Key>
@@ -334,6 +365,27 @@
             </Principal>
             <Dependent Role="UserBadge">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Withdrawal">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="BankAccount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Transaction" Relationship="CareYouDBModel.FK_Withdrawal_Transaction" FromRole="Withdrawal" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_Withdrawal_Transaction">
+          <End Type="CareYouDBModel.Transaction" Role="Transaction" Multiplicity="1" />
+          <End Type="CareYouDBModel.Withdrawal" Role="Withdrawal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="TransactionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -416,6 +468,15 @@
                 <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
                 <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Withdrawals">
+            <EntityTypeMapping TypeName="CareYouDBModel.Withdrawal">
+              <MappingFragment StoreEntitySet="Withdrawal">
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

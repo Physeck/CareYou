@@ -142,6 +142,9 @@
     <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\userController.cs" />
+    <Compile Include="Model\Withdrawal.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Response.cs" />
     <Compile Include="Handler\badgeHandler.cs" />
     <Compile Include="Handler\ProgramHandler.cs" />
