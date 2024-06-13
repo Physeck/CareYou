@@ -2,18 +2,17 @@
 
 .navbar_shape {
     position: fixed;
-    top: 30px;
+    top: 1.563vw;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     background-color: rgb(255, 255, 255);
-    border-radius: 50px 50px 50px 50px;
-    filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.298));
+    border-radius: 2.604vw 2.604vw 2.604vw 2.604vw;
+    filter: drop-shadow(0px 0px 2.083vw rgba(0, 0, 0, 0.298));
     z-index: 1000;
     width: 84.16%;
-    height: 108px;
-    
+    height: 5.625vw;
 }
 
 .navbar {
@@ -21,7 +20,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 0px 10px;
+    gap: 0px 0.521vw;
     top: 50%;
     transform: translateY(-50%);
     margin: 0 auto 0 auto;
@@ -31,8 +30,8 @@
 .navbarBtn_wrapper {
     position: relative;
     display: flex;
-    gap: 0px 30px;
-    width: 984px;
+    gap: 0px 1.563vw;
+    width: 51.25vw;
     min-width: 0px;
 }
 
@@ -42,7 +41,7 @@
     min-width: 0px;
     justify-content: center;
     align-items: center;
-    font: 700 35px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 700 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
     text-align: center;
     transition-duration: 0.1s;
@@ -65,7 +64,7 @@
     min-width: 0px;
     justify-content: center;
     align-items: center;
-    font: 700 35px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 700 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: #01a95dff;
     text-align: center;
     transition-duration: 0.1s;
@@ -85,16 +84,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 175px;
+    min-width: 9.115vw;
     background-color: transparent;
-    font: 700 33px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 700 1.719vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 169, 93);
     text-align: center;
     cursor: pointer;
     border: none;
-    border-radius: 25px 25px 25px 25px;
-    padding: 8.5px 32px 8.5px 32px;
-    outline: 5px solid rgb(1, 169, 93);
+    border-radius: 1.302vw 1.302vw 1.302vw 1.302vw;
+    padding: 0.443vw 1.667vw 0.443vw 1.667vw;
+    outline: 0.26vw solid rgb(1, 169, 93);
     transition-duration: 0.1s;
     transition-property: background-color;
 }
@@ -106,7 +105,6 @@
 
 .profileBtn {
     position: relative;
-    width: 80px;
-    min-width: 80px;
-    height: 80px;
+    width: 4.167vw;
+    height: 4.167vw;
 }

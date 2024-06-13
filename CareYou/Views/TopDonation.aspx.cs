@@ -23,6 +23,7 @@ namespace CareYou.Views
             three = userController.getTop3User(3);
             top4Above.DataSource = userController.get4to10User();
             top4Above.DataBind();
+            boolI.Visible = true;
 
             tDIndividual.Attributes.CssStyle.Add("border-bottom", "5px solid #012D19");
             tDOrganization.Attributes.CssStyle.Remove("border-bottom");
@@ -42,7 +43,7 @@ namespace CareYou.Views
             if (e.CommandName == "redirectPP")
             {
                 //ganti redirect jadi ke update profile
-                Response.Redirect("~/Views/insertUser.aspx?id=" + e.CommandArgument.ToString());
+                Response.Redirect("~/Views/Profile.aspx?id=" + e.CommandArgument.ToString());
             }
         }
 
@@ -57,6 +58,7 @@ namespace CareYou.Views
 
             tDIndividual.Attributes.CssStyle.Add("border-bottom", "5px solid #012D19");
             tDOrganization.Attributes.CssStyle.Remove("border-bottom");
+            boolI.Visible = true;
         }
 
         protected void tDOrganization_Click(object sender, EventArgs e)
@@ -69,24 +71,53 @@ namespace CareYou.Views
             top4Above.DataBind();
             tDIndividual.Attributes.CssStyle.Remove("border-bottom");
             tDOrganization.Attributes.CssStyle.Add("border-bottom", "5px solid #012D19");
+            boolI.Visible = false;
         }
 
         protected void top3LB_Click(object sender, EventArgs e)
         {
-            three = userController.getTop3Organization(3);
-            Response.Redirect("~/Views/insertUser.aspx?id=" + three.Id);
+
+            if (boolI.Visible)
+            {
+                three = userController.getTop3User(3);
+            }
+            else
+            {
+                three = userController.getTop3Organization(3);
+
+            }
+            Response.Redirect("~/Views/Profile.aspx?id=" + three.Id);
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
         {
-            second = userController.getTop3Organization(2);
-            Response.Redirect("~/Views/insertUser.aspx?id=" + second.Id);
+            if (boolI.Visible)
+            {
+                second = userController.getTop3User(2);
+            }
+            else
+            {
+                second = userController.getTop3Organization(2);
+
+            }
+
+            
+            Response.Redirect("~/Views/Profile.aspx?id=" + second.Id);
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
         {
-            one = userController.getTop3Organization(1);
-            Response.Redirect("~/Views/insertUser.aspx?id=" + one.Id);
+
+            if (boolI.Visible)
+            {
+                one = userController.getTop3User(1);
+            }
+            else
+            {
+                one = userController.getTop3Organization(1);
+
+            }
+            Response.Redirect("~/Views/Profile.aspx?id=" + one.Id);
         }
     }
 }

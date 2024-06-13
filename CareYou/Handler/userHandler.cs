@@ -1,4 +1,5 @@
-﻿using CareYou.Model;
+﻿using CareYou.DataClass;
+using CareYou.Model;
 using CareYou.Repository;
 using System;
 using System.Collections.Generic;
@@ -190,9 +191,44 @@ namespace CareYou.Handler
             return users.IndexOf(curr) + 1;
         }
 
+        public static int getOrganizationRank(int id)
+        {
+            List<User> orgs = userRepo.getOrderedOrganization();
+            User curr = orgs.Find(x => x.UserID == id);
+
+            return orgs.IndexOf(curr) + 1;
+        }
+
         public static User GetUserById(int id)
         {
             return userRepo.GetUserById(id);
+        }
+
+        public static Response<User> updateProfile(User curr, String name, String email ,String password)
+        {
+            
+            User user = userRepo.GetUserByName(name);
+
+            if (user != null && curr.UserID != user.UserID)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "User already exist",
+                    Field = "name",
+                    Payload = null
+                };
+            }
+
+            userRepo.updateUserProfile(curr, name, email, password);
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = curr
+            };
         }
     }
 }

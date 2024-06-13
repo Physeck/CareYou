@@ -1,54 +1,66 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="CareYou.Views.History" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/navbar.Master" AutoEventWireup="true" CodeBehind="History.aspx.cs" Inherits="CareYou.Views.History1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-<!DOCTYPE html>
+    <link href="../Style/Styling.css" rel="stylesheet" />
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <asp:DataList ID="history2Above" class="top4Above" runat="server" >
-                <ItemTemplate>
-                    <%--<asp:LinkButton ID="top4LB" class="top4to10" runat="server" CommandName="redirectPP" CommandArgument= '<%# Eval("Id") %>'>--%>
-                        <div class="top4to10">
+    <div class="HistoryPage">
+        <asp:Label ID="HistoryTitle" class="HistoryTitle" runat="server" Text="History"></asp:Label>
 
-                            <%--<img id="Image1" src="../Assets/Programs/<%# Eval("ProgramImage") %>"  class="ppTD4" />--%>
-
-                            <div class="programInfo">
-                                <div class="rankTD4">
-                                    <%# Eval("TransactionDate") %>
-                                </div>
-
-                                <div class="rankTD4">
-                                    <%# Eval("Transaction.Donation.ProgramTitle") %>
-                                </div>
-
-                                <div class="rankTD4">
-                                    <%# Eval("Transaction.Donation.ProgramTitle") %>
-                                </div>
-                            </div>
-                            
-
-                            
-
-                            <%--<div class="nameTD4">
-                                <%# Eval("name") %>
-                            </div>
-
-                            <div class="donateContainer">
-                                <asp:Label ID="lblDnt" class="donateTD4Lbl" runat="server" Text="Donated"></asp:Label>
-                                <div class="donateTD4">
-                                    Rp <%# Eval("amount") %>
-                                </div>
-                            </div>
-                        </div>--%>
-                    <%--</asp:LinkButton>--%>
-        
-                </ItemTemplate>
-            </asp:DataList>
+        <div class="HistdescContainer">
+            <asp:Label ID="Histdesc" class="Histdesc" runat="server" Text="Select for more details"></asp:Label>
         </div>
-    </form>
-</body>
-</html>
+        
+
+        <div class="filterHistory">
+            <asp:DropDownList ID="dateDDH" class="dDH" runat="server" AutoPostBack="True" OnSelectedIndexChanged="dateDDH_SelectedIndexChanged">
+                <asp:ListItem>All</asp:ListItem>
+                <asp:ListItem>3 Days Ago</asp:ListItem>
+                <asp:ListItem>1 Week Ago</asp:ListItem>
+                <asp:ListItem>3 Week Ago</asp:ListItem>
+                <asp:ListItem>1 Month Ago</asp:ListItem>
+                <asp:ListItem>3 Month Ago</asp:ListItem>
+            </asp:DropDownList>
+
+            <asp:DropDownList ID="typeDDH" class="dDH" runat="server">
+                <asp:ListItem>All</asp:ListItem>
+                <asp:ListItem>Donation</asp:ListItem>
+                <asp:ListItem>Withdrawal</asp:ListItem>
+            </asp:DropDownList>
+        </div>
+    
+
+        <asp:DataList ID="history2Above" class="historyDataContainer" runat="server" >
+            <ItemTemplate>
+                <div class="historyDataInnerContainer">
+                    <asp:LinkButton ID="historyData" class="historyData" runat="server">
+                        <div class="hImageContainer">
+                            <img id="programH" src="../Assets/Program/<%# Eval("Program.ProgramImage") %>"  class="programH" />
+                        </div>
+    
+
+                        <div class="historyDetail">
+                            <div class="hDateContainer">
+                                <asp:Label ID="historyDate" runat="server" Text=""></asp:Label>
+                                <%# Eval("TransactionDate", "{0:d}") %>
+                            </div>
+    
+                            <div class="hProgramTitle">
+                                <%# Eval("Program.ProgramTitle") %>
+                            </div>
+
+                            <div class="hProgramFundraiser">
+                                <%# Eval("Program.FundraiserName") %>
+                            </div>
+                        </div>
+
+                        <div class="hProgramAmount">
+                            Rp <%# Eval("Amount") %>
+                        </div>
+                    </asp:LinkButton>
+                </div>
+            </ItemTemplate>
+        </asp:DataList>
+    </div>
+</asp:Content>
