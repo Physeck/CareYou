@@ -14,6 +14,7 @@
                 <asp:Label ID="createT" runat="server" Text="Create your own program here!"></asp:Label>
                 <asp:Button ID="startfundraisingbtn" runat="server" Text="Start Fundraising" Onclick="startfundraisingbtn_Click"/>
             </div>
+            <br class="Apple-interchange-newline">
             <asp:Label class="textTitle" ID="fundraiseT" runat="server" Text="Your program(s)"></asp:Label>
             <div class="searchbar">
                 <div id="searchinputT">

@@ -11,7 +11,7 @@ namespace CareYou.Views
 {
 
 
-    public partial class LoginPage
+    public partial class ResetPassword
     {
 
         /// <summary>
@@ -24,39 +24,48 @@ namespace CareYou.Views
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// emailTb control.
+        /// newpasswordTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox emailTb;
+        protected global::System.Web.UI.WebControls.TextBox newpasswordTb;
 
         /// <summary>
-        /// passwordTb control.
+        /// ShowNewPasswordIb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox passwordTb;
+        protected global::System.Web.UI.WebControls.ImageButton ShowNewPasswordIb;
 
         /// <summary>
-        /// ShowPasswordIB control.
+        /// confpasswordTb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ShowPasswordIB;
+        protected global::System.Web.UI.WebControls.TextBox confpasswordTb;
 
         /// <summary>
-        /// loginBtn control.
+        /// ShowConfPasswordIb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button loginBtn;
+        protected global::System.Web.UI.WebControls.ImageButton ShowConfPasswordIb;
+
+        /// <summary>
+        /// setpasswordBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button setpasswordBtn;
     }
 }
