@@ -7,14 +7,12 @@
     <section class="paymentPage">
         <div class="payment-page-flexbox">
             <h1 class="payment-title">Payment</h1>
-            <div class="payment-amount-container">
-                <div class="payment-amount-flexbox">
+            <div class="payment-container">
+                <div class="payment-container-flexbox">
                     <h1 class="container-title">Amount</h1>
                     <div class="amount_box">
-                        <div class="amount-box-content">
                             <h1 class="currency">Rp</h1>
                             <asp:TextBox CssClass="currency-amount" ID="AmountTB" runat="server"></asp:TextBox>
-                        </div>
                     </div>
                     <h1 class="container-desc">We want to remind you that a platform fee of 4% is applied to each donation made. This fee helps us maintain and improve our services, ensuring that we can continue to support a wide range of projects and creators.</h1>
                     <div class="checkbox-button-flexbox">
@@ -29,9 +27,9 @@
                     </div>
                 </div>
             </div>
-            <div class="payment-method-container">
-                <div class="payment-method-flexbox">
-                    <h1 class="container-title1">Payment Method</h1>
+            <div class="payment-container">
+                <div class="payment-container-flexbox">
+                    <h1 class="container-title">Payment Method</h1>
                     <div class="method-list-flexbox">
                         <div class="gopay-container">
                             <div class="method-content-container">

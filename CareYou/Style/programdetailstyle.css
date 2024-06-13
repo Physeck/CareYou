@@ -7,61 +7,70 @@
     overflow: hidden;
 }
 
+.program-detail-flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3.49vw 0px;
+    margin: 0px 7.292vw 12.409vw 7.292vw;
+}
+
 .program-detail-content {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 0px 0px 408px 10%;
-    width: 52%;
+    width: 51.302vw;
 }
 
 .title {
     position: relative;
-    margin: 258px 0px 40px 0px;
-    font: 700 50px/1.13 "Helvetica", Helvetica, Arial, serif;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 13.438vw 0px 2.083vw 7.292vw;
+    font: 700 2.604vw/1.13 "Helvetica", Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
-    max-width: 100%;
+    width: 85.417vw;
 }
 
 .program-image {
     position: relative;
     width: 100%;
-    border-radius: 12px 12px 12px 12px;
-    box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.149);
+    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
+    box-shadow: 0px 0.521vw 2.083vw 0px rgba(0, 0, 0, 0.149);
 }
 
 .fundraiser-flexbox {
     position: relative;
     display: flex;
     justify-content: space-between;
-    margin: 20px 25% 0px 36px;
-    
+    margin: 1.042vw 11.094vw 0px 1.875vw;
 }
 
 .fundraiser {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0px 12px;
+    gap: 0px 0.625vw;
     width: fit-content;
     min-width: 0px;
 }
 
 .profile-image {
     position: relative;
-    width: 110px;
+    width: 5vw;
     min-width: 0px;
-    height: 110px;
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.149);
+    height: 5vw;
+    box-shadow: 0px 0.521vw 1.042vw 0px rgba(0, 0, 0, 0.149);
     border-radius: 50%;
 }
 
 .profile-image1 {
     position: relative;
-    margin: 0px 20px 0px 10px;
-    width: 96px;
-    height: 96px;
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.149);
+    margin: 0px 1.042vw 0px 0.521vw;
+    width: 5vw;
+    height: 5vw;
+    box-shadow: 0px 0.521vw 1.042vw 0px rgba(0, 0, 0, 0.149);
     border-radius: 50%;
 }
 
@@ -69,24 +78,24 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 6px 0px;
+    gap: 0.313vw 0px;
     width: fit-content;
     min-width: 0px;
-    max-height: 80px;
+    max-height: 4.167vw;
 }
 
 .profile-text {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0px 2px 0px 0px;
-    font: 400 25px/1.2 "Inter", Helvetica, Arial, serif;
+    margin: 0px 0.104vw 0px 0px;
+    font: 400 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
 }
 
 .profile-text.bold {
-    font: 700 25px/1.2 "Inter", Helvetica, Arial, serif;
-    margin: 12px 0 11px 0;
+    font: 700 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
+    margin: 0.625vw 0 0.573vw 0;
 }
 
 .profile-text2 {
@@ -94,7 +103,7 @@
     display: flex;
     align-items: center;
     margin: 0px 21px 0px 0px;
-    font: 400 25px/1.2 "Inter", Helvetica, Arial, serif;
+    font: 400 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
 }
 
@@ -102,8 +111,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 8.5px 0px 0px;
-    font: 400 25px/1.2 "Inter", Helvetica, Arial, serif;
+    margin: 0.443vw 0px 0px;
+    font: 400 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
 }
 
@@ -111,45 +120,44 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 30px 0px 0px;
+    margin: 1.563vw 0px 0px;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.149);
+    border-radius: 1.042vw 1.042vw 1.042vw 1.042vw;
+    box-shadow: 0px 0.521vw 2.083vw 0px rgba(0, 0, 0, 0.149);
 }
 
 .desc-flexbox {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 20px 31px 23px;
+    margin: 1.042vw 1.979vw 1.979vw;
 }
 
 .verified-image {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 10px 0px 0px 10px;
-    max-width: 263px;
-    height: 45px;
+    margin: 0.521vw 0px 0px 0.521vw;
+    max-width: 13.698vw;
+    height: 2.255vw;
     background-color: rgb(189, 255, 225);
-    border-radius: 16px 16px 16px 16px;
-    outline: 5px solid rgb(1, 169, 93);
+    border-radius: 0.833vw 0.833vw 0.833vw 0.833vw;
+    outline: 0.26vw solid rgb(1, 169, 93);
 }
 
 .verified-image-flexbox {
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0px 1px;
-    margin: 5px 5px 4px 11px;
+    gap: 0px 0.052vw;
+    margin: 0.26vw 0.26vw 0.208vw 0.573vw;
 }
 
 .verified-image-png {
     position: relative;
-    width: 35px;
-    min-width: 0px;
-    height: 34px;
+    width: 1.786vw;
+    height: 1.786vw;
 }
 
 .verified-text {
@@ -158,25 +166,25 @@
     justify-content: center;
     align-items: center;
     min-width: 0px;
-    font: 700 25px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 700 1.302vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 169, 93);
     text-align: center;
 }
 
 .line {
     position: relative;
-    margin: 28px auto 0 auto ;
+    margin: 1.458vw auto 0 auto ;
     width: 100%;
-    height: 1px;
-    min-height: 1px;
+    height: 0.052vw;
+    min-height: 0.052vw;
     background-color: rgb(118, 118, 118);
     
 }
 
 .desc {
     position: relative;
-    margin: 30px 35px 0px 7px;
-    font: 400 25px/1.15 "Helvetica", Helvetica, Arial, serif;
+    margin: 1.563vw 0.521vw 0px 0.521vw;
+    font: 400 1.302vw/1.15 "Helvetica", Helvetica, Arial, serif;
     color: rgb(118, 118, 118);
 }
 
@@ -184,24 +192,24 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 25px 0px 0px;
+    margin: 1.302vw 0px 0px;
     width: 100%;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.149);
+    border-radius: 1.042vw 1.042vw 1.042vw 1.042vw;
+    box-shadow: 0px 0.521vw 2.083vw 0px rgba(0, 0, 0, 0.149);
 }
 
 .comment-flexbox {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 29px 31px 30px;
+    margin: 1.51vw 1.615vw 1.563vw;
 }
 
 .comment-title {
     position: relative;
-    margin: 0px 5px;
-    font: 700 50px/1.13 "Helvetica", Helvetica, Arial, serif;
+    margin: 0px 0.26vw;
+    font: 700 2.604vw/1.13 "Helvetica", Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
 }
 
@@ -209,38 +217,38 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 57px 0px;
-    margin: 31px 0px 24px 7px;
+    gap: 2.969vw 0px;
+    margin: 1.615vw 0.365vw 1.25vw 0.365vw;
 }
 
 .comment-content-container {
     position: relative;
     display: flex;
-    gap: 0px 12px;
+    gap: 0px 0.625vw;
 }
 
 .comment-text-flexbox {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 6px 0px 0px;
+    margin: 0.313vw 0px 0px;
     min-width: 0px;
 }
 
 .donated-flexbox {
     position: relative;
     display: flex;
-    gap: 0px 11px;
-    margin: 7.5px 0px 0px;
+    gap: 0px 0.573vw;
+    margin: 0.391vw 0px 0px;
 }
 
 .donation-text {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 1px 0px 0px;
+    margin: 0.052vw 0px 0px;
     min-width: 0px;
-    font: 500 25px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 500 1.302vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
 }
 
@@ -248,102 +256,81 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0px 0px 3px;
+    margin: 0px 0px 0.156vw;
     min-width: 0px;
-    font: 400 20px/1.14 "Helvetica", Helvetica, Arial, serif;
+    font: 400 1.042vw/1.14 "Helvetica", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
-}
-
-
-
-.comment-text-flexbox1 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin: 6px 0px 0px;
-    width: 292px;
-    min-width: 0px;
-}
-
-.comment-text-flexbox2 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin: 6px 0px 0px;
-    width: 244px;
-    min-width: 0px;
 }
 
 .btn {
     position: relative;
     display: flex;
     justify-content: center;
-    margin: 82px 0px 0px 7px;
-    width: 182px;
+    margin: 4.271vw 0px 0px 0.365vw;
+    width: 9.479vw;
     max-width: 100%;
-    font: 700 28px/1.14 "Helvetica", Helvetica, Arial, serif;
+    font: 700 1.458vw/1.14 "Helvetica", Helvetica, Arial, serif;
     color: rgb(118, 118, 118);
     text-align: center;
     background-color: rgb(255, 255, 255);
-    border-radius: 12px 12px 12px 12px;
-    padding: 10px 14px 10px 14px;
-    outline: 1px solid rgb(200, 200, 200);
+    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
+    padding: 0.521vw 0.729vw 0.521vw 0.729vw;
+    outline: 0.052vw solid rgb(200, 200, 200);
 }
 
 .profile-text4 {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 27px auto 0px;
+    margin: 1.406vw auto 0px;
     width: 93.34%;
-    font: 400 25px/1.2 "Inter", Helvetica, Arial, serif;
+    font: 400 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
 }
 
 .report-btn {
     position: relative;
     display: flex;
-    gap: 0px 15px;
-    margin: 30px auto 0px;
+    gap: 0px 0.781vw;
+    margin: 1.563vw auto 0px;
     width: 93.34%;
 }
 
 .report-img {
     position: relative;
-    width: 18px;
+    width: 0.938vw;
     min-width: 0px;
-    height: 33px;
+    height: 1.719vw;
 }
 
 .profile-text5 {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 1px 0px 2px;
+    margin: 0.052vw 0px 0.104vw;
     min-width: 0px;
-    font: 400 25px/1.2 "Inter", Helvetica, Arial, serif;
+    font: 400 1.302vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(110, 117, 114);
     text-decoration: none;
     cursor: pointer;
 }
 
 .donate-container {
-    position: absolute;
-    top: 349px;
-    right: 10%;
+    position: relative;
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30.625vw;
     background-color: rgb(255, 255, 255);
-    border-radius: 20px 20px 20px 20px;
-    box-shadow: 0px 15px 40px 0px rgba(0, 0, 0, 0.149);
+    border-radius: 1.042vw 1.042vw 1.042vw 1.042vw;
+    box-shadow: 0px 0.781vw 2.083vw 0px rgba(0, 0, 0, 0.149);
+    height: fit-content;
 }
 
 .donate-flexbox {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin: 46px 8% 28px 8%;
+    margin: 2.396vw 8% 1.458vw 8%;
     height: 100%;
 }
 
@@ -357,7 +344,7 @@
 .raised-text-flexbox {
     position: relative;
     display: flex;
-    gap: 0px 4px;
+    gap: 0px 0.208vw;
     width: 100%;
 }
 
@@ -367,26 +354,26 @@
     align-items: flex-end;
     width: fit-content;
     min-width: 0px;
-    font: 600 38px/1.14 "Helvetica", Helvetica, Arial, serif;
+    font: 600 1.979vw/1.14 "Helvetica", Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
 }
 
 .desc1 {
     position: relative;
-    margin: auto 0px 4px 4px;
+    margin: auto 0px 0.208vw 0.208vw;
     width: fit-content;
     min-width: 0px;
-    font: 400 20px/1.1 "Helvetica", Helvetica, Arial, serif;
+    font: 400 1.042vw/1.1 "Helvetica", Helvetica, Arial, serif;
     color: rgb(118, 118, 118);
 }
 
 .progress-bar {
     position: relative;
-    margin: 16px 0px 0px;
+    margin: 0.833vw 0px 0px;
     width: 91.67%;
-    height: 15px;
+    height: 0.781vw;
     background-color: #E6F5EF;
-    border-radius: 60px;
+    border-radius: 3.125vw;
 }
 
 .progress-bar-inner {
@@ -394,16 +381,16 @@
     background-color: #01A95D;
     text-align: center;
     color: white;
-    border-radius: 60px;
+    border-radius: 3.125vw;
 }
 
 .donation-count {
     position: relative;
     display: flex;
     align-items: center;
-    margin: 8px 0px 0px;
+    margin: 0.417vw 0px 0px;
     width: 100%;
-    font: 400 23px/1.2 "Inter", Helvetica, Arial, serif;
+    font: 400 1.198vw/1.2 "Inter", Helvetica, Arial, serif;
     color: rgb(118, 118, 118);
 }
 
@@ -412,14 +399,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 22px 16% 0px 16%;
-    font: 700 25px/1.15 "Helvetica Neue", Helvetica, Arial, serif;
+    margin: 1.146vw 16% 0px 16%;
+    font: 700 1.302vw/1.15 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
     text-align: center;
     background-color: rgb(254, 220, 151);
-    border-radius: 20px 20px 20px 20px;
+    border-radius: 1.042vw 1.042vw 1.042vw 1.042vw;
     border: none;
-    padding: 32px 8px 32px 8px;
+    padding: 1.667vw 0.417vw 1.667vw 0.417vw;
+    height: 4.844vw;
+    width: 17.448vw;
 }
 
     .donate-btn:hover {
@@ -432,14 +421,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 15px 0px 0px 2px;
+    margin: 0.781vw 0px 0px 0.104vw;
     width: 72.1%;
 }
 
 .top-donation-title-container {
     position: relative;
     display: flex;
-    gap: 0px 11px;
+    gap: 0px 0.573vw;
     width: 92.71%;
 }
 
@@ -447,9 +436,9 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 30.5px 0px 24.5px;
+    margin: 1.589vw 0px 1.276vw;
     min-width: 0px;
-    font: 700 30px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 700 1.563vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 169, 93);
 }
 
@@ -457,7 +446,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 24px 0px;
+    gap: 1.25vw 0px;
     width: 92.71%;
 }
 
@@ -465,54 +454,37 @@
     position: relative;
     display: flex;
     align-items: center;
-    gap: 0px 12px;
+    gap: 0px 0.625vw;
 }
 
 .top-donater-content-flexbox {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 7px 0px;
-    width: 246px;
+    gap: 0.365vw 0px;
+    width: fit-content;
     min-width: 0px;
 }
 
 .donated-flexbox1 {
     position: relative;
     display: flex;
-    gap: 0px 11px;
-}
-
-.top-donater-content-flexbox1 {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 6px 0px;
-    width: 277px;
-    min-width: 0px;
-}
-
-.donation-text1 {
-    position: relative;
-    display: flex;
-    align-items: center;
-    margin: 2px 0px 0px;
-    min-width: 0px;
-    font: 500 25px/1 "Helvetica Neue", Helvetica, Arial, serif;
-    color: rgb(110, 117, 114);
+    gap: 0px 0.573vw;
 }
 
 .btn1 {
     position: relative;
     display: flex;
     justify-content: center;
-    margin: 10% 0px 8px 4px;
-    width: 118px;
-    font: 700 28px/1.14 "Helvetica", Helvetica, Arial, serif;
+    margin: 10% 0px 0.417vw 0.208vw;
+    width: 6.146vw;
+    font: 700 1.458vw/1.14 "Helvetica", Helvetica, Arial, serif;
     color: rgb(118, 118, 118);
     text-align: center;
     background-color: rgb(255, 255, 255);
-    border-radius: 12px 12px 12px 12px;
-    padding: 10px 20px 10px 20px;
-    outline: 1px solid rgb(200, 200, 200);
+    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
+    padding: 0.521vw 1.042vw 0.521vw 1.042vw;
+    outline: 0.052vw solid rgb(200, 200, 200);
+    border: solid #C8C8C8;
+    border-width: 0.052vw;
 }
