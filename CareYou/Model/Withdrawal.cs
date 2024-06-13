@@ -17,6 +17,7 @@ namespace CareYou.Model
         public int TransactionID { get; set; }
         public string BankAccount { get; set; }
         public string BankName { get; set; }
+        public string WithdrawMethod { get; set; }
     
         public virtual Transaction Transaction { get; set; }
     }

@@ -81,8 +81,9 @@
             <PropertyRef Name="TransactionID" />
           </Key>
           <Property Name="TransactionID" Type="int" Nullable="false" />
-          <Property Name="BankAccount" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="BankName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="BankAccount" Type="varchar" MaxLength="20" />
+          <Property Name="BankName" Type="varchar" MaxLength="20" />
+          <Property Name="WithdrawMethod" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -363,9 +364,10 @@
             <PropertyRef Name="TransactionID" />
           </Key>
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
-          <Property Name="BankAccount" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="BankName" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Transaction" Relationship="CareYouDBModel.FK_Withdrawal_Transaction" FromRole="Withdrawal" ToRole="Transaction" />
+          <Property Name="WithdrawMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Withdrawal_Transaction">
           <End Type="CareYouDBModel.Transaction" Role="Transaction" Multiplicity="1" />
@@ -476,6 +478,7 @@
           <EntitySetMapping Name="Withdrawals">
             <EntityTypeMapping TypeName="CareYouDBModel.Withdrawal">
               <MappingFragment StoreEntitySet="Withdrawal">
+                <ScalarProperty Name="WithdrawMethod" ColumnName="WithdrawMethod" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />

@@ -24,6 +24,8 @@ namespace CareYou.Views
             bool isAnonymousChecked = AnonymousCB.Checked;
             string selectedPaymentMethod = "";
             string errorMsg = "";
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            int userId = Convert.ToInt32(Session["UserID"]);
             foreach (Control control in methodList.Controls)
             {
                 if (control is RadioButton radioButton && radioButton.GroupName == "paymentMethod")
@@ -42,11 +44,22 @@ namespace CareYou.Views
                 string ccExpireYear = CCExpireYearTB.Text;
                 string ccCVV = CCCVVTB.Text;
                 string ccPostcode = CCPostcodeTB.Text;
-                errorMsg = PaymentController.doTransactionWithCC(strAmount, isFeeChecked, isAnonymousChecked, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode);
+                errorMsg = PaymentController.doTransactionWithCC(strAmount, isFeeChecked, isAnonymousChecked, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId );
             }
             else
             {
-                errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked);
+                if (selectedPaymentMethod.Equals("GoPayRB"))
+                {
+                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "gopay");
+                }
+                else if (selectedPaymentMethod.Equals("OvoRB"))
+                {
+                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "ovo");
+                }else if(selectedPaymentMethod.Equals("DanaRB"))
+                {
+                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "dana");
+                }
+                
             }
 
             if(errorMsg == "")

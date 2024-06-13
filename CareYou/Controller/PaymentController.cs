@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CareYou.Handler;
+using CareYou.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -101,7 +103,7 @@ namespace CareYou.Controller
         }
 
 
-        public static String doTransactionWithCC(String strAmount, bool isFeeChecked, bool isAnonymous, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode)
+        public static String doTransactionWithCC(String strAmount, bool isFeeChecked, bool isAnonymous, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode, int userId, int programId)
         {
             String response = checkAmount(strAmount);
             if(response == "")
@@ -128,15 +130,23 @@ namespace CareYou.Controller
             {
                 response = checkCCPostcode(ccPostcode);
             }
+            if(response == "")
+            {
+                transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, "Credit Card");
+            }
             return response;
         }
 
-        public static String doTransaction(String strAmount, bool isFeeChecked, bool isAnonymous)
+        public static String doTransaction(String strAmount, bool isFeeChecked, bool isAnonymous, int userId, int programId, string paymentMethod)
         {
             String response = checkAmount(strAmount);
             if (response == "")
             {
                 response = isAgreementChecked(isFeeChecked);
+            }
+            if (response == "")
+            {
+                transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, paymentMethod);
             }
             return response;
         }
