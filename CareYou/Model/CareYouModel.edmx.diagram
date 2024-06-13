@@ -18,6 +18,7 @@
         <AssociationConnector Association="CareYouDBModel.FK_UserBadge_User" />
         <EntityTypeShape EntityType="CareYouDBModel.Withdrawal" Width="1.5" PointX="3" PointY="9.625" />
         <AssociationConnector Association="CareYouDBModel.FK_Withdrawal_Transaction" />
+        <AssociationConnector Association="CareYouDBModel.FK_Transaction_Program" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
