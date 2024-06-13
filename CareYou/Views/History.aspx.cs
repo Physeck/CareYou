@@ -1,19 +1,63 @@
-﻿using System;
+﻿using CareYou.Controller;
+using CareYou.Model;
+using CareYou.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CareYou.Repository;
 
 namespace CareYou.Views
 {
-    public partial class History : System.Web.UI.Page
+    public partial class History1 : System.Web.UI.Page
     {
+        public User curr = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            history2Above.DataSource = transactionRepo.getTransactionByUserID(1);
-            DataBind();
+            curr = userRepo.GetUserById(1); /*nanti ini query string*/
+            if (!Page.IsPostBack)
+            {
+                history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
+                DataBind();
+            }
+            
+        }
+
+        protected void dateDDH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String date = dateDDH.SelectedValue;
+
+            if (date.Equals("All"))
+            {
+                history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
+                DataBind();
+            }
+            else if(date.Equals("3 Days Ago"))
+            {
+                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-3), curr.UserID);
+                DataBind();
+            }
+            else if(date.Equals("1 Week Ago"))
+            {
+                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-7), curr.UserID);
+                DataBind();
+            }
+            else if (date.Equals("3 Week Ago"))
+            {
+                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-21), curr.UserID);
+                DataBind();
+            }
+            else if (date.Equals("1 Month Ago"))
+            {
+                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-1), curr.UserID);
+                DataBind();
+            }
+            else if (date.Equals("3 Month Ago"))
+            {
+                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-3), curr.UserID);
+                DataBind();
+            }
         }
     }
 }
