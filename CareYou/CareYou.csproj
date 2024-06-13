@@ -134,12 +134,15 @@
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
     <Content Include="Views\ProgramDetail.aspx"/>
+    <Content Include="Views\Payment.aspx"/>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\userController.cs" />
+    <Compile Include="Controller\transactionController.cs" />
+    <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Model\Withdrawal.cs">
@@ -286,6 +289,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Views\ProgramDetail.aspx.designer.cs">
+      <DependentUpon>ProgramDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Payment.aspx.cs">
+      <DependentUpon>ProgramDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Payment.aspx.designer.cs">
       <DependentUpon>ProgramDetail.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
