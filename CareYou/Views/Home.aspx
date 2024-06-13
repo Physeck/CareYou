@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/navbar.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="CareYou.Views.Home" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <link href="../Style/homepagestyle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="home">
@@ -28,7 +29,7 @@
                         <asp:Repeater ID="SocialProgramRepeater" runat="server">
                             <ItemTemplate>
                                 <div class='program-card-container<%# Container.ItemIndex == 0 ? " wide" : "" %>'>
-                                    <div class='program-container<%# Container.ItemIndex == 0 ? " wide" : "" %>' style='--src: url(/Assets/Program/<%# Eval("ProgramImage") %>)' onclick="location.href='/Views/ProgramDetail?id=<%# Eval("ProgramID") %>'">
+                                    <div class='program-container<%# Container.ItemIndex == 0 ? " wide" : "" %>' style='--src: url(/Assets/Program/<%# Eval("ProgramImage") %>)' onclick="location.href='/Views/ProgramDetail.aspx?id=<%# Eval("ProgramID") %>'">
                                         <div class="program-container-content">
                                             <div class='program-container-content-flexbox<%# Container.ItemIndex == 0 ? " wide" : "" %>'>
                                                 <h1 class='program-title<%# Container.ItemIndex == 0 ? " wide" : "" %>'><%# Eval("ProgramTitle") %></h1>
