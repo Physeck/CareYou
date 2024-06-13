@@ -42,6 +42,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.CheckBox AnonymousCB;
 
         /// <summary>
+        /// methodList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl methodList;
+
+        /// <summary>
         /// GoPayRB control.
         /// </summary>
         /// <remarks>
@@ -114,13 +123,22 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox CCCVVTB;
 
         /// <summary>
-        /// CCExpireTB control.
+        /// CCExpireMonthTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CCExpireTB;
+        protected global::System.Web.UI.WebControls.TextBox CCExpireMonthTB;
+
+        /// <summary>
+        /// CCExpireYearTB control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox CCExpireYearTB;
 
         /// <summary>
         /// CCPostcodeTB control.
@@ -130,6 +148,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox CCPostcodeTB;
+
+        /// <summary>
+        /// ErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLbl;
 
         /// <summary>
         /// DonateBtn control.

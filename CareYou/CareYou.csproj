@@ -140,6 +140,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\badgeController.cs" />
+    <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\userController.cs" />

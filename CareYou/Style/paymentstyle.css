@@ -356,10 +356,19 @@ input[type="radio" i]:after {
 
 .container-desc1 {
     position: relative;
-    margin: 1.823vw auto 0px;
+    margin: 1.823vw auto 0px ;
     width: 91.2%;
     font: 500 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgba(1, 45, 25, 0.749);
+}
+
+.error-label {
+    position: relative;
+    display: flex;
+    font: 500 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: red;
+    margin: 1.302vw auto 0px 2.76vw;
+    align-self: flex-start
 }
 
 .cc-form-container {
@@ -438,16 +447,32 @@ input[type="text" i] {
 .cc-expire {
     position: relative;
     display: flex;
+    flex-direction: row;
     height: 5.208vw;
     background-color: rgb(255, 255, 255);
     border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
     outline: 0.052vw solid rgb(200, 200, 200);
     border: none;
-    font: 400 2.083vw/1.14 "Helvetica", Helvetica, Arial, serif;
-    color: rgb(54, 54, 54);
     padding: 0 1.042vw 0 1.042vw;
     width: 30%;
     transition-duration: 0.15s;
+    align-items: center;
+}
+
+.cc-expire-text {
+    position: relative;
+    font: 400 2.083vw/1.14 "Helvetica", Helvetica, Arial, serif;
+    color: rgb(54, 54, 54);
+    outline: none;
+    border: none;
+    width: 3.646vw;
+    background-color: transparent;
+}
+
+.date-separator {
+    font: 400 2.083vw/1.14 "Helvetica", Helvetica, Arial, serif;
+    position: relative;
+    width: fit-content;
 }
 
 .cc-cvv {
