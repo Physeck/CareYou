@@ -1,0 +1,113 @@
+﻿body {
+    font-size: 100%;
+}
+
+.entEmail {
+    position: relative;
+    font: 400 30px/1.13 "Helvetica", Helvetica, Arial, serif;
+    color: #000000;
+    margin:0;
+}
+
+.entSend {
+    position: relative;
+    font: 400 25px/1.13 "Helvetica", Helvetica, Arial, serif;
+    color: #000000;
+    margin: 0;
+}
+
+.findacc-text {
+    position: relative;
+    font: 400 48px/1.14 "Helvetica", Helvetica, Arial, serif;
+    color: #000000;
+    top: 50%;
+}
+
+.enter-flexrow {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0px;
+    width: 81.48%;
+}
+
+.forgpw-flex {
+    position: absolute;
+    top: 278px;
+    left: 323px;
+    display: flex;
+    flex-direction: column;
+    gap: 47px 0px;
+    width: 756px;
+    height: 202px;
+}
+
+.forg-bottom-container {
+    position: absolute;
+    bottom: 45px;
+    right: 66px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.left-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 61px;
+    width: 344px;
+}
+
+.return-btn {
+    position: relative;
+    display: flex;
+    height:100%;
+    width:100%;
+    justify-content: center;
+    font: 400 28px/1.14 "Helvetica", Helvetica, Arial, serif;
+    background-color: #ffffff;
+    color: #767676;
+    text-align: center;
+    border: solid;
+    border-color: #c8c8c8;
+    border-radius: 12px 12px 12px 12px;
+    padding: 0px 50.89px 0px 84.11px;
+}
+
+.return-btn:hover {
+    background-color: #d9d9d9;
+    border-color: #c8c8c8;
+}
+
+.return-png {
+    position: absolute;
+    width: 14px;
+    height: 23px;
+    right: 280px;
+}
+
+.right-container {
+    height: 61px;
+    width: 344px;
+}
+
+.request-btn {
+    position: relative;
+    display: flex;
+    width:100%;
+    height:100%;
+    justify-content: center;
+    font: 400 28px/1.14 "Helvetica", Helvetica, Arial, serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    background-color: rgb(1, 169, 93);
+    border-radius: 12px 12px 12px 12px;
+    padding: 14.5px 14px 14.5px 14px;
+    border:none;
+}
+
+.request-btn:hover{
+        background-color: #012D19;
+}

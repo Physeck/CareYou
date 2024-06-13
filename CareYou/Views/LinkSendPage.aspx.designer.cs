@@ -11,7 +11,7 @@ namespace CareYou.Views
 {
 
 
-    public partial class RegisterPage
+    public partial class LinkSendPage
     {
 
         /// <summary>
@@ -22,5 +22,14 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+
+        /// <summary>
+        /// returnSignin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button returnSignin;
     }
 }
