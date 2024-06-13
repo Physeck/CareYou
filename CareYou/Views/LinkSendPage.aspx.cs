@@ -7,19 +7,14 @@ using System.Web.UI.WebControls;
 
 namespace CareYou.Views
 {
-    public partial class LoginPage : System.Web.UI.Page
+    public partial class LinkSendPage : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
-        protected void ShowPasswordIB_Click(object sender, ImageClickEventArgs e)
-        {
-
-        }
-
-        protected void loginBtn_Click(object sender, EventArgs e)
+        protected void returnSignin_Click(object sender, EventArgs e)
         {
 
         }
