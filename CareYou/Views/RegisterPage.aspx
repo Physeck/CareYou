@@ -7,12 +7,9 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="margin: 0">
-
 <body>
     <form id="form1" runat="server">
         <div>
-
         </div>
     </form>
 </body>
