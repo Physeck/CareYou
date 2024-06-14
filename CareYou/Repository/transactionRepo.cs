@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.EnterpriseServices;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Util;
 
@@ -51,5 +52,10 @@ namespace CareYou.Repository
         {
             return (from x in db.Transactions where x.TransactionDate >= date && x.UserID == id select x).ToList();
         }
+        public static List<Transaction> getTransactionBasedOnTypeAndDateAndUserID(DateTime date, String type, int id)
+        {
+            return (from x in db.Transactions where x.TransactionDate >= date && x.TransactionType.Equals(type) && x.UserID == id select x).ToList();
+        }
+
     }
 }

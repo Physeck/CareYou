@@ -13,5 +13,15 @@ namespace CareYou.Handler
         {
             return transactionRepo.getTransactionBasedOnDateAndUserID(date, id);
         }
+
+        public static List<Transaction> getTransactionBasedOnUserID(int id)
+        {
+            return transactionRepo.getTransactionByUserID(id);
+        }
+
+        public static List<Transaction> getTransactionBasedOnTypeAndDateAndUserID(DateTime date, String type, int id)
+        {
+            return transactionRepo.getTransactionBasedOnTypeAndDateAndUserID(date, type, id);
+        }
     }
 }

@@ -20,44 +20,51 @@ namespace CareYou.Views
             {
                 history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
                 DataBind();
+
             }
-            
         }
 
         protected void dateDDH_SelectedIndexChanged(object sender, EventArgs e)
         {
-            String date = dateDDH.SelectedValue;
+            history2Above.DataSource = transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr);
+            DataBind();
 
-            if (date.Equals("All"))
-            {
-                history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
-                DataBind();
-            }
-            else if(date.Equals("3 Days Ago"))
-            {
-                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-3), curr.UserID);
-                DataBind();
-            }
-            else if(date.Equals("1 Week Ago"))
-            {
-                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-7), curr.UserID);
-                DataBind();
-            }
-            else if (date.Equals("3 Week Ago"))
-            {
-                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-21), curr.UserID);
-                DataBind();
-            }
-            else if (date.Equals("1 Month Ago"))
-            {
-                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-1), curr.UserID);
-                DataBind();
-            }
-            else if (date.Equals("3 Month Ago"))
-            {
-                history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-3), curr.UserID);
-                DataBind();
-            }
+            //if (date.Equals("All"))
+            //{
+            //    history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
+            //    DataBind();
+            //}
+            //else if(date.Equals("3 Days Ago"))
+            //{
+            //    history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-3), curr.UserID);
+            //    DataBind();
+            //}
+            //else if(date.Equals("1 Week Ago"))
+            //{
+            //    history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-7), curr.UserID);
+            //    DataBind();
+            //}
+            //else if (date.Equals("3 Week Ago"))
+            //{
+            //    history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddDays(-21), curr.UserID);
+            //    DataBind();
+            //}
+            //else if (date.Equals("1 Month Ago"))
+            //{
+            //    history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-1), curr.UserID);
+            //    DataBind();
+            //}
+            //else if (date.Equals("3 Month Ago"))
+            //{
+            //    history2Above.DataSource = transactionController.getTransactionBasedOnDateAndUserID(DateTime.Now.AddMonths(-3), curr.UserID);
+            //    DataBind();
+            //}
+        }
+
+        protected void typeDDH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            history2Above.DataSource = transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr);
+            DataBind();
         }
     }
 }

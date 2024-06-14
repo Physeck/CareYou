@@ -23,7 +23,7 @@
                 <asp:ListItem>3 Month Ago</asp:ListItem>
             </asp:DropDownList>
 
-            <asp:DropDownList ID="typeDDH" class="dDH" runat="server">
+            <asp:DropDownList ID="typeDDH" class="dDH" runat="server"  OnSelectedIndexChanged="typeDDH_SelectedIndexChanged" AutoPostBack="True" >
                 <asp:ListItem>All</asp:ListItem>
                 <asp:ListItem>Donation</asp:ListItem>
                 <asp:ListItem>Withdrawal</asp:ListItem>
@@ -43,7 +43,7 @@
                         <div class="historyDetail">
                             <div class="hDateContainer">
                                 <asp:Label ID="historyDate" runat="server" Text=""></asp:Label>
-                                <%# Eval("TransactionDate", "{0:d}") %>
+                                <%# Eval("TransactionType") %> <%# Eval("TransactionDate", "{0:d}") %>
                             </div>
     
                             <div class="hProgramTitle">
