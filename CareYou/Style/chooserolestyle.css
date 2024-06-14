@@ -1,2 +1,32 @@
 ﻿body {
+    font-size: 100%;
+}
+
+.return-png {
+    position: absolute;
+    width: 14px;
+    height: 23px;
+    left: 140px;
+    transform: rotate(180deg);
+}
+
+.return-btn {
+    padding: 0px 50.89px 0px 26.11px;
+}
+
+.left-container {
+    height: 61px;
+    width: 169px;
+}
+
+.middle-container{
+
+}
+
+.bottom-container {
+    position: absolute;
+    bottom: 2.604vw;
+    right: 3.75vw;
+    align-items: flex-end;
+    flex-direction: column;
 }
