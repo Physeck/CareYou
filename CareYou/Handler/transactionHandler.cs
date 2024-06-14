@@ -23,6 +23,7 @@ namespace CareYou.Handler
         public static List<Transaction> getTransactionBasedOnTypeAndDateAndUserID(DateTime date, String type, int id)
         {
             return transactionRepo.getTransactionBasedOnTypeAndDateAndUserID(date, type, id);
+        }
         public static void createNewTransaction(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod)
         {
             int transactionId = transactionRepo.insertTransaction(UserID, TransactionDate, Amount, TransactionType, ProgramID);
