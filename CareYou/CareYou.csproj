@@ -327,20 +327,6 @@
     <Compile Include="Views\UpdateProfile.aspx.designer.cs">
       <DependentUpon>UpdateProfile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Views\ProgramDetail.aspx.cs">
-      <DependentUpon>ProgramDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\ProgramDetail.aspx.designer.cs">
-      <DependentUpon>ProgramDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Payment.aspx.cs">
-      <DependentUpon>ProgramDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\Payment.aspx.designer.cs">
-      <DependentUpon>ProgramDetail.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model\CareYouModel.edmx">
