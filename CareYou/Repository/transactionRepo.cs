@@ -1,4 +1,5 @@
-﻿using CareYou.Model;
+﻿using CareYou.Factory;
+using CareYou.Model;
 using System;
 using System.Collections.Generic;
 using System.EnterpriseServices;
@@ -57,5 +58,38 @@ namespace CareYou.Repository
             return (from x in db.Transactions where x.TransactionDate >= date && x.TransactionType.Equals(type) && x.UserID == id select x).ToList();
         }
 
+
+        public static int generateId()
+        {
+            Transaction lastTransaction = db.Transactions.ToList().LastOrDefault();
+            if (lastTransaction == null)
+            {
+                return 1;
+            }
+            int lastId = lastTransaction.TransactionID;
+            return lastId + 1;
+        }
+
+        public static int insertTransaction(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID)
+        {
+            Transaction transaction = TransactionFactory.Create(UserID, TransactionDate, Amount, TransactionType, ProgramID);
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
+            return transaction.TransactionID;
+        }
+
+        public static void insertDonation(int transactionId, string paymentMethod)
+        {
+            Donation donation = TransactionFactory.CreateDonation(transactionId, paymentMethod);
+            db.Donations.Add(donation);
+            db.SaveChanges();
+        }
+
+        public static void insertWithdrawal(int transactionId, string withdrawalMethod)
+        {
+            Withdrawal withdrawal = TransactionFactory.CreateWithdrawal(transactionId, withdrawalMethod);
+            db.Withdrawals.Add(withdrawal);
+            db.SaveChanges();
+        }
     }
 }

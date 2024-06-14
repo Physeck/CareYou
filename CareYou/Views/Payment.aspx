@@ -7,14 +7,12 @@
     <section class="paymentPage">
         <div class="payment-page-flexbox">
             <h1 class="payment-title">Payment</h1>
-            <div class="payment-amount-container">
-                <div class="payment-amount-flexbox">
+            <div class="payment-container">
+                <div class="payment-container-flexbox">
                     <h1 class="container-title">Amount</h1>
                     <div class="amount_box">
-                        <div class="amount-box-content">
                             <h1 class="currency">Rp</h1>
-                            <asp:TextBox CssClass="currency-amount" ID="AmountTB" runat="server"></asp:TextBox>
-                        </div>
+                            <asp:TextBox CssClass="currency-amount" MaxLength="18" ID="AmountTB" runat="server" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <h1 class="container-desc">We want to remind you that a platform fee of 4% is applied to each donation made. This fee helps us maintain and improve our services, ensuring that we can continue to support a wide range of projects and creators.</h1>
                     <div class="checkbox-button-flexbox">
@@ -29,10 +27,10 @@
                     </div>
                 </div>
             </div>
-            <div class="payment-method-container">
-                <div class="payment-method-flexbox">
-                    <h1 class="container-title1">Payment Method</h1>
-                    <div class="method-list-flexbox">
+            <div class="payment-container">
+                <div class="payment-container-flexbox">
+                    <h1 class="container-title">Payment Method</h1>
+                    <div id="methodList" class="method-list-flexbox" runat="server">
                         <div class="gopay-container">
                             <div class="method-content-container">
                                 <div class="button-text-container">
@@ -73,14 +71,21 @@
                     <div id="CCForm" class="cc-form-container" runat="server">
                         <asp:TextBox ID="CCNameTB" runat="server" Placeholder="Name on card" CssClass="cc-name"></asp:TextBox>
                         <div class="form-flexbox-line">
-                            <asp:TextBox ID="CCNumberTB" runat="server" Placeholder="Card Number" CssClass="card-number-container"></asp:TextBox>
-                            <asp:TextBox ID="CCCVVTB" runat="server" Placeholder="CVV" CssClass="cc-cvv"></asp:TextBox>
+                            <asp:TextBox ID="CCNumberTB" runat="server" MaxLength="16" Placeholder="Card Number" CssClass="card-number-container" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                            <asp:TextBox ID="CCCVVTB" runat="server" MaxLength="3" Placeholder="CVV" CssClass="cc-cvv" monkeypress="return isNumberKey(event)"></asp:TextBox>
                         </div>
                         <div class="form-flexbox-line">
-                            <asp:TextBox ID="CCExpireTB" runat="server" Placeholder="MM / YY" CssClass="cc-expire"></asp:TextBox>
-                            <asp:TextBox ID="CCPostcodeTB" runat="server" Placeholder="Postal Code" CssClass="cc-postcode"></asp:TextBox>
+                            <div class="cc-expire">
+                                <asp:TextBox ID="CCExpireMonthTB" runat="server" MaxLength="2" Placeholder="MM" CssClass="cc-expire-text" onkeypress="return isNumberKey(event)" onblur="validateNumber(this)"></asp:TextBox>
+                                <span class="date-separator">/</span>
+                                <asp:TextBox ID="CCExpireYearTB" runat="server" MaxLength="2" Placeholder="YY" CssClass="cc-expire-text" onkeypress="return isNumberKey(event)"></asp:TextBox>
+
+                            </div>
+                            
+                            <asp:TextBox ID="CCPostcodeTB" MaxLength="10" runat="server" Placeholder="Postal Code" CssClass="cc-postcode" onkeypress="return isNumberKey(event)"></asp:TextBox>
                         </div>
                     </div>
+                    <asp:Label ID="ErrorLbl" runat="server" CssClass="error-label"></asp:Label>
                     <asp:Button ID="DonateBtn" CssClass="donate-btn" runat="server" Text="Donate" OnClick="DonateBtn_Click" />
                     <h1 class="container-desc1">By choosing the payment method above, you agree to the CareYou Terms of Service and acknowledge the Privacy Notice.</h1>
                 </div>
@@ -104,6 +109,20 @@
            for (var i = 0; i < radioButtons.length; i++) {
                radioButtons[i].onchange = updateCCFormVisibility;
            }
-       }
+        }
+
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode;
+            if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+            return true;
+        }
+
+        function validateNumber(input) {
+            var value = parseInt(input.value, 10);
+            if (value > 12) {
+                input.value = '12';
+            }
+        }
 </script>
 </asp:Content>

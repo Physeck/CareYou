@@ -13,5 +13,15 @@ namespace CareYou.Views
         {
 
         }
+
+        protected void ShowPasswordIB_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void loginBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
