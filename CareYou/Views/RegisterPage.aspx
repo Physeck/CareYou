@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterPage.aspx.cs" Inherits="CareYou.Views.RegisterPage" %>
 
 <!DOCTYPE html>
-<%--Bagian Justin--%>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
