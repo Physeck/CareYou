@@ -20,13 +20,16 @@
                         <h1 class="findacc-text">Choose Your Role</h1>
                     </div>
                     <div class="loginPagebg-container" style="--src: url(/Assets/Login-Register/Rectangle-RegLogin.png)">
+
                         <div class="middle-container">
-                                
+
                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdownlist">
                                 <asp:ListItem Value="" CssClass="default-list" Text="Choose Role" Selected="True"></asp:ListItem>
                                 <asp:ListItem Value="1" CssClass="selected-list">User</asp:ListItem>
                                 <asp:ListItem Value="2" CssClass="selected-list">Organizer</asp:ListItem>
                             </asp:DropDownList>
+                            <img class="dropdown-png" src="/Assets/Login-Register/ReturnToSignin.png" />
+
                         </div>
 
                         <div class="bottom-container">
