@@ -153,8 +153,6 @@
     <Content Include="Views\ResetPassword.aspx" />
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
-    <Content Include="Views\ProgramDetail.aspx" />
-    <Content Include="Views\Payment.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

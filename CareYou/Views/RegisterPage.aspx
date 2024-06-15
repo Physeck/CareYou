@@ -5,10 +5,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <link href="../Style/loginstyle.css" rel="stylesheet" />
-    <link href="../Style/registerstyle.css" rel="stylesheet" />
     <link href="../Style/resetpasswordstyle.css" rel="stylesheet" />
-
-
+    <link href="../Style/registerstyle.css" rel="stylesheet" />
 </head>
 <body style="margin: 0">
 
