@@ -55,7 +55,7 @@
 }
 
     .navbar_btn:hover {
-        color: #01a95dff;
+        color: #01a95d;
     }
 
 .navbar_btn_selected {
@@ -65,7 +65,7 @@
     justify-content: center;
     align-items: center;
     font: 700 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
-    color: #01a95dff;
+    color: #01a95d;
     text-align: center;
     transition-duration: 0.1s;
     transition-property: color;
@@ -99,7 +99,7 @@
 }
 
     .signInbtn:hover {
-        background-color: #01a95dff;
+        background-color: #01a95d;
         color: rgb(255, 255, 255);
     }
 
