@@ -124,6 +124,7 @@
     </Content>
     <Content Include="Style\chooserolestyle.css" />
     <Content Include="Style\contentstyle.css" />
+    <Content Include="Style\dashboardpagestyle.css" />
     <Content Include="Style\footerstyle.css" />
     <Content Include="Style\forgotpwstyle.css" />
     <Content Include="Style\homepagestyle.css" />
@@ -137,6 +138,7 @@
     <Content Include="Style\resetpasswordstyle.css" />
     <Content Include="Style\Styling.css" />
     <Content Include="Views\ChooseRolePage.aspx" />
+    <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
     <Content Include="Views\ForgotPassword.aspx" />
     <Content Include="Views\FundraisePage.aspx" />
@@ -224,6 +226,13 @@
     </Compile>
     <Compile Include="Views\ChooseRolePage.aspx.designer.cs">
       <DependentUpon>ChooseRolePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DashboardPage.aspx.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardPage.aspx.designer.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DonatePage.aspx.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
