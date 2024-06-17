@@ -26,7 +26,7 @@ namespace CareYou.Views
 
         protected void setpasswordBtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("LoginPage.aspx");
         }
     }
 }
