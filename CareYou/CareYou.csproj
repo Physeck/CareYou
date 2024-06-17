@@ -134,6 +134,7 @@
     <Content Include="Style\paymentstyle.css" />
     <Content Include="Style\paymentsuccessStyle.css" />
     <Content Include="Style\pendingverificationstyle.css" />
+    <Content Include="Style\programbreakdownstyle.css" />
     <Content Include="Style\programdetailstyle.css" />
     <Content Include="Style\registerstyle.css" />
     <Content Include="Style\resetpasswordstyle.css" />
@@ -153,6 +154,7 @@
     <Content Include="Views\PendingVerificationPage.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\ProgramDetail.aspx" />
+    <Content Include="Views\ProgramDetailBreakdown.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Views\ResetPassword.aspx" />
     <Content Include="Views\TopDonation.aspx" />
@@ -334,6 +336,13 @@
     </Compile>
     <Compile Include="Views\ProgramDetail.aspx.designer.cs">
       <DependentUpon>ProgramDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProgramDetailBreakdown.aspx.cs">
+      <DependentUpon>ProgramDetailBreakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ProgramDetailBreakdown.aspx.designer.cs">
+      <DependentUpon>ProgramDetailBreakdown.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RegisterPage.aspx.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
