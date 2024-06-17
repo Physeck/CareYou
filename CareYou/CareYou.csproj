@@ -373,6 +373,7 @@
       <DependentUpon>CareYouModel.edmx</DependentUpon>
     </Content>
     <Content Include="Layouts\AdminNavbar.Master" />
+    <Content Include="Assets\fonts\helvetica-compressed.otf" />
     <None Include="packages.config" />
     <Content Include="Layouts\navbar.Master" />
     <None Include="Web.Debug.config">
