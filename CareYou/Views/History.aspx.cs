@@ -1,4 +1,5 @@
 ﻿using CareYou.Controller;
+using CareYou.Handler;
 using CareYou.Model;
 using CareYou.Repository;
 using System;
@@ -15,19 +16,38 @@ namespace CareYou.Views
         public User curr = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            curr = userRepo.GetUserById(1); /*nanti ini query string*/
+            curr = userHandler.GetUserById(1); /*nanti ini query string*/
             if (!Page.IsPostBack)
             {
-                history2Above.DataSource = transactionRepo.getTransactionByUserID(curr.UserID);
+                history2Above.DataSource = transactionHandler.getTransactionBasedOnUserID(curr.UserID);
                 DataBind();
+
+                if(transactionHandler.getTransactionBasedOnUserID(curr.UserID).Count == 0)
+                {
+                    noTrans.Visible = true;
+                }
+                else
+                {
+                    noTrans.Visible = false;
+                }
 
             }
         }
 
         protected void dateDDH_SelectedIndexChanged(object sender, EventArgs e)
         {
+            List<Transaction> temp = transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr);
             history2Above.DataSource = transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr);
             DataBind();
+
+            if (transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr).Count == 0)
+            {
+                noTrans.Visible = true;
+            }
+            else
+            {
+                noTrans.Visible = false;
+            }
 
             //if (date.Equals("All"))
             //{
@@ -65,6 +85,23 @@ namespace CareYou.Views
         {
             history2Above.DataSource = transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr);
             DataBind();
+
+            if (transactionController.getTransactionBasedOnDateAndTypeAndUserID(dateDDH.SelectedIndex, typeDDH.SelectedValue, curr).Count == 0)
+            {
+                noTrans.Visible = true;
+            }
+            else
+            {
+                noTrans.Visible = false;
+            }
+        }
+
+        protected void history2Above_ItemCommand1(object source, DataListCommandEventArgs e)
+        {
+            if (e.CommandName.Equals("detail"))
+            {
+                Response.Redirect("~/Views/ProgramDetail.aspx?=id" + e.CommandArgument.ToString());
+            }
         }
     }
 }
