@@ -49,8 +49,11 @@ namespace CareYou.Controller
             {
                 return transactionHandler.getTransactionBasedOnTypeAndDateAndUserID(date, type, curr.UserID);
             }
+        }
 
-            
+        public static List<Transaction> getTransactionBasedOnUserID(int id)
+        {
+            return transactionHandler.getTransactionBasedOnUserID(id);
         }
     }
 }

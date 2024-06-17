@@ -213,6 +213,7 @@
     <Compile Include="Model\UserBadge.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modules\ResponseList.cs" />
     <Compile Include="Repository\badgeRepository.cs" />
     <Compile Include="top10Data.cs" />
     <Compile Include="Handler\userHandler.cs" />

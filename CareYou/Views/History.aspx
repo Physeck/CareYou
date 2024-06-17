@@ -31,10 +31,10 @@
         </div>
     
 
-        <asp:DataList ID="history2Above" class="historyDataContainer" runat="server" >
+        <asp:DataList ID="history2Above" class="historyDataContainer" runat="server" OnItemCommand="history2Above_ItemCommand1" >
             <ItemTemplate>
                 <div class="historyDataInnerContainer">
-                    <asp:LinkButton ID="historyData" class="historyData" runat="server">
+                    <asp:LinkButton ID="historyData" class="historyData" runat="server" CommandName="detail" CommandArgument='<%# Eval("ProgramID") %>'>
                         <div class="hImageContainer">
                             <img id="programH" src="../Assets/Program/<%# Eval("Program.ProgramImage") %>"  class="programH" />
                         </div>
@@ -42,8 +42,7 @@
 
                         <div class="historyDetail">
                             <div class="hDateContainer">
-                                <asp:Label ID="historyDate" runat="server" Text=""></asp:Label>
-                                <%# Eval("TransactionType") %> <%# Eval("TransactionDate", "{0:d}") %>
+                                <%# Eval("TransactionType") %> <asp:Label ID="historyDate" runat="server" Text=" "></asp:Label>  <%# Eval("TransactionDate", "{0:d}") %>
                             </div>
     
                             <div class="hProgramTitle">
@@ -62,5 +61,9 @@
                 </div>
             </ItemTemplate>
         </asp:DataList>
+
+        <div id="noTrans" class="noTrans" runat="server">
+            No Transaction
+        </div>
     </div>
 </asp:Content>
