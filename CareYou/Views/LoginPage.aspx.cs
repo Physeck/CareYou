@@ -21,7 +21,7 @@ namespace CareYou.Views
 
         protected void loginBtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Home.aspx");
         }
     }
 }

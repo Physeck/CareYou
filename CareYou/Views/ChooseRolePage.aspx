@@ -22,7 +22,8 @@
                     <div class="loginPagebg-container" style="--src: url(/Assets/Login-Register/Rectangle-RegLogin.png)">
 
                         <div class="middle-container">
-
+                            <h1 class="choose-role-text">Please Choose Desired Role</h1>
+                            <h2 class="role-text" style="z-index:10">Role</h2>
                             <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdownlist">
                                 <asp:ListItem Value="" CssClass="default-list" Text="Choose Role" Selected="True"></asp:ListItem>
                                 <asp:ListItem Value="1" CssClass="selected-list">User</asp:ListItem>

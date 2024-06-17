@@ -16,7 +16,12 @@ namespace CareYou.Views
 
         protected void returnSignin_Click(object sender, EventArgs e)
         {
+            Response.Redirect("LoginPage.aspx");
+        }
 
+        protected void requestBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("LinkSendPage.aspx");
         }
     }
 }
