@@ -1,5 +1,12 @@
-﻿
-
+﻿@font-face {
+    font-family: 'HelveticaCompressed';
+    src: url('../Assets/fonts/helvetica-compressed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, serif;
+}
 .navbar_shape {
     position: fixed;
     top: 1.563vw;

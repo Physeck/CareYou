@@ -19,7 +19,7 @@
 
 .title_container {
     position: relative;
-    display: flex;78787878
+    display: flex;
     flex-direction: column;
     margin: 11.146vw 0px 11.406vw 11.98%;
     width: 65.573vw;
@@ -37,7 +37,7 @@
 }
 
 .app-title {
-    font: 500 3.333vw/1.23 "HelveticaCompressed", Helvetica, Arial, serif;
+    font: 500 3.333vw/1.23 "HelveticaCompressed" , Helvetica, Arial, serif;
     color: rgb(0, 0, 0);
     letter-spacing: 0.667vw;
 }
