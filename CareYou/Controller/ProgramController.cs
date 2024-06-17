@@ -21,5 +21,16 @@ namespace CareYou.Controller
 
             return null;
         }
+
+        public static bool isOwner(int programID, int userID)
+        {
+            Program program = ProgramHandler.getProgramById(programID);
+            if(program != null)
+            {
+                return program.User.UserID == userID;
+            }
+
+            return false;
+        }
     }
 }

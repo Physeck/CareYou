@@ -1,4 +1,5 @@
-﻿using CareYou.Handler;
+﻿using CareYou.Controller;
+using CareYou.Handler;
 using CareYou.Model;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace CareYou.Views
         {
             int programId = Convert.ToInt32(Request.QueryString["id"]);
             Program program = ProgramHandler.getProgramById(programId);
+            int userId = Convert.ToInt32(Session["UserID"]);
             if(program != null)
             {
                 ProgramImage.ImageUrl = "~/Assets/Program/" + program.ProgramImage;
@@ -44,6 +46,10 @@ namespace CareYou.Views
                     TopDonationRepeater.DataSource = Top3Donations;
                     TopDonationRepeater.DataBind();
                 }   
+                if(ProgramController.isOwner(programId, userId))
+                {
+                    DonateBtn.Text = "Details";
+                }
             }
         }
 
@@ -72,7 +78,22 @@ namespace CareYou.Views
 
         protected void DonateBtn_Click(object sender, EventArgs e)
         {
-
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            int userId = Convert.ToInt32(Session["UserID"]);
+            if (Session["UserID"] == null)
+            {
+                // redirect to You need to login page
+                Response.Redirect("LoginPage.aspx");
+            }
+            else if (ProgramController.isOwner(programId,userId))
+            {
+                // redirect to details page
+            }
+            else
+            {
+                Response.Redirect("Payment.aspx?id=" + Request.QueryString["id"]);
+            }
+            
         }
     }
 }
