@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/navbar.Master" AutoEventWireup="true" CodeBehind="PendingVerificationPage.aspx.cs" Inherits="CareYou.Views.PendingVerificationPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/AdminNavbar.Master" AutoEventWireup="true" CodeBehind="PendingVerificationPage.aspx.cs" Inherits="CareYou.Views.PendingVerificationPage" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Style/pendingverificationstyle.css?Version=1" rel="stylesheet" />
 </asp:Content>
