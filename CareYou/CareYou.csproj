@@ -133,6 +133,7 @@
     <Content Include="Style\navbarstyle.css" />
     <Content Include="Style\paymentstyle.css" />
     <Content Include="Style\paymentsuccessStyle.css" />
+    <Content Include="Style\pendingverificationstyle.css" />
     <Content Include="Style\programdetailstyle.css" />
     <Content Include="Style\registerstyle.css" />
     <Content Include="Style\resetpasswordstyle.css" />
@@ -149,6 +150,7 @@
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\Payment.aspx" />
     <Content Include="Views\PaymentSuccess.aspx" />
+    <Content Include="Views\PendingVerificationPage.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\ProgramDetail.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
@@ -303,6 +305,13 @@
     </Compile>
     <Compile Include="Views\PaymentSuccess.aspx.designer.cs">
       <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PendingVerificationPage.aspx.cs">
+      <DependentUpon>PendingVerificationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PendingVerificationPage.aspx.designer.cs">
+      <DependentUpon>PendingVerificationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
