@@ -104,7 +104,6 @@
     .logout-btn:hover {
         color: #FE4040;
     }
-}
 
 .signInbtn {
     position: relative;
@@ -123,7 +122,7 @@
     outline: 0.26vw solid rgb(1, 169, 93);
     transition-duration: 0.1s;
     transition-property: background-color;
-    height: 100%;
+    min-height: 2.604vw;
 }
 
     .signInbtn:hover {
