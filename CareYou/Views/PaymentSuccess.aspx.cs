@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CareYou.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,17 +12,22 @@ namespace CareYou.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
-
+            int transactionId = Convert.ToInt32(Request.QueryString["trId"]);
+            int programId = Convert.ToInt32(Request.QueryString["programId"]);
+            String comment = CommentTB.Text;
+            PaymentController.addComment(transactionId, comment);
+            Response.Redirect("ProgramDetails.aspx?id=" + programId);
         }
 
         protected void BackBtn_Click(object sender, ImageClickEventArgs e)
         {
-
+            int programId = Convert.ToInt32(Request.QueryString["programId"]);
+            Response.Redirect("ProgramDetails.aspx?id=" + programId);
         }
     }
 }

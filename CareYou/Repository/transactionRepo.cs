@@ -91,5 +91,12 @@ namespace CareYou.Repository
             db.Withdrawals.Add(withdrawal);
             db.SaveChanges();
         }
+
+        public static void addComment(int transactionId, String comment)
+        {
+            Transaction transaction = db.Transactions.Find(transactionId);
+            transaction.Donation.Comment = comment;
+            db.SaveChanges();
+        }
     }
 }

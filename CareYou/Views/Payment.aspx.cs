@@ -26,6 +26,7 @@ namespace CareYou.Views
             string errorMsg = "";
             int programId = Convert.ToInt32(Request.QueryString["id"]);
             int userId = Convert.ToInt32(Session["UserID"]);
+            int transactionId = 0;
             foreach (Control control in methodList.Controls)
             {
                 if (control is RadioButton radioButton && radioButton.GroupName == "paymentMethod")
@@ -44,28 +45,38 @@ namespace CareYou.Views
                 string ccExpireYear = CCExpireYearTB.Text;
                 string ccCVV = CCCVVTB.Text;
                 string ccPostcode = CCPostcodeTB.Text;
-                errorMsg = PaymentController.doTransactionWithCC(strAmount, isFeeChecked, isAnonymousChecked, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId );
+                var payment = PaymentController.doTransactionWithCC(strAmount, isFeeChecked, isAnonymousChecked, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId);
+                errorMsg = payment.response;
+                transactionId = payment.transactionId;
+
             }
             else
             {
                 if (selectedPaymentMethod.Equals("GoPayRB"))
                 {
-                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "gopay");
+                    var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "gopay");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
                 }
                 else if (selectedPaymentMethod.Equals("OvoRB"))
                 {
-                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "ovo");
+                    var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "ovo");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
                 }else if(selectedPaymentMethod.Equals("DanaRB"))
                 {
-                    errorMsg = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "dana");
+                    var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "dana");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
                 }
                 
             }
 
             if(errorMsg == "")
             {
+                
                 ErrorLbl.Text = "";
-                //Response.Redirect("PaymentSuccess.aspx");
+                Response.Redirect("PaymentSuccess.aspx?programId=" + programId + "&trId=" + transactionId);
             }
             else
             {

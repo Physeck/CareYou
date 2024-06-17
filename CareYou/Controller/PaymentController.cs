@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Util;
 
 namespace CareYou.Controller
 {
@@ -103,8 +104,9 @@ namespace CareYou.Controller
         }
 
 
-        public static String doTransactionWithCC(String strAmount, bool isFeeChecked, bool isAnonymous, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode, int userId, int programId)
+        public static dynamic doTransactionWithCC(String strAmount, bool isFeeChecked, bool isAnonymous, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode, int userId, int programId)
         {
+            
             String response = checkAmount(strAmount);
             if(response == "")
             {
@@ -132,12 +134,25 @@ namespace CareYou.Controller
             }
             if(response == "")
             {
-                transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, "Credit Card");
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, "Credit Card");
+                var result = new
+                {
+                    response = "",
+                    transactionId = transactionId
+                };
+                return result;
             }
-            return response;
+            else
+            {
+                var result = new
+                {
+                    response = ""
+                };
+                return result;
+            }
         }
 
-        public static String doTransaction(String strAmount, bool isFeeChecked, bool isAnonymous, int userId, int programId, string paymentMethod)
+        public static dynamic doTransaction(String strAmount, bool isFeeChecked, bool isAnonymous, int userId, int programId, string paymentMethod)
         {
             String response = checkAmount(strAmount);
             if (response == "")
@@ -146,9 +161,30 @@ namespace CareYou.Controller
             }
             if (response == "")
             {
-                transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, paymentMethod);
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, paymentMethod);
+                var result = new
+                {
+                    response = "",
+                    transactionId = transactionId
+                };
+                return result;
             }
-            return response;
+            else
+            {
+                var result = new
+                {
+                    response = ""
+                };
+                return result;
+            }
+        }
+
+        public static void addComment(int transactionId, String comment)
+        {
+            if(comment != "")
+            {
+                transactionHandler.addComment(transactionId, comment);
+            }
         }
     }
 }

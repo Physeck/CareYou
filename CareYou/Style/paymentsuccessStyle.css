@@ -46,7 +46,11 @@
     position: relative;
     margin: 1.563vw 1.563vw 1.563vw 1.563vw;
     width: 14.115vw;
-    background-image: url(../Assets/TransactionMethod/Success-before.png);
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+.image.visible{
+    opacity: 1;
 }
 
 .payment-success-textbox {
@@ -68,7 +72,7 @@
     font: 700 2.5vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(255, 255, 255);
     text-align: center;
-    margin: 0;
+    margin: 0.625vw 0 0 0;
 }
 
 .payment-success-desc {
@@ -102,6 +106,7 @@
 }
 
 .comment-title {
+    margin: 0;
     position: relative;
     font: 700 4.167vw/0.98 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 45, 25);
@@ -112,7 +117,6 @@
     margin: 0.521vw 0px 0px;
     font: 500 1.823vw/1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgba(1, 45, 25, 0.749);
-    text-align: justify;
 }
 
 .comment-textbox {
@@ -124,7 +128,7 @@
     padding: 2.031vw 1.198vw 2.031vw 1.198vw;
     align-items: center;
     font: 500 3.125vw/0.99 "Helvetica Neue", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
+    color: #545454;
     text-align: left;
     background-color: #F6F8FA;
     height: 11.25vw;
