@@ -1,0 +1,80 @@
+﻿body {
+    background: rgb(209, 245, 253);
+    background-image: linear-gradient(180deg, rgba(209, 245, 253, 1) 0%, rgba(246, 248, 250, 1) 100%);
+    height: auto;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.home {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 2100px;
+}
+
+.main {
+    position: absolute;
+    top: 0px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 86%;
+}
+
+.dashboard-title {
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    font: 700 4vw/1 "Helvetica Neue", Helvetica, Arial, serif;
+    margin: 4px 0px 0px 0px;
+}
+
+.container-box {
+    margin-top: 8%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+}
+
+.flex-div {
+    text-align: center;
+    height: 40vw;
+    width: 781px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(255, 237, 201, 1) 60%);
+    border-radius: 4vw;
+}
+
+.left {
+    margin-right: 2%;
+}
+
+.right {
+    margin-left: 2%;
+}
+
+.title-container {
+    font-size: 4vw;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-container {
+    font-size: 10vw;
+    color: #4AB06A;
+    font-family: Arial, Helvetica, sans-serif;
+}

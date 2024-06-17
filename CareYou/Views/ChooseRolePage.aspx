@@ -6,6 +6,7 @@
 <head runat="server">
     <link href="../Style/forgotpwstyle.css" rel="stylesheet" />
     <link href="../Style/loginstyle.css" rel="stylesheet" />
+    <link href="../Style/chooserolestyle.css" rel="stylesheet" />
 </head>
 <body style="margin: 0">
     <body>
@@ -20,8 +21,24 @@
                     </div>
                     <div class="loginPagebg-container" style="--src: url(/Assets/Login-Register/Rectangle-RegLogin.png)">
 
-                        <hr class="line" size="1" />
+                        <div class="middle-container">
 
+                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdownlist">
+                                <asp:ListItem Value="" CssClass="default-list" Text="Choose Role" Selected="True"></asp:ListItem>
+                                <asp:ListItem Value="1" CssClass="selected-list">User</asp:ListItem>
+                                <asp:ListItem Value="2" CssClass="selected-list">Organizer</asp:ListItem>
+                            </asp:DropDownList>
+                            <img class="dropdown-png" src="/Assets/Login-Register/ReturnToSignin.png" />
+
+                        </div>
+
+                        <div class="bottom-container">
+                            <div class="left-container">
+                                <asp:Button ID="continue" CssClass="return-btn" runat="server" Text="Continue" OnClick="continue_Click" />
+                                <img class="return-png" src="/Assets/Login-Register/ReturnToSignin.png" />
+                            </div>
+                        </div>
+                        <hr class="line" size="1" />
                     </div>
                 </div>
             </div>

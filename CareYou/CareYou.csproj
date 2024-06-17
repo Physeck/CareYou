@@ -104,10 +104,13 @@
     <Content Include="Assets\ProgramDetail\verified.png" />
     <Content Include="Assets\Program\program1.png" />
     <Content Include="Assets\Program\program2.png" />
+    <Content Include="Assets\TransactionMethod\back-btn.png" />
     <Content Include="Assets\TransactionMethod\CreditCard.png" />
     <Content Include="Assets\TransactionMethod\Dana.png" />
     <Content Include="Assets\TransactionMethod\GoPay.png" />
     <Content Include="Assets\TransactionMethod\Ovo.png" />
+    <Content Include="Assets\TransactionMethod\Success-after.png" />
+    <Content Include="Assets\TransactionMethod\Success-before.png" />
     <Content Include="Assets\Validations\checkmark.png" />
     <Content Include="Model\CareYouModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -121,6 +124,7 @@
     </Content>
     <Content Include="Style\chooserolestyle.css" />
     <Content Include="Style\contentstyle.css" />
+    <Content Include="Style\dashboardpagestyle.css" />
     <Content Include="Style\footerstyle.css" />
     <Content Include="Style\forgotpwstyle.css" />
     <Content Include="Style\homepagestyle.css" />
@@ -128,11 +132,14 @@
     <Content Include="Style\loginstyle.css" />
     <Content Include="Style\navbarstyle.css" />
     <Content Include="Style\paymentstyle.css" />
+    <Content Include="Style\paymentsuccessStyle.css" />
+    <Content Include="Style\pendingverificationstyle.css" />
     <Content Include="Style\programdetailstyle.css" />
     <Content Include="Style\registerstyle.css" />
     <Content Include="Style\resetpasswordstyle.css" />
     <Content Include="Style\Styling.css" />
     <Content Include="Views\ChooseRolePage.aspx" />
+    <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
     <Content Include="Views\ForgotPassword.aspx" />
     <Content Include="Views\FundraisePage.aspx" />
@@ -142,6 +149,8 @@
     <Content Include="Views\LinkSendPage.aspx" />
     <Content Include="Views\LoginPage.aspx" />
     <Content Include="Views\Payment.aspx" />
+    <Content Include="Views\PaymentSuccess.aspx" />
+    <Content Include="Views\PendingVerificationPage.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\ProgramDetail.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
@@ -220,6 +229,13 @@
     <Compile Include="Views\ChooseRolePage.aspx.designer.cs">
       <DependentUpon>ChooseRolePage.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\DashboardPage.aspx.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DashboardPage.aspx.designer.cs">
+      <DependentUpon>DashboardPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\DonatePage.aspx.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,6 +298,20 @@
     </Compile>
     <Compile Include="Views\Payment.aspx.designer.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PaymentSuccess.aspx.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PaymentSuccess.aspx.designer.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PendingVerificationPage.aspx.cs">
+      <DependentUpon>PendingVerificationPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\PendingVerificationPage.aspx.designer.cs">
+      <DependentUpon>PendingVerificationPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
