@@ -5,6 +5,56 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="program-detail">
+        <% if (reportClicked)
+            { %>
+        <div id="reportPopup" class="modal">
+            <div class="modal-content">
+                <div class="report-flexbox">
+                    <h1 class="report-title">Report Fundraiser</h1>
+                    <h1 class="report-desc">Please give us a reason on why you want to report this program.</h1>
+                    <div class="report-checkbox-flexbox">
+                        <div class="checkbox-button-content">
+                            <asp:CheckBox ID="ScamCB" runat="server" />
+                            <h1 class="checkbox-text">Scam Program</h1>
+                        </div>
+                        <div class="checkbox-button-content">
+                            <asp:CheckBox ID="FraudCB" runat="server" />
+                            <h1 class="checkbox-text">Fraud Program</h1>
+                        </div>
+                        <div class="checkbox-button-content">
+                            <asp:CheckBox ID="ThirdpartyCB" runat="server" />
+                            <h1 class="checkbox-text">Thirdparty Beneficiary</h1>
+                        </div>
+                        <div class="others-flexbox">
+                            <div class="checkbox-button-content">
+                                <asp:CheckBox ID="OthersCB" runat="server" />
+                                <h1 class="checkbox-text">Others</h1>
+                            </div>
+                            <asp:TextBox ID="CommentTB" TextMode="MultiLine" CssClass="reason-textbox" Style="resize: none" runat="server"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+                <asp:Button ID="SubmitBtn" CssClass="report-submit-btn" runat="server" Text="Submit" OnClick="SubmitBtn_Click" />
+            </div>
+        </div>
+
+
+
+        <% } %>
+        <% if (reportSubmitted)
+            { %>
+        <div id="reportPopup1" class="modal">
+            <div class="modal-content1">
+                <div class="report-flexbox">
+                    <h1 class="report-title">Report Fundraiser</h1>
+                    <h1 class="report-submitted-desc">Thank you for reporting. Your feedback helps us keep the platform safe.</h1>
+                </div>
+            </div>
+        </div>
+
+
+
+        <% } %>
         <asp:Label CssClass="title" ID="ProgramTitleLbl" runat="server"></asp:Label>
         <div class="program-detail-flexbox">
             <div class="program-detail-content">
@@ -67,6 +117,7 @@
                 <div class="report-btn">
                     <img class="report-img" src="/Assets/ProgramDetail/reportbtn.png" alt="alt text" />
                     <asp:LinkButton CssClass="profile-text5" ID="ReportLB" runat="server" OnClick="ReportLB_Click">Report program</asp:LinkButton>
+
                 </div>
             </div>
             <div class="donate-container">
@@ -108,4 +159,22 @@
         </div>
 
     </section>
+    <script>
+        // Get the modal and modal content elements
+        var modal = document.getElementById("reportPopup");
+        var modal1 = document.getElementById("reportPopup1");
+        var modalContent = document.querySelector(".modal-content");
+        var modalContent1 = document.querySelector(".modal-content1");
+
+        // Add a click event listener to the document
+        document.addEventListener("click", function (event) {
+            // Check if the clicked element is outside the modal content
+            if (event.target !== modalContent && modalContent!=null && !modalContent.contains(event.target)) {
+                // Close the popup
+                modal.style.display = "none";
+            } else if (event.target !== modalContent1 && modalContent1!=null && !modalContent1.contains(event.target)){
+                                modal1.style.display = "none";
+            }
+        });
+    </script>
 </asp:Content>
