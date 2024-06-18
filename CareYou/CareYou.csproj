@@ -82,6 +82,7 @@
     <Content Include="Assets\HomePage\home-background.png" />
     <Content Include="Assets\Login-Register\Rectangle-RegLogin.png" />
     <Content Include="Assets\Login-Register\ShowsPassword.png" />
+    <Content Include="Assets\UserReportProfile.svg" />
     <Content Include="Assets\NavbarProfile.svg" />
     <Content Include="Assets\Profiles\IP1.png" />
     <Content Include="Assets\Profiles\IP2.png" />
@@ -138,6 +139,7 @@
     <Content Include="Style\registerstyle.css" />
     <Content Include="Style\resetpasswordstyle.css" />
     <Content Include="Style\Styling.css" />
+    <Content Include="Style\userreportstyle.css" />
     <Content Include="Views\ChooseRolePage.aspx" />
     <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
@@ -157,6 +159,7 @@
     <Content Include="Views\ResetPassword.aspx" />
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
+    <Content Include="Views\UserReportPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -362,6 +365,13 @@
     </Compile>
     <Compile Include="Views\UpdateProfile.aspx.designer.cs">
       <DependentUpon>UpdateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserReportPage.aspx.cs">
+      <DependentUpon>UserReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\UserReportPage.aspx.designer.cs">
+      <DependentUpon>UserReportPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
