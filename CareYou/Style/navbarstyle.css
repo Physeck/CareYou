@@ -1,5 +1,12 @@
-﻿
-
+﻿@font-face {
+    font-family: 'HelveticaCompressed';
+    src: url('../Assets/fonts/helvetica-compressed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, serif;
+}
 .navbar_shape {
     position: fixed;
     top: 1.563vw;
@@ -25,6 +32,7 @@
     transform: translateY(-50%);
     margin: 0 auto 0 auto;
     width: 90.35%;
+    height: 100%;
 }
 
 .navbarBtn_wrapper {
@@ -33,6 +41,7 @@
     gap: 0px 1.563vw;
     width: 51.25vw;
     min-width: 0px;
+    height: 100%;
 }
 
 .navbar_btn {
@@ -52,6 +61,7 @@
     white-space: nowrap;
     overflow: visible;
     cursor: pointer;
+    height: 100%;
 }
 
     .navbar_btn:hover {
@@ -75,9 +85,32 @@
     white-space: nowrap;
     overflow: visible;
     cursor: pointer;
+    height: 100%;
 }
 
+.logout-btn {
+    position: relative;
+    display: flex;
+    min-width: 0px;
+    justify-content: center;
+    align-items: center;
+    font: 700 2.344vw/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: #FF5B5B;
+    text-align: center;
+    transition-duration: 0.1s;
+    transition-property: color;
+    border: none;
+    background: none;
+    padding: 0;
+    white-space: nowrap;
+    overflow: visible;
+    cursor: pointer;
+    height: 100%;
+}
 
+    .logout-btn:hover {
+        color: #FE4040;
+    }
 
 .signInbtn {
     position: relative;
@@ -96,6 +129,7 @@
     outline: 0.26vw solid rgb(1, 169, 93);
     transition-duration: 0.1s;
     transition-property: background-color;
+    min-height: 2.604vw;
 }
 
     .signInbtn:hover {

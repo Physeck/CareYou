@@ -43,7 +43,7 @@
                             </div>
 
                             <div class="right-container">
-                                <asp:Button ID="requestBtn" CssClass="request-btn" runat="server" Text="Request Reset Password" />
+                                <asp:Button ID="requestBtn" CssClass="request-btn" runat="server" Text="Request Reset Password" OnClick="requestBtn_Click" />
                             </div>
                         </div>
                         <hr class="line" size="1" />

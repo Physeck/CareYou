@@ -168,7 +168,7 @@ input:focus-visible {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 50px;
+    gap: 2.604vw;
 }
 
 .acc-det {
@@ -202,9 +202,9 @@ input:focus-visible {
     bottom: 16.4%;
     right: 0;
     width: 97%;
-    height: 1px;
+    height: 0.052vw;
     background-color: rgb(46, 46, 46);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
+    box-shadow: 0px 0.208vw 0.208vw 0px rgba(0, 0, 0, 0.247);
 }
 
 .Lgflex_col {
@@ -218,8 +218,8 @@ input:focus-visible {
 .signRow {
     position: relative;
     display: flex;
-    gap: 0px 8px;
-    width: 365px;
+    gap: 0px 0.417vw;
+    width: 19.01vw;
     min-width: 0px;
 }
 
@@ -248,9 +248,9 @@ input:focus-visible {
     color: rgb(255, 255, 255);
     text-align: center;
     background-color: rgb(1, 169, 93);
-    border-radius: 12px 12px 12px 12px;
+    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
     padding: 0.729vw 1.146vw 0.729vw 1.146vw;
-    border:none;
+    border: none;
     transition-duration: 0.3s;
 }
 
@@ -271,21 +271,21 @@ input:focus-visible {
 .agree-flexRow {
     position: relative;
     display: flex;
-    gap: 0px 6px;
+    gap: 0px 0.313vw;
 }
 
 .byclick {
     position: relative;
     min-width: 0px;
-    font: 400 24px/1.16 "Helvetica", Helvetica, Arial, serif;
+    font: 400 1.25vw/1.16 "Helvetica", Helvetica, Arial, serif;
     color: rgb(46, 46, 46);
-    margin:0;
+    margin: 0;
 }
 
 .tos {
     position: relative;
     min-width: 0px;
-    font: 400 24px/1.16 "Helvetica", Helvetica, Arial, serif;
+    font: 400 1.25vw/1.16 "Helvetica", Helvetica, Arial, serif;
     color: rgb(46, 46, 46);
     text-decoration: underline;
     margin: 0;

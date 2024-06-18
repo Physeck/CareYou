@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/navbar.Master" AutoEventWireup="true" CodeBehind="DashboardPage.aspx.cs" Inherits="CareYou.Views.DashboardPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/AdminNavbar.Master" AutoEventWireup="true" CodeBehind="DashboardPage.aspx.cs" Inherits="CareYou.Views.DashboardPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="../Style/dashboardpagestyle.css?Version=4" rel="stylesheet" />
