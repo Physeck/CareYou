@@ -13,5 +13,20 @@ namespace CareYou.Views
         {
 
         }
+
+        protected void editBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void withdrawBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void deleteBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
