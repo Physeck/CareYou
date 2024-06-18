@@ -6,6 +6,7 @@
 }
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, serif;
+    background-color: #F6F8FA;
 }
 .navbar_shape {
     position: fixed;
