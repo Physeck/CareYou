@@ -50,7 +50,7 @@ namespace CareYou.Views
             if (curr.Role.Equals("user"))
             {
                 rank = userController.getUserRank(id);
-                uPLogo.Visible = false;
+                PLogo.Visible = false;
             }else if (curr.Role.Equals("organization"))
             {
                 rank = userController.getOrganizationRank(id);

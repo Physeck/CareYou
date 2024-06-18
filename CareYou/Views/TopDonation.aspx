@@ -4,6 +4,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Style/Styling.css" rel="stylesheet" />
 
+    <div class="background"></div>
+
     <div class="topDonationPage">
         <div class="tDContainer">
             <asp:Label ID="tDLbl" class="tDLbl" runat="server" Text="Top Donation"></asp:Label>
