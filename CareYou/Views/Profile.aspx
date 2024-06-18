@@ -4,10 +4,12 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Style/Styling.css" rel="stylesheet" />
     
+    <div class="background"></div>
+
     <div class="profilePage">
         <div class="detailProfile">
             <div>
-                <img id="uPLogo" class="uPLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
+                <img id="PLogo" class="PLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
             </div>
             
             <div class="pP">

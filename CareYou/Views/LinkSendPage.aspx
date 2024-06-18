@@ -28,8 +28,9 @@
 
                             <div class="checkemail-flexrow">
                                 <h1 class="entEmail">Check Your Email Inbox</h1>
-                                <h1 class="entSend">We sent an email to with password reset link.
+                                <h1 class="entSend"><span>We sent an email to <span><asp:Label ID="emailLbl" runat="server" Text="Label"></asp:Label></span> with password reset link.</span> 
                                     <br />
+                                    
                                     If you don't see it after a few minutes, check your spamm folder.
                                 </h1>
                             </div>

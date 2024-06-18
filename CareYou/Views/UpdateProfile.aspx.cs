@@ -20,7 +20,7 @@ namespace CareYou.Views
         public userBadgeData badgeOfUser = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int id = 3; /*ganti jadi querystring*/
+            int id = Convert.ToInt32(Request.QueryString["id"]);
 
             curr = userRepo.GetUserById(id);
             totalDonate = userController.getTotalDonationFromUserID(id);

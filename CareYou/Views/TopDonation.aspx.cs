@@ -13,10 +13,13 @@ namespace CareYou.Views
         public top10Data second = null;
         public top10Data three = null;
         public top10Data one = null;
+        int id = 0;
 
         protected void getData()
         {
             //tambah autorisasi dari login page
+            
+
             List<top10Data> toDisplay = new List<top10Data>();
             one = userController.getTop3User(1);
             second = userController.getTop3User(2);
@@ -31,6 +34,7 @@ namespace CareYou.Views
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+            id = 1;
             if (!Page.IsPostBack)
             {
                 getData();
@@ -42,8 +46,15 @@ namespace CareYou.Views
         {
             if (e.CommandName == "redirectPP")
             {
-                //ganti redirect jadi ke update profile
-                Response.Redirect("~/Views/Profile.aspx?id=" + e.CommandArgument.ToString());
+                if (e.CommandArgument.ToString().Equals(id.ToString()))
+                {
+                    Response.Redirect("~/Views/UpdateProfile.aspx?id=" + e.CommandArgument.ToString());
+                }
+                else
+                {
+                    Response.Redirect("~/Views/Profile.aspx?id=" + e.CommandArgument.ToString());
+                }
+                
             }
         }
 
@@ -86,7 +97,16 @@ namespace CareYou.Views
                 three = userController.getTop3Organization(3);
 
             }
-            Response.Redirect("~/Views/Profile.aspx?id=" + three.Id);
+
+            if (three.Id == id)
+            {
+                Response.Redirect("~/Views/UpdateProfile.aspx?id=" + id.ToString());
+            }
+            else
+            {
+                Response.Redirect("~/Views/Profile.aspx?id=" + three.Id.ToString());
+            }
+
         }
 
         protected void LinkButton2_Click(object sender, EventArgs e)
@@ -101,8 +121,14 @@ namespace CareYou.Views
 
             }
 
-            
-            Response.Redirect("~/Views/Profile.aspx?id=" + second.Id);
+            if (second.Id == id)
+            {
+                Response.Redirect("~/Views/UpdateProfile.aspx?id=" + id.ToString());
+            }
+            else
+            {
+                Response.Redirect("~/Views/Profile.aspx?id=" + second.Id.ToString());
+            }
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -117,7 +143,15 @@ namespace CareYou.Views
                 one = userController.getTop3Organization(1);
 
             }
-            Response.Redirect("~/Views/Profile.aspx?id=" + one.Id);
+
+            if (one.Id == id)
+            {
+                Response.Redirect("~/Views/UpdateProfile.aspx?id=" + id.ToString());
+            }
+            else
+            {
+                Response.Redirect("~/Views/Profile.aspx?id=" + one.Id.ToString());
+            }
         }
     }
 }

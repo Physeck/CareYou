@@ -5,6 +5,8 @@
 
     <link href="../Style/Styling.css" rel="stylesheet" />
 
+    <div class="background"></div>
+
     <div class="HistoryPage">
         <asp:Label ID="HistoryTitle" class="HistoryTitle" runat="server" Text="History"></asp:Label>
 
