@@ -312,9 +312,9 @@
     margin-top: 5px;
 }
 
-    .changePassU:hover {
-        color: #11698E;
-    }
+.changePassU:hover {
+    color: #11698E;
+}
 
 .changePassUP {
     margin-bottom: 20px;
@@ -332,9 +332,9 @@
     font-weight: bold;
 }
 
-    .regComlnk:hover {
-        color: #11698E;
-    }
+.regComlnk:hover {
+    color: #11698E;
+}
 
 .uPdetailInfoContainer {
     display: flex;
@@ -359,10 +359,10 @@
     cursor: pointer;
 }
 
-    .uPLogoutBtn:hover {
-        background-color: #FF5B5B;
-        color: white
-    }
+.uPLogoutBtn:hover {
+    background-color: #FF5B5B;
+    color: white
+}
 
 .totalDonation, .rank {
     margin-right: 25px;
@@ -440,7 +440,7 @@
 
 .noBadgeLbl {
     color: #767676;
-    font-size: 70px;
+    font-size: 50px;
     font-weight: bold;
     width: 100%;
     justify-content: center;
