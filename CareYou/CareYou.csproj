@@ -175,6 +175,7 @@
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
+    <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Layouts\AdminNavbar.Master.cs">
       <DependentUpon>AdminNavbar.Master</DependentUpon>

@@ -1,4 +1,5 @@
-﻿using CareYou.Model;
+﻿using CareYou.Factory;
+using CareYou.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,24 @@ namespace CareYou.Repository
             curr.UserEmail = email;
             curr.UserPassword = password;
             db.SaveChanges();
+        }
+
+        public static int generateUserId()
+        {
+            User lastUser = db.Users.ToList().LastOrDefault();
+            if (lastUser == null)
+            {
+                return 1;
+            }
+            return lastUser.UserID + 1;
+        }
+
+        public static User register(String name, String email, String password)
+        {
+            User user = UserFactory.Create(name, email, password);
+            db.Users.Add(user);
+            db.SaveChanges();
+            return user;
         }
     }
 }

@@ -207,7 +207,7 @@ namespace CareYou.Handler
         public static Response<User> updateProfile(User curr, String name, String email ,String password)
         {
             
-            User user = userRepo.GetUserByName(name);
+            User user = userRepo.getUserByEmail(email);
 
             if (user != null && curr.UserID != user.UserID)
             {
@@ -241,7 +241,7 @@ namespace CareYou.Handler
                 {
                     Success = false,
                     Message = "Email or password is invalid!",
-                    Field = "email",
+                    Field = "User",
                     Payload = null
                 };
             }
@@ -256,6 +256,33 @@ namespace CareYou.Handler
                     Payload = null
                 };
             }
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
+
+        public static Response<User> Register(String name, String email, String password)
+        {
+
+            User user = userRepo.getUserByEmail(email);
+
+            if (user != null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "User already exist",
+                    Field = "User",
+                    Payload = null
+                };
+            }
+
+            user = userRepo.register(name, email, password);
 
             return new Response<User>()
             {

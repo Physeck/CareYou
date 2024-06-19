@@ -41,7 +41,23 @@ namespace CareYou.Views
             }
             else
             {
-                errorLbl.Text = response.Message;
+                if(response.Field == "email")
+                {
+                    emailErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    emailErrorLbl.Text = "";
+                }
+                if(response.Field == "User" || response.Field == "password")
+                {
+                    errorLbl.Text = response.Message;
+                }
+                else
+                {
+                    errorLbl.Text = "";
+                }
+                
             }
         }
     }

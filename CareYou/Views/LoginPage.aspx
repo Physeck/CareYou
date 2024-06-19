@@ -31,7 +31,7 @@
                         <div class="email-container">
                             <asp:TextBox ID="emailTb" CssClass="emailBox" TextMode="Email" runat="server" placeholder="E-mail Address"></asp:TextBox>
                         </div>
-
+                         <asp:Label ID="emailErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
 
                         <div class="pwflexRow">
