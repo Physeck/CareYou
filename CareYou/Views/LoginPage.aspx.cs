@@ -36,6 +36,10 @@ namespace CareYou.Views
                 User user = response.Payload;
                 Session["user"] = user;
                 Session["UserID"] = user.UserID;
+                if(user.Role == "admin")
+                {
+                    Response.Redirect("DashboardPage.aspx");
+                }
                 Response.Redirect("Home.aspx");
 
             }
