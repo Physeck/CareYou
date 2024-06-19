@@ -82,6 +82,7 @@
     <Content Include="Assets\HomePage\home-background.png" />
     <Content Include="Assets\Login-Register\Rectangle-RegLogin.png" />
     <Content Include="Assets\Login-Register\ShowsPassword.png" />
+    <Content Include="Assets\UserReportProfile.svg" />
     <Content Include="Assets\NavbarProfile.svg" />
     <Content Include="Assets\Profiles\IP1.png" />
     <Content Include="Assets\Profiles\IP2.png" />
@@ -100,8 +101,10 @@
     <Content Include="Assets\Profiles\OP7.png" />
     <Content Include="Assets\Profiles\profile3.png" />
     <Content Include="Assets\Profiles\ProfileDefault.png" />
+    <Content Include="Assets\ProgramDetail\report-popup.svg" />
     <Content Include="Assets\ProgramDetail\reportbtn.png" />
     <Content Include="Assets\ProgramDetail\verified.png" />
+    <Content Include="Assets\ProgramDetail\warning.png" />
     <Content Include="Assets\Program\program1.png" />
     <Content Include="Assets\Program\program2.png" />
     <Content Include="Assets\TransactionMethod\back-btn.png" />
@@ -125,6 +128,7 @@
     <Content Include="Style\chooserolestyle.css" />
     <Content Include="Style\contentstyle.css" />
     <Content Include="Style\dashboardpagestyle.css" />
+    <Content Include="Style\editprogramstyle.css" />
     <Content Include="Style\footerstyle.css" />
     <Content Include="Style\forgotpwstyle.css" />
     <Content Include="Style\homepagestyle.css" />
@@ -134,13 +138,16 @@
     <Content Include="Style\paymentstyle.css" />
     <Content Include="Style\paymentsuccessStyle.css" />
     <Content Include="Style\pendingverificationstyle.css" />
+    <Content Include="Style\programbreakdownstyle.css" />
     <Content Include="Style\programdetailstyle.css" />
     <Content Include="Style\registerstyle.css" />
     <Content Include="Style\resetpasswordstyle.css" />
     <Content Include="Style\Styling.css" />
+    <Content Include="Style\userreportstyle.css" />
     <Content Include="Views\ChooseRolePage.aspx" />
     <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
+    <Content Include="Views\EditProgramDetails.aspx" />
     <Content Include="Views\ForgotPassword.aspx" />
     <Content Include="Views\FundraisePage.aspx" />
     <Content Include="Views\History.aspx" />
@@ -153,10 +160,12 @@
     <Content Include="Views\PendingVerificationPage.aspx" />
     <Content Include="Views\Profile.aspx" />
     <Content Include="Views\ProgramDetail.aspx" />
+    <Content Include="Views\ProgramDetailBreakdown.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
     <Content Include="Views\ResetPassword.aspx" />
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
+    <Content Include="Views\UserReportPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +175,7 @@
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
+    <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Layouts\AdminNavbar.Master.cs">
       <DependentUpon>AdminNavbar.Master</DependentUpon>
@@ -243,6 +253,13 @@
     </Compile>
     <Compile Include="Views\DashboardPage.aspx.designer.cs">
       <DependentUpon>DashboardPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditProgramDetails.aspx.cs">
+      <DependentUpon>EditProgramDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\EditProgramDetails.aspx.designer.cs">
+      <DependentUpon>EditProgramDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DonatePage.aspx.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
@@ -335,6 +352,13 @@
     <Compile Include="Views\ProgramDetail.aspx.designer.cs">
       <DependentUpon>ProgramDetail.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Views\ProgramDetailBreakdown.aspx.cs">
+      <DependentUpon>ProgramDetailBreakdown.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\ProgramDetailBreakdown.aspx.designer.cs">
+      <DependentUpon>ProgramDetailBreakdown.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\RegisterPage.aspx.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -362,6 +386,13 @@
     </Compile>
     <Compile Include="Views\UpdateProfile.aspx.designer.cs">
       <DependentUpon>UpdateProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserReportPage.aspx.cs">
+      <DependentUpon>UserReportPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\UserReportPage.aspx.designer.cs">
+      <DependentUpon>UserReportPage.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

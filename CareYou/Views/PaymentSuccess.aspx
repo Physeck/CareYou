@@ -23,7 +23,7 @@
         <div class="comment-flexbox">
           <h1 class="comment-title">Leave a comment</h1>
           <h1 class="comment-desc">We would love to hear from you! If you have any words of support or encouragement for this program, please share them below. Your message can inspire others and spread positivity.</h1>
-            <asp:TextBox ID="CommentTB" TextMode="MultiLine" CssClass="comment-textbox" runat="server"></asp:TextBox>
+            <asp:TextBox ID="CommentTB" TextMode="MultiLine" CssClass="comment-textbox" style="resize:none" runat="server"></asp:TextBox>
            <asp:Button ID="SubmitBtn" CssClass="submit-btn" runat="server" Text="Submit" OnClick="SubmitBtn_Click" />
         </div>
       </div>

@@ -11,7 +11,9 @@ namespace CareYou.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            String email = Request.QueryString["email"];
+            emailLink.Text = email;
+            emailLink.NavigateUrl = "~/Views/ResetPassword.aspx?email=" + email;
         }
 
         protected void returnSignin_Click(object sender, EventArgs e)

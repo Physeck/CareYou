@@ -207,7 +207,7 @@ namespace CareYou.Handler
         public static Response<User> updateProfile(User curr, String name, String email ,String password)
         {
             
-            User user = userRepo.GetUserByName(name);
+            User user = userRepo.getUserByEmail(email);
 
             if (user != null && curr.UserID != user.UserID)
             {
@@ -228,6 +228,122 @@ namespace CareYou.Handler
                 Message = "",
                 Field = "User",
                 Payload = curr
+            };
+        }
+
+        public static Response<User> Login(String email, String password)
+        {
+            User user = userRepo.getUserByEmail(email);
+
+            if (user == null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "Email or password is invalid!",
+                    Field = "User",
+                    Payload = null
+                };
+            }
+
+            if (!user.UserPassword.Equals(password))
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "Email or password is invalid!",
+                    Field = "password",
+                    Payload = null
+                };
+            }
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
+
+        public static Response<User> Register(String name, String email, String password)
+        {
+
+            User user = userRepo.getUserByEmail(email);
+
+            if (user != null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "User already exist",
+                    Field = "User",
+                    Payload = null
+                };
+            }
+
+            user = userRepo.register(name, email, password);
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
+
+        public static void changeRole(User user, String role)
+        {
+            userRepo.changeRole(user, role);
+        }
+
+        public static Response<User> forgotPassword(String email)
+        {
+            User user = userRepo.getUserByEmail(email);
+
+            if (user == null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "User not found",
+                    Field = "email",
+                    Payload = null
+                };
+            }
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "email",
+                Payload = user
+            };
+        }
+
+        public static Response<User> changePassword(String email, String password)
+        {
+            User user = userRepo.getUserByEmail(email);
+            if (user == null)
+            {
+                   return new Response<User>()
+                   {
+                    Success = false,
+                    Message = "User not found",
+                    Field = "User",
+                    Payload = null
+                };
+            }
+
+            userRepo.updateUserProfile(user, user.UserName, user.UserEmail, password);
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
             };
         }
     }

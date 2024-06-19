@@ -159,16 +159,7 @@ namespace CareYou.Controller
                     Payload = null
                 };
             }
-            else if (cPass.Length < 6)
-            {
-                return new Response<User>()
-                {
-                    Success = false,
-                    Message = "Length must be at least 6 character",
-                    Field = "cpassword",
-                    Payload = null
-                };
-            }else if (!cPass.Equals(pass))
+            else if (!cPass.Equals(pass))
             {
                 return new Response<User>()
                 {
@@ -239,6 +230,73 @@ namespace CareYou.Controller
                 Field = "msUser",
                 Payload = null
             };
+        }
+
+        public static Response<User> doLogin(String email, String password)
+        {
+            Response<User> cekPass = checkUPPassField(password);
+            Response<User> cekEmail = checkUPEmailField(email);
+            if(cekPass.Success && cekEmail.Success)
+            {
+                return userHandler.Login(email, password);
+            }
+            if (!cekEmail.Success)
+            {
+                return cekEmail;
+            }
+            return cekPass;
+        }
+
+        public static Response<User> doRegister(String fname, String lname, String email, String password, String cPassword)
+        {
+            Response<User> cekname = checkUPNameField(fname);
+            Response<User> cekEmail = checkUPEmailField(email);
+            Response<User> cekPass = checkUPPassField(password);
+            Response<User> cekcpass = checkUPCPassField(cPassword, password);
+
+            if (cekname.Success && cekEmail.Success && cekPass.Success && cekcpass.Success)
+            {
+                return userHandler.Register(fname + " " + lname, email, password);
+            }
+
+            if (!cekname.Success)
+            {
+                return cekname;
+            }
+            if (!cekEmail.Success)
+            {
+                return cekEmail;
+            }
+            if (!cekPass.Success)
+            {
+                return cekPass;
+            }
+            return cekcpass;
+        }
+
+        public static Response<User> doForgotPassword(String email)
+        {
+            Response<User> cekEmail = checkUPEmailField(email);
+            if (cekEmail.Success)
+            {
+                return userHandler.forgotPassword(email);
+            }
+            return cekEmail;
+        }
+
+        public static Response<User> doChangePassword(String email, String password, String cPassword)
+        {
+            Response<User> cekPass = checkUPPassField(password);
+            Response<User> cekcpass = checkUPCPassField(cPassword, password);
+            if (cekPass.Success && cekcpass.Success)
+            {
+                return userHandler.changePassword(email, password);
+            }
+            if (!cekPass.Success)
+            {
+                return cekPass;
+            }
+            return cekcpass;
         }
     }
 }

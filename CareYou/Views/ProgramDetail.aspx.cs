@@ -13,12 +13,16 @@ namespace CareYou.Views
 {
     public partial class ProgramDetail : System.Web.UI.Page
     {
+        public bool reportClicked = false;
+        public bool reportSubmitted = false;
         protected void Page_Load(object sender, EventArgs e)
         {
             int programId = Convert.ToInt32(Request.QueryString["id"]);
             Program program = ProgramHandler.getProgramById(programId);
             int userId = Convert.ToInt32(Session["UserID"]);
-            if(program != null)
+            reportClicked = false;
+            reportSubmitted = false;
+            if (program != null)
             {
                 ProgramImage.ImageUrl = "~/Assets/Program/" + program.ProgramImage;
                 FundraiserImage.ImageUrl = "~/Assets/Profiles/" + program.User.ProfilePicture;
@@ -73,7 +77,14 @@ namespace CareYou.Views
 
         protected void ReportLB_Click(object sender, EventArgs e)
         {
+            // Set a flag or variable to indicate that the LinkButton has been clicked
+            reportClicked = true;
 
+            // You can perform any other necessary actions here, such as saving the report to a database or sending a notification
+
+            // You can also pass any relevant data to the frontend, such as the ID of the program being reported, using ViewState or Session variables
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            ViewState["ReportedProgramId"] = programId;
         }
 
         protected void DonateBtn_Click(object sender, EventArgs e)
@@ -94,6 +105,12 @@ namespace CareYou.Views
                 Response.Redirect("Payment.aspx?id=" + Request.QueryString["id"]);
             }
             
+        }
+
+        protected void SubmitBtn_Click(object sender, EventArgs e)
+        {
+            reportClicked = false;
+            reportSubmitted = true;
         }
     }
 }

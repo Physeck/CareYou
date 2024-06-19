@@ -33,6 +33,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox emailTb;
 
         /// <summary>
+        /// emailErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailErrorLbl;
+
+        /// <summary>
         /// passwordTb control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ShowPasswordIB;
+
+        /// <summary>
+        /// errorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLbl;
 
         /// <summary>
         /// loginBtn control.

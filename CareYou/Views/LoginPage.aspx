@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title></title>
     <link href="../Style/loginstyle.css" rel="stylesheet" />
 </head>
 <body style="margin: 0">
@@ -28,9 +29,9 @@
                         </div>
 
                         <div class="email-container">
-                            <asp:TextBox ID="emailTb" CssClass="emailBox" runat="server" placeholder="E-mail Address"></asp:TextBox>
+                            <asp:TextBox ID="emailTb" CssClass="emailBox" TextMode="Email" runat="server" placeholder="E-mail Address"></asp:TextBox>
                         </div>
-
+                         <asp:Label ID="emailErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
 
                         <div class="pwflexRow">
@@ -38,6 +39,7 @@
                             <asp:TextBox ID="passwordTb" CssClass="passBox" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
                             <asp:ImageButton ID="ShowPasswordIB" runat="server" CssClass="show-password" OnClick="ShowPasswordIB_Click" ImageUrl="~/Assets/Login-Register/ShowsPassword.png" />
                         </div>
+                        <asp:Label ID="errorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                         <div class="barRowforg_sign">
                             <a href="/Views/ForgotPassword.aspx" class="forgPass">Forgot Password?</a>

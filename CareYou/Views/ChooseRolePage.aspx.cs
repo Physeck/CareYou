@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CareYou.Handler;
+using CareYou.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,7 +18,25 @@ namespace CareYou.Views
 
         protected void continue_Click(object sender, EventArgs e)
         {
-
+            String role = RoleDDL.SelectedValue;
+            User user = (User)Session["user"];
+            if(role == "")
+            {
+                errorLbl.Text = "Please select a role";
+            }
+            else if(user != null && role == "1")
+            {
+                userHandler.changeRole(user, "user");
+                Response.Redirect("Home.aspx");
+            }else if(user != null && role == "2")
+            {
+                userHandler.changeRole(user, "organization");
+                Response.Redirect("Home.aspx");
+            }
+            else
+            {
+                errorLbl.Text = "Something went wrong!";
+            }
         }
     }
 }

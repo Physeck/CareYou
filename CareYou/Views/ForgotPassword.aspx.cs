@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CareYou.Controller;
+using CareYou.DataClass;
+using CareYou.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -21,7 +24,16 @@ namespace CareYou.Views
 
         protected void requestBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("LinkSendPage.aspx");
+            String email = emailTb.Text;
+            Response<User> response = userController.doForgotPassword(email);
+            if (response.Message == "")
+            {
+                Response.Redirect("LinkSendPage.aspx?email=" + email);
+            }
+            else
+            {
+                errorLbl.Text = response.Message;
+            }
         }
     }
 }

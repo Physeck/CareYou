@@ -42,6 +42,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox lnameTb;
 
         /// <summary>
+        /// nameErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameErrorLbl;
+
+        /// <summary>
         /// emailTb control.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox emailTb;
+
+        /// <summary>
+        /// emailErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label emailErrorLbl;
 
         /// <summary>
         /// passwordTb control.
@@ -69,6 +87,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.ImageButton ShowPasswordIB;
 
         /// <summary>
+        /// passErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label passErrorLbl;
+
+        /// <summary>
         /// confpasswordTb control.
         /// </summary>
         /// <remarks>
@@ -85,6 +112,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ShowConfPasswordIb;
+
+        /// <summary>
+        /// ErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ErrorLbl;
 
         /// <summary>
         /// loginBtn control.
