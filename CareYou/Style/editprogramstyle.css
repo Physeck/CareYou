@@ -1,5 +1,5 @@
 ﻿body {
-    font-size: 100;
+    font-size: 100%;
     background: #F6F8FA;
 }
 
@@ -13,6 +13,8 @@
     background-color: rgb(255, 255, 255);
     border-radius: 60px 60px 60px 60px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
+    padding: 80px 74px 0px 74px;
+    display: grid;
 }
 
 .edit-flex_col {
@@ -27,15 +29,63 @@
     right: 30px;
 }
 
-.edit-text {
+.edit-text-header{
     position: relative;
     display: flex;
     align-items: center;
     margin: 0px 0px 0px 2px;
     font: 700 80px / 1 "Helvetica Neue", Helvetica, Arial, serif;
     left: 15px;
+
+}
+
+.edit-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    font: 300 80px / 1 "Helvetica Neue", Helvetica, Arial, serif;
+    left: 15px;
 }
 
 .box-container{
 
+}
+
+.topic-box {
+    position: absolute;
+    width: 921px;
+    height: 72px;
+    background-color: rgb(217, 217, 217);
+    border-radius: 12px 12px 12px 12px;
+    outline: 1px solid rgb(200, 200, 200);
+    padding: 10px;
+}
+
+.edit-topic_row{
+
+}
+
+.edit-program_row {
+}
+
+.edit-description_row {
+}
+
+.edit-target_row {
+}
+
+.edit-deadline_row {
+}
+
+.edit-image_row {
+}
+
+.edit-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 0px;
+    font: 300 40px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    letter-spacing: 1.2px;
 }
