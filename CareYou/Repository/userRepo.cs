@@ -101,5 +101,11 @@ namespace CareYou.Repository
             db.SaveChanges();
             return user;
         }
+
+        public static void changeRole(User user, String role)
+        {
+            user.Role = role;
+            db.SaveChanges();
+        }
     }
 }

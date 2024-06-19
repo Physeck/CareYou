@@ -292,5 +292,10 @@ namespace CareYou.Handler
                 Payload = user
             };
         }
+
+        public static void changeRole(User user, String role)
+        {
+            userRepo.changeRole(user, role);
+        }
     }
 }

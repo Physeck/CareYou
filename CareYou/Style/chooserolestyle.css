@@ -11,7 +11,7 @@
 }
 
 .return-btn {
-    padding: 0px 2.651vw 0px 1.36vw;
+    padding: 0px 2.083vw 0px 0.677vw;
 }
 
 .left-container {
@@ -21,7 +21,7 @@
 
 .middle-container {
     position: absolute;
-    bottom: 28.802vw;
+    top: 18.906vw;
     right: 39.167vw;
     align-items: flex-end;
     flex-direction: column;
@@ -32,9 +32,18 @@
     position: absolute;
     width: 0.729vw;
     height: 1.198vw;
-    right: 6.523vw;
-    bottom: 1.444vw;
+    right: 1.576vw;
     transform: rotate(-90deg);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.dropdown-container {
+    position: relative;
+    height: 3.906vw;
+    width: 13.542vw;
+    display: flex;
+    align-items: center;
 }
 
 .dropdownlist {
@@ -70,6 +79,7 @@
     margin: 0px;
     padding: 0.313vw 0px 0px 0.729vw;
     position: absolute;
+    pointer-events: none;
 }
 
 .bottom-container {

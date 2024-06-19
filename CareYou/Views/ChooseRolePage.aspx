@@ -23,14 +23,17 @@
 
                         <div class="middle-container">
                             <h1 class="choose-role-text">Please Choose Desired Role</h1>
-                            <h2 class="role-text" style="z-index:10">Role</h2>
-                            <asp:DropDownList ID="DropDownList1" runat="server" CssClass="dropdownlist">
-                                <asp:ListItem Value="" CssClass="default-list" Text="Choose Role" Selected="True"></asp:ListItem>
-                                <asp:ListItem Value="1" CssClass="selected-list">User</asp:ListItem>
-                                <asp:ListItem Value="2" CssClass="selected-list">Organizer</asp:ListItem>
-                            </asp:DropDownList>
-                            <img class="dropdown-png" src="/Assets/Login-Register/ReturnToSignin.png" />
+                            <h2 class="role-text" style="z-index: 10">Role</h2>
+                            <div class="dropdown-container">
+                                <img class="dropdown-png" src="/Assets/Login-Register/ReturnToSignin.png" />
+                                <asp:DropDownList ID="RoleDDL" runat="server" CssClass="dropdownlist">
+                                    <asp:ListItem Value="" CssClass="default-list" Text="Choose Role" Selected="True"></asp:ListItem>
+                                    <asp:ListItem Value="1" CssClass="selected-list">User</asp:ListItem>
+                                    <asp:ListItem Value="2" CssClass="selected-list">Organization</asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
 
+                            <asp:Label ID="errorLbl" runat="server" CssClass="error-text"></asp:Label>
                         </div>
 
                         <div class="bottom-container">
