@@ -1,4 +1,5 @@
 ﻿body {
+    background-color: #FFFFFF;
 }
 
 .background {
@@ -235,7 +236,7 @@
 }
 
 .detailProfileContainer {
-    width: 60%;
+    width: 45%;
     margin-left: auto;
     margin-right: auto;
     background-color: #E3F5F2;
@@ -482,14 +483,26 @@
     margin-bottom: 20px;
 }
 
-.pP{
+.pP {
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.borderPP {
+    width: 60%;
+    height: fit-content;
+    border-radius: 50%;
+    border: 5px solid #19456B;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
 }
 
 .pPp{
     position: relative;
-    width: 60%;
-    margin-bottom: 40px;
+    width: 100%;
+   
 }
 
 .ProfileName {

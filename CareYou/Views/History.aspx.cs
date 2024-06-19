@@ -16,7 +16,14 @@ namespace CareYou.Views
         public User curr = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            curr = userHandler.GetUserById(1); /*nanti ini query string*/
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+
+            curr = (User)Session["user"];
+
+            //curr = userHandler.GetUserById(1);
             if (!Page.IsPostBack)
             {
                 history2Above.DataSource = transactionHandler.getTransactionBasedOnUserID(curr.UserID);

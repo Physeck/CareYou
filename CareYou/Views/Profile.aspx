@@ -13,7 +13,10 @@
             </div>
             
             <div class="pP">
-                <img id="pPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="pPp" />
+                <div class="borderPP">
+                    <img id="pPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="pPp" />
+                </div>
+               
             </div>
             
 
