@@ -283,5 +283,20 @@ namespace CareYou.Controller
             }
             return cekEmail;
         }
+
+        public static Response<User> doChangePassword(String email, String password, String cPassword)
+        {
+            Response<User> cekPass = checkUPPassField(password);
+            Response<User> cekcpass = checkUPCPassField(cPassword, password);
+            if (cekPass.Success && cekcpass.Success)
+            {
+                return userHandler.changePassword(email, password);
+            }
+            if (!cekPass.Success)
+            {
+                return cekPass;
+            }
+            return cekcpass;
+        }
     }
 }

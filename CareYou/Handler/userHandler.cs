@@ -321,5 +321,30 @@ namespace CareYou.Handler
                 Payload = user
             };
         }
+
+        public static Response<User> changePassword(String email, String password)
+        {
+            User user = userRepo.getUserByEmail(email);
+            if (user == null)
+            {
+                   return new Response<User>()
+                   {
+                    Success = false,
+                    Message = "User not found",
+                    Field = "User",
+                    Payload = null
+                };
+            }
+
+            userRepo.updateUserProfile(user, user.UserName, user.UserEmail, password);
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
     }
 }

@@ -4,16 +4,14 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title></title>
     <link href="../Style/loginstyle.css" rel="stylesheet" />
     <link href="../Style/linksendstyle.css" rel="stylesheet" />
     <link href="../Style/forgotpwstyle.css" rel="stylesheet" />
 
 </head>
 <body style="margin: 0">
-
-    <body>
         <form id="form1" runat="server">
-            <div>
                 <div class="loginPage-container">
                     <div class="login-page-left-flexbox">
                         <h1 class="app-title-container">
@@ -28,7 +26,7 @@
 
                             <div class="checkemail-flexrow">
                                 <h1 class="entEmail">Check Your Email Inbox</h1>
-                                <h1 class="entSend"><span>We sent an email to <span><asp:Label style="text-decoration:underline" ID="emailLbl" runat="server"></asp:Label></span> with password reset link.</span> 
+                                <h1 class="entSend"><span>We sent an email to </span><asp:HyperLink ID="emailLink" style="text-decoration:underline" runat="server"></asp:HyperLink><span> with password reset link.</span> 
                                     <br />
                                     
                                     If you don't see it after a few minutes, check your spam folder.

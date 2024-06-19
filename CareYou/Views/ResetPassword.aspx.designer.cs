@@ -42,6 +42,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.ImageButton ShowNewPasswordIb;
 
         /// <summary>
+        /// passErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label passErrorLbl;
+
+        /// <summary>
         /// confpasswordTb control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton ShowConfPasswordIb;
+
+        /// <summary>
+        /// cpassErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label cpassErrorLbl;
 
         /// <summary>
         /// setpasswordBtn control.
