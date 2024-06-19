@@ -32,5 +32,6 @@ namespace CareYou.Model
         public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<UserBadge> UserBadges { get; set; }
         public virtual DbSet<Withdrawal> Withdrawals { get; set; }
+        public virtual DbSet<ReportedProgram> ReportedPrograms { get; set; }
     }
 }

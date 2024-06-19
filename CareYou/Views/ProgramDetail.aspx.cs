@@ -1,4 +1,5 @@
 ﻿using CareYou.Controller;
+using CareYou.DataClass;
 using CareYou.Handler;
 using CareYou.Model;
 using System;
@@ -13,15 +14,18 @@ namespace CareYou.Views
 {
     public partial class ProgramDetail : System.Web.UI.Page
     {
-        public bool reportClicked = false;
-        public bool reportSubmitted = false;
+        public bool reportClicked;
+        public bool reportSubmitted;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                reportClicked = false;
+                reportSubmitted = false;
+            }
             int programId = Convert.ToInt32(Request.QueryString["id"]);
             Program program = ProgramHandler.getProgramById(programId);
             int userId = Convert.ToInt32(Session["UserID"]);
-            reportClicked = false;
-            reportSubmitted = false;
             if (program != null)
             {
                 ProgramImage.ImageUrl = "~/Assets/Program/" + program.ProgramImage;
@@ -53,6 +57,14 @@ namespace CareYou.Views
                 if(ProgramController.isOwner(programId, userId))
                 {
                     DonateBtn.Text = "Details";
+                }
+                if(OtherCB.Checked)
+                {
+                    OtherReasonTB.Attributes.Remove("disabled");
+                }
+                else
+                {
+                    OtherReasonTB.Attributes.Add("disabled", "true");
                 }
             }
         }
@@ -109,8 +121,28 @@ namespace CareYou.Views
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
-            reportClicked = false;
-            reportSubmitted = true;
+            reportClicked = true;
+            bool ScamFundraise = ScamCB.Checked;
+            bool FraudFundraise = FraudCB.Checked;
+            bool Thirdparty = ThirdpartyCB.Checked;
+            bool Other = OtherCB.Checked;
+            string OtherReason = "";
+            if (Other)
+            {
+                OtherReason = OtherReasonTB.Text;
+            }
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            Response<ReportedProgram> response = ReportController.CreateReport(programId, ScamFundraise, FraudFundraise, Thirdparty, Other, OtherReason);
+            if (response.Message == "")
+            {
+                reportClicked = false;
+                reportSubmitted = true;
+            }
+            else
+            {
+                errorLbl.Text = response.Message;
+            }
+            
         }
     }
 }
