@@ -26,7 +26,7 @@ namespace CareYou.Layouts
 
         protected void ReportsBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("ReportsPage.aspx");
+            Response.Redirect("UserReportPage.aspx");
         }
 
         protected void LogOutBtn_Click(object sender, EventArgs e)
