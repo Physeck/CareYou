@@ -1,0 +1,37 @@
+﻿body {
+    font-size: 100;
+    background: #F6F8FA;
+}
+
+.page-container {
+    margin: 13.438vw 8.854vw 89.427vw 8.854vw;
+}
+
+.edit-container {
+    position: relative;
+    min-height: 1389px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 60px 60px 60px 60px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
+}
+
+.edit-flex_col{
+
+}
+
+.method-img{
+
+}
+
+.edit-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0px 2px;
+    font: 700 80px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
+
+.box-container{
+
+}

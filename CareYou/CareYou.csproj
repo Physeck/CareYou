@@ -142,6 +142,8 @@
     <Content Include="Views\ChooseRolePage.aspx" />
     <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
+    <Content Include="Style\editprogramstyle.css" />
+    <Content Include="Views\EditProgramDetails.aspx" />
     <Content Include="Views\ForgotPassword.aspx" />
     <Content Include="Views\FundraisePage.aspx" />
     <Content Include="Views\History.aspx" />
@@ -252,6 +254,13 @@
     </Compile>
     <Compile Include="Views\DonatePage.aspx.designer.cs">
       <DependentUpon>DonatePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditProgramDetails.aspx.cs">
+      <DependentUpon>EditProgramDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\EditProgramDetails.aspx.designer.cs">
+      <DependentUpon>EditProgramDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ForgotPassword.aspx.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
