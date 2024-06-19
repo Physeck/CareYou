@@ -15,12 +15,16 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
 }
 
-.edit-flex_col{
-
+.edit-flex_col {
+    margin: 0px 0px 74px 0px;
+    position: relative;
+    flex-direction: column;
+    gap: 60px 0px;
 }
 
-.method-img{
-
+.method-img {
+    position: relative;
+    right: 30px;
 }
 
 .edit-text {
@@ -28,8 +32,8 @@
     display: flex;
     align-items: center;
     margin: 0px 0px 0px 2px;
-    font: 700 80px/1 "Helvetica Neue", Helvetica, Arial, serif;
-    color: rgb(0, 0, 0);
+    font: 700 80px / 1 "Helvetica Neue", Helvetica, Arial, serif;
+    left: 15px;
 }
 
 .box-container{
