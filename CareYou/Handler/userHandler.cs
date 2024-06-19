@@ -297,5 +297,29 @@ namespace CareYou.Handler
         {
             userRepo.changeRole(user, role);
         }
+
+        public static Response<User> forgotPassword(String email)
+        {
+            User user = userRepo.getUserByEmail(email);
+
+            if (user == null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "User not found",
+                    Field = "email",
+                    Payload = null
+                };
+            }
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "email",
+                Payload = user
+            };
+        }
     }
 }

@@ -4,11 +4,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title></title>
     <link href="../Style/loginstyle.css" rel="stylesheet" />
     <link href="../Style/forgotpwstyle.css" rel="stylesheet" />
 </head>
 <body style="margin: 0">
-    <body>
         <form id="form1" runat="server">
             <div>
                 <div class="loginPage-container">
@@ -32,6 +32,7 @@
                                 <div class="email-container">
                                     <asp:TextBox ID="emailTb" CssClass="emailBox" runat="server" placeholder="E-mail Address"></asp:TextBox>
                                 </div>
+                                <asp:Label ID="errorLbl" runat="server" CssClass="error-text"></asp:Label>
                             </div>
                             <div class="Lgflex_col">
                             </div>

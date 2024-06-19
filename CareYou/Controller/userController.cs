@@ -273,5 +273,15 @@ namespace CareYou.Controller
             }
             return cekcpass;
         }
+
+        public static Response<User> doForgotPassword(String email)
+        {
+            Response<User> cekEmail = checkUPEmailField(email);
+            if (cekEmail.Success)
+            {
+                return userHandler.forgotPassword(email);
+            }
+            return cekEmail;
+        }
     }
 }
