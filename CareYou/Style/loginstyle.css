@@ -290,3 +290,9 @@ input:focus-visible {
     text-decoration: underline;
     margin: 0;
 }
+
+.error-text {
+    color: red;
+    font: 400 1.354vw/1.13 "Helvetica Regular", Helvetica, Arial, serif;
+    margin: 0 0 0 0;
+}

@@ -240,5 +240,20 @@ namespace CareYou.Controller
                 Payload = null
             };
         }
+
+        public static Response<User> doLogin(String email, String password)
+        {
+            Response<User> cekPass = checkUPPassField(password);
+            Response<User> cekEmail = checkUPEmailField(email);
+            if(cekPass.Success && cekEmail.Success)
+            {
+                return userHandler.Login(email, password);
+            }
+            if (!cekPass.Success)
+            {
+                return cekPass;
+            }
+            return cekEmail;
+        }
     }
 }

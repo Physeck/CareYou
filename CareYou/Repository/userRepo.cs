@@ -70,6 +70,11 @@ namespace CareYou.Repository
             return (from x in db.Users where x.Role.Equals("organization") select x).OrderByDescending(x => x.Transactions.Sum(y => y.Amount)).ToList();
         }
 
+        public static User getUserByEmail(String email)
+        {
+            return (from x in db.Users where x.UserEmail.Equals(email) select x).FirstOrDefault();
+        }
+
         public static void updateUserProfile(User curr, String name, String email, String password)
         {
             curr.UserName = name;

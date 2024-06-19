@@ -230,5 +230,40 @@ namespace CareYou.Handler
                 Payload = curr
             };
         }
+
+        public static Response<User> Login(String email, String password)
+        {
+            User user = userRepo.getUserByEmail(email);
+
+            if (user == null)
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "Email or password is invalid!",
+                    Field = "email",
+                    Payload = null
+                };
+            }
+
+            if (!user.UserPassword.Equals(password))
+            {
+                return new Response<User>()
+                {
+                    Success = false,
+                    Message = "Email or password is invalid!",
+                    Field = "password",
+                    Payload = null
+                };
+            }
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
     }
 }
