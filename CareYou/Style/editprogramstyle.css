@@ -9,12 +9,14 @@
 
 .edit-container {
     position: relative;
-    min-height: 1389px;
+    height: 1389px;
     background-color: rgb(255, 255, 255);
     border-radius: 60px 60px 60px 60px;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.247);
     padding: 80px 74px 0px 74px;
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 }
 
 .edit-flex_col {
@@ -53,8 +55,11 @@
 }
 
 .topic-box {
-    position: absolute;
-    width: 921px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    justify-content: space-between;
     height: 72px;
     background-color: rgb(217, 217, 217);
     border-radius: 12px 12px 12px 12px;
@@ -62,8 +67,12 @@
     padding: 10px;
 }
 
-.edit-topic_row{
-
+.edit-topic_row {
+    position: relative;
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    height: 73px;
 }
 
 .edit-program_row {
@@ -84,8 +93,6 @@
 .edit-text {
     position: relative;
     display: flex;
-    align-items: center;
-    min-width: 0px;
-    font: 300 40px/1 "Helvetica Neue", Helvetica, Arial, serif;
+    font: 300 40px / 1 "Helvetica Neue", Helvetica, Arial, serif;
     letter-spacing: 1.2px;
 }
