@@ -21,23 +21,33 @@
 
                 <div class="edit-program_row">
                     <h1 class="edit-text">Edit your program's title</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
+                    <div class="topic-box"></div>
                 </div>
 
                 <div class="edit-description_row">
                     <h1 class="edit-text">Edit description</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
+                    <div class="insert-box"></div>
                     
                 </div>
 
                 <div class="edit-target_row">
                     <h1 class="edit-text">Edit target donation</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
+                    <div class="insert-box"></div>
                 </div>
 
                 <div class="edit-deadline_row">
                     <h1 class="edit-text">Edit deadline date</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
+                    <div class="insert-box"></div>
                 </div>
 
                 <div class="edit-image_row">
                     <h1 class="edit-text">Update image</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
+                    <div class="insert-box"></div>
                 </div>
                 
             </div>
