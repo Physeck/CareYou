@@ -39,6 +39,8 @@ namespace CareYou.Model
         public System.DateTime EndDate { get; set; }
         public bool Verified { get; set; }
         public int Withdrawn { get; set; }
+        public string FundraiserNationalID { get; set; }
+        public Nullable<int> VerifiedBy { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -47,5 +49,6 @@ namespace CareYou.Model
         public virtual ICollection<ReportedProgram> ReportedPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual Admin Admin { get; set; }
     }
 }
