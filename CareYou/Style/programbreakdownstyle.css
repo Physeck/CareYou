@@ -45,6 +45,7 @@
     position: relative;
     display: flex;
     flex-direction: row;
+    height: 12.448vw;
     align-items: center;
     margin: 0.156vw 0px 0px;
     background-color: rgb(255, 255, 255);
@@ -56,8 +57,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 10.781vw;
-    margin: auto 3.125vw auto ;
+    width: 17.969vw;
+    margin: auto 0.625vw auto 3.125vw;
 }
 
 .raised-text {
@@ -102,8 +103,7 @@
 .details-container {
     justify-content: space-between;
     flex-direction: row;
-    justify-content: space-between;
-    flex-direction: row;
+    
     display: flex;
     position: relative;
     margin: 2.604vw 0px 2.396vw 0px;
@@ -242,6 +242,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
+    height: 42.292vw;
+    width: 47.708vw;
     background: var(--src) center center / 100% 100% no-repeat;
     filter: drop-shadow(0px 0px 40px rgba(0, 0, 0, 0.149));
 }
@@ -304,6 +306,7 @@
     background-color: rgb(254, 220, 151);
     border-radius: 0.833vw 0.833vw 0.833vw 0.833vw;
     padding: 0.859vw 0.417vw 0.859vw 0.417vw;
+    border: none;
 }
 .delete-buttons:hover{
     background-color: #FEB625;
@@ -317,4 +320,11 @@
     left: 15.208vw;
     width: 17.917vw;
     height: 16.51vw;
+}
+
+.spacer {
+    height: 10.885vw;
+    margin: 0 0 -10.885vw 0;
+    /* margin: 20px 0 -50px 0; use this if you want #container to have a 'bottom padding', in this case of 20px */
+    background: transparent; /* you'll need this if #container's parent element has a different background from #container itself */
 }

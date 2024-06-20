@@ -42,6 +42,7 @@
           <Property Name="StartDate" Type="date" Nullable="false" />
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="Verified" Type="bit" Nullable="false" />
+          <Property Name="Withdrawn" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ReportedProgram">
           <Key>
@@ -240,6 +241,7 @@
           <NavigationProperty Name="User" Relationship="Self.FK_Program_User" FromRole="Program" ToRole="User" />
           <NavigationProperty Name="Transactions" Relationship="CareYouDBModel.FK_Transaction_Program" FromRole="Program" ToRole="Transaction" />
           <NavigationProperty Name="ReportedPrograms" Relationship="CareYouDBModel.FK_ReportedProgram_ToProgram" FromRole="Program" ToRole="ReportedProgram" />
+          <Property Name="Withdrawn" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -473,6 +475,7 @@
           <EntitySetMapping Name="Programs">
             <EntityTypeMapping TypeName="CareYouDBModel.Program">
               <MappingFragment StoreEntitySet="Program">
+                <ScalarProperty Name="Withdrawn" ColumnName="Withdrawn" />
                 <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
                 <ScalarProperty Name="FundraiserID" ColumnName="FundraiserID" />
                 <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
