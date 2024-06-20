@@ -45,9 +45,8 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin: 0px 0px 0px 2px;
+    width: 24.115vw;
     font: 300 80px / 1 "Helvetica Neue", Helvetica, Arial, serif;
-    left: 15px;
 }
 
 .box-container{
@@ -58,7 +57,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 47.969vw;
     justify-content: space-between;
     height: 72px;
     background-color: rgb(217, 217, 217);
@@ -69,8 +68,7 @@
 
 .edit-topic_row {
     position: relative;
-    justify-content: space-between;
-    flex-direction: column;
+    flex-direction: row;
     display: flex;
     height: 73px;
 }

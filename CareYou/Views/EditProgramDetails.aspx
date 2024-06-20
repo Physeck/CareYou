@@ -13,6 +13,7 @@
             <div class="edit-container">
                 <div class="edit-topic_row">
                     <h1 class="edit-text">Edit your programs topic</h1>
+                    <h1 class="edit-text" style="width:1.667vw">:</h1>
                     <div class="topic-box">
 
                     </div>

@@ -4,6 +4,24 @@
     <link href="../Style/programbreakdownstyle.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <% if (deleteClicked)
+        { %>
+    <div id="deletePopup" class="modal">
+        <div class="delete-modal" style="--src: url(/Assets/ProgramDetail/delete-popup.svg)">
+            <div class="delete-flexbox">
+                <h1 class="delete-title">Warning!</h1>
+                <div class="delete-col">
+                    <h1 class="delete-text">Deleting your CareYou campaign will permanently remove all data and access to funds. Ensure all supporters are informed before proceeding.</h1>
+                    <div class="delete-btn-row">
+                        <button class="delete-buttons">Yes</button>
+                        <button class="delete-buttons">No</button>
+                    </div>
+                </div>
+            </div>
+            <img class="warning-img" src="/Assets/ProgramDetail/warning.png" alt="alt text" />
+        </div>
+    </div>
+    <% } %>
     <div class="page-container">
         <div class="help-text-flex_col">
             <asp:Label CssClass="title-text" ID="titleLb" runat="server" Text="Label"></asp:Label>
@@ -14,9 +32,9 @@
         <div class="goal-container">
             <div class="raise-text-flex_col">
                 <h1 class="raised-text">Raised</h1>
-                <span class="rp-text">Rp
+                <span class="rp-text">Rp. 
                     <asp:Label ID="raisedLb" CssClass="rp-text" runat="server" Text="Label"></asp:Label></span>
-                <span class="rp-goal-text"><span>Rp </span>
+                <span class="rp-goal-text"><span>Rp. </span>
                     <asp:Label ID="targetLb" CssClass="rp-goal-text" runat="server" Text="Label"></asp:Label><span> goal</span></span>
 
             </div>
@@ -64,4 +82,14 @@
             <asp:Button ID="editBtn" CssClass="editbtn" runat="server" Text="Edit Program Details" OnClick="editBtn_Click" />
         </div>
     </div>
+    <script>
+        var delModal = document.getElementById("deletePopup");
+        var delContent = document.querySelector(".delete-content");
+
+        document.addEventListener("click", function (event) { 
+            if (event.target !== delContent && delContent != null && !delContent.contains(event.target)) {
+                delModal.style.display = "none";
+            }
+        });
+    </script>
 </asp:Content>

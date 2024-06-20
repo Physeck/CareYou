@@ -111,6 +111,7 @@ namespace CareYou.Views
             else if (ProgramController.isOwner(programId,userId))
             {
                 // redirect to details page
+                Response.Redirect("ProgramDetailBreakdown.aspx?id=" + Request.QueryString["id"]);
             }
             else
             {
