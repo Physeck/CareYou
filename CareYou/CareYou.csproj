@@ -82,6 +82,8 @@
     <Content Include="Assets\HomePage\home-background.png" />
     <Content Include="Assets\Login-Register\Rectangle-RegLogin.png" />
     <Content Include="Assets\Login-Register\ShowsPassword.png" />
+    <Content Include="Assets\ProgramDetail\imagebtn.png" />
+    <Content Include="Assets\ProgramDetail\locked.png" />
     <Content Include="Assets\UserReportProfile.svg" />
     <Content Include="Assets\NavbarProfile.svg" />
     <Content Include="Assets\Profiles\IP1.png" />

@@ -13,5 +13,15 @@ namespace CareYou.Views
         {
 
         }
+
+        protected void sendreqBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void insertimgId_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
     }
 }
