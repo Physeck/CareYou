@@ -59,7 +59,7 @@
     flex-direction: column;
     width: 47.969vw;
     justify-content: space-between;
-    height: 72px;
+    height: 52px;
     background-color: rgb(217, 217, 217);
     border-radius: 12px 12px 12px 12px;
     outline: 1px solid rgb(200, 200, 200);
@@ -74,18 +74,38 @@
 }
 
 .edit-program_row {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    height: 73px;
 }
 
 .edit-description_row {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    height: 73px;
 }
 
 .edit-target_row {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    height: 73px;
 }
 
 .edit-deadline_row {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    height: 73px;
 }
 
 .edit-image_row {
+    position: relative;
+    flex-direction: row;
+    display: flex;
+    height: 73px;
 }
 
 .edit-text {
@@ -93,4 +113,17 @@
     display: flex;
     font: 300 40px / 1 "Helvetica Neue", Helvetica, Arial, serif;
     letter-spacing: 1.2px;
+}
+
+.insert-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 47.969vw;
+    justify-content: space-between;
+    height: 52px;
+    background-color: #ffffff;
+    border-radius: 12px 12px 12px 12px;
+    outline: 1px solid rgb(200, 200, 200);
+    padding: 10px;
 }
