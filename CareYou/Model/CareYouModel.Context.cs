@@ -29,7 +29,7 @@ namespace CareYou.Model
         public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<Donation> Donations { get; set; }
         public virtual DbSet<Program> Programs { get; set; }
-        public virtual DbSet<ProgramChanx> ProgramChanges { get; set; }
+        public virtual DbSet<ProgramChanges> ProgramChanges1 { get; set; }
         public virtual DbSet<ReportedProgram> ReportedPrograms { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }

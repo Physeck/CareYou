@@ -1,4 +1,6 @@
-﻿using CareYou.Handler;
+﻿using CareYou.Controller;
+using CareYou.DataClass;
+using CareYou.Handler;
 using CareYou.Model;
 using System;
 using System.Collections.Generic;
@@ -31,13 +33,55 @@ namespace CareYou.Views
 
         protected void sendreqBtn_Click(object sender, EventArgs e)
         {
-            String title = TitleLb.Text;
-            String topic = TopicLb.Text;
             String desc = descTb.Text;
-            int target = Convert.ToInt32(targetTb.Text);
-            DateTime deadline = Convert.ToDateTime(dateTb.Text);
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            int target;
+            if (!Int32.TryParse(targetTb.Text, out target)){
+                target = 0;
+            }
+            String deadline = dateTb.Text;
+            bool confirmation = ConfirmationCB.Checked;
             HttpPostedFile file = InsertImage.PostedFile;
-            // String filename = Path.GetFileName(file.FileName);
+            Response<ProgramChanges> response = ProgramController.createProgramChanges(confirmation, programId, desc, target, deadline, file);
+            if(response.Success)
+            {
+                Response.Redirect("RequestSubmitted.aspx");
+            }
+            else
+            {
+                if(response.Field.Equals("desc"))
+                {
+                    descErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    descErrorLbl.Text = "";
+                }
+                if(response.Field.Equals("target"))
+                {
+                    TargetErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    TargetErrorLbl.Text = "";
+                }
+                if(response.Field.Equals("deadline"))
+                {
+                    DeadlineErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    DeadlineErrorLbl.Text = "";
+                }
+                if(response.Field.Equals("confirmation"))
+                {
+                    ConfirmErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    ConfirmErrorLbl.Text = "";
+                }
+            }
         }
 
         protected void BackBtn_Click(object sender, ImageClickEventArgs e)

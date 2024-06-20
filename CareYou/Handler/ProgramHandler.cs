@@ -1,4 +1,5 @@
-﻿using CareYou.Model;
+﻿using CareYou.DataClass;
+using CareYou.Model;
 using CareYou.Repository;
 using System;
 using System.Collections.Generic;
@@ -148,6 +149,18 @@ namespace CareYou.Handler
         public static void deleteProgram(int programId)
         {
             programRepo.deleteProgram(programId);
+        }
+
+        public static Response<ProgramChanges> createProgramChanges(int programId, String desc, int target, DateTime deadline, HttpPostedFile file)
+        {
+            ProgramChanges changes = programRepo.createNewProgramChanges(programId, desc, target, deadline, file.FileName);
+            return new Response<ProgramChanges>()
+            {
+                Success = true,
+                Message = "",
+                Field = "changes",
+                Payload = changes
+            };
         }
     }
 }

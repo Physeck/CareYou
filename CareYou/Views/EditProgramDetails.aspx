@@ -38,19 +38,19 @@
                         <asp:TextBox ID="descTb" CssClass="insert-box-big" placeholder="Description" TextMode="MultiLine" runat="server" Style="resize: none"></asp:TextBox>
 
                     </div>
-                    <asp:Label ID="descErrorLbl" runat="server"></asp:Label>
+                    <asp:Label ID="descErrorLbl" CssClass="error-text" runat="server"></asp:Label>
                     <div class="edit-target_row">
                         <h1 class="edit-text">Edit target donation</h1>
                         <h1 class="edit-text colon">:</h1>
-                        <asp:TextBox ID="targetTb" CssClass="insert-box" placeholder="Target" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="targetTb" CssClass="insert-box" placeholder="Target" runat="server" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
-                    <asp:Label ID="TargetErrorLbl" runat="server"></asp:Label>
+                    <asp:Label ID="TargetErrorLbl" CssClass="error-text" runat="server"></asp:Label>
                     <div class="edit-deadline_row">
                         <h1 class="edit-text">Edit deadline date</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="dateTb" CssClass="date-box" placeholder="Date" TextMode="Date" runat="server"></asp:TextBox>
                     </div>
-                    <asp:Label ID="DeadlineErrorLbl" runat="server"></asp:Label>
+                    <asp:Label ID="DeadlineErrorLbl" CssClass="error-text" runat="server"></asp:Label>
                     <div class="edit-image_row">
                         <h1 class="edit-text">Update image</h1>
                         <h1 class="edit-text colon">:</h1>
@@ -62,10 +62,10 @@
                     <asp:Label ID="ImageErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="checkbox-button-content">
-                        <asp:CheckBox ID="PlatformFeeCB" runat="server" />
+                        <asp:CheckBox ID="ConfirmationCB" runat="server" />
                         <h1 class="checkbox-text">I confirm that the information provided is accurate and complete.</h1>
                     </div>
-
+                    <asp:Label ID="ConfirmErrorLbl" CssClass="error-text" style="margin-left: 0" runat="server"></asp:Label>
                     <asp:Button ID="sendreqBtn" CssClass="send-request-btn" Text="Send Request" runat="server" OnClick="sendreqBtn_Click" />
 
                 </div>
@@ -95,5 +95,13 @@
             }
         });
     });
+</script>
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 </script>
 </asp:Content>

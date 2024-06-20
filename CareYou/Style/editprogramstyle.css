@@ -5,11 +5,10 @@
 
 .edit-container {
     position: relative;
-    height: 72.344vw;
     background-color: rgb(255, 255, 255);
     border-radius: 3.125vw 3.125vw 3.125vw 3.125vw;
     box-shadow: 0px 0.208vw 0.208vw 0px rgba(0, 0, 0, 0.247);
-    padding: 4.167vw 3.854vw 0px 3.854vw;
+    padding: 4.167vw 3.854vw 8.177vw 3.854vw;
     display: flex;
     flex-direction: column;
     gap: 2.083vw;
@@ -183,18 +182,6 @@
 
 .page-container {
     
-}
-
-.edit-container {
-    position: relative;
-    height: 72.344vw;
-    background-color: rgb(255, 255, 255);
-    border-radius: 3.125vw 3.125vw 3.125vw 3.125vw;
-    box-shadow: 0px 0.208vw 0.208vw 0px rgba(0, 0, 0, 0.247);
-    padding: 4.167vw 3.854vw 0px 3.854vw;
-    display: flex;
-    flex-direction: column;
-    gap: 2.083vw;
 }
 
 .edit-flex_col {
@@ -450,7 +437,9 @@ input[type="file"] {
     display: none;
 }
 
-.error-text{
-    font: 300 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
+.error-text {
+    font: 300 1.458vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
     color: #FF0000;
+    margin-left: 26.865vw;
+    margin-top: -1.5vw;
 }

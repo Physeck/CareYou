@@ -1,10 +1,10 @@
 ﻿
 .root {
-    position: relative;
-    bottom: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 19.531vw;
     display: flex;
-    right: 0px;
-    left: 0px;
     flex-direction: column;
     background-color: rgb(246, 248, 250);
     outline: 0.052vw solid rgba(0, 0, 0, 0.498);

@@ -1,4 +1,5 @@
-﻿using CareYou.Model;
+﻿using CareYou.Factory;
+using CareYou.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,6 +45,34 @@ namespace CareYou.Repository
         {
             db.Programs.Remove(getProgramById(programId));
             db.SaveChanges();
+        }
+
+        public static int generateProgramID()
+        {
+            Program lastProgram = db.Programs.ToList().LastOrDefault();
+            if (lastProgram == null)
+            {
+                return 1;
+            }
+            return lastProgram.ProgramID + 1;
+        }
+
+        public static int generateChangesProgramID()
+        {
+            ProgramChanges lastChanges = db.ProgramChanges1.ToList().LastOrDefault();
+            if (lastChanges == null)
+            {
+                return 1;
+            }
+            return lastChanges.ProgramID + 1;
+        }
+
+        public static ProgramChanges createNewProgramChanges(int programId, String desc, int target, DateTime deadline, String image)
+        {
+            ProgramChanges changes = ProgramFactory.CreateProgramChanges(programId, desc, target, deadline, image);
+            db.ProgramChanges1.Add(changes);
+            db.SaveChanges();
+            return changes;
         }
 
     }

@@ -7,6 +7,12 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, serif;
     background-color: #F6F8FA;
+    margin: 0 0 19.531vw 0;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
 }
 .navbar_shape {
     position: fixed;

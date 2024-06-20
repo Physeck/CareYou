@@ -374,7 +374,7 @@
           <Property Name="VerifiedBy" Type="Int32" />
           <NavigationProperty Name="Admin" Relationship="CareYouDBModel.FK_Program_Admin" FromRole="Program" ToRole="Admin" />
         </EntityType>
-        <EntityType Name="ProgramChanx">
+        <EntityType Name="ProgramChanges">
           <Key>
             <PropertyRef Name="ChangesID" />
           </Key>
@@ -463,7 +463,7 @@
         </EntityType>
         <Association Name="FK_ProgramChanges_AdminID">
           <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
-          <End Role="ProgramChanges" Type="Self.ProgramChanx" Multiplicity="*" />
+          <End Role="ProgramChanges" Type="CareYouDBModel.ProgramChanges" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Admin">
               <PropertyRef Name="AdminID" />
@@ -531,7 +531,7 @@
           <End Role="Program" Type="Self.Program" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="ProgramChanges" Type="Self.ProgramChanx" Multiplicity="*" />
+          <End Role="ProgramChanges" Type="CareYouDBModel.ProgramChanges" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Program">
               <PropertyRef Name="ProgramID" />
@@ -624,7 +624,7 @@
           <EntitySet Name="Badges" EntityType="Self.Badge" />
           <EntitySet Name="Donations" EntityType="Self.Donation" />
           <EntitySet Name="Programs" EntityType="Self.Program" />
-          <EntitySet Name="ProgramChanges" EntityType="Self.ProgramChanx" />
+          <EntitySet Name="ProgramChanges1" EntityType="CareYouDBModel.ProgramChanges" />
           <EntitySet Name="ReportedPrograms" EntityType="Self.ReportedProgram" />
           <EntitySet Name="Transactions" EntityType="Self.Transaction" />
           <EntitySet Name="Users" EntityType="Self.User" />
@@ -632,7 +632,7 @@
           <EntitySet Name="Withdrawals" EntityType="Self.Withdrawal" />
           <AssociationSet Name="FK_ProgramChanges_AdminID" Association="Self.FK_ProgramChanges_AdminID">
             <End Role="Admin" EntitySet="Admins" />
-            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges1" />
           </AssociationSet>
           <AssociationSet Name="FK_ReportedProgram_ToAdmin" Association="Self.FK_ReportedProgram_ToAdmin">
             <End Role="Admin" EntitySet="Admins" />
@@ -652,7 +652,7 @@
           </AssociationSet>
           <AssociationSet Name="FK_ProgramChanges_ProgramID" Association="Self.FK_ProgramChanges_ProgramID">
             <End Role="Program" EntitySet="Programs" />
-            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges1" />
           </AssociationSet>
           <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="Self.FK_ReportedProgram_ToProgram">
             <End Role="Program" EntitySet="Programs" />
@@ -756,8 +756,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProgramChanges">
-            <EntityTypeMapping TypeName="CareYouDBModel.ProgramChanx">
+          <EntitySetMapping Name="ProgramChanges1">
+            <EntityTypeMapping TypeName="CareYouDBModel.ProgramChanges">
               <MappingFragment StoreEntitySet="ProgramChanges">
                 <ScalarProperty Name="ChangesID" ColumnName="ChangesID" />
                 <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />

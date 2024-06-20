@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="CareYouDBModel.Badge" Width="1.5" PointX="9.625" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.Donation" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.Program" Width="1.875" PointX="6.5" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="CareYouDBModel.ProgramChanx" Width="1.5" PointX="11.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CareYouDBModel.ProgramChanges" Width="1.5" PointX="11.75" PointY="11.875" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.ReportedProgram" Width="1.5" PointX="9.875" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.Transaction" Width="1.5" PointX="3.25" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="CareYouDBModel.User" Width="1.5" PointX="6.875" PointY="4.75" IsExpanded="true" />

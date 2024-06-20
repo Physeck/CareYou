@@ -17,7 +17,7 @@ namespace CareYou.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Admin()
         {
-            this.ProgramChanges = new HashSet<ProgramChanx>();
+            this.ProgramChanges = new HashSet<ProgramChanges>();
             this.ReportedPrograms = new HashSet<ReportedProgram>();
             this.Programs = new HashSet<Program>();
         }
@@ -28,7 +28,7 @@ namespace CareYou.Model
         public string AdminPassword { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProgramChanx> ProgramChanges { get; set; }
+        public virtual ICollection<ProgramChanges> ProgramChanges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReportedProgram> ReportedPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

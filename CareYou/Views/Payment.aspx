@@ -72,7 +72,7 @@
                         <asp:TextBox ID="CCNameTB" runat="server" Placeholder="Name on card" CssClass="cc-name"></asp:TextBox>
                         <div class="form-flexbox-line">
                             <asp:TextBox ID="CCNumberTB" runat="server" MaxLength="16" Placeholder="Card Number" CssClass="card-number-container" onkeypress="return isNumberKey(event)"></asp:TextBox>
-                            <asp:TextBox ID="CCCVVTB" runat="server" MaxLength="3" Placeholder="CVV" CssClass="cc-cvv" monkeypress="return isNumberKey(event)"></asp:TextBox>
+                            <asp:TextBox ID="CCCVVTB" runat="server" MaxLength="3" Placeholder="CVV" CssClass="cc-cvv" onkeypress="return isNumberKey(event)"></asp:TextBox>
                         </div>
                         <div class="form-flexbox-line">
                             <div class="cc-expire">

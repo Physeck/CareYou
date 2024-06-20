@@ -164,6 +164,7 @@
     <Content Include="Views\ProgramDetail.aspx" />
     <Content Include="Views\ProgramDetailBreakdown.aspx" />
     <Content Include="Views\RegisterPage.aspx" />
+    <Content Include="Views\RequestSubmitted.aspx" />
     <Content Include="Views\ResetPassword.aspx" />
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
@@ -177,6 +178,7 @@
     <Compile Include="Controller\userController.cs" />
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
+    <Compile Include="Factory\ProgramFactory.cs" />
     <Compile Include="Factory\ReportFactory.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
@@ -216,7 +218,7 @@
     <Compile Include="Model\Program.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProgramChanx.cs">
+    <Compile Include="Model\ProgramChanges.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\ReportedProgram.cs">
@@ -380,6 +382,13 @@
     </Compile>
     <Compile Include="Views\RegisterPage.aspx.designer.cs">
       <DependentUpon>RegisterPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RequestSubmitted.aspx.cs">
+      <DependentUpon>RequestSubmitted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RequestSubmitted.aspx.designer.cs">
+      <DependentUpon>RequestSubmitted.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ResetPassword.aspx.cs">
       <DependentUpon>ResetPassword.aspx</DependentUpon>
