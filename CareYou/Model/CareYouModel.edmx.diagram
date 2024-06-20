@@ -19,6 +19,8 @@
         <EntityTypeShape EntityType="CareYouDBModel.Withdrawal" Width="1.5" PointX="3" PointY="9.625" />
         <AssociationConnector Association="CareYouDBModel.FK_Withdrawal_Transaction" />
         <AssociationConnector Association="CareYouDBModel.FK_Transaction_Program" />
+        <EntityTypeShape EntityType="CareYouDBModel.ReportedProgram" Width="1.5" PointX="8" PointY="5.375" />
+        <AssociationConnector Association="CareYouDBModel.FK_ReportedProgram_ToProgram" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

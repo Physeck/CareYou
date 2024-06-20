@@ -18,8 +18,15 @@ namespace CareYou.Views
         public userBadgeData badgeOfUser = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            User user = (User)Session["user"];
-            int id = Convert.ToInt32(user.UserID); // Aku ubah ke Session -Julian
+            //User user = (User)Session["user"];
+            //int id = Convert.ToInt32(user.UserID);
+
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+
+            int id = Convert.ToInt32(Request.QueryString["id"]);
 
             curr = userRepo.GetUserById(id);
             totalDonate = userController.getTotalDonationFromUserID(id);

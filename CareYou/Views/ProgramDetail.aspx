@@ -27,11 +27,12 @@
                         </div>
                         <div class="others-flexbox">
                             <div class="checkbox-button-content">
-                                <asp:CheckBox ID="OthersCB" runat="server" />
+                                <asp:CheckBox ID="OtherCB" runat="server" onchange="toggleOtherReasonTextBox()"/>
                                 <h1 class="checkbox-text">Others</h1>
                             </div>
-                            <asp:TextBox ID="CommentTB" TextMode="MultiLine" CssClass="reason-textbox" Style="resize: none" runat="server"></asp:TextBox>
+                            <asp:TextBox ID="OtherReasonTB" TextMode="MultiLine" CssClass="reason-textbox" Style="resize: none" runat="server"></asp:TextBox>
                         </div>
+                        <asp:Label ID="errorLbl" runat="server" CssClass="error-text"></asp:Label>
                     </div>
                 </div>
                 <asp:Button ID="SubmitBtn" CssClass="report-submit-btn" runat="server" Text="Submit" OnClick="SubmitBtn_Click" />
@@ -169,12 +170,23 @@
         // Add a click event listener to the document
         document.addEventListener("click", function (event) {
             // Check if the clicked element is outside the modal content
-            if (event.target !== modalContent && modalContent!=null && !modalContent.contains(event.target)) {
+            if (event.target !== modalContent && modalContent != null && !modalContent.contains(event.target)) {
                 // Close the popup
                 modal.style.display = "none";
-            } else if (event.target !== modalContent1 && modalContent1!=null && !modalContent1.contains(event.target)){
-                                modal1.style.display = "none";
+            } else if (event.target !== modalContent1 && modalContent1 != null && !modalContent1.contains(event.target)) {
+                modal1.style.display = "none";
             }
         });
+
+        function toggleOtherReasonTextBox() {
+            var otherCB = document.getElementById('<%= OtherCB.ClientID %>');
+            var otherReasonTB = document.getElementById('<%= OtherReasonTB.ClientID %>');
+
+            if (otherCB.checked) {
+                otherReasonTB.disabled = false;
+            } else {
+                otherReasonTB.disabled = true;
+            }
+        }
     </script>
 </asp:Content>

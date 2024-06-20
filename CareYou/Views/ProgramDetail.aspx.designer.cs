@@ -42,22 +42,31 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.CheckBox ThirdpartyCB;
 
         /// <summary>
-        /// OthersCB control.
+        /// OtherCB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox OthersCB;
+        protected global::System.Web.UI.WebControls.CheckBox OtherCB;
 
         /// <summary>
-        /// CommentTB control.
+        /// OtherReasonTB control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CommentTB;
+        protected global::System.Web.UI.WebControls.TextBox OtherReasonTB;
+
+        /// <summary>
+        /// errorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label errorLbl;
 
         /// <summary>
         /// SubmitBtn control.

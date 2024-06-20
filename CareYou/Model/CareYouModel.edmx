@@ -43,6 +43,19 @@
           <Property Name="EndDate" Type="date" Nullable="false" />
           <Property Name="Verified" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="ReportedProgram">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="int" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="OtherReason" Type="varchar" MaxLength="200" />
+          <Property Name="ScamFundraise" Type="bit" Nullable="false" />
+          <Property Name="FraudFundraise" Type="bit" Nullable="false" />
+          <Property Name="ThirdpartyBeneficiary" Type="bit" Nullable="false" />
+          <Property Name="ReportStatus" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateReported" Type="datetime" Nullable="false" />
+        </EntityType>
         <EntityType Name="Transaction">
           <Key>
             <PropertyRef Name="TransactionID" />
@@ -94,6 +107,18 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="FundraiserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportedProgram_ToProgram">
+          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="ProgramID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -149,6 +174,7 @@
           <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportedProgram" EntityType="Self.ReportedProgram" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserBadge" EntityType="Self.UserBadge" Schema="dbo" store:Type="Tables" />
@@ -156,6 +182,10 @@
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="User" />
             <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="Self.FK_ReportedProgram_ToProgram">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="ReportedProgram" EntitySet="ReportedProgram" />
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
             <End Role="Program" EntitySet="Program" />
@@ -209,6 +239,7 @@
           <Property Name="Verified" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Program_User" FromRole="Program" ToRole="User" />
           <NavigationProperty Name="Transactions" Relationship="CareYouDBModel.FK_Transaction_Program" FromRole="Program" ToRole="Transaction" />
+          <NavigationProperty Name="ReportedPrograms" Relationship="CareYouDBModel.FK_ReportedProgram_ToProgram" FromRole="Program" ToRole="ReportedProgram" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -313,6 +344,11 @@
             <End Role="Program" EntitySet="Programs" />
             <End Role="Transaction" EntitySet="Transactions" />
           </AssociationSet>
+          <EntitySet Name="ReportedPrograms" EntityType="CareYouDBModel.ReportedProgram" />
+          <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="CareYouDBModel.FK_ReportedProgram_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="ReportedProgram" EntitySet="ReportedPrograms" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Badge">
           <Key>
@@ -389,6 +425,32 @@
               <PropertyRef Name="ProgramID" />
             </Principal>
             <Dependent Role="Transaction">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ReportedProgram">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="OtherReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ScamFundraise" Type="Boolean" Nullable="false" />
+          <Property Name="FraudFundraise" Type="Boolean" Nullable="false" />
+          <Property Name="ThirdpartyBeneficiary" Type="Boolean" Nullable="false" />
+          <Property Name="ReportStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateReported" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Program" Relationship="CareYouDBModel.FK_ReportedProgram_ToProgram" FromRole="ReportedProgram" ToRole="Program" />
+        </EntityType>
+        <Association Name="FK_ReportedProgram_ToProgram">
+          <End Type="CareYouDBModel.Program" Role="Program" Multiplicity="1" />
+          <End Type="CareYouDBModel.ReportedProgram" Role="ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
               <PropertyRef Name="ProgramID" />
             </Dependent>
           </ReferentialConstraint>
@@ -482,6 +544,20 @@
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportedPrograms">
+            <EntityTypeMapping TypeName="CareYouDBModel.ReportedProgram">
+              <MappingFragment StoreEntitySet="ReportedProgram">
+                <ScalarProperty Name="DateReported" ColumnName="DateReported" />
+                <ScalarProperty Name="ReportStatus" ColumnName="ReportStatus" />
+                <ScalarProperty Name="ThirdpartyBeneficiary" ColumnName="ThirdpartyBeneficiary" />
+                <ScalarProperty Name="FraudFundraise" ColumnName="FraudFundraise" />
+                <ScalarProperty Name="ScamFundraise" ColumnName="ScamFundraise" />
+                <ScalarProperty Name="OtherReason" ColumnName="OtherReason" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

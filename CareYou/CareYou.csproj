@@ -171,11 +171,14 @@
   <ItemGroup>
     <Compile Include="Controller\badgeController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
+    <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\userController.cs" />
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
+    <Compile Include="Factory\ReportFactory.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\ReportHandler.cs" />
     <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Layouts\AdminNavbar.Master.cs">
       <DependentUpon>AdminNavbar.Master</DependentUpon>
@@ -183,6 +186,9 @@
     </Compile>
     <Compile Include="Layouts\AdminNavbar.Master.designer.cs">
       <DependentUpon>AdminNavbar.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReportedProgram.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Withdrawal.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
@@ -225,6 +231,7 @@
     </Compile>
     <Compile Include="Modules\ResponseList.cs" />
     <Compile Include="Repository\badgeRepository.cs" />
+    <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="top10Data.cs" />
     <Compile Include="Handler\userHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

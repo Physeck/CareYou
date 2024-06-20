@@ -687,3 +687,9 @@ input[type='checkbox']:checked:after {
             background-color: rgb(1, 169, 93);
             color: white;
         }
+
+.error-text {
+    color: red;
+    font: 400 1.354vw/1.13 "Helvetica Regular", Helvetica, Arial, serif;
+    margin: 9vw 0;
+}
