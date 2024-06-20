@@ -17,8 +17,9 @@ namespace CareYou.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Program()
         {
-            this.Transactions = new HashSet<Transaction>();
+            this.ProgramChanges = new HashSet<ProgramChanx>();
             this.ReportedPrograms = new HashSet<ReportedProgram>();
+            this.Transactions = new HashSet<Transaction>();
         }
     
         public int ProgramID { get; set; }
@@ -41,8 +42,10 @@ namespace CareYou.Model
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Transaction> Transactions { get; set; }
+        public virtual ICollection<ProgramChanx> ProgramChanges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ReportedProgram> ReportedPrograms { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Transaction> Transactions { get; set; }
     }
 }

@@ -3,10 +3,6 @@
     background: #F6F8FA;
 }
 
-.page-container {
-    margin: 13.438vw 8.854vw 89.427vw 8.854vw;
-}
-
 .edit-container {
     position: relative;
     height: 72.344vw;
@@ -106,9 +102,14 @@
     position: relative;
     display: flex;
     font: 300 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
-    letter-spacing: 0.063vw;
     width: 24.115vw;
 }
+    .edit-text.colon {
+        width: 1.667vw;
+        justify-content: flex-end;
+        position: relative;
+        margin-right: 2.083vw;
+    }
 
 .edit-text-desc {
     position: relative;
@@ -118,32 +119,6 @@
     align-items: flex-start;
     width: 24.115vw;
 }
-
-.insert-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 47.969vw;
-    justify-content: space-between;
-    font-size: 1.458vw;
-    height: 2.708vw;
-    background-color: #ffffff;
-    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
-    outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 0.52vw;
-    border: none;
-}
-
-    .insert-box:hover {
-        background-color: #C8C8C8;
-    }
-
-    .insert-box::placeholder {
-        position: relative;
-        margin: 1.042vw 1.198vw 2.396vw 1.042vw;
-        font: 400 1.458vw/1.35 "Helvetica", Helvetica, Arial, serif;
-        color: #767676;
-    }
 
 .insert-box-big {
     position: relative;
@@ -158,6 +133,7 @@
     outline: 0.052vw solid rgb(200, 200, 200);
     padding: 0.52vw;
     border: none;
+    color: #767676
 }
 
     .insert-box-big:hover {
@@ -181,15 +157,16 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 47.969vw;
-    justify-content: space-between;
-    font-size: 1.458vw;
+    width: calc(47.969vw - 0.521vw - 1.7vw);
+    justify-content: center;
+    font: 400 1.458vw/1.35 "Helvetica", Helvetica, Arial, serif;
     height: 2.708vw;
     background-color: #ffffff;
     border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
     outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 0.52vw;
+    padding: 0.521vw 1.7vw 0.521vw 0.521vw;
     border: none;
+    color: #767676;
 }
 
     .date-box:hover {
@@ -203,64 +180,9 @@
         color: #767676;
     }
 
-.month-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 47.969vw;
-    justify-content: space-between;
-    font-size: 1.458vw;
-    height: 2.708vw;
-    background-color: #ffffff;
-    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
-    outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 50.521vw;
-    border: none;
-}
-
-    .month-box:hover {
-        background-color: #C8C8C8;
-    }
-
-    .month-box::placeholder {
-        position: relative;
-        margin: 1.042vw 1.198vw 2.396vw 1.042vw;
-        font: 400 1.458vw/1.35 "Helvetica", Helvetica, Arial, serif;
-        color: #767676;
-    }
-
-.year-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 47.969vw;
-    justify-content: space-between;
-    font-size: 1.458vw;
-    height: 2.708vw;
-    background-color: #ffffff;
-    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
-    outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 0.521vw;
-    border: none;
-}
-
-    .year-box:hover {
-        background-color: #C8C8C8;
-    }
-
-.year::placeholder {
-    position: relative;
-    margin: 1.042vw 1.198vw 2.396vw 1.042vw;
-    font: 400 1.458vw/1.35 "Helvetica", Helvetica, Arial, serif;
-    color: #767676;
-}
-body {
-    font-size: 100%;
-    background: #F6F8FA;
-}
 
 .page-container {
-    margin: 13.438vw 8.854vw 89.427vw 8.854vw;
+    
 }
 
 .edit-container {
@@ -297,13 +219,14 @@ body {
 }
 
 .box-container {
+    margin: 13.438vw 8.854vw 89.427vw 8.854vw;
 }
 
 .topic-box {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 47.969vw;
+    width: calc(47.969vw - 0.521vw - 0.521vw);
     justify-content: center;
     height: 2.708vw;
     background-color: rgb(217, 217, 217);
@@ -345,28 +268,12 @@ body {
     align-items: center;
 }
 
-.edit-deadline_row {
-    position: relative;
-    flex-direction: row;
-    display: flex;
-    height: 3.802vw;
-    align-items: center;
-}
-
 .edit-image_row {
     position: relative;
     flex-direction: row;
     display: flex;
     height: 3.802vw;
     align-items: center;
-}
-
-.edit-text {
-    position: relative;
-    display: flex;
-    font: 300 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
-    letter-spacing: 0.063vw;
-    width: 24.115vw;
 }
 
 .edit-text-desc {
@@ -382,16 +289,16 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 47.969vw;
+    width: calc(47.969vw - 0.521vw - 0.521vw);
     justify-content: center;
     font-size: 1.458vw;
     height: 2.708vw;
     background-color: #ffffff;
     border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
     outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 0.52vw;
+    padding: 0.521vw;
     border: none;
-    color: #767676;
+    color: #767676 !important;
 }
 
     .insert-box:hover {
@@ -409,7 +316,7 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 47.969vw;
+    width: calc(47.969vw - 0.521vw - 0.521vw);
     justify-content: space-between;
     height: 18.177vw;
     background-color: #ffffff;
@@ -432,37 +339,6 @@ body {
         color: #767676;
     }
 
-.date-flex_col {
-    position: relative;
-    display: flex;
-    gap: 1.771vw;
-}
-
-.date-box {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 10.156vw;
-    justify-content: space-between;
-    font-size: 1.458vw;
-    height: 2.708vw;
-    background-color: #ffffff;
-    border-radius: 0.625vw 0.625vw 0.625vw 0.625vw;
-    outline: 0.052vw solid rgb(200, 200, 200);
-    padding: 0.52vw;
-    border: none;
-}
-
-    .date-box:hover {
-        background-color: #C8C8C8;
-    }
-
-    .date-box::placeholder {
-        position: relative;
-        margin: 1.042vw 1.198vw 2.396vw 1.042vw;
-        font: 400 1.458vw/1.35 "Helvetica", Helvetica, Arial, serif;
-        color: #767676;
-    }
 
 .month-box {
     position: relative;
@@ -562,9 +438,19 @@ background-color: rgb(1, 169, 93);
 
 .insert-image {
     position: absolute;
-    display: flex;
+    display: flex !important;
     width: 1.979vw;
     height: 1.979vw;
     z-index: 10;
     right: 1.667vw;
+    background: url(../Assets/ProgramDetail/imagebtn.png) center center / 100% 100% no-repeat;
+    cursor: pointer;
+}
+input[type="file"] {
+    display: none;
+}
+
+.error-text{
+    font: 300 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: #FF0000;
 }

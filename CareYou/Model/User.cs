@@ -18,6 +18,7 @@ namespace CareYou.Model
         public User()
         {
             this.Programs = new HashSet<Program>();
+            this.ReportedPrograms = new HashSet<ReportedProgram>();
             this.Transactions = new HashSet<Transaction>();
             this.UserBadges = new HashSet<UserBadge>();
         }
@@ -33,6 +34,8 @@ namespace CareYou.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program> Programs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ReportedProgram> ReportedPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaction> Transactions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

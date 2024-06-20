@@ -22,7 +22,11 @@ namespace CareYou.Model
         public bool ThirdpartyBeneficiary { get; set; }
         public string ReportStatus { get; set; }
         public System.DateTime DateReported { get; set; }
+        public Nullable<int> AdminID { get; set; }
+        public Nullable<int> ReporterID { get; set; }
     
+        public virtual Admin Admin { get; set; }
         public virtual Program Program { get; set; }
+        public virtual User User { get; set; }
     }
 }

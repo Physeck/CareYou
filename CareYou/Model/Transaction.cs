@@ -18,12 +18,12 @@ namespace CareYou.Model
         public int UserID { get; set; }
         public System.DateTime TransactionDate { get; set; }
         public int Amount { get; set; }
-        public int ProgramID { get; set; }
+        public Nullable<int> ProgramID { get; set; }
         public string TransactionType { get; set; }
     
         public virtual Donation Donation { get; set; }
+        public virtual Program Program { get; set; }
         public virtual User User { get; set; }
         public virtual Withdrawal Withdrawal { get; set; }
-        public virtual Program Program { get; set; }
     }
 }

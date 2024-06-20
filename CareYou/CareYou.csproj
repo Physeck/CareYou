@@ -189,15 +189,9 @@
     <Compile Include="Layouts\AdminNavbar.Master.designer.cs">
       <DependentUpon>AdminNavbar.Master</DependentUpon>
     </Compile>
-    <Compile Include="Model\ReportedProgram.cs">
+    <Compile Include="Model\Admin.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\Withdrawal.cs">
-      <DependentUpon>CareYouModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Response.cs" />
-    <Compile Include="Handler\badgeHandler.cs" />
-    <Compile Include="Handler\ProgramHandler.cs" />
     <Compile Include="Model\Badge.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
@@ -222,6 +216,12 @@
     <Compile Include="Model\Program.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ProgramChanx.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ReportedProgram.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Transaction.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
@@ -231,6 +231,12 @@
     <Compile Include="Model\UserBadge.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Withdrawal.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Response.cs" />
+    <Compile Include="Handler\badgeHandler.cs" />
+    <Compile Include="Handler\ProgramHandler.cs" />
     <Compile Include="Modules\ResponseList.cs" />
     <Compile Include="Repository\badgeRepository.cs" />
     <Compile Include="Repository\ReportRepository.cs" />
@@ -405,6 +411,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Layouts\AdminNavbar.Master" />
+    <Content Include="Assets\fonts\helvetica-compressed.otf" />
     <EntityDeploy Include="Model\CareYouModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CareYouModel.Designer.cs</LastGenOutput>
@@ -412,8 +420,6 @@
     <Content Include="Model\CareYouModel.edmx.diagram">
       <DependentUpon>CareYouModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Layouts\AdminNavbar.Master" />
-    <Content Include="Assets\fonts\helvetica-compressed.otf" />
     <None Include="packages.config" />
     <Content Include="Layouts\navbar.Master" />
     <None Include="Web.Debug.config">

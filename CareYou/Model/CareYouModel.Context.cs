@@ -25,13 +25,15 @@ namespace CareYou.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Admin> Admins { get; set; }
+        public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<Donation> Donations { get; set; }
         public virtual DbSet<Program> Programs { get; set; }
+        public virtual DbSet<ProgramChanx> ProgramChanges { get; set; }
+        public virtual DbSet<ReportedProgram> ReportedPrograms { get; set; }
         public virtual DbSet<Transaction> Transactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Badge> Badges { get; set; }
         public virtual DbSet<UserBadge> UserBadges { get; set; }
         public virtual DbSet<Withdrawal> Withdrawals { get; set; }
-        public virtual DbSet<ReportedProgram> ReportedPrograms { get; set; }
     }
 }

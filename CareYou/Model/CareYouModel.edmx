@@ -4,7 +4,16 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="CareYouDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="int" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AdminPassword" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Badge">
           <Key>
             <PropertyRef Name="BadgeID" />
@@ -21,6 +30,7 @@
           <Property Name="TransactionID" Type="int" Nullable="false" />
           <Property Name="Comment" Type="varchar" MaxLength="250" />
           <Property Name="PaymentMethod" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="isAnonymous" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -44,6 +54,20 @@
           <Property Name="Verified" Type="bit" Nullable="false" />
           <Property Name="Withdrawn" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="ProgramChanges">
+          <Key>
+            <PropertyRef Name="ChangesID" />
+          </Key>
+          <Property Name="ChangesID" Type="int" Nullable="false" />
+          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="ChangesDesc" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ChangesTarget" Type="int" Nullable="false" />
+          <Property Name="ChangesImage" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ChangesEndDate" Type="date" Nullable="false" />
+          <Property Name="isApproved" Type="bit" Nullable="false" />
+          <Property Name="DateSubmitted" Type="datetime" Nullable="false" />
+          <Property Name="AdminID" Type="int" />
+        </EntityType>
         <EntityType Name="ReportedProgram">
           <Key>
             <PropertyRef Name="ReportID" />
@@ -56,6 +80,8 @@
           <Property Name="ThirdpartyBeneficiary" Type="bit" Nullable="false" />
           <Property Name="ReportStatus" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="DateReported" Type="datetime" Nullable="false" />
+          <Property Name="AdminID" Type="int" />
+          <Property Name="ReporterID" Type="int" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -65,7 +91,7 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="TransactionDate" Type="datetime" Nullable="false" />
           <Property Name="Amount" Type="int" Nullable="false" />
-          <Property Name="ProgramID" Type="int" Nullable="false" />
+          <Property Name="ProgramID" Type="int" />
           <Property Name="TransactionType" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
@@ -99,6 +125,20 @@
           <Property Name="BankName" Type="varchar" MaxLength="20" />
           <Property Name="WithdrawMethod" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Donation_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Donation">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Program_User">
           <End Role="User" Type="Self.User" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -110,6 +150,44 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="FundraiserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramChanges_AdminID">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="ProgramChanges" Type="Self.ProgramChanges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="ProgramChanges">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramChanges_ProgramID">
+          <End Role="Program" Type="Self.Program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramChanges" Type="Self.ProgramChanges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ProgramChanges">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportedProgram_ToAdmin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="AdminID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -127,10 +205,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_ReportedProgram_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="ReporterID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Transaction_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Program">
@@ -138,6 +226,18 @@
             </Principal>
             <Dependent Role="Transaction">
               <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -169,25 +269,65 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Withdrawal_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Withdrawal" Type="Self.Withdrawal" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Transaction">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="Withdrawal">
+              <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="CareYouDBModelStoreContainer">
+          <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProgramChanges" EntityType="Self.ProgramChanges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportedProgram" EntityType="Self.ReportedProgram" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Transaction" EntityType="Self.Transaction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserBadge" EntityType="Self.UserBadge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Withdrawal" EntityType="Self.Withdrawal" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Donation_Transaction" Association="Self.FK_Donation_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
           <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
             <End Role="User" EntitySet="User" />
             <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramChanges_AdminID" Association="Self.FK_ProgramChanges_AdminID">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramChanges_ProgramID" Association="Self.FK_ProgramChanges_ProgramID">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToAdmin" Association="Self.FK_ReportedProgram_ToAdmin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="ReportedProgram" EntitySet="ReportedProgram" />
           </AssociationSet>
           <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="Self.FK_ReportedProgram_ToProgram">
             <End Role="Program" EntitySet="Program" />
             <End Role="ReportedProgram" EntitySet="ReportedProgram" />
           </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToUser" Association="Self.FK_ReportedProgram_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="ReportedProgram" EntitySet="ReportedProgram" />
+          </AssociationSet>
           <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
             <End Role="Program" EntitySet="Program" />
+            <End Role="Transaction" EntitySet="Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+            <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
           <AssociationSet Name="FK_UserBadge_Badge" Association="Self.FK_UserBadge_Badge">
@@ -198,11 +338,37 @@
             <End Role="User" EntitySet="User" />
             <End Role="UserBadge" EntitySet="UserBadge" />
           </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="Self.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transaction" />
+            <End Role="Withdrawal" EntitySet="Withdrawal" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CareYouDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Admin">
+          <Key>
+            <PropertyRef Name="AdminID" />
+          </Key>
+          <Property Name="AdminID" Type="Int32" Nullable="false" />
+          <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdminEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AdminPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="ProgramChanges" Relationship="Self.FK_ProgramChanges_AdminID" FromRole="Admin" ToRole="ProgramChanges" />
+          <NavigationProperty Name="ReportedPrograms" Relationship="Self.FK_ReportedProgram_ToAdmin" FromRole="Admin" ToRole="ReportedProgram" />
+        </EntityType>
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BadgeDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BadgeImage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UserBadges" Relationship="Self.FK_UserBadge_Badge" FromRole="Badge" ToRole="UserBadge" />
+        </EntityType>
         <EntityType Name="Donation">
           <Key>
             <PropertyRef Name="TransactionID" />
@@ -210,7 +376,8 @@
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="Comment" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="PaymentMethod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Transaction" Relationship="Self.FK__Donation__Transa__3D2915A8" FromRole="Donation" ToRole="Transaction" />
+          <Property Name="isAnonymous" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Transaction" Relationship="Self.FK_Donation_Transaction" FromRole="Donation" ToRole="Transaction" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -232,10 +399,45 @@
           <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Verified" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Program_User" FromRole="Program" ToRole="User" />
-          <NavigationProperty Name="Transactions" Relationship="CareYouDBModel.FK_Transaction_Program" FromRole="Program" ToRole="Transaction" />
-          <NavigationProperty Name="ReportedPrograms" Relationship="CareYouDBModel.FK_ReportedProgram_ToProgram" FromRole="Program" ToRole="ReportedProgram" />
           <Property Name="Withdrawn" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Program_User" FromRole="Program" ToRole="User" />
+          <NavigationProperty Name="ProgramChanges" Relationship="Self.FK_ProgramChanges_ProgramID" FromRole="Program" ToRole="ProgramChanges" />
+          <NavigationProperty Name="ReportedPrograms" Relationship="Self.FK_ReportedProgram_ToProgram" FromRole="Program" ToRole="ReportedProgram" />
+          <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_Program" FromRole="Program" ToRole="Transaction" />
+        </EntityType>
+        <EntityType Name="ProgramChanx">
+          <Key>
+            <PropertyRef Name="ChangesID" />
+          </Key>
+          <Property Name="ChangesID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="ChangesDesc" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChangesTarget" Type="Int32" Nullable="false" />
+          <Property Name="ChangesImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ChangesEndDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="isApproved" Type="Boolean" Nullable="false" />
+          <Property Name="DateSubmitted" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdminID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_ProgramChanges_AdminID" FromRole="ProgramChanges" ToRole="Admin" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_ProgramChanges_ProgramID" FromRole="ProgramChanges" ToRole="Program" />
+        </EntityType>
+        <EntityType Name="ReportedProgram">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" />
+          <Property Name="ProgramID" Type="Int32" Nullable="false" />
+          <Property Name="OtherReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ScamFundraise" Type="Boolean" Nullable="false" />
+          <Property Name="FraudFundraise" Type="Boolean" Nullable="false" />
+          <Property Name="ThirdpartyBeneficiary" Type="Boolean" Nullable="false" />
+          <Property Name="ReportStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateReported" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="AdminID" Type="Int32" />
+          <Property Name="ReporterID" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_ReportedProgram_ToAdmin" FromRole="ReportedProgram" ToRole="Admin" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_ReportedProgram_ToProgram" FromRole="ReportedProgram" ToRole="Program" />
+          <NavigationProperty Name="User" Relationship="Self.FK_ReportedProgram_ToUser" FromRole="ReportedProgram" ToRole="User" />
         </EntityType>
         <EntityType Name="Transaction">
           <Key>
@@ -245,12 +447,12 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="TransactionDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Amount" Type="Int32" Nullable="false" />
-          <Property Name="ProgramID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Donation" Relationship="Self.FK__Donation__Transa__3D2915A8" FromRole="Transaction" ToRole="Donation" />
+          <Property Name="ProgramID" Type="Int32" />
+          <Property Name="TransactionType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Donation" Relationship="Self.FK_Donation_Transaction" FromRole="Transaction" ToRole="Donation" />
+          <NavigationProperty Name="Program" Relationship="Self.FK_Transaction_Program" FromRole="Transaction" ToRole="Program" />
           <NavigationProperty Name="User" Relationship="Self.FK_Transaction_User" FromRole="Transaction" ToRole="User" />
-          <Property Name="TransactionType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Withdrawal" Relationship="CareYouDBModel.FK_Withdrawal_Transaction" FromRole="Transaction" ToRole="Withdrawal" />
-          <NavigationProperty Name="Program" Relationship="CareYouDBModel.FK_Transaction_Program" FromRole="Transaction" ToRole="Program" />
+          <NavigationProperty Name="Withdrawal" Relationship="Self.FK_Withdrawal_Transaction" FromRole="Transaction" ToRole="Withdrawal" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -265,11 +467,73 @@
           <Property Name="ProfilePicture" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UserStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Programs" Relationship="Self.FK_Program_User" FromRole="User" ToRole="Program" />
+          <NavigationProperty Name="ReportedPrograms" Relationship="Self.FK_ReportedProgram_ToUser" FromRole="User" ToRole="ReportedProgram" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_User" FromRole="User" ToRole="Transaction" />
-          <NavigationProperty Name="UserBadges" Relationship="CareYouDBModel.FK_UserBadge_User" FromRole="User" ToRole="UserBadge" />
+          <NavigationProperty Name="UserBadges" Relationship="Self.FK_UserBadge_User" FromRole="User" ToRole="UserBadge" />
         </EntityType>
-        <Association Name="FK__Donation__Transa__3D2915A8">
-          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1" />
+        <EntityType Name="UserBadge">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="BadgeID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="BadgeID" Type="Int32" Nullable="false" />
+          <Property Name="DateReceived" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Badge" Relationship="Self.FK_UserBadge_Badge" FromRole="UserBadge" ToRole="Badge" />
+          <NavigationProperty Name="User" Relationship="Self.FK_UserBadge_User" FromRole="UserBadge" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Withdrawal">
+          <Key>
+            <PropertyRef Name="TransactionID" />
+          </Key>
+          <Property Name="TransactionID" Type="Int32" Nullable="false" />
+          <Property Name="BankAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="BankName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="WithdrawMethod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Transaction" Relationship="Self.FK_Withdrawal_Transaction" FromRole="Withdrawal" ToRole="Transaction" />
+        </EntityType>
+        <Association Name="FK_ProgramChanges_AdminID">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="ProgramChanges" Type="Self.ProgramChanx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="ProgramChanges">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportedProgram_ToAdmin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="AdminID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserBadge_Badge">
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Badge">
+              <PropertyRef Name="BadgeID" />
+            </Principal>
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="BadgeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Donation_Transaction">
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Donation" Type="Self.Donation" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Transaction">
@@ -281,7 +545,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Program_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -289,6 +555,58 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="FundraiserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProgramChanges_ProgramID">
+          <End Role="Program" Type="Self.Program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProgramChanges" Type="Self.ProgramChanx" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ProgramChanges">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportedProgram_ToProgram">
+          <End Role="Program" Type="Self.Program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Transaction_Program">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="ProgramID" />
+            </Principal>
+            <Dependent Role="Transaction">
+              <PropertyRef Name="ProgramID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReportedProgram_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ReportedProgram">
+              <PropertyRef Name="ReporterID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -304,106 +622,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="CareYouDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Donations" EntityType="Self.Donation" />
-          <EntitySet Name="Programs" EntityType="Self.Program" />
-          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Donation__Transa__3D2915A8" Association="Self.FK__Donation__Transa__3D2915A8">
-            <End Role="Transaction" EntitySet="Transactions" />
-            <End Role="Donation" EntitySet="Donations" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Program" EntitySet="Programs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
-          <EntitySet Name="Badges" EntityType="CareYouDBModel.Badge" />
-          <EntitySet Name="UserBadges" EntityType="CareYouDBModel.UserBadge" />
-          <AssociationSet Name="FK_UserBadge_Badge" Association="CareYouDBModel.FK_UserBadge_Badge">
-            <End Role="Badge" EntitySet="Badges" />
-            <End Role="UserBadge" EntitySet="UserBadges" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserBadge_User" Association="CareYouDBModel.FK_UserBadge_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserBadge" EntitySet="UserBadges" />
-          </AssociationSet>
-          <EntitySet Name="Withdrawals" EntityType="CareYouDBModel.Withdrawal" />
-          <AssociationSet Name="FK_Withdrawal_Transaction" Association="CareYouDBModel.FK_Withdrawal_Transaction">
-            <End Role="Transaction" EntitySet="Transactions" />
-            <End Role="Withdrawal" EntitySet="Withdrawals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_Program" Association="CareYouDBModel.FK_Transaction_Program">
-            <End Role="Program" EntitySet="Programs" />
-            <End Role="Transaction" EntitySet="Transactions" />
-          </AssociationSet>
-          <EntitySet Name="ReportedPrograms" EntityType="CareYouDBModel.ReportedProgram" />
-          <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="CareYouDBModel.FK_ReportedProgram_ToProgram">
-            <End Role="Program" EntitySet="Programs" />
-            <End Role="ReportedProgram" EntitySet="ReportedPrograms" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Badge">
-          <Key>
-            <PropertyRef Name="BadgeID" />
-          </Key>
-          <Property Name="BadgeID" Type="Int32" Nullable="false" />
-          <Property Name="BadgeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BadgeDescription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="BadgeImage" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UserBadges" Relationship="CareYouDBModel.FK_UserBadge_Badge" FromRole="Badge" ToRole="UserBadge" />
-        </EntityType>
-        <EntityType Name="UserBadge">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="BadgeID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="BadgeID" Type="Int32" Nullable="false" />
-          <Property Name="DateReceived" Type="DateTime" Nullable="false" Precision="0" />
-          <NavigationProperty Name="Badge" Relationship="CareYouDBModel.FK_UserBadge_Badge" FromRole="UserBadge" ToRole="Badge" />
-          <NavigationProperty Name="User" Relationship="CareYouDBModel.FK_UserBadge_User" FromRole="UserBadge" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_UserBadge_Badge">
-          <End Type="CareYouDBModel.Badge" Role="Badge" Multiplicity="1" />
-          <End Type="CareYouDBModel.UserBadge" Role="UserBadge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Badge">
-              <PropertyRef Name="BadgeID" />
-            </Principal>
-            <Dependent Role="UserBadge">
-              <PropertyRef Name="BadgeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_UserBadge_User">
-          <End Type="CareYouDBModel.User" Role="User" Multiplicity="1" />
-          <End Type="CareYouDBModel.UserBadge" Role="UserBadge" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="UserBadge">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Withdrawal">
-          <Key>
-            <PropertyRef Name="TransactionID" />
-          </Key>
-          <Property Name="TransactionID" Type="Int32" Nullable="false" />
-          <Property Name="BankAccount" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="BankName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Transaction" Relationship="CareYouDBModel.FK_Withdrawal_Transaction" FromRole="Withdrawal" ToRole="Transaction" />
-          <Property Name="WithdrawMethod" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <Association Name="FK_Withdrawal_Transaction">
-          <End Type="CareYouDBModel.Transaction" Role="Transaction" Multiplicity="1" />
-          <End Type="CareYouDBModel.Withdrawal" Role="Withdrawal" Multiplicity="0..1" />
+          <End Role="Transaction" Type="Self.Transaction" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Withdrawal" Type="Self.Withdrawal" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Transaction">
               <PropertyRef Name="TransactionID" />
@@ -413,63 +636,119 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaction_Program">
-          <End Type="CareYouDBModel.Program" Role="Program" Multiplicity="1" />
-          <End Type="CareYouDBModel.Transaction" Role="Transaction" Multiplicity="*" />
+        <Association Name="FK_UserBadge_User">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="ProgramID" />
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
             </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="ProgramID" />
+            <Dependent Role="UserBadge">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="ReportedProgram">
-          <Key>
-            <PropertyRef Name="ReportID" />
-          </Key>
-          <Property Name="ReportID" Type="Int32" Nullable="false" />
-          <Property Name="ProgramID" Type="Int32" Nullable="false" />
-          <Property Name="OtherReason" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="ScamFundraise" Type="Boolean" Nullable="false" />
-          <Property Name="FraudFundraise" Type="Boolean" Nullable="false" />
-          <Property Name="ThirdpartyBeneficiary" Type="Boolean" Nullable="false" />
-          <Property Name="ReportStatus" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="DateReported" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Program" Relationship="CareYouDBModel.FK_ReportedProgram_ToProgram" FromRole="ReportedProgram" ToRole="Program" />
-        </EntityType>
-        <Association Name="FK_ReportedProgram_ToProgram">
-          <End Type="CareYouDBModel.Program" Role="Program" Multiplicity="1" />
-          <End Type="CareYouDBModel.ReportedProgram" Role="ReportedProgram" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Program">
-              <PropertyRef Name="ProgramID" />
-            </Principal>
-            <Dependent Role="ReportedProgram">
-              <PropertyRef Name="ProgramID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityContainer Name="CareYouDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Admins" EntityType="Self.Admin" />
+          <EntitySet Name="Badges" EntityType="Self.Badge" />
+          <EntitySet Name="Donations" EntityType="Self.Donation" />
+          <EntitySet Name="Programs" EntityType="Self.Program" />
+          <EntitySet Name="ProgramChanges" EntityType="Self.ProgramChanx" />
+          <EntitySet Name="ReportedPrograms" EntityType="Self.ReportedProgram" />
+          <EntitySet Name="Transactions" EntityType="Self.Transaction" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UserBadges" EntityType="Self.UserBadge" />
+          <EntitySet Name="Withdrawals" EntityType="Self.Withdrawal" />
+          <AssociationSet Name="FK_ProgramChanges_AdminID" Association="Self.FK_ProgramChanges_AdminID">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToAdmin" Association="Self.FK_ReportedProgram_ToAdmin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="ReportedProgram" EntitySet="ReportedPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBadge_Badge" Association="Self.FK_UserBadge_Badge">
+            <End Role="Badge" EntitySet="Badges" />
+            <End Role="UserBadge" EntitySet="UserBadges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Donation_Transaction" Association="Self.FK_Donation_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Donation" EntitySet="Donations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Program_User" Association="Self.FK_Program_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Program" EntitySet="Programs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProgramChanges_ProgramID" Association="Self.FK_ProgramChanges_ProgramID">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="ProgramChanges" EntitySet="ProgramChanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToProgram" Association="Self.FK_ReportedProgram_ToProgram">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="ReportedProgram" EntitySet="ReportedPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
+            <End Role="Program" EntitySet="Programs" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReportedProgram_ToUser" Association="Self.FK_ReportedProgram_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="ReportedProgram" EntitySet="ReportedPrograms" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Transaction" EntitySet="Transactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Withdrawal_Transaction" Association="Self.FK_Withdrawal_Transaction">
+            <End Role="Transaction" EntitySet="Transactions" />
+            <End Role="Withdrawal" EntitySet="Withdrawals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserBadge_User" Association="Self.FK_UserBadge_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserBadge" EntitySet="UserBadges" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CareYouDBModelStoreContainer" CdmEntityContainer="CareYouDBEntities">
+          <EntitySetMapping Name="Admins">
+            <EntityTypeMapping TypeName="CareYouDBModel.Admin">
+              <MappingFragment StoreEntitySet="Admin">
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+                <ScalarProperty Name="AdminPassword" ColumnName="AdminPassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Badges">
+            <EntityTypeMapping TypeName="CareYouDBModel.Badge">
+              <MappingFragment StoreEntitySet="Badge">
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="BadgeName" ColumnName="BadgeName" />
+                <ScalarProperty Name="BadgeDescription" ColumnName="BadgeDescription" />
+                <ScalarProperty Name="BadgeImage" ColumnName="BadgeImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Donations">
             <EntityTypeMapping TypeName="CareYouDBModel.Donation">
               <MappingFragment StoreEntitySet="Donation">
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="PaymentMethod" ColumnName="PaymentMethod" />
+                <ScalarProperty Name="isAnonymous" ColumnName="isAnonymous" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Programs">
             <EntityTypeMapping TypeName="CareYouDBModel.Program">
               <MappingFragment StoreEntitySet="Program">
-                <ScalarProperty Name="Withdrawn" ColumnName="Withdrawn" />
                 <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
                 <ScalarProperty Name="FundraiserID" ColumnName="FundraiserID" />
                 <ScalarProperty Name="ProgramTitle" ColumnName="ProgramTitle" />
@@ -486,18 +765,50 @@
                 <ScalarProperty Name="StartDate" ColumnName="StartDate" />
                 <ScalarProperty Name="EndDate" ColumnName="EndDate" />
                 <ScalarProperty Name="Verified" ColumnName="Verified" />
+                <ScalarProperty Name="Withdrawn" ColumnName="Withdrawn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProgramChanges">
+            <EntityTypeMapping TypeName="CareYouDBModel.ProgramChanx">
+              <MappingFragment StoreEntitySet="ProgramChanges">
+                <ScalarProperty Name="ChangesID" ColumnName="ChangesID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="ChangesDesc" ColumnName="ChangesDesc" />
+                <ScalarProperty Name="ChangesTarget" ColumnName="ChangesTarget" />
+                <ScalarProperty Name="ChangesImage" ColumnName="ChangesImage" />
+                <ScalarProperty Name="ChangesEndDate" ColumnName="ChangesEndDate" />
+                <ScalarProperty Name="isApproved" ColumnName="isApproved" />
+                <ScalarProperty Name="DateSubmitted" ColumnName="DateSubmitted" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReportedPrograms">
+            <EntityTypeMapping TypeName="CareYouDBModel.ReportedProgram">
+              <MappingFragment StoreEntitySet="ReportedProgram">
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="OtherReason" ColumnName="OtherReason" />
+                <ScalarProperty Name="ScamFundraise" ColumnName="ScamFundraise" />
+                <ScalarProperty Name="FraudFundraise" ColumnName="FraudFundraise" />
+                <ScalarProperty Name="ThirdpartyBeneficiary" ColumnName="ThirdpartyBeneficiary" />
+                <ScalarProperty Name="ReportStatus" ColumnName="ReportStatus" />
+                <ScalarProperty Name="DateReported" ColumnName="DateReported" />
+                <ScalarProperty Name="AdminID" ColumnName="AdminID" />
+                <ScalarProperty Name="ReporterID" ColumnName="ReporterID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Transactions">
             <EntityTypeMapping TypeName="CareYouDBModel.Transaction">
               <MappingFragment StoreEntitySet="Transaction">
-                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
                 <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
+                <ScalarProperty Name="TransactionType" ColumnName="TransactionType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -515,46 +826,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Badges">
-            <EntityTypeMapping TypeName="CareYouDBModel.Badge">
-              <MappingFragment StoreEntitySet="Badge">
-                <ScalarProperty Name="BadgeImage" ColumnName="BadgeImage" />
-                <ScalarProperty Name="BadgeDescription" ColumnName="BadgeDescription" />
-                <ScalarProperty Name="BadgeName" ColumnName="BadgeName" />
-                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserBadges">
             <EntityTypeMapping TypeName="CareYouDBModel.UserBadge">
               <MappingFragment StoreEntitySet="UserBadge">
-                <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
-                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="BadgeID" ColumnName="BadgeID" />
+                <ScalarProperty Name="DateReceived" ColumnName="DateReceived" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Withdrawals">
             <EntityTypeMapping TypeName="CareYouDBModel.Withdrawal">
               <MappingFragment StoreEntitySet="Withdrawal">
-                <ScalarProperty Name="WithdrawMethod" ColumnName="WithdrawMethod" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ReportedPrograms">
-            <EntityTypeMapping TypeName="CareYouDBModel.ReportedProgram">
-              <MappingFragment StoreEntitySet="ReportedProgram">
-                <ScalarProperty Name="DateReported" ColumnName="DateReported" />
-                <ScalarProperty Name="ReportStatus" ColumnName="ReportStatus" />
-                <ScalarProperty Name="ThirdpartyBeneficiary" ColumnName="ThirdpartyBeneficiary" />
-                <ScalarProperty Name="FraudFundraise" ColumnName="FraudFundraise" />
-                <ScalarProperty Name="ScamFundraise" ColumnName="ScamFundraise" />
-                <ScalarProperty Name="OtherReason" ColumnName="OtherReason" />
-                <ScalarProperty Name="ProgramID" ColumnName="ProgramID" />
-                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="WithdrawMethod" ColumnName="WithdrawMethod" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

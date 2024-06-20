@@ -15,6 +15,15 @@ namespace CareYou.Views
     {
 
         /// <summary>
+        /// BackBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton BackBtn;
+
+        /// <summary>
         /// TopicLb control.
         /// </summary>
         /// <remarks>
@@ -24,13 +33,13 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Label TopicLb;
 
         /// <summary>
-        /// Label1 control.
+        /// TitleLb control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label TitleLb;
 
         /// <summary>
         /// descTb control.
@@ -42,6 +51,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox descTb;
 
         /// <summary>
+        /// descErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label descErrorLbl;
+
+        /// <summary>
         /// targetTb control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox targetTb;
+
+        /// <summary>
+        /// TargetErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TargetErrorLbl;
 
         /// <summary>
         /// dateTb control.
@@ -60,22 +87,13 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox dateTb;
 
         /// <summary>
-        /// monthTb control.
+        /// DeadlineErrorLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox monthTb;
-
-        /// <summary>
-        /// yearTb control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox yearTb;
+        protected global::System.Web.UI.WebControls.Label DeadlineErrorLbl;
 
         /// <summary>
         /// imageboxLb control.
@@ -87,13 +105,22 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Label imageboxLb;
 
         /// <summary>
-        /// insertimgId control.
+        /// InsertImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton insertimgId;
+        protected global::System.Web.UI.WebControls.FileUpload InsertImage;
+
+        /// <summary>
+        /// ImageErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ImageErrorLbl;
 
         /// <summary>
         /// PlatformFeeCB control.
