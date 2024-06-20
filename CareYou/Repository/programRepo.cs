@@ -40,5 +40,11 @@ namespace CareYou.Repository
             return (from x in db.Donations where x.Transaction.ProgramID == programID orderby x.Transaction.Amount descending select x).ToList();
         }
 
+        public static void deleteProgram(int programId)
+        {
+            db.Programs.Remove(getProgramById(programId));
+            db.SaveChanges();
+        }
+
     }
 }

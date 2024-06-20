@@ -100,7 +100,9 @@
           <Property Name="WithdrawMethod" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Program_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Program" Type="Self.Program" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -112,7 +114,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ReportedProgram_ToProgram">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Program" Type="Self.Program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="ReportedProgram" Type="Self.ReportedProgram" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Program">
@@ -124,7 +128,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Transaction_Program">
-          <End Role="Program" Type="Self.Program" Multiplicity="1" />
+          <End Role="Program" Type="Self.Program" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Program">
@@ -135,20 +141,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Transaction_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Transaction">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_UserBadge_Badge">
-          <End Role="Badge" Type="Self.Badge" Multiplicity="1" />
+          <End Role="Badge" Type="Self.Badge" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Badge">
@@ -160,7 +156,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserBadge_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="UserBadge" Type="Self.UserBadge" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
@@ -190,10 +188,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Transaction_Program" Association="Self.FK_Transaction_Program">
             <End Role="Program" EntitySet="Program" />
-            <End Role="Transaction" EntitySet="Transaction" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Transaction_User" Association="Self.FK_Transaction_User">
-            <End Role="User" EntitySet="User" />
             <End Role="Transaction" EntitySet="Transaction" />
           </AssociationSet>
           <AssociationSet Name="FK_UserBadge_Badge" Association="Self.FK_UserBadge_Badge">

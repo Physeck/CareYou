@@ -144,5 +144,10 @@ namespace CareYou.Handler
         {
             return programRepo.getTopDonationsByProgramId(programId).Take(3).ToList();
         }
+
+        public static void deleteProgram(int programId)
+        {
+            programRepo.deleteProgram(programId);
+        }
     }
 }
