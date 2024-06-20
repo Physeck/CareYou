@@ -19,6 +19,7 @@ namespace CareYou.Views
             int programId = Convert.ToInt32(Request.QueryString["id"]);
             Program program = ProgramHandler.getProgramById(programId);
             User user = (User)Session["User"];
+            CCForm.Attributes["class"] = CreditCardRB.Checked ? "cc-form-container" : "cc-form-container hidden";
             if (!IsPostBack)
             {
                 deleteClicked = false;
@@ -33,6 +34,9 @@ namespace CareYou.Views
                 raisedLb.Text = string.Format("{0:N0}", program.ProgramRaised);
                 targetLb.Text = string.Format("{0:N0}", program.ProgramTarget);
                 progressBar.Style["width"] = ProgramHandler.getProgramProgress(programId) + "%";
+                balanceLb.Text = string.Format("{0:N0}", program.ProgramRaised);
+                transferredLb.Text = processedLb.Text = string.Format("{0:N0}", program.Withdrawn);
+                feeLb.Text = string.Format("{0:N0}", 0.04 * program.ProgramRaised);
 
             }
             else
@@ -50,12 +54,94 @@ namespace CareYou.Views
 
         protected void withdrawBtn_Click(object sender, EventArgs e)
         {
-
+            withdrawClicked = true;
         }
 
         protected void deleteBtn_Click(object sender, EventArgs e)
         {
             deleteClicked = true;
+        }
+
+        protected void delBtnY_Click(object sender, EventArgs e)
+        {
+            // Logic Delete
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            ProgramHandler.deleteProgram(programId);
+            Response.Redirect("FundraisePage.aspx");
+        }
+
+        protected void delBtnN_Click(object sender, EventArgs e)
+        {
+            deleteClicked = false;
+        }
+
+        protected void ConfirmWithdrawBtn_Click(object sender, EventArgs e)
+        {
+            String strAmount = AmountTB.Text;
+            string selectedPaymentMethod = "";
+            string errorMsg = "";
+            int programId = Convert.ToInt32(Request.QueryString["id"]);
+            int userId = Convert.ToInt32(Session["UserID"]);
+            int transactionId = 0;
+            foreach (Control control in methodList.Controls)
+            {
+                if (control is RadioButton radioButton && radioButton.GroupName == "paymentMethod")
+                {
+                    if (radioButton.Checked)
+                    {
+                        selectedPaymentMethod = radioButton.ID;
+                        break;
+                    }
+                }
+            }
+            if (selectedPaymentMethod.Equals("CreditCardRB"))
+            {
+                string ccName = CCNameTB.Text;
+                string ccNumber = CCNumberTB.Text;
+                string ccExpireMonth = CCExpireMonthTB.Text;
+                string ccExpireYear = CCExpireYearTB.Text;
+                string ccCVV = CCCVVTB.Text;
+                string ccPostcode = CCPostcodeTB.Text;
+                var payment = PaymentController.doWithdrawWithCC(strAmount, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId);
+                errorMsg = payment.response;
+                transactionId = payment.transactionId;
+
+            }
+            else
+            {
+                if (selectedPaymentMethod.Equals("GoPayRB"))
+                {
+                    var payment = PaymentController.doWithdraw(strAmount, userId, programId, "gopay");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
+                }
+                else if (selectedPaymentMethod.Equals("OvoRB"))
+                {
+                    var payment = PaymentController.doWithdraw(strAmount, userId, programId, "ovo");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
+                }
+                else if (selectedPaymentMethod.Equals("DanaRB"))
+                {
+                    var payment = PaymentController.doWithdraw(strAmount, userId, programId, "dana");
+                    errorMsg = payment.response;
+                    transactionId = payment.transactionId;
+                }
+
+            }
+
+            if (errorMsg == "")
+            {
+
+                ErrorLbl.Text = "";
+                Response.Redirect("PaymentSuccess.aspx?programId=" + programId + "&trId=" + transactionId);
+            }
+            else
+            {
+                ErrorLbl.Text = errorMsg;
+                withdrawClicked = true;
+            }
+            
         }
     }
 }

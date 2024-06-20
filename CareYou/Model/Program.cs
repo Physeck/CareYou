@@ -37,6 +37,7 @@ namespace CareYou.Model
         public System.DateTime StartDate { get; set; }
         public System.DateTime EndDate { get; set; }
         public bool Verified { get; set; }
+        public int Withdrawn { get; set; }
     
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

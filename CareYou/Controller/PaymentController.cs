@@ -106,7 +106,7 @@ namespace CareYou.Controller
 
         public static dynamic doTransactionWithCC(String strAmount, bool isFeeChecked, bool isAnonymous, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode, int userId, int programId)
         {
-            
+            // need to add anynomous
             String response = checkAmount(strAmount);
             if(response == "")
             {
@@ -154,6 +154,7 @@ namespace CareYou.Controller
 
         public static dynamic doTransaction(String strAmount, bool isFeeChecked, bool isAnonymous, int userId, int programId, string paymentMethod)
         {
+            //need to add anonymous
             String response = checkAmount(strAmount);
             if (response == "")
             {
@@ -184,6 +185,73 @@ namespace CareYou.Controller
             if(comment != "")
             {
                 transactionHandler.addComment(transactionId, comment);
+            }
+        }
+
+        public static dynamic doWithdrawWithCC(String strAmount, String ccName, String ccNumber, String ccExpMonth, String ccExpYear, String ccCVV, String ccPostcode, int userId, int programId)
+        {
+
+            String response = checkAmount(strAmount);
+            if (response == "")
+            {
+                response = checkName(ccName);
+            }
+            if (response == "")
+            {
+                response = checkCCNumber(ccNumber);
+            }
+            if (response == "")
+            {
+                response = checkCCCVV(ccCVV);
+            }
+            if (response == "")
+            {
+                response = checkCCExpDate(ccExpMonth, ccExpYear);
+            }
+            if (response == "")
+            {
+                response = checkCCPostcode(ccPostcode);
+            }
+            if (response == "")
+            {
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, "Credit Card");
+                var result = new
+                {
+                    response = "",
+                    transactionId = transactionId
+                };
+                return result;
+            }
+            else
+            {
+                var result = new
+                {
+                    response = ""
+                };
+                return result;
+            }
+        }
+
+        public static dynamic doWithdraw(String strAmount, int userId, int programId, string paymentMethod)
+        {
+            String response = checkAmount(strAmount);
+            if (response == "")
+            {
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, paymentMethod);
+                var result = new
+                {
+                    response = "",
+                    transactionId = transactionId
+                };
+                return result;
+            }
+            else
+            {
+                var result = new
+                {
+                    response = ""
+                };
+                return result;
             }
         }
     }
