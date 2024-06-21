@@ -24,6 +24,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox TopicTB;
 
         /// <summary>
+        /// topicErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label topicErrorLbl;
+
+        /// <summary>
         /// TitleTB control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TitleTB;
+
+        /// <summary>
+        /// titleErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label titleErrorLbl;
 
         /// <summary>
         /// NameTB control.
@@ -42,6 +60,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.TextBox NameTB;
 
         /// <summary>
+        /// nameErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label nameErrorLbl;
+
+        /// <summary>
         /// BeneficiaryTB control.
         /// </summary>
         /// <remarks>
@@ -49,6 +76,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox BeneficiaryTB;
+
+        /// <summary>
+        /// benefeciaryErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label benefeciaryErrorLbl;
 
         /// <summary>
         /// descTB control.
@@ -78,6 +114,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.DropDownList TypeDDL;
 
         /// <summary>
+        /// typeErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label typeErrorLbl;
+
+        /// <summary>
         /// LocTB control.
         /// </summary>
         /// <remarks>
@@ -85,6 +130,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox LocTB;
+
+        /// <summary>
+        /// locErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label locErrorLbl;
 
         /// <summary>
         /// targetTb control.
@@ -166,6 +220,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload InsertID;
+
+        /// <summary>
+        /// IDErrorLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label IDErrorLbl;
 
         /// <summary>
         /// ConfirmationCB control.

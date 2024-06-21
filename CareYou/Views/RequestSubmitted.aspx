@@ -11,7 +11,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="payment-success-flexbox">
+    <div class="payment-success-flexbox" style="margin: 29.219vw auto 29.219vw">
         <div class="payment-success-container">
             <div class="payment-success-checkmark-container">
                 <img id="successImage" class="image" src="../Assets/TransactionMethod/Success-after.png" alt="alt text" />

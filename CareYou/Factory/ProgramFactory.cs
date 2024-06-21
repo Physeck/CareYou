@@ -9,7 +9,7 @@ namespace CareYou.Factory
 {
     public class ProgramFactory
     {
-        public static Program CreateNewProgam(int fundraiserId, String title, String desc, String topic, String fundraiserName, String beneficiary, String type, String location, int target, String image, String fundraiserIdCard, DateTime deadline)
+        public static Program CreateNewProgam(int fundraiserId, String topic, String title, String fundraiserName, String beneficiary, String desc,  String type, String location, int target, DateTime deadline, String image, String fundraiserIdCard )
         {
             Program program = new Program();
             program.ProgramID = programRepo.generateProgramID();

@@ -17,24 +17,28 @@
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="TopicTB" CssClass="insert-box" placeholder="Topic" runat="server"></asp:TextBox>
                     </div>
+                    <asp:Label ID="topicErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-program_row">
                         <h1 class="edit-text">Edit your program's title</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="TitleTB" CssClass="insert-box" placeholder="Title" runat="server"></asp:TextBox>
                     </div>
+                    <asp:Label ID="titleErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-program_row">
                         <h1 class="edit-text">Your name</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="NameTB" CssClass="insert-box" placeholder="Name" runat="server"></asp:TextBox>
                     </div>
+                    <asp:Label ID="nameErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-program_row">
                         <h1 class="edit-text">Beneficiary</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="BeneficiaryTB" CssClass="insert-box" placeholder="Beneficiary" runat="server"></asp:TextBox>
                     </div>
+                    <asp:Label ID="benefeciaryErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-description_row">
                         <h1 class="edit-text-desc">Edit description</h1>
@@ -54,12 +58,14 @@
                             </asp:DropDownList>
                         </div>
                     </div>
+                    <asp:Label ID="typeErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-program_row">
                         <h1 class="edit-text">Location</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="LocTB" CssClass="insert-box" placeholder="Location" runat="server"></asp:TextBox>
                     </div>
+                    <asp:Label ID="locErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
                     <div class="edit-target_row">
                         <h1 class="edit-text">Target donation</h1>
@@ -74,6 +80,7 @@
                         <asp:TextBox ID="dateTb" CssClass="date-box" placeholder="Date" TextMode="Date" runat="server"></asp:TextBox>
                     </div>
                     <asp:Label ID="DeadlineErrorLbl" CssClass="error-text" runat="server"></asp:Label>
+
                     <div class="edit-image_row">
                         <h1 class="edit-text">Insert image</h1>
                         <h1 class="edit-text colon">:</h1>
@@ -92,6 +99,8 @@
                         <label for="<%= InsertID.ClientID %>" class="insert-image">
                         </label>
                     </div>
+                    <asp:Label ID="IDErrorLbl" CssClass="error-text" runat="server"></asp:Label>
+
                     <div class="checkbox-button-content">
                         <asp:CheckBox ID="ConfirmationCB" runat="server" />
                         <h1 class="checkbox-text">I confirm that the information provided is accurate and complete.</h1>
@@ -108,6 +117,28 @@
             var fileUpload = document.getElementById('<%= InsertImage.ClientID %>');
             var errorLabel = document.getElementById('<%= ImageErrorLbl.ClientID %>');
             var imagebox = document.getElementById('<%= imageboxLb.ClientID %>');
+
+            fileUpload.addEventListener('change', function (event) {
+                var file = event.target.files[0];
+                if (file) {
+                    var fileExtension = file.name.split('.').pop().toLowerCase();
+                    var allowedExtensions = ['jpg', 'jpeg', 'png'];
+
+                    if (!allowedExtensions.includes(fileExtension)) {
+                        errorLabel.innerText = "Only files with .jpg, .jpeg, or .png extensions are allowed.";
+                        errorLabel.style.color = "red";
+                        fileUpload.value = "";
+                    } else {
+                        errorLabel.innerText = "";
+                        imagebox.innerText = file.name;
+                    }
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var fileUpload = document.getElementById('<%= InsertID.ClientID %>');
+            var errorLabel = document.getElementById('<%= IDErrorLbl.ClientID %>');
+            var imagebox = document.getElementById('<%= idImageBoxLb.ClientID %>');
 
             fileUpload.addEventListener('change', function (event) {
                 var file = event.target.files[0];

@@ -319,12 +319,26 @@ namespace CareYou.Handler
         public static Response<ProgramChanges> createProgramChanges(int programId, String desc, int target, DateTime deadline, HttpPostedFile file)
         {
             ProgramChanges changes = programRepo.createNewProgramChanges(programId, desc, target, deadline, file.FileName);
+            file.SaveAs(HttpContext.Current.Server.MapPath("~/Assets/Program/") + file.FileName);
             return new Response<ProgramChanges>()
             {
                 Success = true,
                 Message = "",
                 Field = "changes",
                 Payload = changes
+            };
+        }
+
+        public static Response<Program> createProgram(int userId, String topic, String title, String name, String beneficiary, String desc, String type, String location, int target, DateTime deadline, HttpPostedFile programImg, HttpPostedFile idImg)
+        {
+            Program program = programRepo.createProgram(userId, topic, title, name, beneficiary, desc, type, location, target, deadline, programImg.FileName, idImg.FileName);
+            programImg.SaveAs(HttpContext.Current.Server.MapPath("~/Assets/Program/") + programImg.FileName);
+            return new Response<Program>()
+            {
+                Success = true,
+                Message = "",
+                Field = "program",
+                Payload = program
             };
         }
     }

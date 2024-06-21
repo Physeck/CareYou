@@ -21,8 +21,8 @@ namespace CareYou.Views
 
                 List<dynamic> projectPrograms = ProgramHandler.getFiveFirstProjectProgramsForHome();
 
-                SocialProgramRepeater.DataSource = projectPrograms;
-                SocialProgramRepeater.DataBind();
+                ProjectProgramRepeater.DataSource = projectPrograms;
+                ProjectProgramRepeater.DataBind();
             }
         }
 

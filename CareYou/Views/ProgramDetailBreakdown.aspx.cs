@@ -127,6 +127,10 @@ namespace CareYou.Views
                     errorMsg = payment.response;
                     transactionId = payment.transactionId;
                 }
+                else
+                {
+                    errorMsg = "Please select a payment method";
+                }
 
             }
 

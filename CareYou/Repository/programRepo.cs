@@ -105,5 +105,13 @@ namespace CareYou.Repository
             return changes;
         }
 
+        public static Program createProgram(int userId, String topic, String title, String name, String beneficiary, String desc, String type, String location, int target, DateTime deadline, String programImg, String idImg)
+        {
+            Program program = ProgramFactory.CreateNewProgam(userId, topic, title, name, beneficiary, desc, type, location, target, deadline, programImg, idImg);
+            db.Programs.Add(program);
+            db.SaveChanges();
+            return program;
+        }
+
     }
 }
