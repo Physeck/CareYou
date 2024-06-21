@@ -21,11 +21,12 @@ namespace CareYou.Factory
             return transaction;
         }
 
-        public static Donation CreateDonation(int TransactionID, string paymentMethod)
+        public static Donation CreateDonation(int TransactionID, string paymentMethod, bool isAnonymous)
         {
             Donation donation = new Donation();
             donation.TransactionID = TransactionID;
             donation.PaymentMethod = paymentMethod;
+            donation.isAnonymous = isAnonymous;
             return donation;
         }
 

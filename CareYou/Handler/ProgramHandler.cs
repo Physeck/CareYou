@@ -121,16 +121,32 @@ namespace CareYou.Handler
                 else
                 {
                     String CommentTime = CalculateRelativeTime(tr.TransactionDate);
-                    dynamic comment = new
+                    if (tr.Donation.isAnonymous)
                     {
-                        UserID = tr.User.UserID,
-                        UserName = tr.User.UserName,
-                        ProfilePicture = tr.User.ProfilePicture,
-                        Amount = tr.Amount,
-                        Comment = tr.Donation.Comment,
-                        CommentTime = CommentTime
-                    };
-                    comments.Add(comment);
+                        dynamic comment = new
+                        {
+                            UserID = tr.User.UserID,
+                            UserName = "Anonymous",
+                            ProfilePicture = "ProfileDefault.png",
+                            Amount = tr.Amount,
+                            Comment = tr.Donation.Comment,
+                            CommentTime = CommentTime
+                        };
+                        comments.Add(comment);
+                    }
+                    else
+                    {
+                        dynamic comment = new
+                        {
+                            UserID = tr.User.UserID,
+                            UserName = tr.User.UserName,
+                            ProfilePicture = tr.User.ProfilePicture,
+                            Amount = tr.Amount,
+                            Comment = tr.Donation.Comment,
+                            CommentTime = CommentTime
+                        };
+                        comments.Add(comment);
+                    }  
                 }
                 
             }
@@ -141,9 +157,37 @@ namespace CareYou.Handler
             return transactionRepo.getDonationsByProgramId(programId).Count;
         }
 
-        public static List<Donation> get3TopDonations(int programId)
+        public static List<dynamic> get3TopDonations(int programId)
         {
-            return programRepo.getTopDonationsByProgramId(programId).Take(3).ToList();
+            List<Donation> donations = programRepo.getTopDonationsByProgramId(programId).Take(3).ToList();
+            List<dynamic> topDonations = new List<dynamic>();
+            foreach(Donation donation in donations)
+            {
+                if (donation.isAnonymous)
+                {
+                    dynamic topDonation = new
+                    {
+                        UserID = donation.Transaction.User.UserID,
+                        UserName = "Anonymous",
+                        ProfilePicture = "ProfileDefault.png",
+                        Amount = donation.Transaction.Amount
+                    };
+                    topDonations.Add(topDonation);
+                }
+                else
+                {
+                    dynamic topDonation = new
+                    {
+                        UserID = donation.Transaction.User.UserID,
+                        UserName = donation.Transaction.User.UserName,
+                        ProfilePicture = donation.Transaction.User.ProfilePicture,
+                        Amount = donation.Transaction.Amount
+                    };
+                    topDonations.Add(topDonation);
+                }
+                
+            }
+            return topDonations;
         }
 
         public static void deleteProgram(int programId)

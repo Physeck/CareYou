@@ -43,8 +43,8 @@ namespace CareYou.Views
                 DonationsCountLbl.Text = ProgramHandler.getDonationsCount(programId).ToString() + " donations";
 
                 progressBar.Style["width"] = ProgramHandler.getProgramProgress(programId) + "%";
-                List<Donation> Top3Donations = ProgramHandler.get3TopDonations(programId);
-                if(Top3Donations.Count == 0)
+                var Top3Donations = ProgramHandler.get3TopDonations(programId);
+                if (Top3Donations.Count == 0)
                 {
                     TopDonationRepeater.Visible = false;
                     TopDonationLbl.Visible = false;

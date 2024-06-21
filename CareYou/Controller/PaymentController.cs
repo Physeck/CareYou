@@ -134,7 +134,7 @@ namespace CareYou.Controller
             }
             if(response == "")
             {
-                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, "Credit Card");
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, "Credit Card", isAnonymous);
                 var result = new
                 {
                     response = "",
@@ -162,7 +162,7 @@ namespace CareYou.Controller
             }
             if (response == "")
             {
-                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, paymentMethod);
+                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "donation", programId, paymentMethod, isAnonymous);
                 var result = new
                 {
                     response = "",
@@ -214,7 +214,7 @@ namespace CareYou.Controller
             }
             if (response == "")
             {
-                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, "Credit Card");
+                int transactionId = transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, "Credit Card");
                 var result = new
                 {
                     response = "",
@@ -237,7 +237,7 @@ namespace CareYou.Controller
             String response = checkAmount(strAmount);
             if (response == "")
             {
-                int transactionId = transactionHandler.createNewTransaction(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, paymentMethod);
+                int transactionId = transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, paymentMethod);
                 var result = new
                 {
                     response = "",

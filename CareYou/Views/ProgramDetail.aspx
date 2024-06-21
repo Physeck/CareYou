@@ -142,11 +142,11 @@
                             <asp:Repeater ID="TopDonationRepeater" runat="server">
                                 <ItemTemplate>
                                     <div class="top-donater-container">
-                                        <img class="profile-image1" src='/Assets/Profiles/<%# Eval("Transaction.User.ProfilePicture") %>' alt="alt text" />
+                                        <img class="profile-image1" src='/Assets/Profiles/<%# Eval("ProfilePicture") %>' alt="alt text" />
                                         <div class="top-donater-content-flexbox">
-                                            <h2 class="profile-text"><%# Eval("Transaction.User.UserName") %></h2>
+                                            <h2 class="profile-text"><%# Eval("UserName") %></h2>
                                             <div class="donated-flexbox1">
-                                                <h2 class="donation-text">Rp <%# Eval("Transaction.Amount","{0:N0}") %></h2>
+                                                <h2 class="donation-text">Rp <%# Eval("Amount","{0:N0}") %></h2>
                                             </div>
                                         </div>
                                     </div>

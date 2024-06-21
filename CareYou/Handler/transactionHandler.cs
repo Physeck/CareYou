@@ -24,17 +24,17 @@ namespace CareYou.Handler
         {
             return transactionRepo.getTransactionBasedOnTypeAndDateAndUserID(date, type, id);
         }
-        public static int createNewTransaction(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod)
+        public static int createNewTransaction(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod, bool isAnonymous)
         {
             int transactionId = transactionRepo.insertTransaction(UserID, TransactionDate, Amount, TransactionType, ProgramID);
-            if (TransactionType == "donation")
-            {
-                transactionRepo.insertDonation(transactionId, TransactionMethod);
-            }
-            else if (TransactionType == "withdrawal")
-            {
-                transactionRepo.insertWithdrawal(transactionId, TransactionMethod);
-            }
+            transactionRepo.insertDonation(transactionId, TransactionMethod, isAnonymous);
+            return transactionId;
+        }
+
+        public static int createNewWithdrawal(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod)
+        {
+            int transactionId = transactionRepo.insertTransaction(UserID, TransactionDate, Amount, TransactionType, ProgramID);
+            transactionRepo.insertWithdrawal(transactionId, TransactionMethod);
             return transactionId;
         }
 

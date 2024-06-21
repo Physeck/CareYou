@@ -78,9 +78,9 @@ namespace CareYou.Repository
             return transaction.TransactionID;
         }
 
-        public static void insertDonation(int transactionId, string paymentMethod)
+        public static void insertDonation(int transactionId, string paymentMethod, bool isAnonymous)
         {
-            Donation donation = TransactionFactory.CreateDonation(transactionId, paymentMethod);
+            Donation donation = TransactionFactory.CreateDonation(transactionId, paymentMethod, isAnonymous);
             db.Donations.Add(donation);
             db.SaveChanges();
         }
