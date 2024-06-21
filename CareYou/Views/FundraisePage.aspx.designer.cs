@@ -15,120 +15,57 @@ namespace CareYou.Views
     {
 
         /// <summary>
-        /// form1 control.
+        /// FundraiseBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Button FundraiseBtn;
 
         /// <summary>
-        /// createT control.
+        /// SearchBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label createT;
+        protected global::System.Web.UI.WebControls.TextBox SearchBar;
 
         /// <summary>
-        /// startfundraisingbtn control.
+        /// SearchBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button startfundraisingbtn;
+        protected global::System.Web.UI.WebControls.ImageButton SearchBtn;
 
         /// <summary>
-        /// fundraiseT control.
+        /// FilterDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label fundraiseT;
+        protected global::System.Web.UI.WebControls.DropDownList FilterDDL;
 
         /// <summary>
-        /// searchprogram control.
+        /// ProgramRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchprogram;
+        protected global::System.Web.UI.WebControls.Repeater ProgramRepeater;
 
         /// <summary>
-        /// magnifyingglass control.
+        /// PendingRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image magnifyingglass;
-
-        /// <summary>
-        /// filter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image filter;
-
-        /// <summary>
-        /// detailprogram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button detailprogram;
-
-        /// <summary>
-        /// pendingprogramT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pendingprogramT;
-
-        /// <summary>
-        /// pendingT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pendingT;
-
-        /// <summary>
-        /// pendingD control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pendingD;
-
-        /// <summary>
-        /// pendingN control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label pendingN;
-
-        /// <summary>
-        /// pendingdetailprogram control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button pendingdetailprogram;
+        protected global::System.Web.UI.WebControls.Repeater PendingRepeater;
     }
 }

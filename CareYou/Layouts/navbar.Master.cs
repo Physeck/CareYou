@@ -95,7 +95,15 @@ namespace CareYou.Views.Layouts
 
         protected void FundraiseBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/FundraisePage.aspx");
+            if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
+            {
+                Response.Redirect("~/Views/FundraisePage.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+                
         }
 
         protected void SignInBtn_Click(object sender, EventArgs e)

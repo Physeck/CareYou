@@ -67,6 +67,84 @@ namespace CareYou.Handler
             return programDetails;
         }
 
+        public static List<dynamic> getAllVerifiedProgramsFromUserId(String programType, String query, int userId)
+        {
+            List<Program> programs = null;
+            if (programType == "project")
+            {
+                programs = programRepo.getAllVerifiedProjectProgramsFromUserId(query, userId);
+            }
+            else if (programType == "social")
+            {
+                programs = programRepo.getAllVerifiedSocialProgramsFromUserId(query, userId);
+            }
+            else
+            {
+                programs = programRepo.getAllVerifiedProgramsFromUserId(query, userId);
+            }
+
+            List<dynamic> programDetails = new List<dynamic>();
+            foreach (Program program in programs)
+            {
+                double Progress = getProgramProgress(program.ProgramID);
+                String startDate = program.StartDate.ToString("d MMMM yyyy");
+
+                dynamic programDetail = new
+                {
+                    ProgramID = program.ProgramID,
+                    ProgramTitle = program.ProgramTitle,
+                    ProgramImage = program.ProgramImage,
+                    FundraiserName = program.FundraiserName,
+                    ProgramType = program.ProgramType,
+                    ProgramRaised = program.ProgramRaised,
+                    Progress = Progress,
+                    DateCreated = startDate
+                };
+
+                programDetails.Add(programDetail);
+            }
+            return programDetails;
+        }
+
+        public static List<dynamic> getAllPendingProgramsFromUserId(String programType, String query, int userId)
+        {
+            List<Program> programs = null;
+            if (programType == "project")
+            {
+                programs = programRepo.getAllPendingProjectProgramsFromUserId(query, userId);
+            }
+            else if (programType == "social")
+            {
+                programs = programRepo.getAllPendingSocialProgramsFromUserId(query, userId);
+            }
+            else
+            {
+                programs = programRepo.getAllPendingProgramsFromUserId(query, userId);
+            }
+
+            List<dynamic> programDetails = new List<dynamic>();
+            foreach (Program program in programs)
+            {
+                double Progress = getProgramProgress(program.ProgramID);
+                String startDate = program.StartDate.ToString("d MMMM yyyy");
+
+                dynamic programDetail = new
+                {
+                    ProgramID = program.ProgramID,
+                    ProgramTitle = program.ProgramTitle,
+                    ProgramImage = program.ProgramImage,
+                    FundraiserName = program.FundraiserName,
+                    ProgramType = program.ProgramType,
+                    ProgramRaised = program.ProgramRaised,
+                    Progress = Progress,
+                    DateCreated = startDate
+                };
+
+                programDetails.Add(programDetail);
+            }
+            return programDetails;
+        }
+
 
 
         public static Double getProgramProgress(int programID)

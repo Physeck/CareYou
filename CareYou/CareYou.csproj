@@ -84,7 +84,9 @@
     <Content Include="Assets\Login-Register\ShowsPassword.png" />
     <Content Include="Assets\ProgramDetail\imagebtn.png" />
     <Content Include="Assets\ProgramDetail\locked.png" />
+    <Content Include="Assets\Program\program3.png" />
     <Content Include="Assets\Search\filter.png" />
+    <Content Include="Assets\Search\fundraise-plus.png" />
     <Content Include="Assets\Search\search-btn.png" />
     <Content Include="Assets\UserReportProfile.svg" />
     <Content Include="Assets\NavbarProfile.svg" />

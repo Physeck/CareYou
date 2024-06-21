@@ -26,14 +26,44 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.Verified == true && x.ProgramTitle.Contains(query) select x).ToList();
         }
 
+        public static List<Program> getAllVerifiedProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == true && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
+        public static List<Program> getAllPendingProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == false && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
         public static List<Program> getAllVerifiedSocialPrograms(String query)
         {
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) select x).ToList();
         }
 
+        public static List<Program> getAllVerifiedSocialProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
+        public static List<Program> getAllPendingSocialProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
         public static List<Program> getAllVerifiedProjectPrograms(String query)
         {
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("project") && x.ProgramTitle.Contains(query) select x).ToList();
+        }
+
+        public static List<Program> getAllVerifiedProjectProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("project") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
+        public static List<Program> getAllPendingProjectProgramsFromUserId(String query, int userId)
+        {
+            return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("project") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
         }
 
         public static List<Donation> getTopDonationsByProgramId(int programID)

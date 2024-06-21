@@ -6,6 +6,12 @@
     flex-direction: column;
 }
 
+.fundraise-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
 .donate-page-flexbox {
     position: relative;
     display: flex;
@@ -16,11 +22,111 @@
     width: 83.54%;
 }
 
+.fundraise-page-flexbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 11.823vw auto 36.563vw;
+    width: 83.7%;
+}
+
+.create-program-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: rgb(1, 169, 93);
+    border-radius: 3.125vw 3.125vw 3.125vw 3.125vw;
+}
+
+.create-program-flexbox {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px 0.521vw;
+    margin: 2.865vw auto;
+    width: 82.58%;
+}
+
+.create-program-text {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 22.969vw;
+    min-width: 0px;
+    font: 700 3.333vw/1.15 "Helvetica", Helvetica, Arial, serif;
+    color: rgb(255, 255, 255);
+    margin: 0;
+}
+
+.fundraise-button-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 28.906vw;
+    min-width: 0px;
+}
+
+.fundraise-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 700 2.5vw/1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    border-radius: 2.604vw 2.604vw 2.604vw 2.604vw;
+    padding: 1.458vw 0.417vw 1.458vw 0.417vw;
+    outline: 0.417vw solid rgb(255, 255, 255);
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition-duration: 0.15s;
+}
+    
+        .fundraise-btn:hover {
+            background-color: white;
+            color: rgb(1, 169, 93);
+        }
+
+.fundraise-img-flexbox {
+    position: absolute;
+    top: -2.24vw;
+    left: -4.635vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.365vw 0px;
+    width: 6.198vw;
+    height: 7.24vw;
+}
+
+.fundraise-img {
+    position: relative;
+    margin: 0px 0px 0px 1.979vw;
+    width: 4.219vw;
+    height: 4.219vw;
+}
+
+    .fundraise-img.small {
+        width: 2.656vw;
+        height: 2.656vw;
+        margin: 0;
+    }
+
+.your-program-title {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin: 4.74vw 0 3.229vw;
+    font: 700 4.167vw/0.98 "Helvetica Neue", Helvetica, Arial, serif;
+    color: rgb(0, 0, 0);
+}
 .search-bar-container {
     position: relative;
     display: flex;
     align-items: center;
-    width: 82.813vw;
+    width: 100%;
     height: 6.406vw;
 }
 .search-bar {
@@ -128,7 +234,7 @@ input[type="text"]{
 
 .program-card-container {
     position: relative;
-    width: 83.281vw;
+    width: 100%;
     height: 16.458vw;
     display: flex;
     flex-direction: row;
@@ -142,6 +248,20 @@ input[type="text"]{
 .program-card-container:hover {
     transform: scale(1.05);
     z-index: 10;
+}
+
+.pending-card-container {
+    position: relative;
+    width: 100%;
+    height: 16.458vw;
+    display: flex;
+    flex-direction: row;
+    background-color: #A1A1A1;
+    border-radius: 3.125vw 3.125vw 3.125vw 3.125vw;
+    box-shadow: 0px 0.208vw 0.208vw 0px rgba(0, 0, 0, 0.247);
+    overflow: hidden;
+    transition-duration: 0.15s;
+    cursor: pointer;
 }
 
 .date {
@@ -170,6 +290,7 @@ input[type="text"]{
 
 .program-container {
     position: relative;
+    display: flex;
     margin-left: 0;
     width: 51.302vw;
     min-height: 11.51vw;
