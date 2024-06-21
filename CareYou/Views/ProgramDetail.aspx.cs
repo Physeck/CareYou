@@ -90,13 +90,17 @@ namespace CareYou.Views
         protected void ReportLB_Click(object sender, EventArgs e)
         {
             // Set a flag or variable to indicate that the LinkButton has been clicked
-            reportClicked = true;
+            if (Session["user"] != null)
+            {
+                reportClicked = true;
+                int programId = Convert.ToInt32(Request.QueryString["id"]);
+                ViewState["ReportedProgramId"] = programId;
+            }
+            else
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
 
-            // You can perform any other necessary actions here, such as saving the report to a database or sending a notification
-
-            // You can also pass any relevant data to the frontend, such as the ID of the program being reported, using ViewState or Session variables
-            int programId = Convert.ToInt32(Request.QueryString["id"]);
-            ViewState["ReportedProgramId"] = programId;
         }
 
         protected void DonateBtn_Click(object sender, EventArgs e)
@@ -105,7 +109,6 @@ namespace CareYou.Views
             int userId = Convert.ToInt32(Session["UserID"]);
             if (Session["UserID"] == null)
             {
-                // redirect to You need to login page
                 Response.Redirect("LoginPage.aspx");
             }
             else if (ProgramController.isOwner(programId,userId))

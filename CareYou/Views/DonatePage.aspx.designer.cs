@@ -15,57 +15,48 @@ namespace CareYou.Views
     {
 
         /// <summary>
-        /// form1 control.
+        /// SearchBar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.TextBox SearchBar;
 
         /// <summary>
-        /// searchprogram control.
+        /// SearchBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchprogram;
+        protected global::System.Web.UI.WebControls.ImageButton SearchBtn;
 
         /// <summary>
-        /// magnifyingglass control.
+        /// FilterDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image magnifyingglass;
+        protected global::System.Web.UI.WebControls.DropDownList FilterDDL;
 
         /// <summary>
-        /// filter control.
+        /// ProgramRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image filter;
+        protected global::System.Web.UI.WebControls.Repeater ProgramRepeater;
 
         /// <summary>
-        /// detailprogram control.
+        /// ViewMoreBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button detailprogram;
-
-        /// <summary>
-        /// viewmore control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button viewmore;
+        protected global::System.Web.UI.WebControls.Button ViewMoreBtn;
     }
 }

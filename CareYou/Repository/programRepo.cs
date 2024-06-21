@@ -21,19 +21,19 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.ProgramID == programID select x).FirstOrDefault();
         }
 
-        public static List<Program> getAllVerifiedPrograms()
+        public static List<Program> getAllVerifiedPrograms(String query)
         {
-            return (from x in db.Programs where x.Verified == true select x).ToList();
+            return (from x in db.Programs where x.Verified == true && x.ProgramTitle.Contains(query) select x).ToList();
         }
 
-        public static List<Program> getAllVerifiedSocialPrograms()
+        public static List<Program> getAllVerifiedSocialPrograms(String query)
         {
-            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
+            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) select x).ToList();
         }
 
-        public static List<Program> getAllVerifiedProjectPrograms()
+        public static List<Program> getAllVerifiedProjectPrograms(String query)
         {
-            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") select x).ToList();
+            return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("project") && x.ProgramTitle.Contains(query) select x).ToList();
         }
 
         public static List<Donation> getTopDonationsByProgramId(int programID)

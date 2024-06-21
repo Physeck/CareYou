@@ -1,9 +1,11 @@
 ﻿using CareYou.DataClass;
 using CareYou.Model;
 using CareYou.Repository;
+using CareYou.Views;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -26,16 +28,57 @@ namespace CareYou.Handler
             return programRepo.getProgramById(programID);
         }
 
+        public static List<dynamic> getAllPrograms(String programType, String query)
+        {
+            List<Program> programs =null;
+            if(programType == "project")
+            {
+                programs = programRepo.getAllVerifiedProjectPrograms(query);
+            }
+            else if(programType == "social")
+            {
+                programs = programRepo.getAllVerifiedSocialPrograms(query);
+            }
+            else
+            {
+                programs = programRepo.getAllVerifiedPrograms(query);
+            }
+            
+            List<dynamic> programDetails = new List<dynamic>();
+            foreach(Program program in programs)
+            {
+                double Progress = getProgramProgress(program.ProgramID);
+                String startDate = program.StartDate.ToString("d MMMM yyyy");
+
+                dynamic programDetail = new
+                {
+                    ProgramID = program.ProgramID,
+                    ProgramTitle = program.ProgramTitle,
+                    ProgramImage = program.ProgramImage,
+                    FundraiserName = program.FundraiserName,
+                    ProgramType = program.ProgramType,
+                    ProgramRaised = program.ProgramRaised,
+                    Progress = Progress,
+                    DateCreated = startDate
+                };
+
+                programDetails.Add(programDetail);
+            }
+            return programDetails;
+        }
+
+
+
         public static Double getProgramProgress(int programID)
         {
             Program program = programRepo.getProgramById(programID);
             double Progress = (double)program.ProgramRaised / (double)program.ProgramTarget * 100;
             if (Progress > 100) Progress = 100;
-            return Progress;
+            return Math.Round(Progress);
         }
         public static List<dynamic> getFiveFirstSocialProgramsForHome()
         {
-            var programs = programRepo.getAllVerifiedSocialPrograms().Take(5).ToList();
+            var programs = programRepo.getAllVerifiedSocialPrograms("").Take(5).ToList();
             List<dynamic> programDetails = new List<dynamic>();
 
             foreach (var program in programs)
@@ -61,7 +104,7 @@ namespace CareYou.Handler
 
         public static List<dynamic> getFiveFirstProjectProgramsForHome()
         {
-            var programs = programRepo.getAllVerifiedProjectPrograms().Take(5).ToList();
+            var programs = programRepo.getAllVerifiedProjectPrograms("").Take(5).ToList();
             List<dynamic> programDetails = new List<dynamic>();
 
             foreach (var program in programs)

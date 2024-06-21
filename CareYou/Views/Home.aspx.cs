@@ -28,12 +28,12 @@ namespace CareYou.Views
 
         protected void ViewMoreBtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("DonatePage.aspx");
         }
 
         protected void FundraiseBtn_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("FundraisePage.aspx");
         }
     }
 }

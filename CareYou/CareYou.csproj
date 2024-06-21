@@ -84,6 +84,8 @@
     <Content Include="Assets\Login-Register\ShowsPassword.png" />
     <Content Include="Assets\ProgramDetail\imagebtn.png" />
     <Content Include="Assets\ProgramDetail\locked.png" />
+    <Content Include="Assets\Search\filter.png" />
+    <Content Include="Assets\Search\search-btn.png" />
     <Content Include="Assets\UserReportProfile.svg" />
     <Content Include="Assets\NavbarProfile.svg" />
     <Content Include="Assets\Profiles\IP1.png" />
@@ -130,6 +132,7 @@
     <Content Include="Style\chooserolestyle.css" />
     <Content Include="Style\contentstyle.css" />
     <Content Include="Style\dashboardpagestyle.css" />
+    <Content Include="Style\donatestyle.css" />
     <Content Include="Style\editprogramstyle.css" />
     <Content Include="Style\footerstyle.css" />
     <Content Include="Style\forgotpwstyle.css" />
