@@ -77,7 +77,15 @@ namespace CareYou.Views.Layouts
 
         protected void HistoryBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/History.aspx");
+            if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
+            {
+                Response.Redirect("~/Views/History.aspx");
+            }
+            else
+            {
+                Response.Redirect("~/Views/LoginPage.aspx");
+            }
+
         }
 
         protected void TopDonationBtn_Click(object sender, EventArgs e)

@@ -36,7 +36,11 @@ namespace CareYou.Views
                 User user = response.Payload;
                 Session["user"] = user;
                 Session["UserID"] = user.UserID;
-                if(user.Role == "admin")
+                HttpCookie cookie = new HttpCookie("user_cookie");
+                cookie.Value = user.UserID.ToString();
+                cookie.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Add(cookie);
+                if (user.Role == "admin")
                 {
                     Response.Redirect("DashboardPage.aspx");
                 }
