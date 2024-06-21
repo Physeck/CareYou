@@ -4,12 +4,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <title></title>
     <link href="../Style/forgotpwstyle.css" rel="stylesheet" />
     <link href="../Style/loginstyle.css" rel="stylesheet" />
     <link href="../Style/chooserolestyle.css" rel="stylesheet" />
 </head>
 <body style="margin: 0">
-    <body>
         <form id="form1" runat="server">
             <div>
                 <div class="loginPage-container">

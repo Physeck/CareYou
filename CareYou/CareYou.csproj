@@ -152,6 +152,7 @@
     <Content Include="Style\Styling.css" />
     <Content Include="Style\userreportstyle.css" />
     <Content Include="Views\ChooseRolePage.aspx" />
+    <Content Include="Views\CreateProgram.aspx" />
     <Content Include="Views\DashboardPage.aspx" />
     <Content Include="Views\DonatePage.aspx" />
     <Content Include="Views\EditProgramDetails.aspx" />
@@ -268,6 +269,13 @@
     </Compile>
     <Compile Include="Views\ChooseRolePage.aspx.designer.cs">
       <DependentUpon>ChooseRolePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CreateProgram.aspx.cs">
+      <DependentUpon>CreateProgram.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\CreateProgram.aspx.designer.cs">
+      <DependentUpon>CreateProgram.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\DashboardPage.aspx.cs">
       <DependentUpon>DashboardPage.aspx</DependentUpon>
