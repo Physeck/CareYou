@@ -85,6 +85,14 @@
     <Content Include="Assets\ProgramDetail\imagebtn.png" />
     <Content Include="Assets\ProgramDetail\locked.png" />
     <Content Include="Assets\Program\program3.png" />
+    <Content Include="Assets\Program\program4.png" />
+    <Content Include="Assets\Program\program5.png" />
+    <Content Include="Assets\Program\program6.png" />
+    <Content Include="Assets\Program\project1.png" />
+    <Content Include="Assets\Program\project2.png" />
+    <Content Include="Assets\Program\project3.png" />
+    <Content Include="Assets\Program\project4.png" />
+    <Content Include="Assets\Program\project5.png" />
     <Content Include="Assets\Search\filter.png" />
     <Content Include="Assets\Search\fundraise-plus.png" />
     <Content Include="Assets\Search\search-btn.png" />

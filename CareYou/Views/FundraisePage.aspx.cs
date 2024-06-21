@@ -10,8 +10,8 @@ namespace CareYou.Views
 {
     public partial class FundraisePage : System.Web.UI.Page
     {
-        String programType;
-        String query;
+        static String programType;
+        static String query;
         
         protected void Page_Load(object sender, EventArgs e)
         {

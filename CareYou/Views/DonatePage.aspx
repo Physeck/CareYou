@@ -47,7 +47,7 @@
                 }
             });
             var searchBar = document.getElementById('<%= SearchBar.ClientID %>');
-            searchBar.addEventListener('keydown', function(event) {
+            searchBar.addEventListener('keydown', function (event) {
                 if (event.key === 'Enter') {
                     event.preventDefault();
                     document.getElementById('<%= SearchBtn.ClientID %>').click();
@@ -65,9 +65,10 @@
                 <div class="search-flexrow">
                     <asp:ImageButton ID="SearchBtn" runat="server" CssClass="search-btn" ImageUrl="~/Assets/Search/search-btn.png" OnClick="SearchBtn_Click" />
                     <asp:DropDownList ID="FilterDDL" runat="server" CssClass="hidden-dropdown" AutoPostBack="True" OnSelectedIndexChanged="FilterDDL_SelectedIndexChanged">
+                        <asp:ListItem Text="None" Value="none"></asp:ListItem>
                         <asp:ListItem Text="Social Activity" Value="social"></asp:ListItem>
                         <asp:ListItem Text="Projects/Business" Value="project"></asp:ListItem>
-                        <asp:ListItem Text="None" Value="none"></asp:ListItem>
+
                     </asp:DropDownList>
                     <label for="<%= FilterDDL.ClientID %>" class="ddl">
                     </label>

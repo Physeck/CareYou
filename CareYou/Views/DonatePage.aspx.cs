@@ -11,15 +11,25 @@ namespace CareYou.Views
 {
     public partial class DonatePage : System.Web.UI.Page
     {
-        String programType;
-        String query;
+        static String programType;
+        static String query;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (FilterDDL.SelectedValue == "project")
+            {
+                programType = "project";
+            }
+            else if (FilterDDL.SelectedValue == "social")
+            {
+                programType = "social";
+            }
+            else
+            {
+                programType = "none";
+            }
             if (!IsPostBack)
             {
                 query = "";
-                programType = "none";
                 ViewState["ProgramCount"] = 5;
                 BindPrograms(programType, query);
             }
@@ -46,19 +56,16 @@ namespace CareYou.Views
             if(FilterDDL.SelectedValue == "none")
             {
                 programType = "none";
-                ViewState["ProgramCount"] = 5;
                 BindPrograms(programType, query);
             }
             else if(FilterDDL.SelectedValue == "project")
             {
                 programType = "project";
-                ViewState["ProgramCount"] = 5;
                 BindPrograms(programType, query);
             }
             else if(FilterDDL.SelectedValue == "social")
             {
                 programType = "social";
-                ViewState["ProgramCount"] = 5;
                 BindPrograms(programType, query);
             }
         }
@@ -66,7 +73,7 @@ namespace CareYou.Views
         protected void ViewMoreBtn_Click(object sender, EventArgs e)
         {
             int currentCount = (int)ViewState["ProgramCount"];
-            ViewState["CommentCount"] = currentCount + 5;
+            ViewState["ProgramCount"] = currentCount + 5;
             BindPrograms(programType,query);
         }
     }
