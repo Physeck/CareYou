@@ -55,6 +55,24 @@ namespace CareYou.Handler
             programRepo.acceptProgramChanges(programID);
         }
 
+        public static List<dynamic> getAllProgramsWithReports()
+        {
+            List<Program> programList = programRepo.getAllProgramsWithReports();
+            List<dynamic> programDetails = new List<dynamic>();
+            foreach (Program program in programList)
+            {
+                int reportCount = programRepo.getAllPendingReports(program).Count;
+                dynamic ProgramDetail = new
+                {
+                    ProgramTitle = program.ProgramTitle,
+                    ProgramID = program.ProgramID,
+                    ReportCount = reportCount
+                };
+                programDetails.Add(ProgramDetail);
+            }
+            return programDetails;
+        }
+
         public static List<dynamic> getAllPrograms(String programType, String query)
         {
             List<Program> programs =null;

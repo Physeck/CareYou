@@ -235,3 +235,18 @@
     align-self: center;
     margin-right: 40px;
 }
+
+.userProfile {
+    display: flex;
+    position: relative;
+    width: 3.125vw;
+    height: 3.125vw;
+}
+
+.report-count-container{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

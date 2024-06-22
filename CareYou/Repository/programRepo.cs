@@ -41,6 +41,17 @@ namespace CareYou.Repository
             db.SaveChanges();
         }
 
+        public static List<Program> getAllProgramsWithReports()
+        {
+            return (from x in db.Programs where x.ReportedPrograms.Count > 0 && x.ReportedPrograms.All(rp => rp.ReportStatus == "pending") select x).ToList();
+
+        }
+
+        public static List<ReportedProgram> getAllPendingReports(Program program)
+        {
+            return (from x in db.ReportedPrograms where x.ProgramID == program.ProgramID && x.ReportStatus == "pending" select x).ToList();
+        }
+
         public static Program getProgramById(int programID)
         {
             return (from x in db.Programs where x.ProgramID == programID select x).FirstOrDefault();

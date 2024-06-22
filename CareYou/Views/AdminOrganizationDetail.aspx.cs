@@ -15,25 +15,31 @@ namespace CareYou.Views
         {
             int organizationId = Convert.ToInt32(Request.QueryString["id"]);
             Organization organization = OrganizationHandler.getOrganizationById(organizationId);
-            NameTB.Text = organization.Name;
-            TypeTB.Text = organization.Type;
-            LocTB.Text = organization.Location;
-            NumberTB.Text = organization.PhoneNumber;
-            EmailTB.Text = organization.Email;
-            LeaderTB.Text = organization.LeaderName;
-            imageboxLb.Text = organization.Certificate;
+            if(organization != null)
+            {
+                NameTB.Text = organization.Name;
+                TypeTB.Text = organization.Type;
+                LocTB.Text = organization.Location;
+                NumberTB.Text = organization.PhoneNumber;
+                EmailTB.Text = organization.Email;
+                LeaderTB.Text = organization.LeaderName;
+                imageboxLb.Text = organization.Certificate;
+            }
+            
         }
 
         protected void RejectBtn_Click(object sender, EventArgs e)
         {
             int organizationId = Convert.ToInt32(Request.QueryString["id"]);
             OrganizationHandler.RejectOrganization(organizationId);
+            Response.Redirect("DashboardPage.aspx");    
         }
 
         protected void AccBtn_Click(object sender, EventArgs e)
         {
             int organizationId = Convert.ToInt32(Request.QueryString["id"]);
             OrganizationHandler.AcceptOrganization(organizationId);
+            Response.Redirect("DashboardPage.aspx");
         }
     }
 }
