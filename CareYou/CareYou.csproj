@@ -160,6 +160,7 @@
     <Content Include="Style\resetpasswordstyle.css" />
     <Content Include="Style\Styling.css" />
     <Content Include="Style\userreportstyle.css" />
+    <Content Include="Views\AdminOrganizationDetail.aspx" />
     <Content Include="Views\AdminProgramDetail.aspx" />
     <Content Include="Views\ChooseRolePage.aspx" />
     <Content Include="Views\CreateProgram.aspx" />
@@ -282,6 +283,13 @@
     <Compile Include="Repository\transactionRepo.cs" />
     <Compile Include="Repository\userRepo.cs" />
     <Compile Include="userBadgeData.cs" />
+    <Compile Include="Views\AdminOrganizationDetail.aspx.cs">
+      <DependentUpon>AdminOrganizationDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AdminOrganizationDetail.aspx.designer.cs">
+      <DependentUpon>AdminOrganizationDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\AdminProgramDetail.aspx.cs">
       <DependentUpon>AdminProgramDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -10,6 +10,21 @@ namespace CareYou.Handler
 {
     public class OrganizationHandler
     {
+
+        public static void RejectOrganization(int organizationId)
+        {
+            OrganizationRepo.RejectOrganization(organizationId);
+        }
+
+        public static void AcceptOrganization(int organizationId)
+        {
+            OrganizationRepo.AcceptOrganization(organizationId);
+        }
+
+        public static Organization getOrganizationById(int organizationId)
+        {
+            return OrganizationRepo.GetOrganizationByUserId(organizationId);
+        }
         public static Response<Organization> CreateOrganization(int userId, String name, String type, String location, String phone, String email, String leaderName, HttpPostedFile cert)
         {
             Organization organization = OrganizationRepo.GetOrganizationByEmail(email.ToLower());

@@ -11,6 +11,20 @@ namespace CareYou.Repository
     {
         static CareYouDBEntities db = DatabaseSingleton.getInstance();
 
+        public static void RejectOrganization(int id)
+        {
+            Organization organization = db.Organizations.Find(id);
+            organization.User.Role = "user";
+            db.Organizations.Remove(organization);
+            db.SaveChanges();
+        }
+
+        public static void AcceptOrganization(int id)
+        {
+            Organization organization = db.Organizations.Find(id);
+            organization.isVerified = true;
+            db.SaveChanges();
+        }
         public static Organization GetOrganizationByUserId(int id)
         {
             return db.Organizations.Find(id);
