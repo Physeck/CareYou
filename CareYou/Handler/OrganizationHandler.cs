@@ -28,6 +28,8 @@ namespace CareYou.Handler
         {
             String imageLoc = ProgramHandler.UploadFile(cert, "~/Organization/cert/");
             Organization org = OrganizationRepo.CreateOrganization(userId, name, type, location, phone, email, website, leaderName, imageLoc);
+            User user = userRepo.GetUserById(userId);
+            userRepo.changeRole(user, "organization");
             return new Response<Organization>()
             {
                 Success = true,
@@ -36,6 +38,11 @@ namespace CareYou.Handler
                 Payload = org
             };
 
+        }
+
+        public static Organization GetOrganizationByUserId(int userId)
+        {
+            return OrganizationRepo.GetOrganizationByUserId(userId);
         }
     }
 }

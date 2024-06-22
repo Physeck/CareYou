@@ -73,7 +73,7 @@
                 
 
                     <div class="regcom">
-                        <asp:HyperLink ID="regComlnk" class="regComlnk" runat="server" NavigateUrl="~/Views/insertUser.aspx">Register as Community</asp:HyperLink>
+                        <asp:HyperLink ID="regComlnk" class="regComlnk" runat="server" NavigateUrl="~/Views/OrganizationForm.aspx">Register as Organization</asp:HyperLink>
                     </div>
                 
 

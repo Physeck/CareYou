@@ -45,23 +45,7 @@ namespace CareYou.Views
             }
             else
             {
-                if (response.Field.Equals("topic"))
-                {
-                    topicErrorLbl.Text = response.Message;
-                }
-                else
-                {
-                    topicErrorLbl.Text = "";
-                }
-                if (response.Field.Equals("title"))
-                {
-                    titleErrorLbl.Text = response.Message;
-                }
-                else
-                {
-                    titleErrorLbl.Text = "";
-                }
-                if (response.Field.Equals("name"))
+                if(response.Field.Equals("name"))
                 {
                     nameErrorLbl.Text = response.Message;
                 }
@@ -69,23 +53,8 @@ namespace CareYou.Views
                 {
                     nameErrorLbl.Text = "";
                 }
-                if (response.Field.Equals("beneficiary"))
-                {
-                    benefeciaryErrorLbl.Text = response.Message;
-                }
-                else
-                {
-                    benefeciaryErrorLbl.Text = "";
-                }
-                if (response.Field.Equals("desc"))
-                {
-                    descErrorLbl.Text = response.Message;
-                }
-                else
-                {
-                    descErrorLbl.Text = "";
-                }
-                if (response.Field.Equals("type"))
+
+                if(response.Field.Equals("type"))
                 {
                     typeErrorLbl.Text = response.Message;
                 }
@@ -93,7 +62,8 @@ namespace CareYou.Views
                 {
                     typeErrorLbl.Text = "";
                 }
-                if (response.Field.Equals("location"))
+
+                if(response.Field.Equals("location"))
                 {
                     locErrorLbl.Text = response.Message;
                 }
@@ -101,37 +71,39 @@ namespace CareYou.Views
                 {
                     locErrorLbl.Text = "";
                 }
-                if (response.Field.Equals("target"))
+
+                if(response.Field.Equals("email"))
                 {
-                    TargetErrorLbl.Text = response.Message;
+                    emailErrorLbl.Text = response.Message;
                 }
                 else
                 {
-                    TargetErrorLbl.Text = "";
+                    emailErrorLbl.Text = "";
                 }
-                if (response.Field.Equals("deadline"))
+
+                if(response.Field.Equals("phone"))
                 {
-                    DeadlineErrorLbl.Text = response.Message;
+                    numberErrorLbl.Text = response.Message;
                 }
                 else
                 {
-                    DeadlineErrorLbl.Text = "";
+                    numberErrorLbl.Text = "";
                 }
-                if (response.Field.Equals("programImage"))
+                if(response.Field.Equals("leaderName"))
+                {
+                    leaderErrorLbl.Text = response.Message;
+                }
+                else
+                {
+                    leaderErrorLbl.Text = "";
+                }
+                if (response.Field.Equals("cert"))
                 {
                     ImageErrorLbl.Text = response.Message;
                 }
                 else
                 {
                     ImageErrorLbl.Text = "";
-                }
-                if (response.Field.Equals("idImage"))
-                {
-                    IDErrorLbl.Text = response.Message;
-                }
-                else
-                {
-                    IDErrorLbl.Text = "";
                 }
                 if (response.Field.Equals("confirmation"))
                 {
@@ -143,6 +115,5 @@ namespace CareYou.Views
                 }
             }
         }
-    }
     }
 }

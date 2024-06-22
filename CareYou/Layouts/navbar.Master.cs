@@ -51,6 +51,7 @@ namespace CareYou.Views.Layouts
                     user = userHandler.GetUserById(id);
                     Session["user"] = user;
                     Session["UserID"] = id;
+                    
                 }
                 else
                 {
@@ -60,6 +61,15 @@ namespace CareYou.Views.Layouts
                 {
                     ProfileBtn.Visible = true;
                     SignInBtn.Visible = false;
+                    if (user.Role == "organization")
+                    {
+                        int userId = Convert.ToInt32(Session["UserID"]);
+                        Organization org = OrganizationHandler.GetOrganizationByUserId(userId);
+                        if (org == null)
+                        {
+                            notifContainer.Attributes["class"] = "notif-container show";
+                        }
+                    }
                 }
 
             }

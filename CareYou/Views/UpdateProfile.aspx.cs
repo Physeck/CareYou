@@ -50,10 +50,16 @@ namespace CareYou.Views
             {
                 rank = userController.getUserRank(id);
                 uPLogo.Style["display"] = "none";
+
             }
             else if (curr.Role.Equals("organization"))
             {
                 rank = userController.getOrganizationRank(id);
+                regComlnk.Visible = false;
+                if (curr.Organization == null)
+                {
+                    uPLogo.Style["display"] = "none";
+                }
             }
 
             if (!Page.IsPostBack)

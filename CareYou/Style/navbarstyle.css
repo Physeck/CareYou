@@ -15,18 +15,16 @@ html {
     min-height: 100%;
 }
 .navbar_shape {
-    position: fixed;
-    top: 1.563vw;
-    left: 50%;
-    transform: translateX(-50%);
+    position: relative;
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     background-color: rgb(255, 255, 255);
     border-radius: 2.604vw 2.604vw 2.604vw 2.604vw;
     filter: drop-shadow(0px 0px 2.083vw rgba(0, 0, 0, 0.298));
-    z-index: 1000;
-    width: 84.16%;
-    height: 5.625vw;
+    width: 100%;
+    min-height: 5.625vw;
 }
 
 .navbar {
@@ -35,8 +33,6 @@ html {
     justify-content: space-between;
     align-items: center;
     gap: 0px 0.521vw;
-    top: 50%;
-    transform: translateY(-50%);
     margin: 0 auto 0 auto;
     width: 90.35%;
     height: 100%;
@@ -148,4 +144,48 @@ html {
     position: relative;
     width: 4.167vw;
     height: 4.167vw;
+}
+
+.notif-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 3.073vw;
+    width: fit-content;
+    padding-left: 1.094vw;
+    padding-right: 1.094vw;
+    background-color: #ffffff;
+    margin-top: 0.417vw;
+    border-radius: 0.781vw 0.781vw 0.781vw 0.781vw;
+    filter: drop-shadow(0px 0.781vw 2.083vw rgba(0, 0, 0, 0.15));
+    font: 500 1.563vw/1 "Helvetica Neue", Helvetica, Arial, serif;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 3s ease, visibility 3s ease;
+}
+    .notif-container.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+.navbar-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    top: 1.563vw;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 84.16%;
+    align-items: center;
+}
+
+#orgForm{
+    text-decoration:none;
+}
+
+#orgForm:hover{
+    text-decoration: underline
 }

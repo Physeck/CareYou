@@ -62,6 +62,10 @@ namespace CareYou.Views
             }else if (curr.Role.Equals("organization"))
             {
                 rank = userController.getOrganizationRank(id);
+                if(curr.Organization == null)
+                {
+                    PLogo.Style["display"] = "none";
+                }
             }
         }
 

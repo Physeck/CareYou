@@ -13,20 +13,24 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <div class="navbar_shape">
-                <div class="navbar">
-                    <div class="navbarBtn_wrapper">
-                        <asp:Button CssClass="navbar_btn" ID="HomeBtn" runat="server" Text="Home" OnClick="HomeBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" ID="DonateBtn" runat="server" Text="Donate" OnClick="DonateBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" ID="FundraiseBtn" runat="server" Text="Fundraise" OnClick="FundraiseBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" ID="TopDonationBtn" runat="server" Text="Top Donation" OnClick="TopDonationBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" ID="HistoryBtn" runat="server" Text="History" OnClick="HistoryBtn_Click" />
+            <div class="navbar-container">
+                <div class="navbar_shape">
+                    <div class="navbar">
+                        <div class="navbarBtn_wrapper">
+                            <asp:Button CssClass="navbar_btn" ID="HomeBtn" runat="server" Text="Home" OnClick="HomeBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" ID="DonateBtn" runat="server" Text="Donate" OnClick="DonateBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" ID="FundraiseBtn" runat="server" Text="Fundraise" OnClick="FundraiseBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" ID="TopDonationBtn" runat="server" Text="Top Donation" OnClick="TopDonationBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" ID="HistoryBtn" runat="server" Text="History" OnClick="HistoryBtn_Click" />
+                        </div>
+                        <asp:Button CssClass="signInbtn" ID="SignInBtn" runat="server" Text="Sign In" OnClick="SignInBtn_Click" />
+                        <asp:ImageButton CssClass="profileBtn" Visible="false" ID="ProfileBtn" runat="server" ImageUrl="~/assets/NavbarProfile.svg" OnClick="ProfileBtn_Click" AlternateText="Profile" />
                     </div>
-                    <asp:Button CssClass="signInbtn" ID="SignInBtn" runat="server" Text="Sign In" OnClick="SignInBtn_Click" />
-                    <asp:ImageButton CssClass="profileBtn" Visible="false" ID="ProfileBtn" runat="server" ImageUrl="~/assets/NavbarProfile.svg" OnClick="ProfileBtn_Click" AlternateText="Profile" />
+                </div>
+                <div id="notifContainer" class="notif-container" runat="server">
+                    <span>Please fill the organization form</span>&nbsp<asp:HyperLink ID="orgForm" Style="color: #01A95D" runat="server" NavigateUrl="~/Views/OrganizationForm.aspx">here</asp:HyperLink>&nbsp<span>to get verified</span>
                 </div>
             </div>
-
 
         </div>
         <div>

@@ -196,6 +196,8 @@ namespace CareYou.Controller
             };
         }
 
+
+
         public static Response<Organization> createOrganization(int userId, String name, String type, String location, String phone, String email, String website, String leaderName, HttpPostedFile cert, bool confirmation)
         {
             Response<Organization> cekName = checkName(name);
@@ -206,6 +208,7 @@ namespace CareYou.Controller
             Response<Organization> cekLeaderName = checkLeaderName(leaderName);
             Response<Organization> cekCert = checkCert(cert);
             Response<Organization> cekConfirmation = checkConfirmation(confirmation);
+
             if(cekName.Success && cekType.Success && cekLocation.Success && cekPhone.Success && cekEmail.Success && cekLeaderName.Success && cekCert.Success && cekConfirmation.Success)
             {
                 return OrganizationHandler.CreateOrganization(userId, name, type, location, phone, email, website, leaderName, cert);
