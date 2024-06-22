@@ -23,9 +23,32 @@ namespace CareYou.Repository
             db.SaveChanges();
         }
 
+        public static void deleteProgramChanges(int programID)
+        {
+            ProgramChanges changes = getProgramChangesById(programID);
+            db.ProgramChanges1.Remove(changes);
+            db.SaveChanges();
+        }
+        public static void acceptProgramChanges(int programID)
+        {
+            ProgramChanges changes = getProgramChangesById(programID);
+            Program program = getProgramById(programID);
+            program.ProgramDesc = changes.ChangesDesc;
+            program.ProgramTarget = changes.ChangesTarget;
+            program.EndDate = changes.ChangesEndDate;
+            program.ProgramImage = changes.ChangesImage;
+            changes.isApproved = true;
+            db.SaveChanges();
+        }
+
         public static Program getProgramById(int programID)
         {
             return (from x in db.Programs where x.ProgramID == programID select x).FirstOrDefault();
+        }
+
+        public static ProgramChanges getProgramChangesById(int programID)
+        {
+            return (from x in db.ProgramChanges1 where x.ProgramID == programID select x).FirstOrDefault();
         }
 
         public static List<Program> getAllVerifiedPrograms(String query)

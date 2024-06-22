@@ -35,9 +35,24 @@ namespace CareYou.Handler
             return programRepo.getProgramById(programID);
         }
 
+        public static ProgramChanges getProgramChangesById(int programID)
+        {
+            return programRepo.getProgramChangesById(programID);
+        }
+
         public static void acceptProgram(int programID)
         {
             programRepo.acceptProgram(programID);
+        }
+
+        public static void deleteProgramChanges(int programID)
+        {
+            programRepo.deleteProgramChanges(programID);
+        }
+
+        public static void acceptProgramChanges(int programID)
+        {
+            programRepo.acceptProgramChanges(programID);
         }
 
         public static List<dynamic> getAllPrograms(String programType, String query)
@@ -185,6 +200,7 @@ namespace CareYou.Handler
                     {
                         ProgramID = program.ProgramID,
                         ProgramTitle = program.ProgramTitle,
+                        Type = "new"
                     };
 
                     programDetails.Add(programDetail);
@@ -198,7 +214,8 @@ namespace CareYou.Handler
                     dynamic programDetail = new
                     {
                         ProgramID = program.ProgramID,
-                        ProgramTitle = program.Program.ProgramTitle
+                        ProgramTitle = program.Program.ProgramTitle,
+                        Type = "edit"
                     };
 
                     programDetails.Add(programDetail);

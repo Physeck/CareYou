@@ -22,7 +22,7 @@
                 <div class="card-container">
                     <asp:Repeater ID="PendingRepeater" runat="server">
                         <ItemTemplate>
-                            <div class="program-card-container" onclick="location.href='/Views/AdminProgramDetail.aspx?id=<%# Eval("ProgramID") %>'">
+                            <div class="program-card-container" onclick="location.href='/Views/AdminProgramDetail.aspx?id=<%# Eval("ProgramID") %>'&type=<%# Eval("Type")%>">
                                 <%# Eval("ProgramTitle") %>
                             </div>
                         </ItemTemplate>

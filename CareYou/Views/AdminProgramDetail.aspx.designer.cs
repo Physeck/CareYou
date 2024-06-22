@@ -15,6 +15,15 @@ namespace CareYou.Views
     {
 
         /// <summary>
+        /// pageTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl pageTitle;
+
+        /// <summary>
         /// TopicTB control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Label titleErrorLbl;
 
         /// <summary>
+        /// nameCtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nameCtn;
+
+        /// <summary>
         /// NameTB control.
         /// </summary>
         /// <remarks>
@@ -67,6 +85,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label nameErrorLbl;
+
+        /// <summary>
+        /// beneficiaryCtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl beneficiaryCtn;
 
         /// <summary>
         /// BeneficiaryTB control.
@@ -105,6 +132,15 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Label descErrorLbl;
 
         /// <summary>
+        /// typeCtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl typeCtn;
+
+        /// <summary>
         /// TypeDDL control.
         /// </summary>
         /// <remarks>
@@ -121,6 +157,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label typeErrorLbl;
+
+        /// <summary>
+        /// locCtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl locCtn;
 
         /// <summary>
         /// LocTB control.
@@ -193,6 +238,15 @@ namespace CareYou.Views
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label ImageErrorLbl;
+
+        /// <summary>
+        /// idCardCtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl idCardCtn;
 
         /// <summary>
         /// idImageBoxLb control.

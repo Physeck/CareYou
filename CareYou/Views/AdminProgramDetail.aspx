@@ -8,7 +8,7 @@
     <section>
         <div class="page-container">
             <div class="box-container">
-                <div class="page-title">Verify Program</div>
+                <div class="page-title" id="pageTitle" runat="server" >Verify Program</div>
                 <div class="edit-container" style="padding-bottom:16.667vw;">
                     <div class="edit-topic_row">
                         <h1 class="edit-text">Program's topic</h1>
@@ -24,14 +24,14 @@
                     </div>
                     <asp:Label ID="titleErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
-                    <div class="edit-program_row">
+                    <div class="edit-program_row" id="nameCtn" runat="server">
                         <h1 class="edit-text">Name</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="NameTB" CssClass="insert-box" placeholder="Name" runat="server" Enabled="false"></asp:TextBox>
                     </div>
                     <asp:Label ID="nameErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
-                    <div class="edit-program_row">
+                    <div class="edit-program_row" id="beneficiaryCtn" runat="server">
                         <h1 class="edit-text">Beneficiary</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="BeneficiaryTB" CssClass="insert-box" placeholder="Beneficiary" runat="server" Enabled="false"></asp:TextBox>
@@ -45,7 +45,7 @@
                     </div>
                     <asp:Label ID="descErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
-                    <div class="edit-program_row">
+                    <div class="edit-program_row" id="typeCtn" runat="server">
                         <h1 class="edit-text">Fundraiser Type</h1>
                         <h1 class="edit-text colon">:</h1>
                         <div class="dropdown-container">
@@ -57,7 +57,7 @@
                     </div>
                     <asp:Label ID="typeErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
-                    <div class="edit-program_row">
+                    <div class="edit-program_row" id="locCtn" runat="server">
                         <h1 class="edit-text">Location</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:TextBox ID="LocTB" CssClass="insert-box" placeholder="Location" runat="server" Enabled="false"></asp:TextBox>
@@ -85,7 +85,7 @@
                     </div>
                     <asp:Label ID="ImageErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
-                    <div class="edit-image_row">
+                    <div class="edit-image_row" id="idCardCtn" runat="server">
                         <h1 class="edit-text">National Identity Card (KTP)</h1>
                         <h1 class="edit-text colon">:</h1>
                         <asp:Label ID="idImageBoxLb" runat="server" Enabled="false" CssClass="insert-box" Text="Insert National Identity Card" accept=".png, .jpg, .jpeg"></asp:Label>
