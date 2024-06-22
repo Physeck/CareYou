@@ -114,7 +114,7 @@ namespace CareYou.Views.Layouts
         protected void ProfileBtn_Click(object sender, ImageClickEventArgs e)
         {
             int userId = Convert.ToInt32(Session["UserID"]);
-            Response.Redirect("~/Views/Profile.aspx?id=" + userId);
+            Response.Redirect("~/Views/UpdateProfile.aspx");
         }
     }
 }

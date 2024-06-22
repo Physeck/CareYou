@@ -146,7 +146,7 @@ namespace CareYou.Controller
             {
                 var result = new
                 {
-                    response = ""
+                    response = response
                 };
                 return result;
             }
@@ -174,7 +174,7 @@ namespace CareYou.Controller
             {
                 var result = new
                 {
-                    response = ""
+                    response = response
                 };
                 return result;
             }
@@ -214,19 +214,13 @@ namespace CareYou.Controller
             }
             if (response == "")
             {
-                int transactionId = transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, "Credit Card");
-                var result = new
-                {
-                    response = "",
-                    transactionId = transactionId
-                };
-                return result;
+                return transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, "Credit Card");
             }
             else
             {
                 var result = new
                 {
-                    response = ""
+                    response = response
                 };
                 return result;
             }
@@ -237,19 +231,13 @@ namespace CareYou.Controller
             String response = checkAmount(strAmount);
             if (response == "")
             {
-                int transactionId = transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, paymentMethod);
-                var result = new
-                {
-                    response = "",
-                    transactionId = transactionId
-                };
-                return result;
+                return transactionHandler.createNewWithdrawal(userId, DateTime.Now, int.Parse(strAmount), "withdrawal", programId, paymentMethod); ;
             }
             else
             {
                 var result = new
                 {
-                    response = ""
+                    response = response
                 };
                 return result;
             }

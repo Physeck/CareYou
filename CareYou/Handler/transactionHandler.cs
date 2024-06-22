@@ -1,4 +1,5 @@
-﻿using CareYou.Factory;
+﻿using CareYou.DataClass;
+using CareYou.Factory;
 using CareYou.Model;
 using CareYou.Repository;
 using System;
@@ -28,14 +29,28 @@ namespace CareYou.Handler
         {
             int transactionId = transactionRepo.insertTransaction(UserID, TransactionDate, Amount, TransactionType, ProgramID);
             transactionRepo.insertDonation(transactionId, TransactionMethod, isAnonymous);
+            programRepo.updateProgramRaised(ProgramID, Amount);
             return transactionId;
         }
 
-        public static int createNewWithdrawal(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod)
+        public static dynamic createNewWithdrawal(int UserID, DateTime TransactionDate, int Amount, string TransactionType, int ProgramID, string TransactionMethod)
         {
+            Program program = programRepo.getProgramById(ProgramID);
+            if((Amount+program.Withdrawn) > program.ProgramRaised)
+            {
+                return new
+                {
+                    response = "Withdrawal amount exceeds the raised amount",
+                };
+            }
             int transactionId = transactionRepo.insertTransaction(UserID, TransactionDate, Amount, TransactionType, ProgramID);
             transactionRepo.insertWithdrawal(transactionId, TransactionMethod);
-            return transactionId;
+            programRepo.updateProgramWithdrawn(ProgramID, Amount);
+            return new
+            {
+                response = "",
+                transactionId = transactionId
+            };
         }
 
         public static void addComment(int transactionId, String comment)

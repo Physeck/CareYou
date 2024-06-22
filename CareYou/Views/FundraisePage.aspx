@@ -60,7 +60,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <section class="fundraise-section">
         <div class="fundraise-page-flexbox">
-            <div class="create-program-container">
+            <div class="create-program-container" id="createProgramBox" runat="server">
                 <div class="create-program-flexbox">
                     <h1 class="create-program-text">Create your own program here!</h1>
                     <div class="fundraise-button-container">
@@ -71,7 +71,7 @@
                     </div>
                 </div>
             </div>
-            <h1 class="your-program-title">Your Program(s)</h1>
+            <asp:Label ID="TitleLbl" CssClass="your-program-title" runat="server" Text="Your Program(s)" ></asp:Label>
             <div class="search-bar-container">
                 <asp:TextBox ID="SearchBar" placeholder="Search program here" CssClass="search-bar" runat="server"></asp:TextBox>
                 <div class="search-flexrow">
@@ -111,22 +111,24 @@
                     </asp:Repeater>
                 </div>
             </div>
-            <h1 class="your-program-title">Your Pending Program(s)</h1>
-            <div class="program-list-container">
-                <div class="card-container">
-                    <asp:Repeater ID="PendingRepeater" runat="server">
-                        <ItemTemplate>
-                            <div class="pending-card-container">
-                                <div class="image-container" style='cursor: default; --src: url(/Assets/Program/<%# Eval("ProgramImage") %>)'></div>
-                                <div class="program-container" style="justify-content:flex-start; align-items:center; cursor: default;">
-                                    <div class="program-container-content">
-                                        <h1 class="program-title" style="color:white"><%# Eval("ProgramTitle") %></h1>
-                                        <h3 class="fundraiser" style="color:white"><%# Eval("FundraiserName") %></h3>
+            <div id="pendingProgramContainer" runat="server">
+                <h1 class="your-program-title">Your Pending Program(s)</h1>
+                <div class="program-list-container">
+                    <div class="card-container">
+                        <asp:Repeater ID="PendingRepeater" runat="server">
+                            <ItemTemplate>
+                                <div class="pending-card-container">
+                                    <div class="image-container" style='cursor: default; --src: url(/Assets/Program/<%# Eval("ProgramImage") %>)'></div>
+                                    <div class="program-container" style="justify-content: flex-start; align-items: center; cursor: default;">
+                                        <div class="program-container-content">
+                                            <h1 class="program-title" style="color: white"><%# Eval("ProgramTitle") %></h1>
+                                            <h3 class="fundraiser" style="color: white"><%# Eval("FundraiserName") %></h3>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
                 </div>
             </div>
         </div>

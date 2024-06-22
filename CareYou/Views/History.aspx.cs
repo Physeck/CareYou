@@ -107,7 +107,7 @@ namespace CareYou.Views
         {
             if (e.CommandName.Equals("detail"))
             {
-                Response.Redirect("~/Views/ProgramDetail.aspx?=id" + e.CommandArgument.ToString());
+                Response.Redirect("~/Views/ProgramDetail.aspx?id=" + e.CommandArgument.ToString());
             }
         }
     }

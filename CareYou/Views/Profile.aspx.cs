@@ -58,7 +58,7 @@ namespace CareYou.Views
             if (curr.Role.Equals("user"))
             {
                 rank = userController.getUserRank(id);
-                PLogo.Visible = false;
+                PLogo.Style["display"] = "none";
             }else if (curr.Role.Equals("organization"))
             {
                 rank = userController.getOrganizationRank(id);
@@ -67,7 +67,7 @@ namespace CareYou.Views
 
         protected void pViewPrgrm_Click(object sender, EventArgs e)
         {
-            //redirect ke program list user
+            Response.Redirect("FundraisePage.aspx?id=" + curr.UserID);
         }
     }
 }

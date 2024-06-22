@@ -49,7 +49,7 @@ namespace CareYou.Views
             if (curr.Role.Equals("user"))
             {
                 rank = userController.getUserRank(id);
-                uPLogo.Visible = false;
+                uPLogo.Style["display"] = "none";
             }
             else if (curr.Role.Equals("organization"))
             {
@@ -226,6 +226,22 @@ namespace CareYou.Views
             eCPup.Text = errormsg;
             eCPup.ForeColor = System.Drawing.Color.Red;
             PPCPassTB.Attributes.CssStyle.Add("border", "1px solid red");
+        }
+
+        protected void uPLogoutBtn_Click(object sender, EventArgs e)
+        {
+            Session["user"] = null;
+            Session["UserID"] = null;
+            Session.Remove("user");
+            Session.Remove("userID");
+            HttpCookie cookie = Request.Cookies["user_cookie"];
+            if (cookie != null)
+            {
+                cookie.Expires = DateTime.Now.AddDays(-2);
+                Response.Cookies.Add(cookie);
+            }
+
+            Response.Redirect("~/Views/Home.aspx");
         }
     }
 }

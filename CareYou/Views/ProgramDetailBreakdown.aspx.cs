@@ -104,7 +104,6 @@ namespace CareYou.Views
                 string ccPostcode = CCPostcodeTB.Text;
                 var payment = PaymentController.doWithdrawWithCC(strAmount, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId);
                 errorMsg = payment.response;
-                transactionId = payment.transactionId;
 
             }
             else
@@ -113,19 +112,16 @@ namespace CareYou.Views
                 {
                     var payment = PaymentController.doWithdraw(strAmount, userId, programId, "gopay");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
                 }
                 else if (selectedPaymentMethod.Equals("OvoRB"))
                 {
                     var payment = PaymentController.doWithdraw(strAmount, userId, programId, "ovo");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
                 }
                 else if (selectedPaymentMethod.Equals("DanaRB"))
                 {
                     var payment = PaymentController.doWithdraw(strAmount, userId, programId, "dana");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
                 }
                 else
                 {
@@ -138,7 +134,7 @@ namespace CareYou.Views
             {
 
                 ErrorLbl.Text = "";
-                Response.Redirect("PaymentSuccess.aspx?programId=" + programId + "&trId=" + transactionId);
+                Response.Redirect("WithdrawSuccess.aspx?programId=" + programId);
             }
             else
             {

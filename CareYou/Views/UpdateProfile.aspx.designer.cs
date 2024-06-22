@@ -21,7 +21,7 @@ namespace CareYou.Views
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlImage uPLogo;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl uPLogo;
 
         /// <summary>
         /// showpp control.

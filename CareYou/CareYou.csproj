@@ -183,6 +183,7 @@
     <Content Include="Views\TopDonation.aspx" />
     <Content Include="Views\UpdateProfile.aspx" />
     <Content Include="Views\UserReportPage.aspx" />
+    <Content Include="Views\WithdrawSuccess.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -438,6 +439,13 @@
     </Compile>
     <Compile Include="Views\UserReportPage.aspx.designer.cs">
       <DependentUpon>UserReportPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WithdrawSuccess.aspx.cs">
+      <DependentUpon>WithdrawSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\WithdrawSuccess.aspx.designer.cs">
+      <DependentUpon>WithdrawSuccess.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,5 @@
 ﻿using CareYou.Handler;
+using CareYou.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,23 @@ namespace CareYou.Views
     {
         static String programType;
         static String query;
-        
+        static int userId;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(Request.QueryString["id"]) > 0 && Convert.ToInt32(Request.QueryString["id"]) != Convert.ToInt32(Session["UserID"]))
+            {
+                userId = Convert.ToInt32(Request.QueryString["id"]);
+                User user = userHandler.GetUserById(userId);
+                TitleLbl.Text = user.UserName + "'s Fundraising Programs";
+                createProgramBox.Visible = false;
+                pendingProgramContainer.Visible = false;
+            }
+            else
+            {
+                userId = Convert.ToInt32(Session["UserID"]);
+
+            }
             if (!IsPostBack)
             {
                 query = "";
@@ -25,14 +40,15 @@ namespace CareYou.Views
 
         private void BindPrograms(String programType, String query)
         {
-            int userId = Convert.ToInt32(Session["UserID"]);
+            if(userId == Convert.ToInt32(Session["UserID"]))
+            {
+                var allPendingPrograms = ProgramHandler.getAllPendingProgramsFromUserId(programType, query, userId);
+                PendingRepeater.DataSource = allPendingPrograms;
+                PendingRepeater.DataBind();
+            }
             var allVerifiedPrograms = ProgramHandler.getAllVerifiedProgramsFromUserId(programType, query, userId);
             ProgramRepeater.DataSource = allVerifiedPrograms;
             ProgramRepeater.DataBind();
-            var allPendingPrograms = ProgramHandler.getAllPendingProgramsFromUserId(programType, query, userId);
-            PendingRepeater.DataSource = allPendingPrograms;
-            PendingRepeater.DataBind();
-
         }
         /* protected void startfundraisingbtn_Click(object sender, EventArgs e)
         {

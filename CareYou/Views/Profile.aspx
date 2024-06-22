@@ -8,8 +8,11 @@
 
     <div class="profilePage">
         <div class="detailProfile">
-            <div>
-                <img id="PLogo" class="PLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
+            <div class="verified-image" id="PLogo" runat="server">
+                <div class="verified-image-flexbox">
+                    <img class="verified-image-png" src="/Assets/ProgramDetail/verified.png" alt="alt text" />
+                    <h2 class="verified-text">Organization Verified</h2>
+                </div>
             </div>
             
             <div class="pP">

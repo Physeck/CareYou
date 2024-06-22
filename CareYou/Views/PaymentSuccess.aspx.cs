@@ -21,13 +21,13 @@ namespace CareYou.Views
             int programId = Convert.ToInt32(Request.QueryString["programId"]);
             String comment = CommentTB.Text;
             PaymentController.addComment(transactionId, comment);
-            Response.Redirect("ProgramDetails.aspx?id=" + programId);
+            Response.Redirect("ProgramDetail.aspx?id=" + programId);
         }
 
         protected void BackBtn_Click(object sender, ImageClickEventArgs e)
         {
             int programId = Convert.ToInt32(Request.QueryString["programId"]);
-            Response.Redirect("ProgramDetails.aspx?id=" + programId);
+            Response.Redirect("ProgramDetail.aspx?id=" + programId);
         }
     }
 }

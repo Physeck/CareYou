@@ -113,5 +113,19 @@ namespace CareYou.Repository
             return program;
         }
 
+        public static void updateProgramRaised(int programId, int amount)
+        {
+            Program program = db.Programs.Find(programId);
+            program.ProgramRaised += amount;
+            db.SaveChanges();
+        }
+
+        public static void updateProgramWithdrawn(int programId, int amount)
+        {
+            Program program = db.Programs.Find(programId);
+            program.Withdrawn += amount;
+            db.SaveChanges();
+        }
+
     }
 }

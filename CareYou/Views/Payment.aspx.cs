@@ -47,7 +47,11 @@ namespace CareYou.Views
                 string ccPostcode = CCPostcodeTB.Text;
                 var payment = PaymentController.doTransactionWithCC(strAmount, isFeeChecked, isAnonymousChecked, ccName, ccNumber, ccExpireMonth, ccExpireYear, ccCVV, ccPostcode, userId, programId);
                 errorMsg = payment.response;
-                transactionId = payment.transactionId;
+                if (errorMsg == "")
+                {
+                    transactionId = payment.transactionId;
+                }
+                
 
             }
             else
@@ -56,20 +60,33 @@ namespace CareYou.Views
                 {
                     var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "gopay");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
+                    if (errorMsg == "")
+                    {
+                        transactionId = payment.transactionId;
+                    }
                 }
                 else if (selectedPaymentMethod.Equals("OvoRB"))
                 {
                     var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "ovo");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
+                    if (errorMsg == "")
+                    {
+                        transactionId = payment.transactionId;
+                    }
                 }else if(selectedPaymentMethod.Equals("DanaRB"))
                 {
                     var payment = PaymentController.doTransaction(strAmount, isFeeChecked, isAnonymousChecked, userId, programId, "dana");
                     errorMsg = payment.response;
-                    transactionId = payment.transactionId;
+                    if(errorMsg == "")
+                    {
+                        transactionId = payment.transactionId;
+                    }
                 }
-                
+                else
+                {
+                    errorMsg = "Please select a payment method";
+                }
+
             }
 
             if(errorMsg == "")

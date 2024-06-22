@@ -8,9 +8,12 @@
 
     <div class="profileContainer">
         <div class="detailProfileContainer">
-
-            <img id="uPLogo" class="uPLogo" runat="server" src="../Assets/Logo/orgverifyLogo.png" />
-
+            <div class="verified-image" id="uPLogo" runat="server">
+                <div class="verified-image-flexbox">
+                    <img class="verified-image-png" src="/Assets/ProgramDetail/verified.png" alt="alt text" />
+                    <h2 class="verified-text">Organization Verified</h2>
+                </div>
+            </div>
             <div class="detailPP">
 
                 <img id="uPPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="uPPp" />
@@ -102,7 +105,7 @@
             </div>
 
             <div class="uPlogoutContainer">
-                <asp:Button ID="uPLogoutBtn" class="uPLogoutBtn" runat="server" Text="Logout" />
+                <asp:Button ID="uPLogoutBtn" class="uPLogoutBtn" runat="server" Text="Logout" OnClick="uPLogoutBtn_Click" />
             </div>
         </div>
 

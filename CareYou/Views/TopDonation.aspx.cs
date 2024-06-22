@@ -13,7 +13,7 @@ namespace CareYou.Views
         public top10Data second = null;
         public top10Data three = null;
         public top10Data one = null;
-        int id = 0;
+        static int id = 0;
 
         protected void getData()
         {
@@ -34,7 +34,7 @@ namespace CareYou.Views
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            id = 1;
+            id = Convert.ToInt32(Session["UserID"]);
             if (!Page.IsPostBack)
             {
                 getData();
