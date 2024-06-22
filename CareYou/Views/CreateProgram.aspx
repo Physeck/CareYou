@@ -77,7 +77,7 @@
                     <div class="edit-deadline_row">
                         <h1 class="edit-text">Deadline date</h1>
                         <h1 class="edit-text colon">:</h1>
-                        <asp:TextBox ID="dateTb" CssClass="date-box" placeholder="Date" TextMode="Date" runat="server"></asp:TextBox>
+                        <asp:TextBox ID="dateTb" CssClass="date-box" placeholder="Date" runat="server"></asp:TextBox>
                     </div>
                     <asp:Label ID="DeadlineErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 

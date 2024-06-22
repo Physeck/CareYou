@@ -466,10 +466,9 @@ option {
 }
 
 .send-request-btn {
-    position: absolute;
+    position: relative;
     display: flex;
     width: 18.438vw;
-    max-width: 100%;
     font: 700 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
     color: rgb(1, 169, 93);
     text-align: center;
@@ -479,8 +478,7 @@ option {
     background-color: transparent;
     cursor: pointer;
     border: none;
-    bottom: 4.271vw;
-    right: 3.854vw;
+    
 }
 
 .send-request-btn:hover{
@@ -508,3 +506,33 @@ input[type="file"] {
     margin-left: 26.865vw;
     margin-top: -1.5vw;
 }
+
+.btns-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 3.125vw;
+    bottom: 4.271vw;
+    right: 3.854vw; 
+}
+
+.reject-btn {
+    position: relative;
+    display: flex;
+    width: 18.438vw;
+    font: 700 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
+    color: #FF5B5B;
+    text-align: center;
+    border-radius: 1.953vw 1.953vw 1.953vw 1.953vw;
+    padding: 0.911vw 0.417vw 0.911vw 0.417vw;
+    outline: 0.26vw solid #FF5B5B;
+    background-color: transparent;
+    cursor: pointer;
+    border: none;
+}
+
+    .reject-btn:hover {
+        background-color: #FF5B5B;
+        color: rgb(255, 255, 255);
+    }

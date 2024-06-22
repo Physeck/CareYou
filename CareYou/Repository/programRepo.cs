@@ -16,6 +16,13 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.User.UserID == userID select x).ToList();
         }
 
+        public static void acceptProgram(int programID)
+        {
+            Program program = getProgramById(programID);
+            program.Verified = true;
+            db.SaveChanges();
+        }
+
         public static Program getProgramById(int programID)
         {
             return (from x in db.Programs where x.ProgramID == programID select x).FirstOrDefault();

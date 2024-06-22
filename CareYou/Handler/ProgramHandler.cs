@@ -35,6 +35,11 @@ namespace CareYou.Handler
             return programRepo.getProgramById(programID);
         }
 
+        public static void acceptProgram(int programID)
+        {
+            programRepo.acceptProgram(programID);
+        }
+
         public static List<dynamic> getAllPrograms(String programType, String query)
         {
             List<Program> programs =null;
