@@ -21,5 +21,10 @@ namespace CareYou.Handler
                 Payload = report
             };
         }
+
+        public static void ApproveReport(int reportId)
+        {
+            ReportRepository.ApproveReport(reportId);
+        }
     }
 }

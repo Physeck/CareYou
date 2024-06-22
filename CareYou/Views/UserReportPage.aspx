@@ -14,14 +14,14 @@
                 <div class="card-container">
                     <asp:Repeater ID="PendingRepeater" runat="server">
                         <ItemTemplate>
-                            <div class="program-card-container" style="justify-content:space-between" onclick="location.href='/Views/AdminProgramReports.aspx?id=<%# Eval("ProgramID") %>'">
+                            <div class="program-card-container" style="justify-content:space-between;" onclick="location.href='/Views/AdminProgramReport.aspx?id=<%# Eval("ProgramID") %>'">
                                 <%# Eval("ProgramTitle") %>
                                 <div class="report-count-container">
                                     <asp:Image class="userProfile" ID="UserReportProfile" runat="server" ImageUrl="~/assets/UserReportProfile.svg" />
                                     <div> : </div>
                                     <%# Eval("ReportCount") %>
                                 </div>
-
+                                
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>

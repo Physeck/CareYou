@@ -16,6 +16,13 @@ namespace CareYou.Repository
             return db.ReportedPrograms.ToList();
         }
 
+        public static void ApproveReport(int reportId)
+        {
+            ReportedProgram report = db.ReportedPrograms.Find(reportId);
+            report.ReportStatus = "resolved";
+            db.SaveChanges();
+        }
+
         public static ReportedProgram GetReportById(int id)
         {
             return db.ReportedPrograms.Find(id);

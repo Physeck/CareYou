@@ -19,6 +19,44 @@ namespace CareYou.Handler
             return programRepo.getProgramsByUserID(userID).ToList();
         }
 
+        public static String getReportReason(ReportedProgram report)
+        {
+            String reason = "";
+            if (report.ScamFundraise)
+            {
+                reason += "Scam Fundraise, ";
+            }
+            if (report.FraudFundraise)
+            {
+                reason += "Fraud Fundraise, ";
+            }
+            if (report.ThirdpartyBeneficiary)
+            {
+                reason += "ThirdpartyBeneficiary, ";
+            }
+            if (report.OtherReason != null)
+            {
+                reason += report.OtherReason;
+            }
+            return reason;
+        }
+        public static List<dynamic> getAllPendingReports(Program program)
+        {
+            List<ReportedProgram> reports = programRepo.getAllPendingReports(program);
+            List<dynamic> reportDetails = new List<dynamic>();
+            foreach (ReportedProgram report in reports)
+            {
+                String reason = getReportReason(report);
+                dynamic reportDetail = new
+                {
+                    ReportID = report.ReportID,
+                    ReportReason = reason
+                };
+                reportDetails.Add(reportDetail);
+            }
+            return reportDetails;
+        }
+
         public static bool isWithdrawn(int programID)
         {
             Program program = programRepo.getProgramById(programID);

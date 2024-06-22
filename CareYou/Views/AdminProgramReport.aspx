@@ -11,16 +11,14 @@
                     <h1 class="title">User Reports</h1>
                 </div>
                 <div class="card-container">
-                    <asp:Repeater ID="PendingRepeater" runat="server">
+                    <asp:Repeater ID="ReportRepeater" runat="server">
                         <ItemTemplate>
-                            <div class="program-card-container" style="justify-content:space-between" onclick="location.href='/Views/AdminProgramReports.aspx?id=<%# Eval("ProgramID") %>'">
-                                <%# Eval("ProgramTitle") %>
-                                <div class="report-count-container">
-                                    <asp:Image class="userProfile" ID="UserReportProfile" runat="server" ImageUrl="~/assets/UserReportProfile.svg" />
-                                    <div> : </div>
-                                    <%# Eval("ReportCount") %>
+                            <div class="program-card-container" style="justify-content:space-between; cursor: default">
+                                <div>ID : <%# Eval("ReportID") %></div>
+                                <div class="report-count-container" style="">
+                                    <%# Eval("ReportReason") %>
                                 </div>
-
+                                <asp:Button ID="ResolveButton" CssClass="resolve-btn" runat="server" Text="Resolve" CommandArgument='<%# Eval("ReportID") %>' OnClick="ResolveButton_Click" />
                             </div>
                         </ItemTemplate>
                     </asp:Repeater>

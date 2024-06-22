@@ -243,10 +243,29 @@
     height: 3.125vw;
 }
 
-.report-count-container{
+.report-count-container {
     position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
+    max-width: 56.25vw;
+    text-align: right;
+}
+
+.resolve-btn {
+    font-family: "Helvetica Neue";
+    font-weight: bold;
+    color: #01A95D;
+    border-radius: 2vw;
+    width: 12.5vw;
+    height: 4.115vw;
+    border: 0.26vw solid #01A95D;
+    background: #FFFFFF;
+    align-self: center;
+    cursor: pointer;
+    font: 700 2.083vw / 1 "Helvetica Neue", Helvetica, Arial, serif;
+}.resolve-btn:hover {
+    background: #01A95D;
+    color: #FFFFFF;
 }
