@@ -293,6 +293,14 @@
     outline-color: #01A95D;
     outline-width: 0.4vw;
     outline-offset: 0.52vw;
+    cursor: pointer;
+}
+.uPPp.disabled {
+    cursor: default;
+}
+
+.file-input {
+    display: none;
 }
 
 .PPName {

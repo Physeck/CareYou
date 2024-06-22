@@ -1,23 +1,54 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Layouts/navbar.Master" AutoEventWireup="true" CodeBehind="UpdateProfile.aspx.cs" Inherits="CareYou.Views.UpdateProfile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script>
+        function triggerFileInput() {
+            document.getElementById('<%= FileUploadControl.ClientID %>').click();
+            if (!fileInput.disabled) {
+                fileInput.click();
+            }
+        }
+
+        function previewProfilePic(input) {
+            if (input.files && input.files[0]) {
+                var file = input.files[0];
+                var validImageTypes = ["image/gif", "image/jpeg", "image/png", "image/webp"];
+                if (validImageTypes.includes(file.type)) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        document.getElementById('ProfilePic').src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                    document.getElementById('<%= UploadButton.ClientID %>').click(); // Automatically submit the form
+                } else {
+                    alert("Please select a valid image file (gif, jpeg, png, webp).");
+                    input.value = ""; // Clear the input
+                }
+            }
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <link href="../Style/Styling.css" rel="stylesheet" />
 
     <div class="background"></div>
-
+    
     <div class="profileContainer">
+        
         <div class="detailProfileContainer">
-            <div class="verified-image" id="uPLogo" runat="server">
+            
+            <div class="verified-image" id="uPLogo" runat="server"  >
                 <div class="verified-image-flexbox">
                     <img class="verified-image-png" src="/Assets/ProgramDetail/verified.png" alt="alt text" />
                     <h2 class="verified-text">Organization Verified</h2>
                 </div>
+                
             </div>
-            <div class="detailPP">
-
-                <img id="uPPp" src="../Assets/Profiles/<%= curr.ProfilePicture %>"  class="uPPp" />
             
+            <div class="detailPP">
+                <asp:FileUpload ID="FileUploadControl" runat="server" CssClass="file-input" OnChange="previewProfilePic(this)" />
+                <img id="uPPp"  runat="server" class="uPPp" onclick="triggerFileInput()"/>
+                <asp:Label ID="uploadStatusLabel" CssClass="errorlblUp" runat="server" Text="" />
+                <asp:Button ID="UploadButton" runat="server" Text="" OnClick="UploadProfilePic" Style="display: none;" />
                 <div class="detailDataPP">
                     <div id="showpp" runat="server">
                         <div class="PPName">

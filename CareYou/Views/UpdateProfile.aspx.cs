@@ -1,9 +1,11 @@
 ﻿using CareYou.Controller;
 using CareYou.DataClass;
+using CareYou.Handler;
 using CareYou.Model;
 using CareYou.Repository;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -18,6 +20,7 @@ namespace CareYou.Views
         public int totalDonate = 0;
         public int rank = 0;
         public userBadgeData badgeOfUser = null;
+        static String fileName = "";
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -37,6 +40,9 @@ namespace CareYou.Views
             uPBadges.DataSource = badgeOfUser.badges;
             uPBadges.DataBind();
 
+            
+
+            
             if (badgeOfUser.totalBadge != 0)
             {
                 noBadgeLbl.Visible = false;
@@ -66,12 +72,15 @@ namespace CareYou.Views
             {
                 showpp.Visible = true;
                 updatePP.Visible = false;
+                DisableProfilePicUpdate();
+                uPPp.Src = "~/Assets/Profiles/" + curr.ProfilePicture;
             }
 
         }
 
         protected void UPBtn_Click(object sender, EventArgs e)
         {
+            EnableProfilePicUpdate();
             showpp.Visible = false;
             updatePP.Visible = true;
             UPPass.Visible = false;
@@ -100,16 +109,38 @@ namespace CareYou.Views
             PPCPassTB.Attributes.CssStyle.Remove("border");
         }
 
+        protected void DisableProfilePicUpdate()
+        {
+            // Remove the onclick attribute
+            uPPp.Attributes.Remove("onclick");
+
+            // Add a disabled class to change the appearance
+            uPPp.Attributes["class"] += " disabled";
+
+            // Disable the file input
+            FileUploadControl.Attributes["disabled"] = "true";
+        }
+
+        protected void EnableProfilePicUpdate()
+        {
+            // Add the onclick attribute back
+            uPPp.Attributes["onclick"] = "triggerFileInput()";
+
+            // Remove the disabled class to change the appearance
+            uPPp.Attributes["class"] = uPPp.Attributes["class"].Replace(" disabled", "").Trim();
+
+            // Enable the file input
+            FileUploadControl.Attributes.Remove("disabled");
+        }
+
         protected void updtP2_Click(object sender, EventArgs e)
         {
-            //update the profile
-
+            
             String name = PPNameTB.Text;
             String email = PPEmailTB.Text;
             String pass = PPPassTB.Text;
             String cPass = PPCPassTB.Text;
             String errormsg = "";
-
             if (!userController.checkUPNameField(name).Success)
             {
                 errormsg = userController.checkUPNameField(name).Message;
@@ -170,6 +201,7 @@ namespace CareYou.Views
                 if (!UPPass.Visible)
                 {
                     Response<User> resp = userController.updateProfile(curr, name, email, curr.UserPassword, curr.UserPassword);
+                    userHandler.updateProfilePicture(curr, fileName);
                     if (resp.Success)
                     {
                         showpp.Visible = true;
@@ -184,6 +216,7 @@ namespace CareYou.Views
                 else
                 {
                     Response<User> resp = userController.updateProfile(curr, name, email, pass, cPass);
+                    userHandler.updateProfilePicture(curr, fileName);
                     if (resp.Success)
                     {
                         showpp.Visible = true;
@@ -195,11 +228,39 @@ namespace CareYou.Views
                         errorName(errormsg);
                     }
                 }
+                
             }
-
+            DisableProfilePicUpdate();
 
             //showpp.Visible = true;
             //updatePP.Visible = false;
+        }
+
+        protected void UploadProfilePic(object sender, EventArgs e)
+        {
+            if (FileUploadControl.HasFile)
+            {
+                string[] validExtensions = { ".gif", ".jpg", ".jpeg", ".png", ".webp" };
+                string fileExtension = Path.GetExtension(FileUploadControl.FileName).ToLower();
+
+                if (Array.Exists(validExtensions, ext => ext == fileExtension))
+                {
+                    string uploadFolder = HttpContext.Current.Server.MapPath("~/Assets/Profiles/");
+                    fileName = Path.GetFileName(FileUploadControl.FileName);
+                    string filePath = Path.Combine(uploadFolder, fileName);
+
+                    if (!Directory.Exists(uploadFolder))
+                    {
+                        Directory.CreateDirectory(uploadFolder);
+                    }
+
+                    FileUploadControl.SaveAs(filePath);
+
+                    // Update the profile picture src
+                    uPPp.Src = "~/Assets/Profiles/" + fileName;
+                    
+                }
+            }
         }
 
         protected void errorName(String errormsg)

@@ -25,7 +25,7 @@ namespace CareYou.Views
                 deleteClicked = false;
                 withdrawClicked = false;
             }
-            if(program != null /* && ProgramController.isOwner(programId, user.UserID) */)
+            if(program != null && ProgramController.isOwner(programId, user.UserID))
             {
                 editBtn.Visible = true;
                 withdrawBtn.Visible = true;
@@ -37,6 +37,11 @@ namespace CareYou.Views
                 balanceLb.Text = string.Format("{0:N0}", program.ProgramRaised);
                 transferredLb.Text = processedLb.Text = string.Format("{0:N0}", program.Withdrawn);
                 feeLb.Text = string.Format("{0:N0}", 0.04 * program.ProgramRaised);
+                if(ProgramHandler.isWithdrawn(programId))
+                {
+                    deleteBtn.Visible = false;
+                    nodeleteLb.Visible = true;
+                }
 
             }
             else

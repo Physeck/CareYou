@@ -19,6 +19,12 @@ namespace CareYou.Handler
             return programRepo.getProgramsByUserID(userID).ToList();
         }
 
+        public static bool isWithdrawn(int programID)
+        {
+            Program program = programRepo.getProgramById(programID);
+            return program.Withdrawn > 0;
+        }
+
         public static List<Program> getSecondAboveProgram(int userID)
         {
             return programRepo.getProgramsByUserID(userID).Skip(1).ToList();

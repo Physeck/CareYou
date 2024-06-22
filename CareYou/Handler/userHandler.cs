@@ -348,11 +348,12 @@ namespace CareYou.Handler
             };
         }
 
-        public static Response<User> updateProfilePicture(User user, HttpPostedFile image)
+        public static Response<User> updateProfilePicture(User user, String filename)
         {
-            String ImageLoc = ProgramHandler.UploadFile(image, "~/Assets/Profiles/");
-            userRepo.updateProfilePicture(user, ImageLoc);
-
+            if(filename != "")
+            {
+                userRepo.updateProfilePicture(user, filename);
+            }
             return new Response<User>()
             {
                 Success = true,
@@ -360,6 +361,7 @@ namespace CareYou.Handler
                 Field = "User",
                 Payload = user
             };
+
         }
 
         public static int GetUsersCount()
