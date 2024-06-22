@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -318,7 +319,8 @@ namespace CareYou.Handler
 
         public static Response<ProgramChanges> createProgramChanges(int programId, String desc, int target, DateTime deadline, HttpPostedFile file)
         {
-            ProgramChanges changes = programRepo.createNewProgramChanges(programId, desc, target, deadline, file.FileName);
+            String programImageLoc = UploadFile(file, "~/Assets/Program/");
+            ProgramChanges changes = programRepo.createNewProgramChanges(programId, desc, target, deadline, programImageLoc);
             file.SaveAs(HttpContext.Current.Server.MapPath("~/Assets/Program/") + file.FileName);
             return new Response<ProgramChanges>()
             {
@@ -331,8 +333,9 @@ namespace CareYou.Handler
 
         public static Response<Program> createProgram(int userId, String topic, String title, String name, String beneficiary, String desc, String type, String location, int target, DateTime deadline, HttpPostedFile programImg, HttpPostedFile idImg)
         {
-            Program program = programRepo.createProgram(userId, topic, title, name, beneficiary, desc, type, location, target, deadline, programImg.FileName, idImg.FileName);
-            programImg.SaveAs(HttpContext.Current.Server.MapPath("~/Assets/Program/") + programImg.FileName);
+            String programImageLoc = UploadFile(programImg, "~/Assets/Program/");
+            String idImageLoc = UploadFile(idImg, "~/Assets/Program/IDCard/");
+            Program program = programRepo.createProgram(userId, topic, title, name, beneficiary, desc, type, location, target, deadline, programImageLoc, idImageLoc);
             return new Response<Program>()
             {
                 Success = true,
@@ -340,6 +343,33 @@ namespace CareYou.Handler
                 Field = "program",
                 Payload = program
             };
+        }
+
+        public static String UploadFile(HttpPostedFile file, String path)
+        {
+                string uploadFolder = HttpContext.Current.Server.MapPath(path);
+                string fileName = file.FileName;
+                string filePath = Path.Combine(uploadFolder, fileName);
+
+                // Check if file with same name exists
+                if (File.Exists(filePath))
+                {
+                    string fileExtension = Path.GetExtension(fileName);
+                    string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+                    int fileIndex = 1;
+
+                    // Generate a unique file name
+                    while (File.Exists(filePath))
+                    {
+                        fileName = $"{fileNameWithoutExtension}_{fileIndex}{fileExtension}";
+                        filePath = Path.Combine(uploadFolder, fileName);
+                        fileIndex++;
+                    }
+                }
+
+                // Save the file with the unique name
+                file.SaveAs(filePath);
+                return fileName;
         }
 
     }

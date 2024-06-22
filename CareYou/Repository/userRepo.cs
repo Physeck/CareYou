@@ -107,5 +107,11 @@ namespace CareYou.Repository
             user.Role = role;
             db.SaveChanges();
         }
+
+        public static void updateProfilePicture(User user, String path)
+        {
+            user.ProfilePicture = path;
+            db.SaveChanges();
+        }
     }
 }

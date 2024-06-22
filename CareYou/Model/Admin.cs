@@ -20,6 +20,7 @@ namespace CareYou.Model
             this.ProgramChanges = new HashSet<ProgramChanges>();
             this.ReportedPrograms = new HashSet<ReportedProgram>();
             this.Programs = new HashSet<Program>();
+            this.Organizations = new HashSet<Organization>();
         }
     
         public int AdminID { get; set; }
@@ -33,5 +34,7 @@ namespace CareYou.Model
         public virtual ICollection<ReportedProgram> ReportedPrograms { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program> Programs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Organization> Organizations { get; set; }
     }
 }

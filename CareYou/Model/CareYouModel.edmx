@@ -32,6 +32,22 @@
           <Property Name="PaymentMethod" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="isAnonymous" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="LeaderName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Certificate" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="isVerified" Type="bit" Nullable="false" />
+          <Property Name="VerifiedBy" Type="int" />
+        </EntityType>
         <EntityType Name="Program">
           <Key>
             <PropertyRef Name="ProgramID" />
@@ -138,6 +154,32 @@
             </Principal>
             <Dependent Role="Donation">
               <PropertyRef Name="TransactionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_ToAdmin">
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+          <End Role="Organization" Type="Self.Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="VerifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_ToUser">
+          <End Role="User" Type="Self.User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -261,6 +303,7 @@
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Badge" EntityType="Self.Badge" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Donation" EntityType="Self.Donation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProgramChanges" EntityType="Self.ProgramChanges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ReportedProgram" EntityType="Self.ReportedProgram" Schema="dbo" store:Type="Tables" />
@@ -271,6 +314,14 @@
           <AssociationSet Name="FK_Donation_Transaction" Association="Self.FK_Donation_Transaction">
             <End Role="Transaction" EntitySet="Transaction" />
             <End Role="Donation" EntitySet="Donation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_ToAdmin" Association="Self.FK_Organization_ToAdmin">
+            <End Role="Admin" EntitySet="Admin" />
+            <End Role="Organization" EntitySet="Organization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_ToUser" Association="Self.FK_Organization_ToUser">
+            <End Role="User" EntitySet="User" />
+            <End Role="Organization" EntitySet="Organization" />
           </AssociationSet>
           <AssociationSet Name="FK_Program_Admin" Association="Self.FK_Program_Admin">
             <End Role="Admin" EntitySet="Admin" />
@@ -324,6 +375,7 @@
           <NavigationProperty Name="ProgramChanges" Relationship="Self.FK_ProgramChanges_AdminID" FromRole="Admin" ToRole="ProgramChanges" />
           <NavigationProperty Name="ReportedPrograms" Relationship="Self.FK_ReportedProgram_ToAdmin" FromRole="Admin" ToRole="ReportedProgram" />
           <NavigationProperty Name="Programs" Relationship="CareYouDBModel.FK_Program_Admin" FromRole="Admin" ToRole="Program" />
+          <NavigationProperty Name="Organizations" Relationship="CareYouDBModel.FK_Organization_ToAdmin" FromRole="Admin" ToRole="Organization" />
         </EntityType>
         <EntityType Name="Badge">
           <Key>
@@ -439,6 +491,7 @@
           <NavigationProperty Name="ReportedPrograms" Relationship="Self.FK_ReportedProgram_ToUser" FromRole="User" ToRole="ReportedProgram" />
           <NavigationProperty Name="Transactions" Relationship="Self.FK_Transaction_User" FromRole="User" ToRole="Transaction" />
           <NavigationProperty Name="UserBadges" Relationship="Self.FK_UserBadge_User" FromRole="User" ToRole="UserBadge" />
+          <NavigationProperty Name="Organization" Relationship="CareYouDBModel.FK_Organization_ToUser" FromRole="User" ToRole="Organization" />
         </EntityType>
         <EntityType Name="UserBadge">
           <Key>
@@ -682,6 +735,15 @@
             <End Role="Admin" EntitySet="Admins" />
             <End Role="Program" EntitySet="Programs" />
           </AssociationSet>
+          <EntitySet Name="Organizations" EntityType="CareYouDBModel.Organization" />
+          <AssociationSet Name="FK_Organization_ToAdmin" Association="CareYouDBModel.FK_Organization_ToAdmin">
+            <End Role="Admin" EntitySet="Admins" />
+            <End Role="Organization" EntitySet="Organizations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Organization_ToUser" Association="CareYouDBModel.FK_Organization_ToUser">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Organization" EntitySet="Organizations" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Program_Admin">
           <End Type="CareYouDBModel.Admin" Role="Admin" Multiplicity="0..1" />
@@ -692,6 +754,50 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="VerifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LeaderName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Certificate" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="isVerified" Type="Boolean" Nullable="false" />
+          <Property Name="VerifiedBy" Type="Int32" />
+          <NavigationProperty Name="Admin" Relationship="CareYouDBModel.FK_Organization_ToAdmin" FromRole="Organization" ToRole="Admin" />
+          <NavigationProperty Name="User" Relationship="CareYouDBModel.FK_Organization_ToUser" FromRole="Organization" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Organization_ToAdmin">
+          <End Type="CareYouDBModel.Admin" Role="Admin" Multiplicity="0..1" />
+          <End Type="CareYouDBModel.Organization" Role="Organization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Admin">
+              <PropertyRef Name="AdminID" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="VerifiedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Organization_ToUser">
+          <End Type="CareYouDBModel.User" Role="User" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="CareYouDBModel.Organization" Role="Organization" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Organization">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -829,6 +935,23 @@
                 <ScalarProperty Name="BankAccount" ColumnName="BankAccount" />
                 <ScalarProperty Name="BankName" ColumnName="BankName" />
                 <ScalarProperty Name="WithdrawMethod" ColumnName="WithdrawMethod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="CareYouDBModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="VerifiedBy" ColumnName="VerifiedBy" />
+                <ScalarProperty Name="isVerified" ColumnName="isVerified" />
+                <ScalarProperty Name="Certificate" ColumnName="Certificate" />
+                <ScalarProperty Name="LeaderName" ColumnName="LeaderName" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

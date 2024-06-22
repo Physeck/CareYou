@@ -3,6 +3,7 @@ using CareYou.Model;
 using CareYou.Repository;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Web;
 
@@ -337,6 +338,20 @@ namespace CareYou.Handler
             }
 
             userRepo.updateUserProfile(user, user.UserName, user.UserEmail, password);
+
+            return new Response<User>()
+            {
+                Success = true,
+                Message = "",
+                Field = "User",
+                Payload = user
+            };
+        }
+
+        public static Response<User> updateProfilePicture(User user, HttpPostedFile image)
+        {
+            String ImageLoc = ProgramHandler.UploadFile(image, "~/Assets/Profiles/");
+            userRepo.updateProfilePicture(user, ImageLoc);
 
             return new Response<User>()
             {

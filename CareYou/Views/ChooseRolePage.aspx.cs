@@ -31,7 +31,7 @@ namespace CareYou.Views
             }else if(user != null && role == "2")
             {
                 userHandler.changeRole(user, "organization");
-                Response.Redirect("Home.aspx");
+                Response.Redirect("OrganizationForm.aspx");
             }
             else
             {

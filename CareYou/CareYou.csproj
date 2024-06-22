@@ -171,6 +171,7 @@
     <Content Include="Views\insertUser.aspx" />
     <Content Include="Views\LinkSendPage.aspx" />
     <Content Include="Views\LoginPage.aspx" />
+    <Content Include="Views\OrganizationForm.aspx" />
     <Content Include="Views\Payment.aspx" />
     <Content Include="Views\PaymentSuccess.aspx" />
     <Content Include="Views\PendingVerificationPage.aspx" />
@@ -188,15 +189,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\badgeController.cs" />
+    <Compile Include="Controller\OrganizationController.cs" />
     <Compile Include="Controller\ProgramController.cs" />
     <Compile Include="Controller\ReportController.cs" />
     <Compile Include="Controller\userController.cs" />
     <Compile Include="Controller\transactionController.cs" />
     <Compile Include="Controller\PaymentController.cs" />
+    <Compile Include="Factory\OrganizationFactory.cs" />
     <Compile Include="Factory\ProgramFactory.cs" />
     <Compile Include="Factory\ReportFactory.cs" />
     <Compile Include="Factory\TransactionFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\OrganizationHandler.cs" />
     <Compile Include="Handler\ReportHandler.cs" />
     <Compile Include="Handler\transactionHandler.cs" />
     <Compile Include="Layouts\AdminNavbar.Master.cs">
@@ -230,6 +234,9 @@
     <Compile Include="Model\Donation.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Organization.cs">
+      <DependentUpon>CareYouModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Program.cs">
       <DependentUpon>CareYouModel.tt</DependentUpon>
     </Compile>
@@ -256,6 +263,7 @@
     <Compile Include="Handler\ProgramHandler.cs" />
     <Compile Include="Modules\ResponseList.cs" />
     <Compile Include="Repository\badgeRepository.cs" />
+    <Compile Include="Repository\OrganizationRepo.cs" />
     <Compile Include="Repository\ReportRepository.cs" />
     <Compile Include="top10Data.cs" />
     <Compile Include="Handler\userHandler.cs" />
@@ -355,6 +363,13 @@
     </Compile>
     <Compile Include="Views\LoginPage.aspx.designer.cs">
       <DependentUpon>LoginPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OrganizationForm.aspx.cs">
+      <DependentUpon>OrganizationForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\OrganizationForm.aspx.designer.cs">
+      <DependentUpon>OrganizationForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Payment.aspx.cs">
       <DependentUpon>Payment.aspx</DependentUpon>
