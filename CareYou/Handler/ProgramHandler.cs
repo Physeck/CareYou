@@ -146,6 +146,57 @@ namespace CareYou.Handler
             return programDetails;
         }
 
+        public static List<dynamic> getAllPendingPrograms(String type)
+        {
+            List<Program> programs = null;
+            List<ProgramChanges> changes = null;
+            if (type == "new")
+            {
+                programs = programRepo.getAllPendingPrograms();
+            }
+            else if (type == "edit")
+            {
+                changes = programRepo.getAllPendingChanges();
+            }
+            else
+            {
+                programs = programRepo.getAllPendingPrograms();
+                changes = programRepo.getAllPendingChanges();
+            }
+
+            List<dynamic> programDetails = new List<dynamic>();
+            if(programs != null)
+            {
+                foreach (Program program in programs)
+                {
+
+                    dynamic programDetail = new
+                    {
+                        ProgramID = program.ProgramID,
+                        ProgramTitle = program.ProgramTitle,
+                    };
+
+                    programDetails.Add(programDetail);
+                }
+            }
+            if(changes != null)
+            {
+                foreach (ProgramChanges program in changes)
+                {
+
+                    dynamic programDetail = new
+                    {
+                        ProgramID = program.ProgramID,
+                        ProgramTitle = program.Program.ProgramTitle
+                    };
+
+                    programDetails.Add(programDetail);
+                }
+            }
+            
+            return programDetails;
+        }
+
 
 
         public static Double getProgramProgress(int programID)

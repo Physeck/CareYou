@@ -67,5 +67,10 @@ namespace CareYou.Handler
         {
             return OrganizationRepo.GetOrganizationByUserId(userId);
         }
+
+        public static List<Organization> getAllPendingOrganizations()
+        {
+            return OrganizationRepo.getAllPendingOrganizations();
+        }
     }
 }

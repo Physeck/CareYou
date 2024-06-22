@@ -41,5 +41,10 @@ namespace CareYou.Repository
             db.SaveChanges();
             return organization;
         }
+
+        public static List<Organization> getAllPendingOrganizations()
+        {
+            return (from x in db.Organizations where x.isVerified == false select x).ToList();
+        }
     }
 }

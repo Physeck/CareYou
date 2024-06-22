@@ -36,6 +36,11 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.Verified == false && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
         }
 
+        public static List<Program> getAllPendingPrograms()
+        {
+            return (from x in db.Programs where x.Verified == false select x).ToList();
+        }
+
         public static List<Program> getAllVerifiedSocialPrograms(String query)
         {
             return (from x in db.Programs where x.Verified == true && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) select x).ToList();
@@ -49,6 +54,11 @@ namespace CareYou.Repository
         public static List<Program> getAllPendingSocialProgramsFromUserId(String query, int userId)
         {
             return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("social") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
+        }
+
+        public static List<Program> getAllPendingSocialPrograms()
+        {
+            return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("social") select x).ToList();
         }
 
         public static List<Program> getAllVerifiedProjectPrograms(String query)
@@ -66,11 +76,20 @@ namespace CareYou.Repository
             return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("project") && x.ProgramTitle.Contains(query) && x.FundraiserID == userId select x).ToList();
         }
 
+        public static List<Program> getAllPendingProjectPrograms()
+        {
+            return (from x in db.Programs where x.Verified == false && x.ProgramType.Equals("project") select x).ToList();
+        }
+
         public static List<Donation> getTopDonationsByProgramId(int programID)
         {
             return (from x in db.Donations where x.Transaction.ProgramID == programID orderby x.Transaction.Amount descending select x).ToList();
         }
 
+        public static List<ProgramChanges> getAllPendingChanges()
+        {
+            return (from x in db.ProgramChanges1 where x.isApproved == false select x).ToList();
+        }
         public static void deleteProgram(int programId)
         {
             db.Programs.Remove(getProgramById(programId));

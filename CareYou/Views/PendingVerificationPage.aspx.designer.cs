@@ -24,30 +24,30 @@ namespace CareYou.Views
         protected global::System.Web.UI.WebControls.Image filter;
 
         /// <summary>
-        /// Button1 control.
+        /// FilterDDL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.DropDownList FilterDDL;
 
         /// <summary>
-        /// Button2 control.
+        /// PendingRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.Repeater PendingRepeater;
 
         /// <summary>
-        /// Button3 control.
+        /// OrganizationRepeater control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button3;
+        protected global::System.Web.UI.WebControls.Repeater OrganizationRepeater;
     }
 }

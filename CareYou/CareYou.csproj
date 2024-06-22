@@ -79,6 +79,7 @@
     <Content Include="App_Data\CareYouDB_log.ldf">
       <DependentUpon>CareYouDB.mdf</DependentUpon>
     </Content>
+    <Content Include="Assets\Admin\filter-circle.svg" />
     <Content Include="Assets\HomePage\home-background.png" />
     <Content Include="Assets\Login-Register\Rectangle-RegLogin.png" />
     <Content Include="Assets\Login-Register\ShowsPassword.png" />

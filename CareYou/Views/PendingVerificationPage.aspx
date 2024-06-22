@@ -6,31 +6,35 @@
     <section class="home">
         <div class="main">
             <div class="container">
-                <h1 class="title">Pending Verification</h1>
+                
                     <div class="filter-box">
-                        <div class="filter-flex-div">
-                            <h1 class="filter-container">All</h1>
-                            <asp:Image class="filter-Button" ID="filter" src="https://www.svgrepo.com/show/327767/filter-circle.svg" runat="server" />
+                        <h1 class="title">Pending Verification</h1>
+                        <div class="filter-container">
+                            <asp:Image class="filter-Button" ID="filter" src="/Assets/Admin/filter-circle.svg" runat="server" />
+                            <asp:DropDownList ID="FilterDDL" runat="server" CssClass="filter-flex-div" OnSelectedIndexChanged="FilterDDL_SelectedIndexChanged" AutoPostBack="true">
+                                <asp:ListItem Value="none" CssClass="filter-container" Text="All" Selected="True"></asp:ListItem>
+                                <asp:ListItem Value="new" CssClass="filter-container">New Program</asp:ListItem>
+                                <asp:ListItem Value="edit" CssClass="filter-container">Program Changes</asp:ListItem>
+                                <asp:ListItem Value="org" CssClass="filter-container">Organization</asp:ListItem>
+                            </asp:DropDownList>
                         </div>
                     </div>
-                    <div class="container-box top">
-                        <div class="flex-div">
-                            <h1 class="title-container">Join Us in Fighting Forest Fires in Riau</h1>
-                            <asp:Button ID="Button1" runat="server" Text="View Detail" class="button"/>
-                        </div>
-                    </div>
-                    <div class="container-box">
-                        <div class="flex-div">
-                            <h1 class="title-container">Care</h1>
-                            <asp:Button ID="Button2" runat="server" Text="View Detail" class="button"/>
-                        </div>
-                    </div>
-                    <div class="container-box">
-                        <div class="flex-div">
-                            <h1 class="title-container">Help with 2$ meal for hungry Orphans in Switzerland</h1>
-                            <asp:Button ID="Button3" runat="server" Text="View Detail" class="button"/>
-                        </div>
-                    </div>
+                <div class="card-container">
+                    <asp:Repeater ID="PendingRepeater" runat="server">
+                        <ItemTemplate>
+                            <div class="program-card-container" onclick="location.href='/Views/AdminProgramDetail.aspx?id=<%# Eval("ProgramID") %>'">
+                                <%# Eval("ProgramTitle") %>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:Repeater ID="OrganizationRepeater" runat="server">
+                        <ItemTemplate>
+                            <div class="org-card-container" onclick="location.href='/Views/AdminOrganizationDetail.aspx?id=<%# Eval("UserID") %>'">
+                                <%# Eval("Name") %>
+                            </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
             </div>
         </div>
     </section>
