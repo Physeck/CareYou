@@ -113,5 +113,16 @@ namespace CareYou.Repository
             user.ProfilePicture = path;
             db.SaveChanges();
         }
+
+        public static int getUserCount()
+        {
+            return db.Users.Count();
+        }
+
+        public static int getNewUserCount()
+        {
+            DateTime oneMonthAgo = DateTime.Now.AddMonths(-1);
+            return db.Users.Where(x => x.JoinDate >= oneMonthAgo).Count();
+        }
     }
 }

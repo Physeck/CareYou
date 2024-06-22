@@ -361,5 +361,15 @@ namespace CareYou.Handler
                 Payload = user
             };
         }
+
+        public static int GetUsersCount()
+        {
+            return userRepo.getUserCount();
+        }
+
+        public static int GetNewUsersCount()
+        {
+            return userRepo.getNewUserCount();
+        }
     }
 }

@@ -57,5 +57,23 @@ namespace CareYou.Handler
         {
             transactionRepo.addComment(transactionId, comment);
         }
+
+        public static String getSumOfDonations()
+        {
+            int sum = transactionRepo.getSumOfDonations();
+            if(sum > 1000000)
+            {
+                return (sum / 1000000).ToString() + "M";
+            }
+            else if(sum > 1000)
+            {
+                return (sum / 1000).ToString() + "K";
+            }else if(sum > 1000000000)
+            {
+                return (sum / 1000000000).ToString() + "B";
+            }
+
+            return sum.ToString();
+        }
     }
 }

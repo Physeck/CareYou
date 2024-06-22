@@ -99,6 +99,9 @@ namespace CareYou.Repository
             db.SaveChanges();
         }
 
-        
+        public static int getSumOfDonations()
+        {
+            return db.Transactions.Where(x => x.TransactionType.Equals("donation")).Sum(x => x.Amount);
+        }
     }
 }

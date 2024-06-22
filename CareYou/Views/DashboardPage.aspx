@@ -11,23 +11,24 @@
                 <h1 class="dashboard-title">Dashboard</h1>
                 <div>
                     <div class="container-box">
-                        <div class="flex-div left">
+                        <div class="flex-div">
                             <h1 class="title-container">Total User</h1>
-                            <h1 class="info-container">1000</h1>
+                            <asp:Label CssClass="info-container" ID="UserCount" runat="server" Text="Label"></asp:Label>
                         </div>
-                        <div class="flex-div right">
+                        <div class="flex-div">
                             <h1 class="title-container">New User</h1>
-                            <h1 class="info-container">5</h1>
+                            <h1 class="title-container small">(Monthly)</h1>
+                             <asp:Label CssClass="info-container" ID="NewUserCount" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
                     <div class="container-box">
-                        <div class="flex-div left">
+                        <div class="flex-div">
                             <h1 class="title-container">Donations</h1>
-                            <h1 class="info-container">1 jt</h1>
+                            <asp:Label CssClass="info-container" ID="TotalDonation" runat="server" Text="Label"></asp:Label>
                         </div>
-                        <div class="flex-div right">
-                            <h1 class="title-container">Active Projects</h1>
-                            <h1 class="info-container">5</h1>
+                        <div class="flex-div">
+                            <h1 class="title-container">Active Programs</h1>
+                            <asp:Label CssClass="info-container" ID="ActiveProgram" runat="server" Text="Label"></asp:Label>
                         </div>
                     </div>
                 </div>

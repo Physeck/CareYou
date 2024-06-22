@@ -6,24 +6,25 @@
 <head runat="server">
     <title></title>
     <link href="../Style/navbarstyle.css" rel="stylesheet" />
+    <link href="../Style/footerstyle.css" rel="stylesheet" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body style = "margin:0;">
+<body>
     <form id="form1" runat="server">
         <div>
-            <div class="navbar_shape">
-                <div class="navbar">
-                    <div class="navbarBtn_wrapper">
-                        <asp:Button CssClass="navbar_btn" style="font-size: 2.083vw" ID="DashboardBtn" runat="server" Text="Dashboard" OnClick="DashboardBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" style="font-size: 2.083vw" ID="PendingBtn" runat="server" Text="Pending Verification" OnClick="PendingBtn_Click" />
-                        <asp:Button CssClass="navbar_btn" style="font-size: 2.083vw" ID="ReportsBtn" runat="server" Text="User Reports" OnClick="ReportsBtn_Click" />
+            <div class="navbar-container">
+                <div class="navbar_shape">
+                    <div class="navbar">
+                        <div class="navbarBtn_wrapper">
+                            <asp:Button CssClass="navbar_btn" Style="font-size: 2.083vw" ID="DashboardBtn" runat="server" Text="Dashboard" OnClick="DashboardBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" Style="font-size: 2.083vw" ID="PendingBtn" runat="server" Text="Pending Verification" OnClick="PendingBtn_Click" />
+                            <asp:Button CssClass="navbar_btn" Style="font-size: 2.083vw" ID="ReportsBtn" runat="server" Text="User Reports" OnClick="ReportsBtn_Click" />
+                        </div>
+                        <asp:Button CssClass="logout-btn" ID="LogOutBtn" runat="server" Text="Log Out" OnClick="LogOutBtn_Click" />
                     </div>
-                    <asp:Button CssClass="logout-btn" ID="LogOutBtn" runat="server" Text="Log Out" OnClick="LogOutBtn_Click" />
                 </div>
             </div>
-
-
         </div>
         <div>
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

@@ -376,5 +376,10 @@ namespace CareYou.Handler
                 return fileName;
         }
 
+        public static int GetActiveProgramCount()
+        {
+            return programRepo.getActiveProgramCount();
+        }
+
     }
 }

@@ -127,5 +127,10 @@ namespace CareYou.Repository
             db.SaveChanges();
         }
 
+        public static int getActiveProgramCount()
+        {
+            return (from x in db.Programs where x.Verified == true && x.ProgramStatus.Equals("ongoing") select x).Count();
+        }
+
     }
 }

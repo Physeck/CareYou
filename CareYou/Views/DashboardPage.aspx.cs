@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CareYou.Handler;
+using CareYou.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +13,10 @@ namespace CareYou.Views
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            UserCount.Text = userHandler.GetUsersCount().ToString();
+            NewUserCount.Text = userHandler.GetNewUsersCount().ToString();
+            TotalDonation.Text = transactionHandler.getSumOfDonations();
+            ActiveProgram.Text = ProgramHandler.GetActiveProgramCount().ToString();
         }
     }
 }
