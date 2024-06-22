@@ -21,6 +21,11 @@ namespace CareYou.Repository
             return (from x in db.Organizations where x.Name.Equals(name) select x).FirstOrDefault();
         }   
 
+        public static Organization GetOrganizationByEmail(String email)
+        {
+            return (from x in db.Organizations where x.Email.Equals(email) select x).FirstOrDefault();
+        }
+
         public static Organization CreateOrganization(int userId, String name, String type, String location, String phone, String email, String website, String leaderName, String cert)
         {
             Organization organization = OrganizationFactory.Create(userId, name, type, location, phone, email, website, leaderName, cert);

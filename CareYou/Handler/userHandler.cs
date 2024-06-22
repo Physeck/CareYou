@@ -208,7 +208,7 @@ namespace CareYou.Handler
         public static Response<User> updateProfile(User curr, String name, String email ,String password)
         {
             
-            User user = userRepo.getUserByEmail(email);
+            User user = userRepo.getUserByEmail(email.ToLower());
 
             if (user != null && curr.UserID != user.UserID)
             {
@@ -221,7 +221,7 @@ namespace CareYou.Handler
                 };
             }
 
-            userRepo.updateUserProfile(curr, name, email, password);
+            userRepo.updateUserProfile(curr, name, email.ToLower(), password);
 
             return new Response<User>()
             {
@@ -234,7 +234,7 @@ namespace CareYou.Handler
 
         public static Response<User> Login(String email, String password)
         {
-            User user = userRepo.getUserByEmail(email);
+            User user = userRepo.getUserByEmail(email.ToLower());
 
             if (user == null)
             {
@@ -270,7 +270,7 @@ namespace CareYou.Handler
         public static Response<User> Register(String name, String email, String password)
         {
 
-            User user = userRepo.getUserByEmail(email);
+            User user = userRepo.getUserByEmail(email.ToLower());
 
             if (user != null)
             {
@@ -283,7 +283,7 @@ namespace CareYou.Handler
                 };
             }
 
-            user = userRepo.register(name, email, password);
+            user = userRepo.register(name, email.ToLower(), password);
 
             return new Response<User>()
             {
@@ -301,7 +301,7 @@ namespace CareYou.Handler
 
         public static Response<User> forgotPassword(String email)
         {
-            User user = userRepo.getUserByEmail(email);
+            User user = userRepo.getUserByEmail(email.ToLower());
 
             if (user == null)
             {
@@ -325,7 +325,7 @@ namespace CareYou.Handler
 
         public static Response<User> changePassword(String email, String password)
         {
-            User user = userRepo.getUserByEmail(email);
+            User user = userRepo.getUserByEmail(email.ToLower());
             if (user == null)
             {
                    return new Response<User>()

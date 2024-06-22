@@ -351,8 +351,12 @@ namespace CareYou.Handler
                 string fileName = file.FileName;
                 string filePath = Path.Combine(uploadFolder, fileName);
 
-                // Check if file with same name exists
-                if (File.Exists(filePath))
+            if (!Directory.Exists(uploadFolder))
+            {
+                Directory.CreateDirectory(uploadFolder);
+            }
+            // Check if file with same name exists
+            if (File.Exists(filePath))
                 {
                     string fileExtension = Path.GetExtension(fileName);
                     string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);

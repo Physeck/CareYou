@@ -35,7 +35,7 @@
                     <div class="edit-program_row">
                         <h1 class="edit-text">Organization's phone number</h1>
                         <h1 class="edit-text colon">:</h1>
-                        <asp:TextBox ID="NumberTB" CssClass="insert-box" placeholder="Number" runat="server" onkeypress="return isNumberKey(event)"></asp:TextBox>
+                        <asp:TextBox ID="NumberTB" CssClass="insert-box" placeholder="Phone Number" runat="server" onkeypress="return isNumberKey(event)"></asp:TextBox>
                     </div>
                     <asp:Label ID="numberErrorLbl" CssClass="error-text" runat="server"></asp:Label>
 
